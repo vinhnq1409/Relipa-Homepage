@@ -4,8 +4,8 @@
 ## Quick start
 
 Quick start options:
-
-- `npm i nextjs-material-dashboard`
+- `delete package-lock.json`
+- `npm i --legacy-peer-deps`
 
 
 ## Documentation
