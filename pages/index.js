@@ -1,10 +1,23 @@
-import React from "react";
-import Router from "next/router";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Index() {
-  React.useEffect(() => {
-    Router.push("/signin");
-  });
+  
+  const router = useRouter();
+  const [authorized,setAuthorized] = useState(false)
+
+  useEffect(()=>{
+    if(!authorized){
+      router.push({
+        pathname:"/signin"
+      })
+    }
+    else{
+      router.push({
+        pathname:"/admin/dashboard"
+      })
+    }
+  },[authorized])
 
   return <div />;
 }
