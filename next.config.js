@@ -10,4 +10,8 @@ module.exports = withPlugins([[withSass], [withImages], [withCSS]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    apiUrl: process.env.API_URL,
+  },
 });
