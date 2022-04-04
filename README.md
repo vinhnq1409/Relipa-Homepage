@@ -5,7 +5,7 @@
 
 Quick start options:
 - `delete package-lock.json`
-- `npm i --legacy-peer-deps`
+- `npm i --legacy-peer-deps`,
 
 
 ## Documentation
