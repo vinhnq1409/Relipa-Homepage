@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Router from "next/router";
 import { useForm } from "react-hook-form";
+import { STORAGEKEY, setCookie } from "../../utils/storage/index";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +43,20 @@ export default function SignIn() {
   } = useForm();
 
   const onSubmit = (data) => {
-    Router.push("/admin/dashboard");
+    fetch("http://14.232.214.101:8111/api/v1/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCookie(STORAGEKEY.ACCESS_TOKEN, data.access_token);
+        if(data.access_token){
+          Router.push('/admin/dashboard')
+        }
+      });
   };
 
   return (
