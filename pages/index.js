@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie, removeCookie, STORAGEKEY } from "../utils/storage/index";
@@ -24,6 +25,15 @@ export default function Index() {
           pathname: "/admin/dashboard",
         });
   }, [token]);
+=======
+import React from 'react'
+import Router from 'next/router'
 
-  return <div />;
+export default function Index() {
+  React.useEffect(() => {
+    Router.push('/admin/dashboard')
+  })
+>>>>>>> develop
+
+  return <div />
 }
