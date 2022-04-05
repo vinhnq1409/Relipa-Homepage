@@ -95,7 +95,7 @@ module.exports = {
     'new-parens': 2,
     'no-array-constructor': 2,
     'no-caller': 2,
-    'no-console': 'off',
+    'no-console': 2,
     'no-class-assign': 2,
     'no-cond-assign': 2,
     'no-const-assign': 2,
