@@ -20,10 +20,12 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import store from "../redux/store";
 
 import PageChange from "components/PageChange/PageChange.js";
 
 import "assets/css/nextjs-material-dashboard.css?v=1.1.0";
+import { Provider } from "react-redux";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -79,6 +81,7 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
+        <Provider store={store}>
         <Head>
           <meta
             name="viewport"
@@ -90,6 +93,8 @@ export default class MyApp extends App {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        </Provider>
+        
       </React.Fragment>
     );
   }
