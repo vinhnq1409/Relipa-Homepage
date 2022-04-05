@@ -1,13 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { getCookie } from "../utils/storage/index";
+import { getCookie, removeCookie, STORAGEKEY } from "../utils/storage/index";
+import { setAuthHeader } from "./api/BaseRequest";
 
 export default function Index() {
   const router = useRouter();
-  const authorized = getCookie("access_token");
+  const token = getCookie("access_token");
+
+  if (token) {
+    const currentTime = Date.now() / 1000;
+    const decoded = jwt_decode(token);
+    if (currentTime > decoded.exp) {
+      removeCookie(STORAGEKEY.ACCESS_TOKEN);
+    } else {
+      setAuthHeader(token);
+    }
+  }
 
   useEffect(() => {
-    if (!authorized) {
+    if (!token) {
       router.push({
         pathname: "/admin/signin",
       });
@@ -16,7 +27,7 @@ export default function Index() {
         pathname: "/admin/dashboard",
       });
     }
-  }, [authorized]);
+  }, [token]);
 
   return <div />;
 }
