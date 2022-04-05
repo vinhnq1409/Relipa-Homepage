@@ -54,7 +54,7 @@ export const RenderPage = () => {
           <LinearProgress />
           <Skeleton variant="text" height={80}/>
           {data.map((item, index) => (
-          <Skeleton variant="text" height={40}/>
+          <Skeleton key={index} variant="text" height={40}/>
         ))}
         </div>
       ) : (
