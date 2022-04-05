@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +11,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Router from "next/router";
 import { useForm } from "react-hook-form";
-import { STORAGEKEY, setCookie } from "../../utils/storage/index";
+import { useDispatch, useSelector } from "react-redux";
+import { signin } from "../../redux/slices/auth";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
+  const { successSignin } = useSelector((state) => state.auth);
+  
   const {
     register,
     handleSubmit,
@@ -43,21 +46,14 @@ export default function SignIn() {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://14.232.214.101:8111/api/v1/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCookie(STORAGEKEY.ACCESS_TOKEN, data.access_token);
-        if(data.access_token){
-          Router.push('/admin/dashboard')
-        }
-      });
+    dispatch(signin(data));
   };
+
+  useEffect(() => {
+    if (successSignin) {
+      Router.push("/admin/dashboard");
+    }
+  }, [successSignin]);
 
   return (
     <Container component="main" maxWidth="xs">

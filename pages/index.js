@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie, removeCookie, STORAGEKEY } from "../utils/storage/index";
 import { setAuthHeader } from "../api/BaseRequest";
+import jwt_decode from 'jwt-decode'
 
 export default function Index() {
   const router = useRouter();
