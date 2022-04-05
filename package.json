@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./components/** ./pages/** -c .eslintrc.js --fix --ext .js,.jsx",
     "dev": "next",
     "build": "next build",
     "start": "next start",
@@ -44,5 +45,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.4"
   }
 }
