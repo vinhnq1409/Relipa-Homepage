@@ -40,7 +40,7 @@ export default function Admin({ children, ...rest }) {
     if (currentTime > decoded.exp) removeCookie(STORAGEKEY.ACCESS_TOKEN)
     setAuthHeader(token)
   }
-
+  
   useEffect(() => {
     !token
       ? router.push({
