@@ -1,5 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { DatePicker,MuiPickersUtilsProvider } from "@material-ui/pickers";
+import MomentUtils from "@date-io/moment";
+import moment from "moment";
 import {
   Button,
   Typography,
@@ -12,15 +15,6 @@ import {
   MenuItem,
   Box,
 } from "@material-ui/core";
-
-import {
-  DatePicker,
-  TimePicker,
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
-import MomentUtils from '@date-io/moment';
-import moment from "moment";
 
 const useStyles = makeStyles({
   filters: {
@@ -52,13 +46,18 @@ const useStyles = makeStyles({
 
 const NewFilters = ({ header }) => {
   const styles = useStyles();
+  
+  const [subject, setSubject] = useState('')
+  const [sortBy, setSortBy] = useState('')
+  const [startDay, handleStartDay] = useState(null);
+  const [selectedDate, handleDateEndDay] = useState(null);
 
-  const disabledDate = (current) => {
-    return current && current < moment().endOf("day");
-  };
-
-  const [selectedDate, handleDateChange] = useState(moment(new Date()).format('yyyy/mm/dd'));
-
+  const handleResetForm = () => {
+    setSubject('')
+    setSortBy('')
+    handleStartDay(null)
+    handleDateEndDay(null)
+  }
   return (
     <>
       <Container>
@@ -67,8 +66,9 @@ const NewFilters = ({ header }) => {
             CREATE NEW
           </Button>
         </div>
+
         <Box className={styles.filters}>
-          <Container>
+          <Container component='form'>
             <Typography className={styles.filters_title} variant="h5">
               {header}
             </Typography>
@@ -88,6 +88,8 @@ const NewFilters = ({ header }) => {
                       id="outlined-secondary"
                       label="Search something"
                       variant="outlined"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
                     />
                   </FormControl>
                 </Grid>
@@ -103,6 +105,8 @@ const NewFilters = ({ header }) => {
                       labelId="demo-simple-select-outlined-label"
                       id="demo-simple-select-outlined"
                       label="Sort By"
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
                     >
                       <MenuItem value={"Ascending"}>Ascending</MenuItem>
                       <MenuItem value={"Descending"}>Descending</MenuItem>
@@ -124,34 +128,30 @@ const NewFilters = ({ header }) => {
                 </Grid>
                 <Grid item xs={8} sm={4}>
                   <FormControl>
-                    <TextField
-                      id="start"
-                      label="Start Day"
-                      type="date"
-                      defaultValue="2022-05-04"
-                      variant="outlined"
-                    />
+                    <MuiPickersUtilsProvider utils={MomentUtils}>
+                      <DatePicker
+                        label="Start Day"
+                        inputVariant="outlined"
+                        value={startDay}
+                        onChange={handleStartDay}
+                        format="yyyy/MM/DD"
+                      />
+                    </MuiPickersUtilsProvider>
                   </FormControl>
                 </Grid>
                 <Grid item xs={4} sm={1}>
                   <Typography>End Day</Typography>
                 </Grid>
                 <Grid item xs={8} sm={3}>
-                  <FormControl variant="outlined" >
-                    {/* <TextField 
-                      id="end" 
-                      label="End Day" 
-                      type="date" 
-                      defaultValue="2022-05-04" 
-                      variant="outlined" 
-                      disabled={disabledDate} 
-                    /> */}
+                  <FormControl variant="outlined">
                     <MuiPickersUtilsProvider utils={MomentUtils}>
                       <DatePicker
-                        variant="outlined" 
+                        label="End Day"
+                        inputVariant="outlined"
                         value={selectedDate}
-                        onChange={handleDateChange}
-                        minDate={'2022-05-04'}
+                        onChange={handleDateEndDay}
+                        format="yyyy/MM/DD"
+                        minDate={moment(startDay).format('yyyy/MM/DD')}
                       />
                     </MuiPickersUtilsProvider>
                   </FormControl>
@@ -167,7 +167,12 @@ const NewFilters = ({ header }) => {
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button 
+                    type="reset" 
+                    variant="contained" 
+                    color="primary" 
+                    onClick={handleResetForm}
+                  >
                     RESET
                   </Button>
                 </Grid>
