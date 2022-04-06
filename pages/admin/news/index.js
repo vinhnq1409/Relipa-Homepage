@@ -4,7 +4,7 @@ import NewFilters from '../../../components/New/NewFilters'
 
 export default function News() {
   return (
-    <div className="new">
+    <div className='new'>
       <NewFilters header={'NEW'} />
     </div>
   )
