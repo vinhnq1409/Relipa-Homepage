@@ -38,7 +38,7 @@ export default function SignIn() {
   const classes = useStyles()
   const dispatch = useDispatch()
   const router = useRouter()
-  const { successSignin } = useSelector((state) => state.auth)
+  const { success } = useSelector((state) => state.auth)
 
   const {
     register,
@@ -51,10 +51,10 @@ export default function SignIn() {
   }
 
   useEffect(() => {
-    if (successSignin) {
+    if (success) {
       router.push('/admin')
     }
-  }, [successSignin])
+  }, [success])
 
   return (
     <Container component="main" maxWidth="xs">
