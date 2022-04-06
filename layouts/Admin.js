@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 // creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar'
@@ -9,14 +9,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import Navbar from 'components/Navbars/Navbar.js'
 import Footer from 'components/Footer/Footer.js'
 import Sidebar from 'components/Sidebar/Sidebar.js'
-import FixedPlugin from 'components/FixedPlugin/FixedPlugin.js'
-
 import routes from 'routes.js'
-
 import styles from 'assets/jss/nextjs-material-dashboard/layouts/adminStyle.js'
-
 import bgImage from 'assets/img/sidebar-2.jpg'
 import logo from 'assets/img/reactlogo.png'
+import { getCookie, removeCookie, STORAGEKEY } from '../utils/storage/index'
+import { setAuthHeader } from '../api/BaseRequest'
+import jwt_decode from 'jwt-decode'
 
 let ps
 
@@ -33,12 +32,33 @@ export default function Admin({ children, ...rest }) {
   const [color, setColor] = React.useState('white')
   const [fixedClasses, setFixedClasses] = React.useState('dropdown show')
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const token = getCookie('access_token')
+
+  if (token) {
+    const currentTime = Date.now() / 1000
+    const decoded = jwt_decode(token)
+    if (currentTime > decoded.exp) removeCookie(STORAGEKEY.ACCESS_TOKEN)
+    setAuthHeader(token)
+  }
+
+  useEffect(() => {
+    !token
+      ? router.push({
+          pathname: '/admin/signin',
+        })
+      : router.push({
+          pathname: '/admin/dashboard',
+        })
+  }, [token])
+
   const handleImageClick = (image) => {
     setImage(image)
   }
+
   const handleColorClick = (color) => {
     setColor(color)
   }
+
   const handleFixedClick = () => {
     if (fixedClasses === 'dropdown') {
       setFixedClasses('dropdown show')
@@ -46,17 +66,21 @@ export default function Admin({ children, ...rest }) {
       setFixedClasses('dropdown')
     }
   }
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
+
   const getRoute = () => {
     return router.pathname !== '/admin/maps'
   }
+
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false)
     }
   }
+
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
     if (navigator.platform.indexOf('Win') > -1) {

@@ -1,39 +1,12 @@
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import { getCookie, removeCookie, STORAGEKEY } from "../utils/storage/index";
-import { setAuthHeader } from "../api/BaseRequest";
-import jwt_decode from "jwt-decode";
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 export default function Index() {
-  const router = useRouter();
-  const token = getCookie("access_token");
-
-  if (token) {
-    const currentTime = Date.now() / 1000;
-    const decoded = jwt_decode(token);
-    if (currentTime > decoded.exp) removeCookie(STORAGEKEY.ACCESS_TOKEN);
-    setAuthHeader(token);
-  }
+  const router = useRouter()
 
   useEffect(() => {
-    !token
-      ? router.push({
-          pathname: "/admin/signin",
-        })
-      : router.push({
-          pathname: "/admin/dashboard",
-        });
-  }, [token]);
-=======
-import React from 'react'
-import Router from 'next/router'
-
-export default function Index() {
-  React.useEffect(() => {
-    Router.push('/admin/dashboard')
+    router.push('/admin')
   })
->>>>>>> develop
 
   return <div />
 }
