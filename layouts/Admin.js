@@ -79,7 +79,7 @@ export default function Admin({ children, ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={'Relipa-Admin'}
+        logoText={'Relipa Admin'}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
