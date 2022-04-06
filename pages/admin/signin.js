@@ -11,9 +11,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { signin } from '../../redux/slices/auth'
-import { STORAGEKEY, getCookie } from '../../utils/storage'
+import { STORAGEKEY, getCookie, setCookie } from '../../utils/storage'
+import { signinApi } from '../../api/authApi'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,10 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const router = useRouter()
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
-  const { success } = useSelector((state) => state.auth)
+  const { mutate: signin, data, isSuccess } = signinApi()
 
   const {
     register,
@@ -49,15 +47,19 @@ export default function SignIn() {
   } = useForm()
 
   const onSubmit = (data, e) => {
-    e.preventDefault()
-    dispatch(signin(data))
+    signin(data)
   }
 
   useEffect(() => {
-    if (success || token) {
-        router.push('/admin')
+    if (isSuccess) {
+      setCookie(STORAGEKEY.ACCESS_TOKEN, data?.access_token)
+      router.push('/admin')
     }
-  }, [success, token])
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (token) router.push('/admin')
+  }, [token])
 
   return (
     <Container component="main" maxWidth="xs">

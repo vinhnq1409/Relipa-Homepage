@@ -16,6 +16,8 @@ import logo from 'assets/img/reactlogo.png'
 import { getCookie, removeCookie, STORAGEKEY } from '../utils/storage/index'
 import { setAuthHeader } from '../api/BaseRequest'
 import jwt_decode from 'jwt-decode'
+import { useDispatch } from 'react-redux'
+import { getInfoUser } from '../redux/slices/userInfo'
 
 let ps
 
@@ -33,6 +35,7 @@ export default function Admin({ children, ...rest }) {
   const [fixedClasses, setFixedClasses] = React.useState('dropdown show')
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
+  const dispatch = useDispatch()
 
   if (token) {
     const currentTime = Date.now() / 1000
@@ -46,9 +49,10 @@ export default function Admin({ children, ...rest }) {
       ? router.push({
           pathname: '/admin/signin',
         })
-      : router.push({
-          pathname: '/admin/dashboard',
-        })
+      : dispatch(getInfoUser())
+    router.push({
+      pathname: '/admin/dashboard',
+    })
   }, [token])
 
   const handleImageClick = (image) => {

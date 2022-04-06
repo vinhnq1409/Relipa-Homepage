@@ -1,10 +1,8 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import demoSlice from "./slices/demoSlice";
-import userInfo from "./slices/userInfo";
-import authSlice from "./slices/auth";
+import { combineReducers } from '@reduxjs/toolkit'
+import demoSlice from './slices/demoSlice'
+import infoUserSlice from './slices/userInfo'
 
 export default combineReducers({
-  userInfo: userInfo,
+  userInfo: infoUserSlice,
   demo: demoSlice,
-  auth: authSlice,
-});
+})
