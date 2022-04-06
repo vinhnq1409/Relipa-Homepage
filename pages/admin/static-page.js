@@ -1,8 +1,8 @@
-import React from "react";
-import Admin from "layouts/Admin.js";
+import React from 'react'
+import Admin from 'layouts/Admin.js'
 
 export default function StaticPage() {
-  return <div>Static Page</div>;
+  return <div>Static Page</div>
 }
 
-StaticPage.layout = Admin;
+StaticPage.layout = Admin
