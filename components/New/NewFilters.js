@@ -46,7 +46,7 @@ const NewFilters = ({ header }) => {
   const [subject, setSubject] = useState('')
   const [sortBy, setSortBy] = useState('')
   const [startDay, handleStartDay] = useState(null)
-  const [selectedDate, handleDateEndDay] = useState(null)
+  const [endDay, handleDateEndDay] = useState(null)
 
   const handleResetForm = () => {
     setSubject('')
@@ -132,10 +132,10 @@ const NewFilters = ({ header }) => {
                       <DatePicker
                         label='End Day'
                         inputVariant='outlined'
-                        value={selectedDate}
+                        value={endDay}
                         onChange={handleDateEndDay}
                         format='yyyy/MM/DD'
-                        minDate={startDay}
+                        minDate={(startDay === null) ? undefined : startDay}
                       />
                     </MuiPickersUtilsProvider>
                   </FormControl>
