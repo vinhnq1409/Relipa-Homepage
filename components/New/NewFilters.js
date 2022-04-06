@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import MomentUtils from '@date-io/moment'
-import moment from 'moment'
-import {
-  Button,
-  Typography,
-  Container,
-  Grid,
-  FormControl,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  Box
-} from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl'
+import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles({
   filters: {
@@ -138,7 +135,7 @@ const NewFilters = ({ header }) => {
                         value={selectedDate}
                         onChange={handleDateEndDay}
                         format='yyyy/MM/DD'
-                        minDate={moment(startDay).format('yyyy/MM/DD')}
+                        minDate={startDay}
                       />
                     </MuiPickersUtilsProvider>
                   </FormControl>
