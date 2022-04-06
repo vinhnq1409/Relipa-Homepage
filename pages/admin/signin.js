@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { signin } from '../../redux/slices/auth'
+import { STORAGEKEY, getCookie } from '../../utils/storage'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +39,7 @@ export default function SignIn() {
   const classes = useStyles()
   const dispatch = useDispatch()
   const router = useRouter()
+  const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const { success } = useSelector((state) => state.auth)
 
   const {
@@ -46,15 +48,18 @@ export default function SignIn() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
+    e.preventDefault()
     dispatch(signin(data))
   }
 
   useEffect(() => {
-    if (success) {
-      router.push('/admin')
+    if (success || token) {
+      setTimeout(() => {
+        router.push('/admin')
+      }, 3000)
     }
-  }, [success])
+  }, [success, token])
 
   return (
     <Container component="main" maxWidth="xs">

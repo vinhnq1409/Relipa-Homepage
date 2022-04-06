@@ -32,7 +32,7 @@ export default function Admin({ children, ...rest }) {
   const [color, setColor] = React.useState('white')
   const [fixedClasses, setFixedClasses] = React.useState('dropdown show')
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const token = getCookie('access_token')
+  const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
 
   if (token) {
     const currentTime = Date.now() / 1000
@@ -40,7 +40,7 @@ export default function Admin({ children, ...rest }) {
     if (currentTime > decoded.exp) removeCookie(STORAGEKEY.ACCESS_TOKEN)
     setAuthHeader(token)
   }
-  
+
   useEffect(() => {
     !token
       ? router.push({
