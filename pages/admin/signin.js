@@ -55,9 +55,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (success || token) {
-      setTimeout(() => {
         router.push('/admin')
-      }, 3000)
     }
   }, [success, token])
 
