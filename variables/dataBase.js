@@ -32,6 +32,21 @@ const data = [
     subject: "An toàn công nghệ thông tin",
     author: "Vũ Văn Vịnh",
   },
+  {
+    id: 100,
+    subject: "An toàn công nghệ thông tin 1",
+    author: "Vũ Văn Vịnh",
+  },
+  {
+    id: 102,
+    subject: "An toàn công nghệ thông tin 2",
+    author: "Vũ Văn Vịnh",
+  },
+  {
+    id: 103,
+    subject: "An toàn công nghệ thông tin 3",
+    author: "Vũ Văn Vịnh",
+  },
 ];
 
 export const dataJson = JSON.stringify(data)

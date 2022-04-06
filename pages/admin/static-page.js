@@ -1,9 +1,8 @@
+import React, { useState } from 'react'
+import { dataJson, headerJson } from '../../variables/dataBase'
+import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
-import React from "react";
-import { dataJson, headerJson } from "../../variables/dataBase";
-import Link from "next/link";
-import Admin from "layouts/Admin.js";
-import "../../assets/css/static-page.css";
+import '../../assets/css/static-page.css'
 import {
   Paper,
   Table,
@@ -11,23 +10,37 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-} from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+  TablePagination,
+  TableRow
+} from '@material-ui/core'
+import EditIcon from '@material-ui/icons/Edit'
+import VisibilityIcon from '@material-ui/icons/Visibility'
 
 export default function StaticPage() {
-  const headerTable = JSON.parse(headerJson);
-  const data = JSON.parse(dataJson);
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowPerPage] = useState(5)
+  const headerTable = JSON.parse(headerJson)
+  const data = JSON.parse(dataJson)
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowPerPage(event.target.value)
+    setPage(0)
+  }
   return (
     <>
-      <Paper sx={{ width: "100%" }}>
+      <Paper sx={{ width: '100%' }}>
         <TableContainer>
           <Table stickyHeader={true}>
             <TableHead>
               <TableRow>
                 {headerTable.map((item) => (
-                  <TableCell key={item.id}>{item.label}</TableCell>
+                  <TableCell align='justify' variant='head' key={item.id}>
+                    {item.label}
+                  </TableCell>
                 ))}
               </TableRow>
             </TableHead>
@@ -39,24 +52,10 @@ export default function StaticPage() {
                   <TableCell>{item.subject}</TableCell>
                   <TableCell>{item.author}</TableCell>
                   <TableCell>
-                    <Link href="#">
-                      {
-                        <VisibilityIcon
-                          color="secondary"
-                          className="icon"
-                          fontSize="small"
-                        />
-                      }
-                    </Link>{" "}
-                    | {""}
-                    <Link href="/admin/editPage" passHref>
-                      {
-                        <EditIcon
-                          className="icon"
-                          color="primary"
-                          fontSize="small"
-                        />
-                      }
+                    <Link href='#'>{<VisibilityIcon color='secondary' className='icon' fontSize='small' />}</Link> |{' '}
+                    {''}
+                    <Link href='/admin/editPage' passHref>
+                      {<EditIcon className='icon' color='primary' fontSize='small' />}
                     </Link>
                   </TableCell>
                 </TableRow>
@@ -64,9 +63,18 @@ export default function StaticPage() {
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 15]}
+          component='div'
+          rowsPerPage={rowsPerPage}
+          count={data.length}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Paper>
     </>
-  );
+  )
 }
 
 StaticPage.layout = Admin
