@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
+<<<<<<< HEAD
 import { Container } from '@material-ui/core'
 import TableList from './TableList'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
@@ -67,6 +68,35 @@ export default function Blogs() {
         />
       </Container>
     </>
+=======
+import { Button } from '@material-ui/core'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+export default function Blogs() {
+  const router = useRouter()
+  const onClick = () => {
+    router.push({
+        pathname: '/admin/blogs/add',
+        query: { slug: 'about', mode: 'edit' }
+    })
+  }
+  return (
+    <div>
+      <Link href='/admin/blogs/add'>
+        <Button>Create</Button>
+      </Link>      
+      <Link href={{
+        pathname: '/admin/blogs/add',
+        query: { slug: 'about', mode: 'edit' }
+      }}>
+        <Button>Edit</Button>
+      </Link>
+      <Button onClick={onClick}>
+        Edit
+      </Button>
+    </div>
+>>>>>>> 804019e (reset url, router link)
   )
 }
 
