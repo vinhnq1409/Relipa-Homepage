@@ -21,7 +21,6 @@ import useTrans from '../../../i18n/useTrans'
 
 export default function StaticPage() {
   const trans = useTrans()
-  console.log(trans)
   const router = useRouter()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowPerPage] = useState(5)
@@ -44,7 +43,7 @@ export default function StaticPage() {
     <>
       <div className= {style.dFlex}>
         <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
-          Create new
+          {trans.static_page.createNew}
         </Button>
       </div>
       <Paper sx={{ width: '100%' }}>
@@ -64,8 +63,11 @@ export default function StaticPage() {
               {data.map((item, index) => (
                 <TableRow key={index}>
                   <TableCell> {index + 1} </TableCell>
-                  <TableCell>{item.subject}</TableCell>
+                  <TableCell>{item.title}</TableCell>
                   <TableCell>{item.author}</TableCell>
+                  <TableCell>{item.date}</TableCell>
+                  <TableCell>{item.status}</TableCell>
+                  <TableCell>{item.view}</TableCell>
                   <TableCell>
                     <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
                     {''}

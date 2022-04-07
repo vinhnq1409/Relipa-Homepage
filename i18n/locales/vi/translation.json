@@ -8,6 +8,7 @@
         "author": "Người tạo",
         "detail": "Tác vụ",
         "view": "Xem",
-        "edit": "Chỉnh sửa"
+        "edit": "Chỉnh sửa",
+        "createNew": "Tạo mới"
     }
 }
