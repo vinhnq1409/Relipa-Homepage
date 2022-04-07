@@ -25,7 +25,6 @@ export default function StaticPage() {
   const headerTable = JSON.parse(headerJson)
   const data = JSON.parse(dataJson)
 
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -36,7 +35,7 @@ export default function StaticPage() {
   }
 
   const handleChangeURL = () => {
-    router.push({pathname: 'static_page/add', query: {slug: 'about',mode: 'add'}})
+    router.push({ pathname: 'static_page/add', query: { slug: 'about', mode: 'add' }})
   }
   return (
     <>
@@ -67,7 +66,7 @@ export default function StaticPage() {
                   <TableCell>
                     <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
                     {''}
-                    <Link href={{pathname: 'static_page/add', query: {slug: 'about',mode: 'edit'}}} passHref>
+                    <Link href={{ pathname: 'static_page/add', query: { slug: 'about', mode: 'edit' }}} passHref>
                       {<EditIcon className= {style.icon} color='primary' fontSize='small' />}
                     </Link>
                   </TableCell>

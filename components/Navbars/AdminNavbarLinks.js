@@ -77,16 +77,16 @@ export default function AdminNavbarLinks() {
       <div className={classes.searchWrapper}>
         <CustomInput
           formControlProps={{
-            className: classes.margin + ' ' + classes.search,
+            className: classes.margin + ' ' + classes.search
           }}
           inputProps={{
             placeholder: 'Search',
             inputProps: {
-              'aria-label': 'Search',
-            },
+              'aria-label': 'Search'
+            }
           }}
         />
-        <Button color="white" aria-label="edit" justIcon round>
+        <Button color='white' aria-label='edit' justIcon round>
           <Search />
         </Button>
       </div>
@@ -95,12 +95,12 @@ export default function AdminNavbarLinks() {
           color={size.width > 959 ? 'transparent' : 'white'}
           justIcon={size.width > 959}
           simple={!(size.width > 959)}
-          aria-label="Language"
+          aria-label='Language'
           className={classes.buttonLink}
           onClick={handleClickLanguage}
         >
           <Language className={classes.icons} />
-          <Hidden mdUp implementation="css">
+          <Hidden mdUp implementation='css'>
             <p onClick={handleCloseLanguage} className={classes.linkText}>
               Language
             </p>
@@ -116,14 +116,14 @@ export default function AdminNavbarLinks() {
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              id="notification-menu-list-grow"
+              id='notification-menu-list-grow'
               style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
               }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseLanguage}>
-                  <MenuList role="menu">
+                  <MenuList role='menu'>
                     <MenuItem onClick={() => changeLang('vi')} className={classes.dropdownItem}>
                       VI
                     </MenuItem>
@@ -144,13 +144,13 @@ export default function AdminNavbarLinks() {
           justIcon={size.width > 959}
           simple={!(size.width > 959)}
           aria-owns={openNotification ? 'notification-menu-list-grow' : null}
-          aria-haspopup="true"
+          aria-haspopup='true'
           onClick={handleClickNotification}
           className={classes.buttonLink}
         >
           <Notifications className={classes.icons} />
           <span className={classes.notifications}>5</span>
-          <Hidden mdUp implementation="css">
+          <Hidden mdUp implementation='css'>
             <p onClick={handleCloseNotification} className={classes.linkText}>
               Notification
             </p>
@@ -166,14 +166,14 @@ export default function AdminNavbarLinks() {
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              id="notification-menu-list-grow"
+              id='notification-menu-list-grow'
               style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
               }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseNotification}>
-                  <MenuList role="menu">
+                  <MenuList role='menu'>
                     <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
                       Mike John responded to your email
                     </MenuItem>
@@ -202,12 +202,12 @@ export default function AdminNavbarLinks() {
           justIcon={size.width > 959}
           simple={!(size.width > 959)}
           aria-owns={openProfile ? 'profile-menu-list-grow' : null}
-          aria-haspopup="true"
+          aria-haspopup='true'
           onClick={handleClickProfile}
           className={classes.buttonLink}
         >
           <Person className={classes.icons} />
-          <Hidden mdUp implementation="css">
+          <Hidden mdUp implementation='css'>
             <p className={classes.linkText}>Profile</p>
           </Hidden>
         </Button>
@@ -221,14 +221,14 @@ export default function AdminNavbarLinks() {
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              id="profile-menu-list-grow"
+              id='profile-menu-list-grow'
               style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
               }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
-                  <MenuList role="menu">
+                  <MenuList role='menu'>
                     <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Profile
                     </MenuItem>

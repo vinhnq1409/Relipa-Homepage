@@ -82,7 +82,7 @@ export default class MyApp extends App {
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <Head>
-              <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+              <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
               <title>Relipa</title>
             </Head>
             <Layout>
