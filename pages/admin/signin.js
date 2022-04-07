@@ -7,35 +7,14 @@ import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { STORAGEKEY, getCookie, setCookie } from '../../utils/storage'
-import { signinApi } from '../../api/authApi'
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}))
+import { signinApi } from '../../api/reactQueryApi'
+import styles from '../../styles/admin/signin.module.css'
 
 export default function SignIn() {
-  const classes = useStyles()
   const router = useRouter()
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const { mutate: signin, data, isSuccess } = signinApi()
@@ -62,13 +41,13 @@ export default function SignIn() {
   }, [token])
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={styles.wrapper} component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" color="primary" variant="h2">
+      <div className={styles.paper}>
+        <Typography className={styles.title} component="h1" color="primary" variant="h2">
           Relipa
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -99,7 +78,7 @@ export default function SignIn() {
             id="password"
           />
           <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+          <Button type="submit" fullWidth variant="contained" color="primary" className={styles.submit}>
             Sign In
           </Button>
           <Grid container>
