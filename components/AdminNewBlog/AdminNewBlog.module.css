@@ -1,0 +1,21 @@
+.filters {
+  border: 1px solid;
+  position: relative;
+  margin-top: 30px;
+  padding: 20px 10px 30px 10px;
+}
+.filters_title {
+  position: absolute;
+  top: -17px;
+  background: #eeeeee;
+  min-width: 70px;
+  text-align: center;
+}
+.filters_row1 {
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+.sort_by {
+  min-width: 150px;
+}
