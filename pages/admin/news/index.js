@@ -4,6 +4,8 @@ import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { Container } from '@material-ui/core'
 import TableList from '../blogs/TableList'
+import { get } from '../../../api/BaseRequest'
+import { useQuery } from 'react-query'
 
 const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
@@ -24,6 +26,17 @@ export default function News() {
     page: 1
   })
 
+  const getDataNewList = async () => {
+    const response = await get('news',params)
+    console.log('respone',response)
+    return response
+  }
+
+  console.log('aaaaa');
+  const { data: dataNewList} = useQuery(['getDataNewList', params], getDataNewList)
+
+  console.log('dataNewList', dataNewList)
+
   const handleSearch = () => {}
 
   const handleResetForm = () => {
@@ -41,6 +54,7 @@ export default function News() {
   }
   const handleUpdate = (id) => {
     // console.log('Update', id)
+
   }
   const handleDelete = (id) => {
     // console.log('Delete', id)

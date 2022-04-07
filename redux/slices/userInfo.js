@@ -1,40 +1,29 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { get } from "../../api/BaseRequest";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { get } from '../../api/BaseRequest'
 
-const initialState = {
-  user: {},
-  message: "",
-  loading: true,
-  isAuthenticated: false,
-};
+export const getInfoUser = createAsyncThunk('infoUser/getInfoUser', async () => {
+  const data = await get('user')
+  return data
+})
 
-export const getUserInfo = createAsyncThunk("userInfo", async () => {
-  return await get("leave_quotas");
-});
-const userInfo = createSlice({
-  name: "userInfo",
-  initialState,
-  extraReducers: {
-    [getUserInfo.pending]: (state, action) => {
-      state.message = "loading...";
-    },
-    [getUserInfo.fulfilled]: (state, action) => {
-      state.user = action.payload;
-      state.isAuthenticated = true;
-      state.loading = false;
-    },
-    [getUserInfo.rejected]: (state, action) => {
-      state.message =
-        "Get user info fail ! Please try again. If still fail, please contact to admin@demo.com";
-    },
+const infoUserSlice = createSlice({
+  name: 'infoUser',
+  initialState: {
+    loading: false,
+    infoUser: {},
   },
-  reducers: {
-    resetUserInfo: (state, { payload }) => {
-      return initialState;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(getInfoUser.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(getInfoUser.fulfilled, (state, action) => {
+      state.loading = false
+      state.infoUser = action.payload
+    })
+    builder.addCase(getInfoUser.rejected, (state) => {
+      state.messages = 'Get infoUser fail'
+    })
   },
-});
-const { reducer, actions } = userInfo;
-export const { resetUserInfo } = actions;
+})
 
-export default reducer;
+export default infoUserSlice.reducer
