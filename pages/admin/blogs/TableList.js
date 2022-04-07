@@ -7,7 +7,10 @@ import FormControl from '@material-ui/core/FormControl'
 import Muted from '../../../components/Typography/Muted'
 import styles from '../../../styles/AdminBlogs.module.css'
 import TableHead from '@material-ui/core/TableHead'
-import { TableCell, Table, TableRow, TableBody, Link } from '@material-ui/core'
+import { TableCell, Table, TableRow, TableBody } from '@material-ui/core'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
   const handleSelectChange = (e) => {
@@ -19,7 +22,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
           <Muted>Total number of records: {data.length}</Muted>
@@ -38,32 +41,26 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
       </Grid>
       <Paper elevation={3} className={styles.tableResponsive}>
         <Table className={styles.table}>
-          <TableHead>
+          <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
-                <TableCell key={item}>{item}</TableCell>
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row) => (
               <TableRow key={row.id}>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.subject}</TableCell>
-                <TableCell>{row.author}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>{row.status}</TableCell>
-                <TableCell>{row.views}</TableCell>
-                <TableCell>
-                  <Link className={styles.tableLink} onClick={() => onView(row.id)}>
-                    View
-                  </Link>
-                  <Link className={styles.tableLink} onClick={() => onUpdate(row.id)}>
-                    Update
-                  </Link>
-                  <Link className={styles.tableLink} onClick={() => onDelete(row.id)}>
-                    Delete
-                  </Link>
+                <TableCell className={styles.tableCell}>{row.id}</TableCell>
+                <TableCell className={styles.tableCell}>{row.subject}</TableCell>
+                <TableCell className={styles.tableCell}>{row.author}</TableCell>
+                <TableCell className={styles.tableCell}>{row.date}</TableCell>
+                <TableCell className={styles.tableCell}>{row.status}</TableCell>
+                <TableCell className={styles.tableCell}>{row.views}</TableCell>
+                <TableCell className={styles.tableCell}>
+                  <VisibilityIcon color='danger' className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)}/>
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
                 </TableCell>
               </TableRow>
             ))}
@@ -71,7 +68,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
         </Table>
       </Paper>
       <Pagination className={styles.center} count={10} onChange={handlePaginationChange} />
-    </>
+    </div>
   )
 }
 
