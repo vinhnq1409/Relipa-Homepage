@@ -45,14 +45,16 @@ export default function Admin({ children, ...rest }) {
   }
 
   useEffect(() => {
-    !token
-      ? router.push({
-          pathname: '/admin/signin',
-        })
-      : dispatch(getInfoUser())
-    router.push({
-      pathname: '/admin/dashboard',
-    })
+    if (!token)
+      router.push({
+        pathname: '/admin/signin',
+      })
+    else {
+      dispatch(getInfoUser())
+      router.push({
+        pathname: '/admin/dashboard',
+      })
+    }
   }, [token])
 
   const handleImageClick = (image) => {
