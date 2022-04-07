@@ -6,7 +6,7 @@ import { initMCE } from '../../../sampleData/initMCE'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Grid } from '@material-ui/core'
-import style from '../../../assets/css/editPage.module.css'
+import style from '../../../style/admin/StaticPage.module.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function AdminEditStaticPage() {

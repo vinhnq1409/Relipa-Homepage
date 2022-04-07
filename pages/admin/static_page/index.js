@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
-import style from '../../../assets/css/static-page.module.css'
+import style from '../../../style/admin/StaticPage.module.css'
 import {
   Button,
   Paper,
@@ -40,7 +40,7 @@ export default function StaticPage() {
   }
   return (
     <>
-      <div className= {style.d_flex}>
+      <div className= {style.dFlex}>
         <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
           Create new
         </Button>
