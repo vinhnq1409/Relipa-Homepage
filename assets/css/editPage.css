@@ -1,18 +1,4 @@
-.input {
-  width: 80%;
-  margin-top: 15px !important;
-}
-
-.mtb_15 {
-  margin: 15px 0;
-}
-
-.w_60 {
-  width: 60%;
-}
-
 .buttonAuth {
-  margin-left: 17px !important;
-  width: 19%;
-  height: 55px;
+  height: 100%;
 }
+

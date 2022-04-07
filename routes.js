@@ -11,50 +11,78 @@ const dashboardRoutes = [
     path: '/dashboard',
     name: 'Dashboard',
     icon: Dashboard,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/news',
     name: 'News',
     icon: AssignmentIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/static-page',
     name: 'Static page',
     icon: PagesIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/user-profile',
     name: 'User Profile',
     icon: Person,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/table-list',
     name: 'Table List',
     icon: 'content_paste',
+<<<<<<< HEAD
     layout: '/admin',
+=======
+
+    layout: '/admin'
+>>>>>>> 8abc831 (conflix)
   },
   {
     path: '/typography',
     name: 'Typography',
     icon: LibraryBooks,
+<<<<<<< HEAD
     layout: '/admin',
+=======
+
+    layout: '/admin'
+>>>>>>> 8abc831 (conflix)
   },
   {
     path: '/notifications',
     name: 'Notifications',
     icon: Notifications,
+<<<<<<< HEAD
     layout: '/admin',
   },
+=======
+
+    layout: '/admin'
+  },
+  {
+    path: '/rtl-page',
+    name: 'Change Language',
+    icon: Language,
+    layout: '/rtl'
+  },
+  {
+    path: '/upgrade-to-pro',
+    name: 'Logout',
+    icon: Unarchive,
+    layout: '/admin'
+  }
+>>>>>>> 8abc831 (conflix)
 ]
 
 export default dashboardRoutes
