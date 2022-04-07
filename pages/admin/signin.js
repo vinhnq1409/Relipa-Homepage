@@ -13,6 +13,8 @@ import { useForm } from 'react-hook-form'
 import { STORAGEKEY, getCookie, setCookie } from '../../utils/storage'
 import { signinApi } from '../../api/reactQueryApi'
 import styles from '../../styles/admin/signin.module.css'
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
 
 export default function SignIn() {
   const router = useRouter()
@@ -25,8 +27,15 @@ export default function SignIn() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data, e) => {
-    signin(data)
+  const onSubmit = (data) => {
+    const dataForm = {
+      ...data,
+      // client_id:publicRuntimeConfig.apiClient_id,
+      // client_secret:publicRuntimeConfig.apiClient_secret,
+      // grant_type:publicRuntimeConfig.apiGrant_type,
+    }
+    console.log(dataForm)
+    signin(dataForm)
   }
 
   useEffect(() => {

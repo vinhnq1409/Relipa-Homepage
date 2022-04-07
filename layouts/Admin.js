@@ -18,6 +18,7 @@ import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
+import SignIn from '../pages/admin/signin'
 
 let ps
 
@@ -45,16 +46,7 @@ export default function Admin({ children, ...rest }) {
   }
 
   useEffect(() => {
-    if (!token)
-      router.push({
-        pathname: '/admin/signin',
-      })
-    else {
-      dispatch(getInfoUser())
-      router.push({
-        pathname: '/admin/dashboard',
-      })
-    }
+    if (token) dispatch(getInfoUser())
   }, [token])
 
   const handleImageClick = (image) => {
@@ -88,47 +80,49 @@ export default function Admin({ children, ...rest }) {
   }
 
   // initialize and destroy the PerfectScrollbar plugin
-  React.useEffect(() => {
-    if (navigator.platform.indexOf('Win') > -1) {
-      ps = new PerfectScrollbar(mainPanel.current, {
-        suppressScrollX: true,
-        suppressScrollY: false,
-      })
-      document.body.style.overflow = 'hidden'
-    }
-    window.addEventListener('resize', resizeFunction)
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      if (navigator.platform.indexOf('Win') > -1) {
-        ps.destroy()
-      }
-      window.removeEventListener('resize', resizeFunction)
-    }
-  }, [mainPanel])
+  // React.useEffect(() => {
+  //   if (navigator.platform.indexOf('Win') > -1) {
+  //     ps = new PerfectScrollbar(mainPanel.current, {
+  //       suppressScrollX: true,
+  //       suppressScrollY: false
+  //     })
+  //     document.body.style.overflow = 'hidden'
+  //   }
+  //   window.addEventListener('resize', resizeFunction)
+  //   // Specify how to clean up after this effect:
+  //   return function cleanup() {
+  //     if (navigator.platform.indexOf('Win') > -1) {
+  //       ps.destroy()
+  //     }
+  //     window.removeEventListener('resize', resizeFunction)
+  //   }
+  // }, [mainPanel])
   return (
-    <div className={classes.wrapper}>
-      <Sidebar
-        routes={routes}
-        logoText={'Relipa Admin'}
-        logo={logo}
-        image={image}
-        handleDrawerToggle={handleDrawerToggle}
-        open={mobileOpen}
-        color={color}
-        {...rest}
-      />
-      <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar routes={routes} handleDrawerToggle={handleDrawerToggle} {...rest} />
-        {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-        {getRoute() ? (
-          <div className={classes.content}>
-            <div className={classes.container}>{children}</div>
-          </div>
-        ) : (
-          <div className={classes.map}>{children}</div>
-        )}
-        {getRoute() ? <Footer /> : null}
-        {/* <FixedPlugin
+    <>
+      {token ? (
+        <div className={classes.wrapper}>
+          <Sidebar
+            routes={routes}
+            logoText={'Relipa Admin'}
+            logo={logo}
+            image={image}
+            handleDrawerToggle={handleDrawerToggle}
+            open={mobileOpen}
+            color={color}
+            {...rest}
+          />
+          <div className={classes.mainPanel} ref={mainPanel}>
+            <Navbar routes={routes} handleDrawerToggle={handleDrawerToggle} {...rest} />
+            {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
+            {getRoute() ? (
+              <div className={classes.content}>
+                <div className={classes.container}>{children}</div>
+              </div>
+            ) : (
+              <div className={classes.map}>{children}</div>
+            )}
+            {getRoute() ? <Footer /> : null}
+            {/* <FixedPlugin
           handleImageClick={handleImageClick}
           handleColorClick={handleColorClick}
           bgColor={color}
@@ -136,7 +130,11 @@ export default function Admin({ children, ...rest }) {
           handleFixedClick={handleFixedClick}
           fixedClasses={fixedClasses}
         /> */}
-      </div>
-    </div>
+          </div>
+        </div>
+      ) : (
+        <SignIn />
+      )}
+    </>
   )
 }
