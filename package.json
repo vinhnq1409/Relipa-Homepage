@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-material-dashboard",
+  "name": "relipa-dashboard",
   "version": "1.1.0",
   "private": true,
   "scripts": {
@@ -11,11 +11,11 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "@reduxjs/toolkit": "^1.8.1",
-    "@zeit/next-css": "1.0.1",
-    "@zeit/next-sass": "1.0.1",
+    "@tinymce/tinymce-react": "^3.14.0",
     "axios": "^0.26.1",
     "chartist": "0.10.1",
     "classnames": "2.2.6",
@@ -27,13 +27,14 @@
     "path": "0.12.7",
     "perfect-scrollbar": "1.5.0",
     "prop-types": "15.7.2",
-    "react": "^18.0.0",
+    "react": "^17.0.2",
     "react-chartist": "0.14.3",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.29.0",
     "react-query": "^3.34.19",
-    "react-redux": "^7.2.8"
+    "react-redux": "^7.2.8",
+    "yup": "^0.32.11"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,8 +52,6 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.2.0",
-    "eslint-plugin-react": "^7.28.0",
-    "husky": "^7.0.4"
+    "eslint": "^8.2.0"
   }
 }

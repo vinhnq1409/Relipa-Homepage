@@ -12,12 +12,12 @@ import Sidebar from 'components/Sidebar/Sidebar.js'
 import routes from 'routes.js'
 import styles from 'assets/jss/nextjs-material-dashboard/layouts/adminStyle.js'
 import bgImage from 'assets/img/sidebar-2.jpg'
-import logo from 'assets/img/reactlogo.png'
 import { getCookie, removeCookie, STORAGEKEY } from '../utils/storage/index'
 import { setAuthHeader } from '../api/BaseRequest'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
+import logo from 'assets/img/relipa-logo.png'
 
 let ps
 
@@ -107,7 +107,7 @@ export default function Admin({ children, ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={'Creative Tim'}
+        logoText={'Relipa Admin'}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}

@@ -1,12 +1,6 @@
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React from 'react'
+import HomePage from '../layouts/Home'
 
 export default function Index() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.push('/admin')
-  })
-
-  return <div />
+  return <HomePage />
 }
