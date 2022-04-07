@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
 import SignIn from '../pages/admin/signin'
+import dashboardRoutes from '../routes'
 
 export default function Admin({ children, ...rest }) {
   // used for checking current route
@@ -30,8 +31,10 @@ export default function Admin({ children, ...rest }) {
   const [image, setImage] = useState(bgImage)
   const [color, setColor] = useState('white')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [fixedClasses, setFixedClasses] = useState('dropdown show')
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const dispatch = useDispatch()
+  const [roleUser] = useState('member')
 
   if (token) {
     const currentTime = Date.now() / 1000
@@ -44,11 +47,24 @@ export default function Admin({ children, ...rest }) {
     if (token) dispatch(getInfoUser())
   }, [token])
 
+  useEffect(() => {
+    const routerUser = dashboardRoutes.filter((router) => {
+      return router?.role.includes(roleUser)
+    })
+
+    const isUseRouter = routerUser.some((item) => {
+      return `${item?.layout}${item?.path}`.includes(router.asPath)
+    })
+
+    if (!isUseRouter) {
+      router.push('/admin')
+    }
+  }, [])
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
   //set background for slide bar
-  const [fixedClasses, setFixedClasses] = useState('dropdown show')
   const handleImageClick = (image) => {
     setImage(image)
   }
