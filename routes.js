@@ -15,67 +15,78 @@ const dashboardRoutes = [
     path: '/',
     name: 'Dashboard',
     icon: Dashboard,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/news',
     name: 'News',
     icon: AssignmentIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/static_page',
     name: 'Static page',
     icon: PagesIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
     path: '/account',
     name: 'Account',
     icon: SupervisorAccountIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/dev-info',
     name: 'DEV Info',
     icon: CodeIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
     path: '/partner',
     name: 'Partner',
     icon: GroupWorkIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
     path: '/project',
     name: 'Project',
     icon: WorkIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
     path: '/client',
     name: 'Client',
     icon: HomeIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
     path: '/profile',
     name: 'Profile',
     icon: Person,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/notifications',
     name: 'Notifications',
     icon: Notifications,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   }
 ]
 

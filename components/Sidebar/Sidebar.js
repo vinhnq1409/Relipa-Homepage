@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
@@ -15,10 +15,11 @@ import Icon from '@material-ui/core/Icon'
 // core components
 import AdminNavbarLinks from 'components/Navbars/AdminNavbarLinks.js'
 import RTLNavbarLinks from 'components/Navbars/RTLNavbarLinks.js'
-
 import styles from 'assets/jss/nextjs-material-dashboard/components/sidebarStyle.js'
 
 export default function Sidebar(props) {
+  //role
+  const [roleUser] = useState('member')
   // used for checking current route
   const router = useRouter()
   // creates styles for this component
@@ -29,9 +30,12 @@ export default function Sidebar(props) {
     return router.route.indexOf(routeName) > -1 ? true : false
   }
   const { color, logo, image, logoText, routes } = props
+  const routerRole = routes.filter((route) => {
+    return route?.role.includes(roleUser)
+  })
   var links = (
     <List className={classes.list}>
-      {routes.map((prop, key) => {
+      {routerRole.map((prop, key) => {
         var activePro = ' '
         var listItemClasses
         if (prop.path === '/upgrade-to-pro') {

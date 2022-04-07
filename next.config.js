@@ -13,9 +13,9 @@ module.exports = withPlugins([[withImages]], {
   publicRuntimeConfig: {
     // Will be available on both server and client
     apiUrl: process.env.API_URL,
-    // apiClient_id:process.env.CLIENT_ID,
-    // apiClient_secret:process.env.CLIENT_SECRET,
-    // apiGrant_type:process.env.GRANT_TYPE,
+    apiClient_id:process.env.CLIENT_ID,
+    apiClient_secret:process.env.CLIENT_SECRET,
+    apiGrant_type:process.env.GRANT_TYPE,
   },
   i18n: {
     locales: ['vi', 'en'],

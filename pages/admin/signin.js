@@ -30,11 +30,10 @@ export default function SignIn() {
   const onSubmit = (data) => {
     const dataForm = {
       ...data
-      // client_id:publicRuntimeConfig.apiClient_id,
+      // client_id:3,
       // client_secret:publicRuntimeConfig.apiClient_secret,
       // grant_type:publicRuntimeConfig.apiGrant_type,
     }
-    console.log(dataForm)
     signin(dataForm)
   }
 
