@@ -9,7 +9,7 @@ import { Grid } from '@material-ui/core'
 import style from '../../../assets/css/editPage.module.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-export default function EditPage() {
+export default function AdminEditStaticPage() {
   const editorRef = useRef(null)
 
   const defaultValues = {
@@ -123,4 +123,4 @@ export default function EditPage() {
   )
 }
 
-EditPage.layout = Admin
+AdminEditStaticPage.layout = Admin
