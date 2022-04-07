@@ -70,7 +70,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           </TableBody>
         </Table>
       </Paper>
-      <Pagination className={styles.center} count={10} onChange={handlePaginationChange} />
+      {/* <Pagination className={styles.center} count={10} onChange={handlePaginationChange} /> */}
     </div>
   )
 }

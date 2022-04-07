@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
+import styles from '../../../styles/AdminBlogsAdd.module.css'
 
 export default function Add({ valueHTML }) {
   const editorRef = useRef(null)
@@ -30,8 +31,8 @@ export default function Add({ valueHTML }) {
       .required('Description is required'),
     meta: Yup.string()
       .required('Meta is required'),
-    title: Yup.string()
-      .required('Title is required'),
+    friendly_url: Yup.string()
+      .required('Url friendly is required'),
     tags: Yup.string()
       .required('Tags is required'),
     url_image_meta: Yup.string()
@@ -105,7 +106,7 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.title && <Typography>{errors.title.message}</Typography>}
+            {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -121,7 +122,7 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.desc && <Typography>{errors.desc.message}</Typography>}
+            {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -137,7 +138,7 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.meta && <Typography>{errors.meta.message}</Typography>}
+            {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -153,7 +154,7 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.tags && <Typography>{errors.tags.message}</Typography>}
+            {errors.tags && <Typography className={styles.error}>{errors.tags.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -169,7 +170,7 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.url_image_meta && <Typography>{errors.url_image_meta.message}</Typography>}
+            {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
           </Grid>
           <Grid item xs={10}>
             <Controller
@@ -185,10 +186,10 @@ export default function Add({ valueHTML }) {
                 />
               )}
             />
-            {errors.friendly_url && <Typography>{errors.friendly_url.message}</Typography>}
+            {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button onClick={handleSubmit(onResetURL)} variant='contained' color='primary' fullWidth>
+            <Button className={styles.full} onClick={handleSubmit(onResetURL)} variant='contained' color='primary'>
               Reset URL
             </Button>
           </Grid>
@@ -204,14 +205,14 @@ export default function Add({ valueHTML }) {
               }}
             />
           </Grid>
-          <Grid item xs={12}>
-            <Button onClick={handleSubmit(onCreate)} variant='contained' color='primary'>
+          <Grid item xs={12} className={styles.center}>
+            <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
               Create
             </Button>
-            <Button onClick={handleSubmit(onUpdate)} variant='contained' color='primary'>
+            <Button onClick={handleSubmit(onUpdate)} className={styles.button} variant='contained' color='primary'>
               Update
             </Button>
-            <Button onClick={onCancel} variant='contained' color='primary'>
+            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
               Cancel
             </Button>
           </Grid>
