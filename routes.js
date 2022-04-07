@@ -1,14 +1,18 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
-import LibraryBooks from '@material-ui/icons/LibraryBooks'
 import Notifications from '@material-ui/icons/Notifications'
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import PagesIcon from '@material-ui/icons/Pages'
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import CodeIcon from '@material-ui/icons/Code'
+import GroupWorkIcon from '@material-ui/icons/GroupWork'
+import WorkIcon from '@material-ui/icons/Work'
+import HomeIcon from '@material-ui/icons/Home'
 
 const dashboardRoutes = [
   {
-    path: '/dashboard',
+    path: '/',
     name: 'Dashboard',
     icon: Dashboard,
     layout: '/admin'
@@ -32,21 +36,39 @@ const dashboardRoutes = [
     layout: '/admin'
   },
   {
-    path: '/user-profile',
-    name: 'User Profile',
+    path: '/account',
+    name: 'Account',
+    icon: SupervisorAccountIcon,
+    layout: '/admin'
+  },
+  {
+    path: '/dev-info',
+    name: 'DEV Info',
+    icon: CodeIcon,
+    layout: '/admin'
+  },
+  {
+    path: '/partner',
+    name: 'Partner',
+    icon: GroupWorkIcon,
+    layout: '/admin'
+  },
+  {
+    path: '/project',
+    name: 'Project',
+    icon: WorkIcon,
+    layout: '/admin'
+  },
+  {
+    path: '/client',
+    name: 'Client',
+    icon: HomeIcon,
+    layout: '/admin'
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
     icon: Person,
-    layout: '/admin'
-  },
-  {
-    path: '/table-list',
-    name: 'Table List',
-    icon: 'content_paste',
-    layout: '/admin'
-  },
-  {
-    path: '/typography',
-    name: 'Typography',
-    icon: LibraryBooks,
     layout: '/admin'
   },
   {
