@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
@@ -17,8 +17,11 @@ import {
 import EditIcon from '@material-ui/icons/Edit'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import { useRouter } from 'next/router'
+import useTrans from '../../../i18n/useTrans'
 
 export default function StaticPage() {
+  const trans = useTrans()
+  console.log(trans)
   const router = useRouter()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowPerPage] = useState(5)
