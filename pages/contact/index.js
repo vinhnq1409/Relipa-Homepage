@@ -1,7 +1,8 @@
 import React from 'react'
+import Home from '../../layouts/Home'
 
-export default function contact() {
-  return (
-    <div>contact</div>
-  )
+export default function Contact() {
+  return <div>contact</div>
 }
+
+Contact.layout = Home

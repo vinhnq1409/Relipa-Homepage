@@ -1,0 +1,13 @@
+{
+    "language": {
+        "language": "Tiếng Việt"
+    },
+    "static_page": {
+        "no": "STT",
+        "subject": "Chủ đề",
+        "author": "Người tạo",
+        "detail": "Tác vụ",
+        "view": "Xem",
+        "edit": "Chỉnh sửa"
+    }
+}

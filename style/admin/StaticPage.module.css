@@ -1,0 +1,17 @@
+.dFlex {
+  display: flex;
+}
+
+.buttonLeft {
+  margin-left: auto !important;
+  margin-bottom: 1em !important;
+}
+
+.icon:hover {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.buttonAuth {
+  height: 100%;
+}

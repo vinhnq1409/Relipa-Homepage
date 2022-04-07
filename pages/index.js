@@ -1,10 +1,6 @@
-import React from "react";
-import Router from "next/router";
+import React from 'react'
+import HomePage from '../layouts/Home'
 
 export default function Index() {
-  React.useEffect(() => {
-    Router.push("/admin/dashboard");
-  });
-
-  return <div />;
+  return <HomePage />
 }

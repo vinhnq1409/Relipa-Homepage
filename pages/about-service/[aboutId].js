@@ -5,9 +5,9 @@ export default function DetailService() {
   const router = useRouter()
   return (
     <>
-    <div>Detail Service</div>
-    <h2>routerId : {router.query.aboutId}</h2>
+      <div>Detail Service</div>
+      <h2>routerId : {router.query.aboutId}</h2>
     </>
-    
+
   )
 }

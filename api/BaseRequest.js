@@ -41,7 +41,6 @@ const put = async (url, data = {}) => {
 };
 
 const post = async (url, data = {}) => {
-  console.log(process.env.NEXT_PUBLIC_API_URL);
   try {
     const response = await instance.post(getUrlPrefix() + url, data);
     return _responseHandler(response);
