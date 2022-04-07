@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './AdminNewBlog.module.css'
+import styles from '../../styles/AdminNewBlogFilters.module.css'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import MomentUtils from '@date-io/moment'
 import {
@@ -38,7 +38,7 @@ const NewFilters = ({
             <Typography className={styles.filters_title} variant='h5'>
               {header}
             </Typography>
-            <Box>
+            <Box className={styles.filters_box1}>
               <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
                 <Grid item xs={4} sm={1}>
                   <Typography>Subject</Typography>
@@ -76,7 +76,7 @@ const NewFilters = ({
               </Grid>
             </Box>
 
-            <Box>
+            <Box className={styles.filters_box2}>
               <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
                 <Grid item xs={4} sm={1}>
                   <Typography>Start Day</Typography>
