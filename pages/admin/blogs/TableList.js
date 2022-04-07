@@ -7,7 +7,10 @@ import FormControl from '@material-ui/core/FormControl'
 import Muted from '../../../components/Typography/Muted'
 import styles from '../../../styles/AdminBlogs.module.css'
 import TableHead from '@material-ui/core/TableHead'
-import { TableCell, Table, TableRow, TableBody } from '@material-ui/core'
+import TableCell from '@material-ui/core/TableCell'
+import Table from '@material-ui/core/Table'
+import TableRow from '@material-ui/core/TableRow'
+import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -58,7 +61,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell className={styles.tableCell}>{row.status}</TableCell>
                 <TableCell className={styles.tableCell}>{row.views}</TableCell>
                 <TableCell className={styles.tableCell}>
-                  <VisibilityIcon color='danger' className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
+                  <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)}/>
                   <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
                 </TableCell>
