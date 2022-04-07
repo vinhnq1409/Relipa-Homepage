@@ -1,6 +1,13 @@
 {
     "language": {
         "language": "English"
+    },
+    "static_page": {
+        "no": "No",
+        "subject": "Subject",
+        "author": "Author",
+        "detail": "Detail",
+        "view": "View",
+        "edit": "Edit"
     }
-    
 }

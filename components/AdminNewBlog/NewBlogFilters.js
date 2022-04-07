@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './AdminNewBlog.module.css'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import MomentUtils from '@date-io/moment'
@@ -15,18 +15,14 @@ import {
   Box
 } from '@material-ui/core/'
 
-const NewFilters = ({ header, handleSearch }) => {
-  const [subject, setSubject] = useState('')
-  const [sortBy, setSortBy] = useState('')
-  const [startDay, handleStartDay] = useState(null)
-  const [endDay, handleDateEndDay] = useState(null)
-
-  const handleResetForm = () => {
-    setSubject('')
-    setSortBy('')
-    handleStartDay(null)
-    handleDateEndDay(null)
-  }
+const NewFilters = ({
+  header,
+  handleSearch,
+  handleResetForm,
+  filters,
+  setFilters
+}) => {
+  const { subject, sortBy, startDay, endDay } = filters
 
   return (
     <>
@@ -54,7 +50,7 @@ const NewFilters = ({ header, handleSearch }) => {
                       label='Search something'
                       variant='outlined'
                       value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
+                      onChange={(e) => setFilters({ ...filters, subject: e.target.value })}
                     />
                   </FormControl>
                 </Grid>
@@ -70,7 +66,7 @@ const NewFilters = ({ header, handleSearch }) => {
                       id='demo-simple-select-outlined'
                       label='Sort By'
                       value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value)}
+                      onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
                     >
                       <MenuItem value={'Ascending'}>Ascending</MenuItem>
                       <MenuItem value={'Descending'}>Descending</MenuItem>
@@ -92,8 +88,12 @@ const NewFilters = ({ header, handleSearch }) => {
                         label='Start Day'
                         inputVariant='outlined'
                         value={startDay}
-                        onChange={handleStartDay}
+                        onChange={(e) => setFilters({
+                          ...filters,
+                          startDay: e
+                        })}
                         format='yyyy/MM/DD'
+                        maxDate={endDay}
                       />
                     </MuiPickersUtilsProvider>
                   </FormControl>
@@ -108,7 +108,10 @@ const NewFilters = ({ header, handleSearch }) => {
                         label='End Day'
                         inputVariant='outlined'
                         value={endDay}
-                        onChange={handleDateEndDay}
+                        onChange={(e) => setFilters({
+                          ...filters,
+                          endDay: e
+                        })}
                         format='yyyy/MM/DD'
                         minDate={startDay === null ? undefined : startDay}
                       />
@@ -124,13 +127,13 @@ const NewFilters = ({ header, handleSearch }) => {
                   <Button
                     variant='contained'
                     color='primary'
-                    onClick={() => handleSearch(subject, sortBy, startDay, endDay)}
+                    onClick={handleSearch}
                   >
                     SEARCH
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button type='reset' variant='contained' color='primary' onClick={handleResetForm}>
+                  <Button variant='contained' color='primary' onClick={handleResetForm}>
                     RESET
                   </Button>
                 </Grid>

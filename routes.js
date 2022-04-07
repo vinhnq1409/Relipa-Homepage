@@ -11,50 +11,50 @@ const dashboardRoutes = [
     path: '/dashboard',
     name: 'Dashboard',
     icon: Dashboard,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/news',
     name: 'News',
     icon: AssignmentIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
-    path: '/static-page',
+    path: '/static_page',
     name: 'Static page',
     icon: PagesIcon,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/user-profile',
     name: 'User Profile',
     icon: Person,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/table-list',
     name: 'Table List',
     icon: 'content_paste',
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/typography',
     name: 'Typography',
     icon: LibraryBooks,
-    layout: '/admin',
+    layout: '/admin'
   },
   {
     path: '/notifications',
     name: 'Notifications',
     icon: Notifications,
-    layout: '/admin',
-  },
+    layout: '/admin'
+  }
 ]
 
 export default dashboardRoutes

@@ -23,7 +23,8 @@ import Router from 'next/router'
 import store from '../redux/store'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import PageChange from 'components/PageChange/PageChange.js'
-import 'assets/css/nextjs-material-dashboard.css?v=1.1.0'
+
+import '../style/admin/nextjs-material-dashboard.css'
 import { Provider } from 'react-redux'
 
 const queryClient = new QueryClient()
