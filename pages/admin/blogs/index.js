@@ -51,7 +51,10 @@ export default function Blogs() {
   const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/blogs/add',
-      query: { slug: 'about', mode: 'edit' }
+      query: { slug: 'about', mode: 'edit', name : {
+        titile: 'a',
+        meta: 'b'
+      } }
     })
     
   }
