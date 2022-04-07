@@ -30,10 +30,7 @@ import { Provider } from 'react-redux'
 Router.events.on('routeChangeStart', (url) => {
   console.log(`Loading: ${url}`)
   document.body.classList.add('body-page-transition')
-  ReactDOM.render(
-    <PageChange path={url} />,
-    document.getElementById('page-transition')
-  )
+  ReactDOM.render(<PageChange path={url} />, document.getElementById('page-transition'))
 })
 Router.events.on('routeChangeComplete', () => {
   ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
@@ -83,18 +80,14 @@ export default class MyApp extends App {
       <React.Fragment>
         <Provider store={store}>
           <Head>
-            <meta
-              name='viewport'
-              content='width=device-width, initial-scale=1, shrink-to-fit=no'
-            />
-            <title>NextJS Material Dashboard by Creative Tim</title>
+            <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+            <title>Relipa </title>
             <script src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'></script>
           </Head>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </Provider>
-
       </React.Fragment>
     )
   }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import classNames from 'classnames'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
@@ -13,8 +14,8 @@ import Divider from '@material-ui/core/Divider'
 // @material-ui/icons
 import Person from '@material-ui/icons/Person'
 import Notifications from '@material-ui/icons/Notifications'
-import Dashboard from '@material-ui/icons/Dashboard'
 import Search from '@material-ui/icons/Search'
+import Language from '@material-ui/icons/Language'
 // core components
 import CustomInput from 'components/CustomInput/CustomInput.js'
 import Button from 'components/CustomButtons/Button.js'
@@ -23,11 +24,18 @@ import useWindowSize from 'components/Hooks/useWindowSize.js'
 import styles from 'assets/jss/nextjs-material-dashboard/components/headerLinksStyle.js'
 
 export default function AdminNavbarLinks() {
+  const router = useRouter()
+  const changeLang = (lang) => {
+    router.push('/', '/', { locale: lang })
+  }
+
   const size = useWindowSize()
   const useStyles = makeStyles(styles)
   const classes = useStyles()
-  const [openNotification, setOpenNotification] = React.useState(null)
-  const [openProfile, setOpenProfile] = React.useState(null)
+  const [openNotification, setOpenNotification] = useState(null)
+  const [openProfile, setOpenProfile] = useState(null)
+  const [openLanguage, setOpenLanguage] = useState(null)
+
   const handleClickNotification = (event) => {
     if (openNotification && openNotification.contains(event.target)) {
       setOpenNotification(null)
@@ -48,6 +56,16 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null)
   }
+  const handleClickLanguage = (event) => {
+    if (openLanguage && openLanguage.contains(event.target)) {
+      setOpenLanguage(null)
+    } else {
+      setOpenLanguage(event.currentTarget)
+    }
+  }
+  const handleCloseLanguage = () => {
+    setOpenLanguage(null)
+  }
   return (
     <div>
       <div className={classes.searchWrapper}>
@@ -66,18 +84,63 @@ export default function AdminNavbarLinks() {
           <Search />
         </Button>
       </div>
-      <Button
-        color={size.width > 959 ? 'transparent' : 'white'}
-        justIcon={size.width > 959}
-        simple={!(size.width > 959)}
-        aria-label='Dashboard'
-        className={classes.buttonLink}
-      >
-        <Dashboard className={classes.icons} />
-        <Hidden mdUp implementation='css'>
-          <p className={classes.linkText}>Dashboard</p>
-        </Hidden>
-      </Button>
+      <div className={classes.manager}>
+        <Button
+          color={size.width > 959 ? 'transparent' : 'white'}
+          justIcon={size.width > 959}
+          simple={!(size.width > 959)}
+          aria-label='Language'
+          className={classes.buttonLink}
+          onClick={handleClickLanguage}
+        >
+          <Language className={classes.icons} />
+          <Hidden mdUp implementation='css'>
+            <p onClick={handleCloseLanguage} className={classes.linkText}>Language</p>
+          </Hidden>
+        </Button>
+        <Poppers
+          open={Boolean(openLanguage)}
+          anchorEl={openLanguage}
+          transition
+          disablePortal
+          className={
+            classNames({ [classes.popperClose]: !openLanguage }) +
+            ' ' +
+            classes.popperNav
+          }
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              id='notification-menu-list-grow'
+              style={{
+                transformOrigin:
+                  placement === 'bottom' ? 'center top' : 'center bottom'
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleCloseLanguage}>
+                  <MenuList role='menu'>
+                    <MenuItem
+                      onClick={() => changeLang('vi')}
+                      className={classes.dropdownItem}
+                    >
+                      VI
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => changeLang('en')}
+                      className={classes.dropdownItem}
+                    >
+                      EN
+                    </MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Poppers>
+      </div>
+
       <div className={classes.manager}>
         <Button
           color={size.width > 959 ? 'transparent' : 'white'}
