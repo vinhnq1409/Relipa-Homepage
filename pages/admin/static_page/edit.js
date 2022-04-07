@@ -2,20 +2,15 @@ import React, { useRef } from 'react'
 import Admin from 'layouts/Admin.js'
 import { TextField, Button, FormHelperText } from '@material-ui/core'
 import { Editor } from '@tinymce/tinymce-react'
-import { initMCE } from '../../variables/initMCE'
+import { initMCE } from '../../../sampleData/initMCE'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Grid } from '@material-ui/core'
-import style from '../../assets/css/editPage.module.css'
+import style from '../../../assets/css/editPage.module.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function EditPage() {
   const editorRef = useRef(null)
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent())
-    }
-  }
 
   const defaultValues = {
     title: '',
@@ -37,14 +32,11 @@ export default function EditPage() {
   const {
     handleSubmit,
     formState: { errors },
-    control,
-    setValue
+    control
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onSubmit = (data, e) => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent())
-    }
+    if (editorRef.current) {}
   }
   return (
     <>

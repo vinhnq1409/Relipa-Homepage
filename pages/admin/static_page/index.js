@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { dataJson, headerJson } from '../../sampleData/dataBase'
+import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
-import style from '../../assets/css/static-page.module.css'
+import style from '../../../assets/css/static-page.module.css'
 import {
   Paper,
   Table,
@@ -54,7 +54,7 @@ export default function StaticPage() {
                   <TableCell>
                     <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
                     {''}
-                    <Link href='/admin/editPage' passHref>
+                    <Link href='/admin/static_page/edit' passHref>
                       {<EditIcon className= {style.icon} color='primary' fontSize='small' />}
                     </Link>
                   </TableCell>
