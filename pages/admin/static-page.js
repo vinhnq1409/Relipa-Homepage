@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { dataJson, headerJson } from '../../variables/dataBase'
 import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
-import '../../assets/css/static-page.css'
+import style from '../../assets/css/static-page.module.css'
 import {
   Paper,
   Table,

@@ -6,7 +6,7 @@ import { initMCE } from '../../variables/initMCE'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Grid } from '@material-ui/core'
-import '../../assets/css/editPage.css'
+import style from '../../assets/css/editPage.module.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function EditPage() {
@@ -16,7 +16,7 @@ export default function EditPage() {
       console.log(editorRef.current.getContent())
     }
   }
-  
+
   const defaultValues = {
     title: '',
     meta: '',
@@ -78,7 +78,6 @@ export default function EditPage() {
                   id='outlined-required'
                   variant='outlined'
                   placeholder='Nhập tên mô tả tiêu đề'
-                  className='input'
                   {...field}
                   multiline
                   minRows={5}
@@ -108,7 +107,7 @@ export default function EditPage() {
           </Grid>
 
           <Grid item xs={3}>
-            <Button variant='outlined' color='primary' className='buttonAuth' fullWidth>
+            <Button variant='outlined' color='primary' className={style.buttonAuth} fullWidth>
               Authorial
             </Button>
           </Grid>
@@ -122,7 +121,7 @@ export default function EditPage() {
 
         <Grid container spacing={3} justifyContent = 'center'>
           <Grid item xs = {10} >
-            <Button type='submit' variant='contained' color='primary' fullWidth>
+            <Button type='submit' variant='contained' color='primary' className={style.buttonAuth} fullWidth>
               Submit
             </Button>
           </Grid>
