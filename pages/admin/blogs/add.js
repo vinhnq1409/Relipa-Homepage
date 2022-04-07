@@ -63,7 +63,6 @@ export default function Add({ valueHTML }) {
         content: editorRef.current.getContent()
       }
     }
-    console.log(newData)
   }
   const onUpdate = (data) => {
     let newData
@@ -73,7 +72,6 @@ export default function Add({ valueHTML }) {
         content: editorRef.current.getContent()
       }
     }
-    console.log(newData)
   }
   const onResetURL = (data) => {
     const { title } = data
