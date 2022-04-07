@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
 import style from '../../../assets/css/static-page.module.css'
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -15,12 +16,15 @@ import {
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import VisibilityIcon from '@material-ui/icons/Visibility'
+import { useRouter } from 'next/router'
 
 export default function StaticPage() {
+  const router = useRouter()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowPerPage] = useState(5)
   const headerTable = JSON.parse(headerJson)
   const data = JSON.parse(dataJson)
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -30,8 +34,17 @@ export default function StaticPage() {
     setRowPerPage(event.target.value)
     setPage(0)
   }
+
+  const handleChangeURL = () => {
+    router.push({pathname: 'static_page/add', query: {slug: 'about',mode: 'add'}})
+  }
   return (
     <>
+      <div className= {style.d_flex}>
+        <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
+          Create new
+        </Button>
+      </div>
       <Paper sx={{ width: '100%' }}>
         <TableContainer>
           <Table stickyHeader={true}>
@@ -54,7 +67,7 @@ export default function StaticPage() {
                   <TableCell>
                     <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
                     {''}
-                    <Link href='/admin/static_page/edit' passHref>
+                    <Link href={{pathname: 'static_page/add', query: {slug: 'about',mode: 'edit'}}} passHref>
                       {<EditIcon className= {style.icon} color='primary' fontSize='small' />}
                     </Link>
                   </TableCell>
