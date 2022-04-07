@@ -52,10 +52,10 @@ export default function StaticPage() {
                   <TableCell>{item.subject}</TableCell>
                   <TableCell>{item.author}</TableCell>
                   <TableCell>
-                    <Link href='#'>{<VisibilityIcon color='secondary' className='icon' fontSize='small' />}</Link> |{' '}
+                    <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
                     {''}
                     <Link href='/admin/editPage' passHref>
-                      {<EditIcon className='icon' color='primary' fontSize='small' />}
+                      {<EditIcon className= {style.icon} color='primary' fontSize='small' />}
                     </Link>
                   </TableCell>
                 </TableRow>
