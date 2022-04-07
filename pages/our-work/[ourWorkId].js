@@ -1,7 +1,11 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-export default function ourWorkID() {
+
+import Home from '../../layouts/Home'
+
+export default function OurWorkDetail() {
   const router = useRouter()
+
   return (
     <>
       <div>our Work ID</div>
@@ -9,3 +13,5 @@ export default function ourWorkID() {
     </>
   )
 }
+
+OurWorkDetail.layout = Home

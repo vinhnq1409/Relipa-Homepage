@@ -80,8 +80,7 @@ export default class MyApp extends App {
         <Provider store={store}>
           <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-            <title>NextJS Material Dashboard by Creative Tim</title>
-            <script src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'></script>
+            <title>Relipa </title>
           </Head>
           <Layout>
             <Component {...pageProps} />
