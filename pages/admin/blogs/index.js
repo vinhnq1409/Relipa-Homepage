@@ -53,6 +53,7 @@ export default function Blogs() {
       pathname: '/admin/blogs/add',
       query: { slug: 'about', mode: 'edit' }
     })
+    
   }
   // End code add blogs
 

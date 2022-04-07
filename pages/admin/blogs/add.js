@@ -25,16 +25,11 @@ export default function Add({ valueHTML }) {
   }
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string()
-      .required('Title is required'),
-    desc: Yup.string()
-      .required('Description is required'),
-    meta: Yup.string()
-      .required('Meta is required'),
-    friendly_url: Yup.string()
-      .required('Url friendly is required'),
-    tags: Yup.string()
-      .required('Tags is required'),
+    title: Yup.string().required('Title is required'),
+    desc: Yup.string().required('Description is required'),
+    meta: Yup.string().required('Meta is required'),
+    friendly_url: Yup.string().required('Url friendly is required'),
+    tags: Yup.string().required('Tags is required'),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
       .matches(
@@ -91,19 +86,13 @@ export default function Add({ valueHTML }) {
   return (
     <>
       <form>
-        <Grid container spacing={3}> 
+        <Grid container spacing={3}>
           <Grid item xs={12}>
             <Controller
               name='title'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='title'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='Title' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
@@ -113,13 +102,7 @@ export default function Add({ valueHTML }) {
               name='desc'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='description'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='Description' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
@@ -129,13 +112,7 @@ export default function Add({ valueHTML }) {
               name='meta'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='meta'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='Meta' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
@@ -145,13 +122,7 @@ export default function Add({ valueHTML }) {
               name='tags'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='tags'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='Tags' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.tags && <Typography className={styles.error}>{errors.tags.message}</Typography>}
@@ -161,13 +132,7 @@ export default function Add({ valueHTML }) {
               name='url_image_meta'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='url meta image'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='URL meta image' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
@@ -177,13 +142,7 @@ export default function Add({ valueHTML }) {
               name='friendly_url'
               control={control}
               render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label='url friendly'
-                  id='outlined-required'
-                  variant='outlined'
-                  {...field}
-                />
+                <TextField fullWidth multiline label='URL friendly' id='outlined-required' variant='outlined' {...field} />
               )}
             />
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
