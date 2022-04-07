@@ -10,7 +10,7 @@ const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action
 const data = [
   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
 ]
 
 export default function Blogs() {
@@ -20,9 +20,9 @@ export default function Blogs() {
     start: null,
     end: moment().format('YYYY-MM-DD'),
     per_page: 10,
-    page: 1,
+    page: 1
   })
-  
+
   const handleSearch = () => {
     // console.log(params)
   }
@@ -32,10 +32,10 @@ export default function Blogs() {
       title: '',
       sort: '',
       start: null,
-      end: moment().format('YYYY-MM-DD'),
+      end: moment().format('YYYY-MM-DD')
     })
   }
-  
+
   // --action--
   const handleView = (id) => {
     // console.log('View', id)
@@ -47,16 +47,15 @@ export default function Blogs() {
   const handleCreate = () => {
     router.push('/admin/blogs/add')
   }
-  
+
   const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/blogs/add',
-      query: { slug: 'about', mode: 'edit', name : {
+      query: { slug: 'about', mode: 'edit', name: {
         titile: 'a',
         meta: 'b'
-      } }
+      }}
     })
-    
   }
   // End code add blogs
 
