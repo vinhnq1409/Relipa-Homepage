@@ -28,12 +28,12 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Muted>Total number of records: {data.length}</Muted>
+          <Muted>Total number of records: {data?.length}</Muted>
         </Grid>
         <Grid item className={styles.flex}>
           <Muted>Item per page:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue={params.per_page} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue={params?.per_page} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
@@ -52,7 +52,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
                 <TableCell className={styles.tableCell}>{row.subject}</TableCell>
