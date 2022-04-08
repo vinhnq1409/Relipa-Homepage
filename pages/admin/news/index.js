@@ -21,6 +21,13 @@ export default function News() {
     })
   }
 
+  // Start code add blogs
+  const router = useRouter()
+
+  const onCreate = () => {
+    router.push('/admin/news/add')
+  }
+
   return (
     <div className='new'>
       <NewFilters
@@ -29,6 +36,7 @@ export default function News() {
         handleResetForm={handleResetForm}
         filters = {filters}
         setFilters = {setFilters}
+        onCreate = {onCreate}
       />
     </div>
   )
