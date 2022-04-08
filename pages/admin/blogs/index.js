@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
 import { Container } from '@material-ui/core'
-import TableList from './TableList'
+import TableList from '../../../components/Table/Table'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { useRouter } from 'next/router'

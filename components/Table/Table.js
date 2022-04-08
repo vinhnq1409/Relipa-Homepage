@@ -1,72 +1,78 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-// @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles'
-import Table from '@material-ui/core/Table'
+import Grid from '@material-ui/core/Grid'
+import MenuItem from '@material-ui/core/MenuItem'
+import Paper from '@material-ui/core/Paper'
+import Select from '@material-ui/core/Select'
+import Pagination from '@material-ui/lab/Pagination'
+import FormControl from '@material-ui/core/FormControl'
+import Muted from '../Typography/Muted'
+import styles from '../../styles/AdminBlogs.module.css'
 import TableHead from '@material-ui/core/TableHead'
+import TableCell from '@material-ui/core/TableCell'
+import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-// core components
-import styles from 'assets/jss/nextjs-material-dashboard/components/tableStyle.js'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 
-export default function CustomTable(props) {
-  const useStyles = makeStyles(styles)
-  const classes = useStyles()
-  const { tableHead, tableData, tableHeaderColor } = props
+const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
+  const handleSelectChange = (e) => {
+    setParams({ ...params, per_page: e.target.value })
+  }
+
+  const handlePaginationChange = (e, page) => {
+    setParams({ ...params, page: page })
+  }
+
   return (
-    <div className={classes.tableResponsive}>
-      <Table className={classes.table}>
-        {tableHead !== undefined ? (
-          <TableHead className={classes[tableHeaderColor + 'TableHeader']}>
-            <TableRow className={classes.tableHeadRow}>
-              {tableHead.map((prop, key) => {
-                return (
-                  <TableCell
-                    className={classes.tableCell + ' ' + classes.tableHeadCell}
-                    key={key}
-                  >
-                    {prop}
-                  </TableCell>
-                )
-              })}
+    <div className={styles.container}>
+      <Grid container justify='space-between' alignItems='center'>
+        <Grid item>
+          <Muted>Total number of records: {data.length}</Muted>
+        </Grid>
+        <Grid item className={styles.flex}>
+          <Muted>Item per page:</Muted>
+          <FormControl variant='outlined' size='small'>
+            <Select className={styles.select} defaultValue={params.per_page} onChange={handleSelectChange}>
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='30'>30</MenuItem>
+              <MenuItem value='50'>50</MenuItem>
+              <MenuItem value='100'>100</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
+      <Paper elevation={3} className={styles.tableResponsive}>
+        <Table className={styles.table}>
+          <TableHead className={styles.tableHead}>
+            <TableRow>
+              {tableHead.map((item) => (
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>
+              ))}
             </TableRow>
           </TableHead>
-        ) : null}
-        <TableBody>
-          {tableData.map((prop, key) => {
-            return (
-              <TableRow key={key} className={classes.tableBodyRow}>
-                {prop.map((prop, key) => {
-                  return (
-                    <TableCell className={classes.tableCell} key={key}>
-                      {prop}
-                    </TableCell>
-                  )
-                })}
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell className={styles.tableCell}>{row.id}</TableCell>
+                <TableCell className={styles.tableCell}>{row.subject}</TableCell>
+                <TableCell className={styles.tableCell}>{row.author}</TableCell>
+                <TableCell className={styles.tableCell}>{row.date}</TableCell>
+                <TableCell className={styles.tableCell}>{row.status}</TableCell>
+                <TableCell className={styles.tableCell}>{row.views}</TableCell>
+                <TableCell className={styles.tableCell}>
+                  <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)}/>
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
+                </TableCell>
               </TableRow>
-            )
-          })}
-        </TableBody>
-      </Table>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+      <Pagination className={styles.center} count={10} onChange={handlePaginationChange} />
     </div>
   )
 }
 
-CustomTable.defaultProps = {
-  tableHeaderColor: 'gray'
-}
-
-CustomTable.propTypes = {
-  tableHeaderColor: PropTypes.oneOf([
-    'warning',
-    'primary',
-    'danger',
-    'success',
-    'info',
-    'rose',
-    'gray'
-  ]),
-  tableHead: PropTypes.arrayOf(PropTypes.string),
-  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
-}
+export default TableList
