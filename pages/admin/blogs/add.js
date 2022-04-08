@@ -7,7 +7,7 @@ import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import styles from '../../../styles/AdminBlogsAdd.module.css'
+import styles from '../../../styles/AdminBlogs.module.css'
 
 export default function Add({ valueHTML }) {
   const editorRef = useRef(null)
@@ -162,7 +162,7 @@ export default function Add({ valueHTML }) {
               }}
             />
           </Grid>
-          <Grid item xs={12} className={styles.center}>
+          <Grid item xs={12} className={styles.flexCenter}>
             <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
               Create
             </Button>
