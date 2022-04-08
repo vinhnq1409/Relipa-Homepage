@@ -2,16 +2,17 @@ import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { Controller, useForm } from 'react-hook-form'
+import { useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
+
 import styles from '../../../styles/AdminBlogs.module.css'
 import { post, put } from '../../../api/BaseRequest'
-import { useMutation } from 'react-query'
 import { resetNews } from '../../../redux/slices/newsSlice'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 
 export default function AddNews() {
   const editorRef = useRef(null)
@@ -19,6 +20,7 @@ export default function AddNews() {
   const dispatch = useDispatch()
   const { blog } = useSelector((state) => state.blog)
   const [valueEditor, setValueEditor] = useState('')
+
   useEffect(() => {
     if (Object.keys(blog).length !== 0) {
       setValue('title', blog.title)
@@ -65,15 +67,19 @@ export default function AddNews() {
   const postNewsAPI = (data) => {
     return post('URL', data)
   }
+
   const putNewsAPI = (data) => {
     return put('URL', data)
   }
+
   const usePostNews = () => {
     return useMutation(postNewsAPI)
   }
+
   const usePutNews = () => {
     return useMutation(putNewsAPI)
-  } 
+  }
+
   const { mutate: postNews } = usePostNews()
   const { mutate: putNews } = usePutNews()
 
@@ -87,6 +93,7 @@ export default function AddNews() {
       postNews(newData)
     }
   }
+
   const onUpdate = (data) => {
     if (editorRef.current) {
       let newData
@@ -97,13 +104,15 @@ export default function AddNews() {
       putNews(newData)
     }
   }
+
   const onResetURL = (data) => {
     const { title } = data
     const resetFriendlyUrl = title.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
+
   const onCancel = () => {
-    dispatch(resetNews ())
+    dispatch(resetNews())
     router.push('/admin/news')
   }
 
@@ -126,7 +135,14 @@ export default function AddNews() {
               name='desc'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Description' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='Description'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
@@ -156,7 +172,14 @@ export default function AddNews() {
               name='url_image_meta'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL meta image' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL meta image'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
@@ -166,7 +189,14 @@ export default function AddNews() {
               name='friendly_url'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL friendly' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL friendly'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
