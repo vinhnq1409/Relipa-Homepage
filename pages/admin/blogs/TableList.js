@@ -62,7 +62,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell className={styles.tableCell}>{row.views}</TableCell>
                 <TableCell className={styles.tableCell}>
                   <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
-                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)}/>
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row)}/>
                   <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
                 </TableCell>
               </TableRow>

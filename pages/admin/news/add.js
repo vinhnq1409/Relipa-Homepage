@@ -7,22 +7,29 @@ import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from '../../../styles/AdminBlogs.module.css'
+import { post, put } from '../../../api/BaseRequest'
+import { useMutation } from 'react-query'
+import { resetNews } from '../../../redux/slices/newsSlice'
 
-export default function AddNew({ valueHTML }) {
+export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
-  const [data, setData] = useState('')
-
+  const dispatch = useDispatch()
+  const { blog } = useSelector((state) => state.blog)
+  const [valueEditor, setValueEditor] = useState('')
   useEffect(() => {
-    if (valueHTML) {
-      setData(valueHTML)
+    if (Object.keys(blog).length !== 0) {
+      setValue('title', blog.title)
+      setValue('desc', blog.desc)
+      setValue('meta', blog.meta)
+      setValue('url_image_meta', blog.urlImageMeta)
+      setValue('tags', blog.tags)
+      setValue('friendly_url', blog.friendlyUrl)
+      setValueEditor(blog.content)
     }
   }, [])
-
-  const handleUpdate = (newValue) => {
-    setData(newValue)
-  }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -55,22 +62,39 @@ export default function AddNew({ valueHTML }) {
     setValue
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
+  const postNewsAPI = (data) => {
+    return post('URL', data)
+  }
+  const putNewsAPI = (data) => {
+    return put('URL', data)
+  }
+  const usePostNews = () => {
+    return useMutation(postNewsAPI)
+  }
+  const usePutNews = () => {
+    return useMutation(putNewsAPI)
+  } 
+  const { mutate: postNews } = usePostNews()
+  const { mutate: putNews } = usePutNews()
+
   const onCreate = (data) => {
-    let newData
     if (editorRef.current) {
+      let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
+      postNews(newData)
     }
   }
   const onUpdate = (data) => {
-    let newData
     if (editorRef.current) {
+      let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
+      putNews(newData)
     }
   }
   const onResetURL = (data) => {
@@ -79,8 +103,10 @@ export default function AddNew({ valueHTML }) {
     setValue('friendly_url', resetFriendlyUrl)
   }
   const onCancel = () => {
-    router.push('/admin/blogs')
+    dispatch(resetNews ())
+    router.push('/admin/news')
   }
+
   return (
     <>
       <form>
@@ -153,10 +179,10 @@ export default function AddNew({ valueHTML }) {
           <Grid item xs={12}>
             <Editor
               id='editor'
-              value={data}
+              value={valueEditor}
               apiKey={apiKey}
               onInit={(evt, editor) => (editorRef.current = editor)}
-              onEditorChange={(newValue) => handleUpdate(newValue)}
+              onEditorChange={(newValueEditor) => setValueEditor(newValueEditor)}
               init={{
                 ...initFullProps
               }}
@@ -178,4 +204,4 @@ export default function AddNew({ valueHTML }) {
     </>
   )
 }
-AddNew.layout = Admin
+AddNews.layout = Admin
