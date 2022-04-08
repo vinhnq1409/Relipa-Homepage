@@ -16,10 +16,10 @@ const data = [
 
 export default function News() {
   const [filters, setFilters] = useState({
-    subject: '',
-    sortBy: '',
-    startDay: null,
-    endDay: moment().format('yyyy/MM/DD')
+    title: '',
+    sort: '',
+    start_date: null,
+    end_date: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
@@ -28,11 +28,11 @@ export default function News() {
   const [isSearch, setIsSearch] = useState(false)
 
   const getDataNewList = async () => {
-    const response = await get('news',{...filters, ...params})
+    const response = await get('news', { ...filters, ...params })
     return response
   }
 
-  const { data: dataNewList} = useQuery(['getDataNewList', params, isSearch], getDataNewList)
+  const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
 
   const handleSearch = () => {
     setIsSearch(!isSearch)
@@ -40,10 +40,10 @@ export default function News() {
 
   const handleResetForm = () => {
     setFilters({
-      subject: '',
-      sortBy: '',
-      startDay: null,
-      endDay: moment()
+      title: '',
+      sort: '',
+      start_date: null,
+      end_date: moment()
     })
     setIsSearch(!isSearch)
     setParams({
@@ -58,10 +58,9 @@ export default function News() {
   }
   const handleUpdate = (id) => {
     // console.log('Update', id)
-
   }
   const handleDelete = (id) => {
-    // console.log('Delete', id)
+    console.log('Delete', id)
   }
 
   return (
@@ -73,17 +72,15 @@ export default function News() {
         filters={filters}
         setFilters={setFilters}
       />
-      <Container>
-        <TableList
-          tableHead={tableHead}
-          data={dataNewList ? dataNewList : data}
-          onView={handleView}
-          onUpdate={handleUpdate}
-          onDelete={handleDelete}
-          params={params}
-          setParams={setParams}
-        />
-      </Container>
+      <TableList
+        tableHead={tableHead}
+        data={dataNewList ? dataNewList : data}
+        onView={handleView}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+        params={params}
+        setParams={setParams}
+      />
     </div>
   )
 }
