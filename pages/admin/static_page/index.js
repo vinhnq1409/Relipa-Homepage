@@ -17,8 +17,6 @@ export default function StaticPage() {
   }, [])
   const headerTable = JSON.parse(headerJson)
 
-  
-  console.log(data)
   const handleView = (id) => {
     // console.log('View', id)
   }
