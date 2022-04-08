@@ -38,7 +38,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             <Grid spacing={3} item container xs={12} sm={6} md={4} alignItems='center'>
               <Grid item xs={3} sm={4} md={3}>
                 <Typography>Sort By</Typography>
-              </Grid> 
+              </Grid>
               <Grid item xs={7} md={6}>
                 <FormControl variant='outlined'>
                   <InputLabel id='demo-simple-select-outlined-label'>Sort By</InputLabel>
