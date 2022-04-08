@@ -105,3 +105,17 @@
   font-size: 10px;
 }
 /* CSS ADD BLOGS */
+
+
+.root {
+  display: flex;
+  align-items: center
+}
+.wrapper {
+  position: relative;
+}
+.buttonProgress {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+}

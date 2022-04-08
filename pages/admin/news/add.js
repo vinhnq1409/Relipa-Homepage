@@ -1,7 +1,7 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, CircularProgress, Grid, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import * as Yup from 'yup'
@@ -20,6 +20,7 @@ export default function AddNews() {
   const dispatch = useDispatch()
   const { blog } = useSelector((state) => state.blog)
   const [valueEditor, setValueEditor] = useState('')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (Object.keys(blog).length !== 0) {
@@ -219,15 +220,30 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
+            <Button
+              onClick={handleSubmit(onCreate)}
+              className={styles.button}
+              variant='contained'
+              color='primary'
+            >
               Create
             </Button>
             <Button onClick={handleSubmit(onUpdate)} className={styles.button} variant='contained' color='primary'>
               Update
             </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
+          </Grid>
+          <Grid item xs={12} className={styles.flexCenter}>
+            <div className={styles.root}>
+              <div className={styles.wrapper}>
+                <Button variant='contained' className={styles.button} color='primary' disabled={loading} >
+                  button
+                </Button>
+                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+              </div>
+            </div>
           </Grid>
         </Grid>
       </form>
