@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetBlog } from '../../../redux/slices/blogSlice'
 import styles from '../../../styles/AdminBlogs.module.css'
-import { post } from '../../../api/BaseRequest'
+import { post, put } from '../../../api/BaseRequest'
 import { useMutation } from 'react-query'
 
 export default function Add() {
@@ -65,30 +65,37 @@ export default function Add() {
   const postBlogAPI = (data) => {
     return post('URL', data)
   }
+  const putBlogAPI = (data) => {
+    return put('URL', data)
+  }
   const usePostBlog = () => {
     return useMutation(postBlogAPI)
   }
+  const usePutBlog = () => {
+    return useMutation(putBlogAPI)
+  } 
   const { mutate: postBlog } = usePostBlog()
+  const { mutate: putBlog } = usePutBlog()
 
   const onCreate = (data) => {
-    let newData
     if (editorRef.current) {
+      let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
+      postBlog(newData)
     }
   }
   const onUpdate = (data) => {
-    let newData
     if (editorRef.current) {
+      let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
+      putBlog(newData)
     }
-    console.log(newData)
-    postBlog(newData)
   }
   const onResetURL = (data) => {
     const { title } = data
