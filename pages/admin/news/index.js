@@ -20,10 +20,10 @@ const data = [
 
 export default function News() {
   const [filters, setFilters] = useState({
-    subject: '',
-    sortBy: '',
-    startDay: null,
-    endDay: moment().format('yyyy/MM/DD')
+    title: '',
+    sort: '',
+    start_date: null,
+    end_date: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
@@ -46,10 +46,10 @@ export default function News() {
 
   const handleResetForm = () => {
     setFilters({
-      subject: '',
-      sortBy: '',
-      startDay: null,
-      endDay: moment()
+      title: '',
+      sort: '',
+      start_date: null,
+      end_date: moment()
     })
     setIsSearch(!isSearch)
     setParams({
@@ -90,7 +90,7 @@ export default function News() {
   }
 
   const handleDelete = (id) => {
-    // console.log('Delete', id)
+    console.log('Delete', id)
   }
 
   // Start code add blogs
@@ -110,17 +110,15 @@ export default function News() {
         onCreate={onCreate}
         setFilters={setFilters}
       />
-      <Container>
-        <TableList
-          tableHead={tableHead}
-          data={dataNewList || data}
-          onView={handleView}
-          onUpdate={handleUpdate}
-          onDelete={handleDelete}
-          params={params}
-          setParams={setParams}
-        />
-      </Container>
+      <TableList
+        tableHead={tableHead}
+        data={dataNewList ? dataNewList : data}
+        onView={handleView}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+        params={params}
+        setParams={setParams}
+      />
     </div>
   )
 }

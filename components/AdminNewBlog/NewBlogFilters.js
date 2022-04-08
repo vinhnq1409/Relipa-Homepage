@@ -15,134 +15,62 @@ import {
   Box
 } from '@material-ui/core/'
 
-const NewFilters = ({
-  header,
-  handleSearch,
-  handleResetForm,
-  filters,
-  setFilters,
-  onCreate
-}) => {
-  const { subject, sortBy, startDay, endDay } = filters
+const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
+  const { title, sort } = filters
 
   return (
     <>
-      <Container>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant='contained' color='primary' onClick={() => onCreate()}>
-            CREATE NEW
-          </Button>
-        </div>
+      <Box>
+        <Grid spacing={3} container justify='space-between' alignItems='center'>
+          <Grid item container spacing={3} alignItems='center' xs={12} md={12} lg={9}>
+            <Grid item xs={12} sm={4} md={4} >
+              <FormControl>
+                <TextField
+                  id='outlined-secondary'
+                  label='Search...'
+                  variant='outlined'
+                  value={title}
+                  onChange={(e) => setFilters({ ...filters, title: e.target.value })}
+                />
+              </FormControl>
+            </Grid>
 
-        <Box className={styles.filters}>
-          <Container component='form'>
-            <Typography className={styles.filters_title} variant='h5'>
-              {header}
-            </Typography>
-            <Box className={styles.filters_box1}>
-              <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
-                <Grid item xs={4} sm={1}>
-                  <Typography>Subject</Typography>
-                </Grid>
-                <Grid item xs={8} sm={4}>
-                  <FormControl>
-                    <TextField
-                      id='outlined-secondary'
-                      label='Search something'
-                      variant='outlined'
-                      value={subject}
-                      onChange={(e) => setFilters({ ...filters, subject: e.target.value })}
-                    />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={4} sm={1}>
-                  <Typography>Sort By</Typography>
-                </Grid>
-                <Grid item xs={8} sm={3}>
-                  <FormControl variant='outlined'>
-                    <InputLabel id='demo-simple-select-outlined-label'>Sort By</InputLabel>
-                    <Select
-                      className={styles.sort_by}
-                      labelId='demo-simple-select-outlined-label'
-                      id='demo-simple-select-outlined'
-                      label='Sort By'
-                      value={sortBy}
-                      onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
-                    >
-                      <MenuItem value={'Ascending'}>Ascending</MenuItem>
-                      <MenuItem value={'Descending'}>Descending</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
+            <Grid spacing={3} item container xs={12} sm={6} md={4} alignItems='center'>
+              <Grid item xs={3} sm={4} md={3}>
+                <Typography>Sort By</Typography>
               </Grid>
-            </Box>
-
-            <Box className={styles.filters_box2}>
-              <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
-                <Grid item xs={4} sm={1}>
-                  <Typography>Start Day</Typography>
-                </Grid>
-                <Grid item xs={8} sm={4}>
-                  <FormControl>
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                      <DatePicker
-                        label='Start Day'
-                        inputVariant='outlined'
-                        value={startDay}
-                        onChange={(e) => setFilters({
-                          ...filters,
-                          startDay: e.format('yyyy/MM/DD')
-                        })}
-                        format='yyyy/MM/DD'
-                        maxDate={endDay}
-                      />
-                    </MuiPickersUtilsProvider>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={4} sm={1}>
-                  <Typography>End Day</Typography>
-                </Grid>
-                <Grid item xs={8} sm={3}>
-                  <FormControl variant='outlined'>
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                      <DatePicker
-                        label='End Day'
-                        inputVariant='outlined'
-                        value={endDay}
-                        onChange={(e) => setFilters({
-                          ...filters,
-                          endDay: e.format('yyyy/MM/DD')
-                        })}
-                        format='yyyy/MM/DD'
-                        minDate={startDay === null ? undefined : startDay}
-                      />
-                    </MuiPickersUtilsProvider>
-                  </FormControl>
-                </Grid>
-              </Grid>
-            </Box>
-
-            <Box>
-              <Grid container spacing={8} justify='center'>
-                <Grid item>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    onClick={handleSearch}
+              <Grid item xs={7} md={6}>
+                <FormControl variant='outlined'>
+                  <InputLabel id='demo-simple-select-outlined-label'>Sort By</InputLabel>
+                  <Select
+                    className={styles.sort_by}
+                    labelId='demo-simple-select-outlined-label'
+                    id='demo-simple-select-outlined'
+                    label='Sort By'
+                    value={sort}
+                    onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
                   >
-                    SEARCH
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant='contained' color='primary' onClick={handleResetForm}>
-                    RESET
-                  </Button>
-                </Grid>
+                    <MenuItem value={'Ascending'}>Ascending</MenuItem>
+                    <MenuItem value={'Descending'}>Descending</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
-            </Box>
-          </Container>
-        </Box>
-      </Container>
+            </Grid>
+
+            <Grid item spacing={3} xs={12} sm={2} md={4}>
+              <Button variant='contained' color='primary' onClick={handleSearch}>
+                SEARCH
+              </Button>
+            </Grid>
+          </Grid>
+
+          <Grid item md={2} lg={2} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button variant='contained' color='primary' onClick={() => onCreate()}>
+              CREATE NEW
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
     </>
   )
 }
