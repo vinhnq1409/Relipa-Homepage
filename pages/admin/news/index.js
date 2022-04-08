@@ -27,12 +27,12 @@ export default function News() {
   })
   const [isSearch, setIsSearch] = useState(false)
 
-  const getDataNewList = async () => {
-    const response = await get('news',{...filters, ...params})
+  const getDataNewList = async() => {
+    const response = await get('news', { ...filters, ...params })
     return response
   }
 
-  const { data: dataNewList} = useQuery(['getDataNewList', params, isSearch], getDataNewList)
+  const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
 
   const handleSearch = () => {
     setIsSearch(!isSearch)
@@ -76,7 +76,7 @@ export default function News() {
       <Container>
         <TableList
           tableHead={tableHead}
-          data={dataNewList ? dataNewList : data}
+          data={dataNewList || data}
           onView={handleView}
           onUpdate={handleUpdate}
           onDelete={handleDelete}
