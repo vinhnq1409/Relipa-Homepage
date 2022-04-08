@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import { Container } from '@material-ui/core'
 import TableList from '../../../components/Table/Table'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
@@ -14,7 +13,14 @@ const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action
 const data1 = [
   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
+  { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 4, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 5, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 6, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 7, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 8, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 9, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+  { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
 ]
 
 export default function Blogs() {
@@ -61,16 +67,18 @@ export default function Blogs() {
   }
 
   const handleUpdate = (blog) => {
-    dispatch(addBlog({
-      'id': 1,
-      'title': 'A nice article',
-      'desc': 'This is blog description',
-      'meta': 'This is blog meta',
-      'urlImageMeta': 'This is url image meta',
-      'content': 'This is blog content',
-      'tags': 'This is blog content',
-      'friendlyUrl': 'This is blog url friendly'
-    }))
+    dispatch(
+      addBlog({
+        id: 1,
+        title: 'A nice article',
+        desc: 'This is blog description',
+        meta: 'This is blog meta',
+        urlImageMeta: 'This is url image meta',
+        content: 'This is blog content',
+        tags: 'This is blog content',
+        friendlyUrl: 'This is blog url friendly'
+      })
+    )
     router.push({
       pathname: '/admin/blogs/add',
       query: {
@@ -86,7 +94,7 @@ export default function Blogs() {
   // End code add blogs
 
   const handleDelete = (id) => {
-    // console.log('Delete', id)
+    console.log('Delete', id)
   }
 
   return (
@@ -99,17 +107,15 @@ export default function Blogs() {
         setFilters={setParams}
         onCreate={handleCreate}
       />
-      <Container>
-        <TableList
-          tableHead={tableHead}
-          data={data1}
-          onView={handleView}
-          onUpdate={handleUpdate}
-          onDelete={handleDelete}
-          params={params}
-          setParams={setParams}
-        />
-      </Container>
+      <TableList
+        tableHead={tableHead}
+        data={data1}
+        onView={handleView}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+        params={params}
+        setParams={setParams}
+      />
     </>
   )
 }
