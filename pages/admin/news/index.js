@@ -3,7 +3,7 @@ import Admin from 'layouts/Admin.js'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { Container } from '@material-ui/core'
-import TableList from '../blogs/TableList'
+import TableList from '../../../components/Table/Table'
 import { get } from '../../../api/BaseRequest'
 import { useQuery } from 'react-query'
 

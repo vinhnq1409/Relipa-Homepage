@@ -20,7 +20,8 @@ const NewFilters = ({
   handleSearch,
   handleResetForm,
   filters,
-  setFilters
+  setFilters,
+  onCreate
 }) => {
   const { subject, sortBy, startDay, endDay } = filters
 
@@ -28,7 +29,7 @@ const NewFilters = ({
     <>
       <Container>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' color='primary' onClick={() => onCreate()}>
             CREATE NEW
           </Button>
         </div>
