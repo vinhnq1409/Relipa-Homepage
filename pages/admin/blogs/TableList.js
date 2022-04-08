@@ -14,26 +14,32 @@ import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { useEffect, useState } from 'react'
 
-const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
+const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
+  const [params, setParams] = useState({})
+  useEffect(() => {
+    setParams({
+      page: data.current_page,
+      per_page: data.per_page
+    })
+  }, [data])
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
-
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
-
   return (
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Muted>Total number of records: {data.length}</Muted>
+          <Muted>Total number of records: {data.total}</Muted>
         </Grid>
         <Grid item className={styles.flex}>
           <Muted>Item per page:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue={params.per_page} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue = {params.per_page} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
@@ -58,14 +64,14 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data.data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.subject}</TableCell>
-                <TableCell className={styles.tableCell}>{row.author}</TableCell>
-                <TableCell className={styles.tableCell}>{row.date}</TableCell>
-                <TableCell className={styles.tableCell}>{row.status}</TableCell>
-                <TableCell className={styles.tableCell}>{row.views}</TableCell>
+                <TableCell className={styles.tableCell}>{row.title}</TableCell>
+                <TableCell className={styles.tableCell}>{row.meta}</TableCell>
+                <TableCell className={styles.tableCell}>{row.created_at}</TableCell>
+                <TableCell className={styles.tableCell}>{row.content}</TableCell>
+                <TableCell className={styles.tableCell}>{row.url_image_meta}</TableCell>
                 <TableCell className={styles.tableCell}>
 <<<<<<< HEAD
                   <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>

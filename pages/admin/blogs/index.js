@@ -24,6 +24,8 @@ const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action
 //   { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
 // ]
 
+
+
 export default function Blogs() {
   const [params, setParams] = useState({
     title: '',
