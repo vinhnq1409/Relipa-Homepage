@@ -1,7 +1,7 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, CircularProgress, Grid, Snackbar, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import * as Yup from 'yup'
@@ -13,6 +13,7 @@ import styles from '../../../styles/AdminBlogs.module.css'
 import { post, put } from '../../../api/BaseRequest'
 import { resetNews } from '../../../redux/slices/newsSlice'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import Notification from '../../../components/Notification/Notification'
 
 export default function AddNews() {
   const editorRef = useRef(null)
@@ -20,6 +21,8 @@ export default function AddNews() {
   const dispatch = useDispatch()
   const { blog } = useSelector((state) => state.blog)
   const [valueEditor, setValueEditor] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [notification, setNotification] = useState({ notification: false, title: true })
 
   useEffect(() => {
     if (Object.keys(blog).length !== 0) {
@@ -84,6 +87,7 @@ export default function AddNews() {
   const { mutate: putNews } = usePutNews()
 
   const onCreate = (data) => {
+    setLoading(true)
     if (editorRef.current) {
       let newData
       newData = {
@@ -95,6 +99,7 @@ export default function AddNews() {
   }
 
   const onUpdate = (data) => {
+    setLoading(true)
     if (editorRef.current) {
       let newData
       newData = {
@@ -114,6 +119,21 @@ export default function AddNews() {
   const onCancel = () => {
     dispatch(resetNews())
     router.push('/admin/news')
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setNotification({ notification: false })
+  }
+
+  const onNotification = () => {
+    setNotification({ notification: true, title: 'This is a success message!', severity: 'success' })
+  }
+
+  const onFail = () => {
+    setNotification({ notification: true, title: 'This is a success message!', severity: 'error' })
   }
 
   return (
@@ -219,18 +239,44 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
-              Create
-            </Button>
-            <Button onClick={handleSubmit(onUpdate)} className={styles.button} variant='contained' color='primary'>
-              Update
-            </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
+            <div className={styles.root}>
+              <div className={styles.wrapper}>
+                <Button
+                  variant='contained'
+                  className={styles.button}
+                  color='primary'
+                  disabled={loading}
+                  onClick={handleSubmit(onCreate)}
+                >
+                  Create
+                </Button>
+                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+              </div>
+            </div>
+            <div className={styles.root}>
+              <div className={styles.wrapper}>
+                <Button
+                  onClick={handleSubmit(onUpdate)}
+                  className={styles.button}
+                  variant='contained'
+                  disabled={loading}
+                  color='primary'
+                >
+                  Update
+                </Button>
+                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+              </div>
+            </div>
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
+            </Button>
+            <Button onClick={onNotification} className={styles.button} variant='contained'>
+              Notification
             </Button>
           </Grid>
         </Grid>
       </form>
+      <Notification open={notification} handleClose={handleClose} />
     </>
   )
 }
