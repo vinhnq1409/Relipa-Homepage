@@ -94,7 +94,7 @@ export default function Blogs() {
   // End code add blogs
 
   const handleDelete = (id) => {
-    console.log('Delete', id)
+    // console.log('Delete', id)
   }
 
   return (
