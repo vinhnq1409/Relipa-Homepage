@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
 import { Container } from '@material-ui/core'
-import TableList from './TableList'
+import TableList from '../../../components/Table/Table'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
+import { useRouter } from 'next/router'
 
 const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
@@ -39,9 +40,25 @@ export default function Blogs() {
   const handleView = (id) => {
     // console.log('View', id)
   }
-  const handleUpdate = (id) => {
-    // console.log('Update', id)
+
+  // Start code add blogs
+  const router = useRouter()
+
+  const handleCreate = () => {
+    router.push('/admin/blogs/add')
   }
+
+  const handleUpdate = (id) => {
+    router.push({
+      pathname: '/admin/blogs/add',
+      query: { slug: 'about', mode: 'edit', name: {
+        titile: 'a',
+        meta: 'b'
+      }}
+    })
+  }
+  // End code add blogs
+
   const handleDelete = (id) => {
     // console.log('Delete', id)
   }
@@ -54,6 +71,7 @@ export default function Blogs() {
         handleResetForm={handleResetForm}
         filters={params}
         setFilters={setParams}
+        onCreate={handleCreate}
       />
       <Container>
         <TableList

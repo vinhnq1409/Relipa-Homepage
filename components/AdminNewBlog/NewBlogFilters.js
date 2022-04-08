@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './AdminNewBlog.module.css'
+import styles from '../../styles/AdminNewBlogFilters.module.css'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import MomentUtils from '@date-io/moment'
 import {
@@ -20,7 +20,8 @@ const NewFilters = ({
   handleSearch,
   handleResetForm,
   filters,
-  setFilters
+  setFilters,
+  onCreate
 }) => {
   const { subject, sortBy, startDay, endDay } = filters
 
@@ -28,7 +29,7 @@ const NewFilters = ({
     <>
       <Container>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' color='primary' onClick={() => onCreate()}>
             CREATE NEW
           </Button>
         </div>
@@ -38,7 +39,7 @@ const NewFilters = ({
             <Typography className={styles.filters_title} variant='h5'>
               {header}
             </Typography>
-            <Box>
+            <Box className={styles.filters_box1}>
               <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
                 <Grid item xs={4} sm={1}>
                   <Typography>Subject</Typography>
@@ -76,7 +77,7 @@ const NewFilters = ({
               </Grid>
             </Box>
 
-            <Box>
+            <Box className={styles.filters_box2}>
               <Grid className={styles.filters_row1} container spacing={3} alignItems='center'>
                 <Grid item xs={4} sm={1}>
                   <Typography>Start Day</Typography>
@@ -90,7 +91,7 @@ const NewFilters = ({
                         value={startDay}
                         onChange={(e) => setFilters({
                           ...filters,
-                          startDay: e
+                          startDay: e.format('yyyy/MM/DD')
                         })}
                         format='yyyy/MM/DD'
                         maxDate={endDay}
@@ -110,7 +111,7 @@ const NewFilters = ({
                         value={endDay}
                         onChange={(e) => setFilters({
                           ...filters,
-                          endDay: e
+                          endDay: e.format('yyyy/MM/DD')
                         })}
                         format='yyyy/MM/DD'
                         minDate={startDay === null ? undefined : startDay}
