@@ -90,7 +90,7 @@ const NewFilters = ({
                         value={startDay}
                         onChange={(e) => setFilters({
                           ...filters,
-                          startDay: e
+                          startDay: e.format('yyyy/MM/DD')
                         })}
                         format='yyyy/MM/DD'
                         maxDate={endDay}
@@ -110,7 +110,7 @@ const NewFilters = ({
                         value={endDay}
                         onChange={(e) => setFilters({
                           ...filters,
-                          endDay: e
+                          endDay: e.format('yyyy/MM/DD')
                         })}
                         format='yyyy/MM/DD'
                         minDate={startDay === null ? undefined : startDay}

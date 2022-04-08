@@ -19,25 +19,24 @@ export default function News() {
     subject: '',
     sortBy: '',
     startDay: null,
-    endDay: moment()
+    endDay: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
+  const [isSearch, setIsSearch] = useState(false)
 
   const getDataNewList = async () => {
-    const response = await get('news',params)
-    console.log('respone',response)
+    const response = await get('news',{...filters, ...params})
     return response
   }
 
-  console.log('aaaaa');
-  const { data: dataNewList} = useQuery(['getDataNewList', params], getDataNewList)
+  const { data: dataNewList} = useQuery(['getDataNewList', params, isSearch], getDataNewList)
 
-  console.log('dataNewList', dataNewList)
-
-  const handleSearch = () => {}
+  const handleSearch = () => {
+    setIsSearch(!isSearch)
+  }
 
   const handleResetForm = () => {
     setFilters({
@@ -45,6 +44,11 @@ export default function News() {
       sortBy: '',
       startDay: null,
       endDay: moment()
+    })
+    setIsSearch(!isSearch)
+    setParams({
+      per_page: 10,
+      page: 1
     })
   }
 
@@ -72,7 +76,7 @@ export default function News() {
       <Container>
         <TableList
           tableHead={tableHead}
-          data={data}
+          data={dataNewList ? dataNewList : data}
           onView={handleView}
           onUpdate={handleUpdate}
           onDelete={handleDelete}
