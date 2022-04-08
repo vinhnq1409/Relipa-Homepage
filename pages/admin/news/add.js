@@ -1,24 +1,29 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import { Button, CircularProgress, Grid, Snackbar, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
+import { useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetBlog } from '../../../redux/slices/blogSlice'
+
 import styles from '../../../styles/AdminBlogs.module.css'
 import { post, put } from '../../../api/BaseRequest'
-import { useMutation } from 'react-query'
+import { resetNews } from '../../../redux/slices/newsSlice'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import Notification from '../../../components/Notification/Notification'
 
-export default function Add() {
+export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
   const dispatch = useDispatch()
   const { blog } = useSelector((state) => state.blog)
   const [valueEditor, setValueEditor] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [notification, setNotification] = useState({ notification: false, title: true })
+
   useEffect(() => {
     if (Object.keys(blog).length !== 0) {
       setValue('title', blog.title)
@@ -62,49 +67,73 @@ export default function Add() {
     setValue
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const postBlogAPI = (data) => {
+  const postNewsAPI = (data) => {
     return post('URL', data)
   }
-  const putBlogAPI = (data) => {
+
+  const putNewsAPI = (data) => {
     return put('URL', data)
   }
-  const usePostBlog = () => {
-    return useMutation(postBlogAPI)
+
+  const usePostNews = () => {
+    return useMutation(postNewsAPI)
   }
-  const usePutBlog = () => {
-    return useMutation(putBlogAPI)
-  } 
-  const { mutate: postBlog } = usePostBlog()
-  const { mutate: putBlog } = usePutBlog()
+
+  const usePutNews = () => {
+    return useMutation(putNewsAPI)
+  }
+
+  const { mutate: postNews } = usePostNews()
+  const { mutate: putNews } = usePutNews()
 
   const onCreate = (data) => {
+    setLoading(true)
     if (editorRef.current) {
       let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
-      postBlog(newData)
+      postNews(newData)
     }
   }
+
   const onUpdate = (data) => {
+    setLoading(true)
     if (editorRef.current) {
       let newData
       newData = {
         ...data,
         content: editorRef.current.getContent()
       }
-      putBlog(newData)
+      putNews(newData)
     }
   }
+
   const onResetURL = (data) => {
     const { title } = data
     const resetFriendlyUrl = title.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
+
   const onCancel = () => {
-    dispatch(resetBlog())
-    router.push('/admin/blogs')
+    dispatch(resetNews())
+    router.push('/admin/news')
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setNotification({ notification: false })
+  }
+
+  const onNotification = () => {
+    setNotification({ notification: true, title: 'This is a success message!', severity: 'success' })
+  }
+
+  const onFail = () => {
+    setNotification({ notification: true, title: 'This is a success message!', severity: 'error' })
   }
 
   return (
@@ -126,7 +155,14 @@ export default function Add() {
               name='desc'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Description' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='Description'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
@@ -156,7 +192,14 @@ export default function Add() {
               name='url_image_meta'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL meta image' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL meta image'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
@@ -166,7 +209,14 @@ export default function Add() {
               name='friendly_url'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL friendly' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL friendly'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
@@ -189,19 +239,45 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
-              Create
-            </Button>
-            <Button onClick={handleSubmit(onUpdate)} className={styles.button} variant='contained' color='primary'>
-              Update
-            </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
+            <div className={styles.root}>
+              <div className={styles.wrapper}>
+                <Button
+                  variant='contained'
+                  className={styles.button}
+                  color='primary'
+                  disabled={loading}
+                  onClick={handleSubmit(onCreate)}
+                >
+                  Create
+                </Button>
+                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+              </div>
+            </div>
+            <div className={styles.root}>
+              <div className={styles.wrapper}>
+                <Button
+                  onClick={handleSubmit(onUpdate)}
+                  className={styles.button}
+                  variant='contained'
+                  disabled={loading}
+                  color='primary'
+                >
+                  Update
+                </Button>
+                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+              </div>
+            </div>
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
+            </Button>
+            <Button onClick={onNotification} className={styles.button} variant='contained'>
+              Notification
             </Button>
           </Grid>
         </Grid>
       </form>
+      <Notification open={notification} handleClose={handleClose} />
     </>
   )
 }
-Add.layout = Admin
+AddNews.layout = Admin
