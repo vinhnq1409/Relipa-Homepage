@@ -67,7 +67,7 @@ export default function Add() {
   }
   const usePostBlog = () => {
     return useMutation(postBlogAPI)
-  } 
+  }
   const { mutate: postBlog } = usePostBlog()
 
   const onCreate = (data) => {

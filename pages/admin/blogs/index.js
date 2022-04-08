@@ -53,14 +53,14 @@ export default function Blogs() {
 
   const handleUpdate = (blog) => {
     dispatch(addBlog({
-      "id": 1,
-      "title": "A nice article",
-      "desc": "This is blog description",
-      "meta": "This is blog meta",
-      "urlImageMeta": "This is url image meta",
-      "content": "This is blog content",
-      "tags": "This is blog content",
-      "friendlyUrl": "This is blog url friendly",
+      'id': 1,
+      'title': 'A nice article',
+      'desc': 'This is blog description',
+      'meta': 'This is blog meta',
+      'urlImageMeta': 'This is url image meta',
+      'content': 'This is blog content',
+      'tags': 'This is blog content',
+      'friendlyUrl': 'This is blog url friendly'
     }))
     router.push({
       pathname: '/admin/blogs/add',
