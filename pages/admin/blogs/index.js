@@ -7,9 +7,11 @@ import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { addBlog } from '../../../redux/slices/blogSlice'
+import { useQuery } from 'react-query'
+import { get } from '../../../api/BaseRequest'
 
 const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
-const data = [
+const data1 = [
   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
   { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
@@ -25,16 +27,23 @@ export default function Blogs() {
     page: 1
   })
 
+  const getBlogs = async() => {
+    return await get('blogs', params)
+  }
+  const { refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+
   const handleSearch = () => {
     // console.log(params)
+    refetch()
   }
   const handleResetForm = () => {
     setParams({
-      ...params,
       title: '',
       sort: '',
       start: null,
-      end: moment().format('YYYY-MM-DD')
+      end: moment().format('YYYY-MM-DD'),
+      per_page: 10,
+      page: 1
     })
   }
 
@@ -64,10 +73,14 @@ export default function Blogs() {
     }))
     router.push({
       pathname: '/admin/blogs/add',
-      query: { slug: 'about', mode: 'edit', name: {
-        titile: 'a',
-        meta: 'b'
-      }}
+      query: {
+        slug: 'about',
+        mode: 'edit',
+        name: {
+          titile: 'a',
+          meta: 'b'
+        }
+      }
     })
   }
   // End code add blogs
@@ -79,7 +92,7 @@ export default function Blogs() {
   return (
     <>
       <NewFilters
-        header={'NEW'}
+        header={'BLOG'}
         handleSearch={handleSearch}
         handleResetForm={handleResetForm}
         filters={params}
@@ -89,7 +102,7 @@ export default function Blogs() {
       <Container>
         <TableList
           tableHead={tableHead}
-          data={data}
+          data={data1}
           onView={handleView}
           onUpdate={handleUpdate}
           onDelete={handleDelete}
