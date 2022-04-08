@@ -21,11 +21,13 @@ import App from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
 import store from '../redux/store'
-
+import { QueryClient, QueryClientProvider } from 'react-query'
 import PageChange from 'components/PageChange/PageChange.js'
 
 import '../style/admin/nextjs-material-dashboard.css'
 import { Provider } from 'react-redux'
+
+const queryClient = new QueryClient()
 
 Router.events.on('routeChangeStart', (url) => {
   document.body.classList.add('body-page-transition')
@@ -77,15 +79,17 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <Provider store={store}>
-          <Head>
-            <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-            <title>Relipa </title>
-          </Head>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <Head>
+              <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+              <title>Relipa</title>
+            </Head>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </Provider>
+        </QueryClientProvider>
       </React.Fragment>
     )
   }

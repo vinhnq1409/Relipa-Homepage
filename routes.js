@@ -1,59 +1,92 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
-import LibraryBooks from '@material-ui/icons/LibraryBooks'
 import Notifications from '@material-ui/icons/Notifications'
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import PagesIcon from '@material-ui/icons/Pages'
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import CodeIcon from '@material-ui/icons/Code'
+import GroupWorkIcon from '@material-ui/icons/GroupWork'
+import WorkIcon from '@material-ui/icons/Work'
+import HomeIcon from '@material-ui/icons/Home'
 
 const dashboardRoutes = [
   {
-    path: '/dashboard',
+    path: '/',
     name: 'Dashboard',
     icon: Dashboard,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/news',
     name: 'News',
     icon: AssignmentIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/static_page',
     name: 'Static page',
     icon: PagesIcon,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   },
   {
-    path: '/user-profile',
-    name: 'User Profile',
+    path: '/account',
+    name: 'Account',
+    icon: SupervisorAccountIcon,
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
+  },
+  {
+    path: '/dev-info',
+    name: 'DEV Info',
+    icon: CodeIcon,
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
+  },
+  {
+    path: '/partner',
+    name: 'Partner',
+    icon: GroupWorkIcon,
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
+  },
+  {
+    path: '/project',
+    name: 'Project',
+    icon: WorkIcon,
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
+  },
+  {
+    path: '/client',
+    name: 'Client',
+    icon: HomeIcon,
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
     icon: Person,
-    layout: '/admin'
-  },
-  {
-    path: '/table-list',
-    name: 'Table List',
-    icon: 'content_paste',
-    layout: '/admin'
-  },
-  {
-    path: '/typography',
-    name: 'Typography',
-    icon: LibraryBooks,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin', 'member']
   },
   {
     path: '/notifications',
     name: 'Notifications',
     icon: Notifications,
-    layout: '/admin'
+    layout: '/admin',
+    role: ['supperAdmin', 'admin']
   }
 ]
 
