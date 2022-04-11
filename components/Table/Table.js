@@ -9,11 +9,12 @@ import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
+import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import { Button, Typography } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
@@ -25,6 +26,11 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
   }
   const handleClose = () => {
     setOpenConfirmDelete(false)
+  }
+
+  const handleDelete = () => {
+    onDelete(deleteId)
+    handleClose()
   }
 
   const handlePaginationChange = (e, page) => {
@@ -48,18 +54,21 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
             {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.subject}</TableCell>
+                <TableCell className={styles.tableCell}>{row.title}</TableCell>
                 <TableCell className={styles.tableCell}>{row.author}</TableCell>
                 <TableCell className={styles.tableCell}>{row.date}</TableCell>
                 <TableCell className={styles.tableCell}>{row.status}</TableCell>
                 <TableCell className={styles.tableCell}>{row.views}</TableCell>
-                <TableCell className={styles.tableCell}>
+                <TableCell className={`${styles.tableCell} ${styles.flex2}`}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
                     onClick={() => onView(row.id)}
                   />
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
-                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={()=>handleOpen(row.id)} />
+                  <DeleteIcon
+                    className={`${styles.tableLink} ${styles.hoverIcon}`}
+                    onClick={() => handleOpen(row.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -71,8 +80,8 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
         <DialogContent>
           <Typography>Do you really want to delete this?</Typography>
           <DialogActions>
-            <Button onClick={() => onDelete(deleteId)} variant='contained' color='secondary'>
-              Delete
+            <Button onClick={handleDelete} variant='contained' color='secondary'>
+              Yes
             </Button>
             <Button onClick={handleClose} variant='contained'>
               Cancel

@@ -6,22 +6,23 @@ import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { addBlog } from '../../../redux/slices/blogSlice'
-import { useQuery } from 'react-query'
-import { get } from '../../../api/BaseRequest'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { del, get } from '../../../api/BaseRequest'
+import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
 const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
-const data1 = [
-  { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 4, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 5, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 6, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 7, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 8, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 9, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-  { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
-]
+// const data1 = [
+//   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 4, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 5, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 6, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 7, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 8, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 9, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
+// ]
 
 export default function Blogs() {
   const [params, setParams] = useState({
@@ -33,10 +34,42 @@ export default function Blogs() {
     page: 1
   })
 
-  const getBlogs = async() => {
-    return await get('blogs', params)
+  const [openSnackbar, setOpenSnackbar] = useState(false)
+
+  const handleClose = () => {
+    setOpenSnackbar(false)
   }
-  const { refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+
+  // const getBlogs = async() => {
+  //   return await get('blogs', params)
+  // }
+  const getBlogs = () => {
+    return get('blogs')
+  }
+  const deleteBlog = (blogId) => {
+    return del(`blogs/${blogId}`)
+  }
+  // const { refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+  const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+  const queryClient = useQueryClient()
+  const { mutate, isSuccess, isError: isErrorDelete, error: errorDelete } = useMutation(deleteBlog, {
+    // onMutate: async(blogId) => {
+    //   await queryClient.cancelQueries('admin/blogs')
+    //   const prevData = queryClient.getQueryData('admin/blogs')
+    //   queryClient.setQueriesData('admin/blogs', (oldData) => {
+    //     return oldData.filter((blog) => blog.id !== blogId)
+    //   })
+    //   return prevData
+    // },
+    onError: (_error, _blog, context) => {
+      // queryClient.setQueryData('admin/blogs', context.prevData)
+      setOpenSnackbar(true)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('admin/blogs')
+      setOpenSnackbar(true)
+    }
+  })
 
   const handleSearch = () => {
     // console.log(params)
@@ -95,6 +128,7 @@ export default function Blogs() {
 
   const handleDelete = (id) => {
     // console.log('Delete', id)
+    mutate(id)
   }
 
   return (
@@ -109,13 +143,19 @@ export default function Blogs() {
       />
       <TableList
         tableHead={tableHead}
-        data={data1}
+        data={data}
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}
         setParams={setParams}
       />
+      {isSuccess && (
+        <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleClose} />
+      )}
+      {isErrorDelete && (
+        <CustomizedSnackbars open={openSnackbar} message={errorDelete.message} severity='error' onClose={handleClose} />
+      )}
     </>
   )
 }
