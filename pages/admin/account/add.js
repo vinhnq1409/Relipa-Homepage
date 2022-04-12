@@ -14,10 +14,9 @@ import {
   Select,
   MenuItem,
   FormHelperText,
-  CircularProgress,
-  Chip,
-  Input
+  CircularProgress
 } from '@material-ui/core'
+import { ToastContainer, toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -25,9 +24,12 @@ import useTrans from '../../../i18n/useTrans'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import style from '../../../styles/admin/AdminAccount.module.css'
+import 'react-toastify/dist/ReactToastify.css'
 import { post } from '../../../api/BaseRequest'
+import { useRouter } from 'next/router'
 
 export default function AdminAddAcount() {
+  const router = useRouter()
   const trans = useTrans()
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
@@ -35,7 +37,7 @@ export default function AdminAddAcount() {
   const [role, setRole] = useState([])
 
   const defaultValue = {
-    username: '',
+    name: '',
     email: '',
     password: '',
     re_password: '',
@@ -89,18 +91,37 @@ export default function AdminAddAcount() {
 
   const onSubmit = (data) => {
     const paramApi = {
-      ...data,
+      ...data
     }
     postUserAPI(paramApi)
-    // setLoading(true)
-    // setTimeout(() => {
-    //   setLoading(false)
-    //   reset({ ...defaultValue })
-     
-    // }, 2000)
+    toast.success('Create account success', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined
+    })
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      reset({ ...defaultValue })
+      router.push({ pathname: 'account' })
+    }, 2000)
   }
 
-  const onError = (data) => {}
+  const onError = (data) => {
+    toast.warn('Please fill out the form completely', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined
+    })
+  }
 
   const onReset = () => {
     reset({
@@ -130,12 +151,12 @@ export default function AdminAddAcount() {
                       required
                       fullWidth
                       id='name'
-                      label={trans.admin_account.user_name}
+                      label={trans.admin_account.name}
                       {...field}
                     />
                   )}
                 />
-                {errors.username && <FormHelperText error>{errors.username.message}</FormHelperText>}
+                {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
               </Grid>
 
               <Grid item xs={12} sm={12}>
@@ -257,6 +278,17 @@ export default function AdminAddAcount() {
         </div>
         <div>{loading && <CircularProgress />}</div>
       </Container>
+      <ToastContainer
+        position='top-right'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

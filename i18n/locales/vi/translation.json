@@ -22,7 +22,7 @@
     },
     "admin_account": {
         "sign_up": "Đăng ký",
-        "user_name": "Tên người dùng",
+        "name": "Tên người dùng",
         "email": "Email",
         "password": "Mật khẩu",
         "re_password": "Nhập lại mật khẩu",

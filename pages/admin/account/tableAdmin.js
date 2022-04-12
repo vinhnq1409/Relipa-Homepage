@@ -19,34 +19,35 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useState } from 'react'
 import useTrans from '../../../i18n/useTrans'
 
+
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const trans = useTrans()
   const [params, setParams] = useState({})
-  const number = 20
-  // useEffect(() => {
-  //   setParams({
-  //     page: data.current_page,
-  //     per_page: data.per_page
-  //   })
-  // }, [data])
+  
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
+
+  if(data){
+    console.log(data[0]?.created_at?.slice(0, 10))
+
+  }
+  console.log(data)
   return (
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
           <Muted>
-            {trans.admin_account.total_user}: {data.total}
+            {trans.admin_account.total_user}: {data?.length}
           </Muted>
         </Grid>
         <Grid item className={styles.flex}>
           <Muted>{trans.admin_account.item_per_page}:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue={number} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue={10} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
@@ -71,10 +72,9 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
                 <TableCell className={styles.tableCell}>{row.name}</TableCell>
-                <TableCell className={styles.tableCell}>{row.role}</TableCell>
-                <TableCell className={styles.tableCell}>{row.area}</TableCell>
-                <TableCell className={styles.tableCell}>{row.status}</TableCell>
-                <TableCell className={styles.tableCell}>{row.like}</TableCell>
+                <TableCell className={styles.tableCell}>{row.email}</TableCell>
+                <TableCell className={styles.tableCell}>{row?.roles[0]?.title}</TableCell>
+                <TableCell className={styles.tableCell}>{row?.created_at?.slice(0, 10)}</TableCell>
                 <TableCell className={styles.tableCell}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
