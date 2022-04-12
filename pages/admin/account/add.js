@@ -17,11 +17,13 @@ import {
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
+import useTrans from '../../../i18n/useTrans'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import style from '../../../styles/admin/AdminAccount.module.css'
 
 export default function AdminAddAcount() {
+  const trans = useTrans()
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [area, setArea] = useState(0)
@@ -31,7 +33,9 @@ export default function AdminAddAcount() {
     username: '',
     email: '',
     password: '',
-    re_password: ''
+    re_password: '',
+    area: 0,
+    role: 0
   }
 
   const handleClickShowPassword = () => {
@@ -68,7 +72,9 @@ export default function AdminAddAcount() {
     setRole(event.target.value)
   }
 
-  const onSubmit = (data) => {}
+  const onSubmit = (data) => {
+    console.log(data)
+  }
 
   const onError = (data) => {}
   return (
@@ -78,7 +84,7 @@ export default function AdminAddAcount() {
         <div className={style.paper}>
           <Avatar className={style.avatar} />
           <Typography component={'h1'} variant='h5' className={style.title}>
-            Sign up
+            {trans.admin_account.sign_up}
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
@@ -94,7 +100,7 @@ export default function AdminAddAcount() {
                       required
                       fullWidth
                       id='usename'
-                      label='UserName'
+                      label= {trans.admin_account.user_name}
                       {...field}
                     />
                   )}
@@ -107,7 +113,7 @@ export default function AdminAddAcount() {
                   name='email'
                   control={control}
                   render={({ field }) => (
-                    <TextField name='email' variant='outlined' required fullWidth id='email' label='Email' {...field} />
+                    <TextField name='email' variant='outlined' required fullWidth id='email' label={trans.admin_account.email} {...field} />
                   )}
                 />
                 {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
@@ -124,7 +130,7 @@ export default function AdminAddAcount() {
                       required
                       fullWidth
                       id='password'
-                      label='Password'
+                      label={trans.admin_account.password}
                       type={type}
                       {...field}
                       InputProps={{
@@ -151,7 +157,7 @@ export default function AdminAddAcount() {
                       required
                       fullWidth
                       id='re_password'
-                      label='Confirm Password'
+                      label={trans.admin_account.re_password}
                       type={type}
                       {...field}
                       InputProps={{
@@ -173,11 +179,28 @@ export default function AdminAddAcount() {
                   control={control}
                   render={({ field }) => (
                     <div>
-                      <InputLabel id='area'>Area</InputLabel>
-                      <Select labelId='area' defaultValue={area} onChange={handleChangeArea} fullWidth {...field}>
+                      <InputLabel id='area'>{trans.admin_account.area}</InputLabel>
+                      <Select labelId='area' value={area} onChange={handleChangeArea} fullWidth {...field}>
                         <MenuItem value={0}>None</MenuItem>
                         <MenuItem value={1}>Div 1</MenuItem>
                         <MenuItem value={2}>Div 2</MenuItem>
+                      </Select>
+                    </div>
+                  )}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Controller
+                  name='role'
+                  control={control}
+                  render={({ field }) => (
+                    <div>
+                      <InputLabel id='role'>{trans.admin_account.role}</InputLabel>
+                      <Select labelId='role' value={role} onChange={handleChangeRole} fullWidth {...field}>
+                        <MenuItem value={0}>Member</MenuItem>
+                        <MenuItem value={1}>Admin</MenuItem>
+                        <MenuItem value={2}>Partner</MenuItem>
                       </Select>
                     </div>
                   )}
@@ -192,18 +215,9 @@ export default function AdminAddAcount() {
                   <MenuItem value={2}>Partner</MenuItem>
                 </Select>
               </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <InputLabel id='role'>Role</InputLabel>
-                <Select labelId='role' defaultValue={role} onChange={handleChangeRole} fullWidth>
-                  <MenuItem value={0}>Member</MenuItem>
-                  <MenuItem value={1}>Admin</MenuItem>
-                  <MenuItem value={2}>Partner</MenuItem>
-                </Select>
-              </Grid>
             </Grid>
             <Button type='submit' fullWidth variant='contained' color='primary' className={style.submit}>
-              Submit
+              {trans.admin_account.submit}
             </Button>
           </form>
         </div>

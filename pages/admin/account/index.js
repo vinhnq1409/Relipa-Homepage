@@ -6,6 +6,7 @@ import TableListAdmin from './tableAdmin'
 import { useRouter } from 'next/router'
 import style from '../../../styles/admin/StaticPage.module.css'
 export default function Account() {
+  const trans = useTrans()
   const router = useRouter()
   const dataUse = JSON.parse(dataUJson)
   const tableHead = JSON.parse(headerUJson)
@@ -17,7 +18,7 @@ export default function Account() {
   return (
     <>
       <div className= {style.dFlex}>
-        <Button className= {style.buttonLeft} onClick={changeURL} color = 'primary' variant = 'contained'>Create Account</Button>
+        <Button className= {style.buttonLeft} onClick={changeURL} color = 'primary' variant = 'contained'>{trans.admin_account.create_account}</Button>
       </div>
       <TableListAdmin
         data={dataUse}

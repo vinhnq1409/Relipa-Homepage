@@ -17,8 +17,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useState } from 'react'
+import useTrans from '../../../i18n/useTrans'
 
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
+  const trans = useTrans()
   const [params, setParams] = useState({})
   const number = 20
   // useEffect(() => {
@@ -37,10 +39,10 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Muted>Total number of records: {data.total}</Muted>
+          <Muted>{trans.admin_account.total_user}: {data.total}</Muted>
         </Grid>
         <Grid item className={styles.flex}>
-          <Muted>Item per page:</Muted>
+          <Muted>{trans.admin_account.item_per_page}:</Muted>
           <FormControl variant='outlined' size='small'>
             <Select className={styles.select} defaultValue={number} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>

@@ -10,5 +10,18 @@
         "view": "View",
         "edit": "Edit",
         "createNew": "Create New"
+    },
+    "admin_account": {
+        "sign_up": "Sign In",
+        "user_name": "User name",
+        "email": "Email",
+        "password": "Password",
+        "re_password": "Confirm Password",
+        "area": "Area",
+        "role": "Role",
+        "submit": "Submit",
+        "create_account": "Create Account",
+        "total_user": "Total User",
+        "item_per_page": "Item per page"
     }
 }

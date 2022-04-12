@@ -10,5 +10,18 @@
         "view": "Xem",
         "edit": "Chỉnh sửa",
         "createNew": "Tạo mới"
-    }
+    },
+    "admin_account": {
+        "sign_up": "Đăng ký",
+        "user_name": "Tên người dùng",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "re_password": "Nhập lại mật khẩu",
+        "area": "Bộ phận",
+        "role": "Vị trí",
+        "submit": "Xác nhận",
+        "create_account": "Tạo tài khoản",
+        "total_user": "Tổng số người dùng",
+        "item_per_page": "Số người dùng mỗi trang"
+    } 
 }
