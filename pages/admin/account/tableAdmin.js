@@ -27,15 +27,11 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
+
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
 
-  if(data){
-    console.log(data[0]?.created_at?.slice(0, 10))
-
-  }
-  console.log(data)
   return (
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
@@ -68,7 +64,7 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data && data.map((row) => (
+            {data?.length && data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
                 <TableCell className={styles.tableCell}>{row.name}</TableCell>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import { useMutation } from 'react-query'
 import {
   Avatar,
   Button,
@@ -25,16 +24,24 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import style from '../../../styles/admin/AdminAccount.module.css'
 import 'react-toastify/dist/ReactToastify.css'
-import { post } from '../../../api/BaseRequest'
+import { get, post } from '../../../api/BaseRequest'
 import { useRouter } from 'next/router'
+import { useQuery, useMutation } from 'react-query'
 
 export default function AdminAddAcount() {
   const router = useRouter()
   const trans = useTrans()
+  const [userId, ] = useState(router.query.id)
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [role, setRole] = useState([])
+
+  const getUser = () => get(`users/${userId}`)
+
+  const {data: dataUser, isLoading} = useQuery(`getUser`, getUser)
+
+  console.log(dataUser.data)
 
   const defaultValue = {
     name: '',
@@ -43,6 +50,7 @@ export default function AdminAddAcount() {
     re_password: '',
     roles: []
   }
+
 
   const listRole = [
     { id: 1, name: 'Super Admin' },
@@ -61,6 +69,14 @@ export default function AdminAddAcount() {
     }
   }
 
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+    setValue
+  } = useForm({ defaultValues: dataUser?.data, resolver: yupResolver(schema) })
+
   const schema = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
     email: Yup.string().required('Please enter email in fill'),
@@ -72,12 +88,6 @@ export default function AdminAddAcount() {
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
   })
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-    reset
-  } = useForm({ defaultValue, resolver: yupResolver(schema) })
 
   const handleChangeRole = (event) => {
     setRole(event.target.value)
