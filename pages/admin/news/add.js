@@ -14,7 +14,7 @@ import { post, put } from '../../../api/BaseRequest'
 import { resetNews } from '../../../redux/slices/newsSlice'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import Notification from '../../../components/Notification/Notification'
-import BtnLoading from '../../../components/BtnLoading/BtnLoading'
+import BtnLoading from '../../../components/button/BtnLoading'
 
 export default function AddNews() {
   const editorRef = useRef(null)
@@ -26,23 +26,14 @@ export default function AddNews() {
   const [notification, setNotification] = useState({ notification: false, title: true })
 
   useEffect(() => {
-    if (Object.keys(news).length !== 0) {
-      setValue('title', news.title)
-      setValue('desc', news.desc)
-      setValue('meta', news.meta)
-      setValue('url_image_meta', news.urlImageMeta)
-      setValue('tags', news.tags)
-      setValue('friendly_url', news.friendlyUrl)
-      setValueEditor(news.content)
-    } else {
-      setValue('title', '')
-      setValue('desc', '')
-      setValue('meta', '')
-      setValue('url_image_meta', '')
-      setValue('tags', '')
-      setValue('friendly_url', '')
-      setValueEditor('')
-    }
+    const hashNews  = Object.keys(news).length !== 0
+    setValue('title',hashNews? news.title:'')
+    setValue('desc',hashNews? news.desc:'')
+    setValue('meta',hashNews? news.meta :'')
+    setValue('url_image_meta', hashNews? news.urlImageMeta:'')
+    setValue('tags', hashNews? news.tags:'')
+    setValue('friendly_url', hashNews? news.friendlyUrl:'')
+    setValueEditor(hashNews?news.content:'')
   }, [])
 
   const validationSchema = Yup.object().shape({
