@@ -7,10 +7,10 @@ const newSlice = createSlice({
   },
   reducers: {
     addNews: (state, action) => {
-      state.blog =  action.payload
+      state.news =  action.payload
     },
     resetNews: (state, action) => {
-      state.blog =  {}
+      state.news =  {}
     }
   }
 })

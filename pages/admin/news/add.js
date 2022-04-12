@@ -14,25 +14,26 @@ import { post, put } from '../../../api/BaseRequest'
 import { resetNews } from '../../../redux/slices/newsSlice'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import Notification from '../../../components/Notification/Notification'
+import BtnLoading from '../../../components/BtnLoading/BtnLoading'
 
 export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
   const dispatch = useDispatch()
-  const { blog } = useSelector((state) => state.new)
+  const { news } = useSelector((state) => state.new)
   const [valueEditor, setValueEditor] = useState('')
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState({ notification: false, title: true })
 
   useEffect(() => {
-    if (Object.keys(blog).length !== 0) {
-      setValue('title', blog.title)
-      setValue('desc', blog.desc)
-      setValue('meta', blog.meta)
-      setValue('url_image_meta', blog.urlImageMeta)
-      setValue('tags', blog.tags)
-      setValue('friendly_url', blog.friendlyUrl)
-      setValueEditor(blog.content)
+    if (Object.keys(news).length !== 0) {
+      setValue('title', news.title)
+      setValue('desc', news.desc)
+      setValue('meta', news.meta)
+      setValue('url_image_meta', news.urlImageMeta)
+      setValue('tags', news.tags)
+      setValue('friendly_url', news.friendlyUrl)
+      setValueEditor(news.content)
     } else {
       setValue('title', '')
       setValue('desc', '')
@@ -247,36 +248,12 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {Object.keys(blog).length === 0 ? (
-              <div className={styles.root}>
-                <div className={styles.wrapper}>
-                  <Button
-                    variant='contained'
-                    className={styles.button}
-                    color='primary'
-                    disabled={loading}
-                    onClick={handleSubmit(onCreate)}
-                  >
-                    Create
-                  </Button>
-                  {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
-                </div>
-              </div>
+            {Object.keys(news).length === 0 ? (
+              <>
+              <BtnLoading  loading={loading} onClick={handleSubmit(onCreate)} />
+              </>
             ) : (
-              <div className={styles.root}>
-                <div className={styles.wrapper}>
-                  <Button
-                    onClick={handleSubmit(onUpdate)}
-                    className={styles.button}
-                    variant='contained'
-                    disabled={loading}
-                    color='primary'
-                  >
-                    Update
-                  </Button>
-                  {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
-                </div>
-              </div>
+              <BtnLoading  loading={loading} onClick={handleSubmit(onUpdate)} />
             )}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
