@@ -10,7 +10,7 @@ const infoUserSlice = createSlice({
   name: 'infoUser',
   initialState: {
     loading: false,
-    infoUser: {},
+    infoUser: {}
   },
   extraReducers: (builder) => {
     builder.addCase(getInfoUser.pending, (state) => {
@@ -23,7 +23,7 @@ const infoUserSlice = createSlice({
     builder.addCase(getInfoUser.rejected, (state) => {
       state.messages = 'Get infoUser fail'
     })
-  },
+  }
 })
 
 export default infoUserSlice.reducer

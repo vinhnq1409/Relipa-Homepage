@@ -1,3 +1,12 @@
+.wrapper_changepass {
+  background-color: #fff;
+}
+.modal_wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wrapper {
   height: 100vh !important;
   display: flex !important;
@@ -5,6 +14,7 @@
 }
 .title {
   text-align: center;
+  margin-top: 20px;
 }
 .wrapper_signin {
   display: flex;
@@ -17,4 +27,11 @@
 }
 .submit {
   margin-bottom: 10px !important;
+}
+.btn_change {
+  margin: 20px 0 !important;
+}
+.title_change {
+  padding-top: 20px;
+  text-align: center;
 }
