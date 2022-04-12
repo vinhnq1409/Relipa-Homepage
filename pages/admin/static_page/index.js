@@ -3,17 +3,17 @@ import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import useTrans from '../../../i18n/useTrans'
-<<<<<<< HEAD
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
 import { Button } from '@material-ui/core'
 import style from '../../../styles/admin/StaticPage.module.css'
-=======
->>>>>>> 7a4070a (fix dashboard admin)
+import TableList from '../blogs/TableList'
+
 
 export default function StaticPage() {
   const trans = useTrans()
   const router = useRouter()
+  const headerTable = JSON.parse(headerJson)
   const data = JSON.parse(dataJson)
   // const [data, setData] = useState('')
   // useEffect(() => {
@@ -23,6 +23,11 @@ export default function StaticPage() {
   //   getData()
   // }, [])
   const headerTable = JSON.parse(headerJson)
+
+  const [params, setParams] = useState({
+    per_page: 10,
+    page: 1
+  })
 
   const handleView = (id) => {
     // console.log('View', id)
@@ -41,18 +46,7 @@ export default function StaticPage() {
 
   return (
     <>
-      <div className= {style.dFlex}>
-<<<<<<< HEAD
-        <Button onClick={handleCreate} color='primary' variant='contained' className= {style.buttonLeft}>Create New</Button>
-      </div>
-      <TableList
-        tableHead={headerTable}
-        data={data}
-        onView={handleView}
-        onUpdate={handleUpdate}
-        onDelete={handleDelete}
-      />
-=======
+      <div>
         <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
           {trans.static_page.createNew}
         </Button>
@@ -101,7 +95,6 @@ export default function StaticPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
->>>>>>> e551726 (fix version)
     </>
   )
 }
