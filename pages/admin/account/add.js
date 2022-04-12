@@ -63,7 +63,8 @@ export default function AdminAddAcount() {
   const {
     handleSubmit,
     control,
-    formState: { errors }
+    formState: { errors },
+    reset
   } = useForm({ defaultValue, resolver: yupResolver(schema) })
 
   const handleChangeArea = (event) => {
@@ -79,6 +80,12 @@ export default function AdminAddAcount() {
   }
 
   const onError = (data) => {}
+
+  const onReset = () => {
+    reset({
+      ...defaultValue
+    })
+  }
   return (
     <>
       <Container component='main' maxWidth='sm'>
@@ -226,7 +233,7 @@ export default function AdminAddAcount() {
                 </Button>
               </Grid>
               <Grid xs = {6}>
-                <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
                   {trans.admin_account.reset}
                 </Button>
               </Grid>
