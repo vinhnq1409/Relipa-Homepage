@@ -31,7 +31,7 @@ export default function News() {
   })
   const [isSearch, setIsSearch] = useState(false)
 
-  const getDataNewList = async () => {
+  const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
     return response
   }
@@ -112,7 +112,7 @@ export default function News() {
       />
       <TableList
         tableHead={tableHead}
-        data={dataNewList ? dataNewList : data}
+        data={dataNewList || data}
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}

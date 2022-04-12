@@ -68,13 +68,9 @@ export default function AdminAddAcount() {
     setRole(event.target.value)
   }
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const onSubmit = (data) => {}
 
-  const onError = (data) => {
-    console.log(data)
-  }
+  const onError = (data) => {}
   return (
     <>
       <Container component='main' maxWidth='sm'>
