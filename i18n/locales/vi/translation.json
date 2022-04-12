@@ -9,7 +9,16 @@
         "detail": "Tác vụ",
         "view": "Xem",
         "edit": "Chỉnh sửa",
-        "createNew": "Tạo mới"
+        "createNew": "Tạo mới",
+        "title": "Tiêu đề",
+        "describe": "Mô tả",
+        "url_path": "Đường dẫn URL",
+        "authorized": "Xác thực",
+        "submit": "Tải lên",
+        "reset": "Nhập lại",
+        "placeholder_title": "Nhập tên tiêu đề",
+        "placeholder_describe": "Nhập mô tả tiêu đề",
+        "placeholder_url": "Nhập đường dẫn URL"
     },
     "admin_account": {
         "sign_up": "Đăng ký",

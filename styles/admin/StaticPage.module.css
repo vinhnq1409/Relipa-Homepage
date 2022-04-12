@@ -15,3 +15,8 @@
 .buttonAuth {
   height: 100%;
 }
+
+.buttonSubmit {
+  margin: 10px 0 !important;
+  min-width: 100px !important;
+}

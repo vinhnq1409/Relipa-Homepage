@@ -9,7 +9,16 @@
         "detail": "Detail",
         "view": "View",
         "edit": "Edit",
-        "createNew": "Create New"
+        "createNew": "Create New",
+        "title": "Title",
+        "describe": "Describe",
+        "url_path": "URL path",
+        "authorized": "Authorized",
+        "submit": "Submit",
+        "reset": "Reset",
+        "placeholder_title": "Enter title name",
+        "placeholder_describe": "Enter describe name",
+        "placeholder_url": "Enter URL path"
     },
     "admin_account": {
         "sign_up": "Sign In",

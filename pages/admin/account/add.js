@@ -12,7 +12,8 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormHelperText
+  FormHelperText,
+  CircularProgress
 } from '@material-ui/core'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -26,6 +27,7 @@ export default function AdminAddAcount() {
   const trans = useTrans()
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [area, setArea] = useState(0)
   const [role, setRole] = useState(0)
 
@@ -220,6 +222,9 @@ export default function AdminAddAcount() {
               {trans.admin_account.submit}
             </Button>
           </form>
+        </div>
+        <div>
+          {loading && <CircularProgress />}
         </div>
       </Container>
     </>
