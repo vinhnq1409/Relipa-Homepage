@@ -39,7 +39,9 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Muted>{trans.admin_account.total_user}: {data.total}</Muted>
+          <Muted>
+            {trans.admin_account.total_user}: {data.total}
+          </Muted>
         </Grid>
         <Grid item className={styles.flex}>
           <Muted>{trans.admin_account.item_per_page}:</Muted>
@@ -65,7 +67,7 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data && data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
                 <TableCell className={styles.tableCell}>{row.name}</TableCell>

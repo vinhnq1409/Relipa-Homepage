@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Admin from 'layouts/Admin.js'
+import { useMutation } from 'react-query'
 import {
   Avatar,
   Button,
@@ -13,7 +14,9 @@ import {
   Select,
   MenuItem,
   FormHelperText,
-  CircularProgress
+  CircularProgress,
+  Chip,
+  Input
 } from '@material-ui/core'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -22,23 +25,30 @@ import useTrans from '../../../i18n/useTrans'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import style from '../../../styles/admin/AdminAccount.module.css'
+import { post } from '../../../api/BaseRequest'
 
 export default function AdminAddAcount() {
   const trans = useTrans()
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [area, setArea] = useState(0)
-  const [role, setRole] = useState(0)
+  const [role, setRole] = useState([])
 
   const defaultValue = {
     username: '',
     email: '',
     password: '',
     re_password: '',
-    area: 0,
-    role: 0
+    roles: []
   }
+
+  const listRole = [
+    { id: 1, name: 'Super Admin' },
+    { id: 2, name: 'Admin' },
+    { id: 3, name: 'Member' },
+    { id: 4, name: 'Partner' },
+    { id: 5, name: 'Employee' }
+  ]
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
@@ -50,7 +60,7 @@ export default function AdminAddAcount() {
   }
 
   const schema = Yup.object().shape({
-    username: Yup.string().required('Please enter usename in fill'),
+    name: Yup.string().required('Please enter usename in fill'),
     email: Yup.string().required('Please enter email in fill'),
     password: Yup.string()
       .min(8, 'Password must be at least ')
@@ -67,16 +77,27 @@ export default function AdminAddAcount() {
     reset
   } = useForm({ defaultValue, resolver: yupResolver(schema) })
 
-  const handleChangeArea = (event) => {
-    setArea(event.target.value)
-  }
-
   const handleChangeRole = (event) => {
     setRole(event.target.value)
   }
 
+  const postUser = async (data) => {
+    return await post('users', data)
+  }
+
+  const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
+
   const onSubmit = (data) => {
-    console.log(data)
+    const paramApi = {
+      ...data,
+    }
+    postUserAPI(paramApi)
+    // setLoading(true)
+    // setTimeout(() => {
+    //   setLoading(false)
+    //   reset({ ...defaultValue })
+     
+    // }, 2000)
   }
 
   const onError = (data) => {}
@@ -100,16 +121,16 @@ export default function AdminAddAcount() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <Controller
-                  name='username'
+                  name='name'
                   control={control}
                   render={({ field }) => (
                     <TextField
-                      name='username'
+                      name='name'
                       variant='outlined'
                       required
                       fullWidth
-                      id='usename'
-                      label= {trans.admin_account.user_name}
+                      id='name'
+                      label={trans.admin_account.user_name}
                       {...field}
                     />
                   )}
@@ -122,7 +143,15 @@ export default function AdminAddAcount() {
                   name='email'
                   control={control}
                   render={({ field }) => (
-                    <TextField name='email' variant='outlined' required fullWidth id='email' label={trans.admin_account.email} {...field} />
+                    <TextField
+                      name='email'
+                      variant='outlined'
+                      required
+                      fullWidth
+                      id='email'
+                      label={trans.admin_account.email}
+                      {...field}
+                    />
                   )}
                 />
                 {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
@@ -182,34 +211,29 @@ export default function AdminAddAcount() {
                 {errors.re_password && <FormHelperText error>{errors.re_password.message}</FormHelperText>}
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <Controller
-                  name='area'
+                  name='roles'
                   control={control}
+                  defaultValue={role}
                   render={({ field }) => (
                     <div>
-                      <InputLabel id='area'>{trans.admin_account.area}</InputLabel>
-                      <Select labelId='area' defaultValue={area} onChange={handleChangeArea} fullWidth {...field}>
-                        <MenuItem value={0}>None</MenuItem>
-                        <MenuItem value={1}>Div 1</MenuItem>
-                        <MenuItem value={2}>Div 2</MenuItem>
-                      </Select>
-                    </div>
-                  )}
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <Controller
-                  name='role'
-                  control={control}
-                  render={({ field }) => (
-                    <div>
-                      <InputLabel id='role'>{trans.admin_account.role}</InputLabel>
-                      <Select labelId='role' defaultValue={role} onChange={handleChangeRole} fullWidth {...field}>
-                        <MenuItem value={0}>Member</MenuItem>
-                        <MenuItem value={1}>Admin</MenuItem>
-                        <MenuItem value={2}>Partner</MenuItem>
+                      <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
+                      <Select
+                        labelId='roles'
+                        multiple
+                        defaultValue={0}
+                        onChange={handleChangeRole}
+                        // input = {<Input />}
+                        fullWidth
+                        // renderValue={(selected) => console.log(selected)}
+                        {...field}
+                      >
+                        {listRole.map((role) => (
+                          <MenuItem key={role.id} value={role.id}>
+                            {role.name}
+                          </MenuItem>
+                        ))}
                       </Select>
                     </div>
                   )}
@@ -217,13 +241,13 @@ export default function AdminAddAcount() {
               </Grid>
             </Grid>
 
-            <Grid container align = 'center' xs={12}>
-              <Grid xs = {6}>
+            <Grid container align='center' xs={12}>
+              <Grid xs={6}>
                 <Button type='submit' variant='contained' color='primary' className={style.submit}>
                   {trans.admin_account.submit}
                 </Button>
               </Grid>
-              <Grid xs = {6}>
+              <Grid xs={6}>
                 <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
                   {trans.admin_account.reset}
                 </Button>
@@ -231,9 +255,7 @@ export default function AdminAddAcount() {
             </Grid>
           </form>
         </div>
-        <div>
-          {loading && <CircularProgress />}
-        </div>
+        <div>{loading && <CircularProgress />}</div>
       </Container>
     </>
   )
