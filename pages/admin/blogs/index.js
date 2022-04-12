@@ -28,6 +28,8 @@ const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action
 
 
 
+
+
 export default function Blogs() {
   const [params, setParams] = useState({
     title: '',

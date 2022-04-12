@@ -1,33 +1,23 @@
-import React, { useState } from 'react'
-import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
+import React, { useEffect, useState } from 'react'
+import { headerJson } from '../../../sampleData/initStaticPage'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import useTrans from '../../../i18n/useTrans'
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
-import { Button } from '@material-ui/core'
-import style from '../../../styles/admin/StaticPage.module.css'
-import TableList from '../blogs/TableList'
-
 
 export default function StaticPage() {
   const router = useRouter()
-  const headerTable = JSON.parse(headerJson)
-  const data = JSON.parse(dataJson)
-  // const [data, setData] = useState('')
-  // useEffect(() => {
-  //   async function getData() {
-  //     setData(await get(`api/v1/static-page`))
-  //   }
-  //   getData()
-  // }, [])
+  const [data, setData] = useState('')
+  useEffect(() => {
+    async function getData() {
+      setData(await get(`api/v1/static-page`))
+    }
+    getData()
+  }, [])
   const headerTable = JSON.parse(headerJson)
 
-  const [params, setParams] = useState({
-    per_page: 10,
-    page: 1
-  })
-
+  console.log(data)
   const handleView = (id) => {
     // console.log('View', id)
   }
@@ -39,11 +29,9 @@ export default function StaticPage() {
     // console.log('Delete', id)
   }
   return (
-    <TableList
+    data && <TableList
       tableHead={headerTable}
       data={data}
-      params={params}
-      setParams={setParams}
       onView = {handleView}
       onUpdate = {handleUpdate}
       onDelete = {handleDelete}
