@@ -1,30 +1,16 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { headerJson } from '../../../sampleData/initStaticPage'
-=======
-import React, { useState } from 'react'
-import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
-import Link from 'next/link'
->>>>>>> 9f58580 (fix dashboard admin)
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import useTrans from '../../../i18n/useTrans'
-<<<<<<< HEAD
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
-<<<<<<< HEAD
 import { Button } from '@material-ui/core'
 import style from '../../../styles/admin/StaticPage.module.css'
 import TableList from '../blogs/TableList'
 
-=======
->>>>>>> 527914b (update api server)
-=======
->>>>>>> 9f58580 (fix dashboard admin)
 
 export default function StaticPage() {
-  const trans = useTrans()
-  console.log(trans)
   const router = useRouter()
   const [data, setData] = useState('')
   useEffect(() => {
@@ -34,7 +20,6 @@ export default function StaticPage() {
     getData()
   }, [])
   const headerTable = JSON.parse(headerJson)
-<<<<<<< HEAD
   const data = JSON.parse(dataJson)
   // const [data, setData] = useState('')
   // useEffect(() => {
@@ -49,8 +34,6 @@ export default function StaticPage() {
     per_page: 10,
     page: 1
   })
-=======
->>>>>>> 527914b (update api server)
 
   
   console.log(data)
@@ -70,7 +53,6 @@ export default function StaticPage() {
   }
 
   return (
-<<<<<<< HEAD
     <>
       <div>
         <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
@@ -122,15 +104,6 @@ export default function StaticPage() {
         />
       </Paper>
     </>
-=======
-    data && <TableList
-      tableHead={headerTable}
-      data={data}
-      onView = {handleView}
-      onUpdate = {handleUpdate}
-      onDelete = {handleDelete}
-    />
->>>>>>> 527914b (update api server)
   )
 }
 

@@ -100,5 +100,3 @@ export const headerJson = JSON.stringify(tableHead)
 //     slug: '10'
 //   }
 // ]
-
-// 
