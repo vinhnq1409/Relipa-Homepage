@@ -61,14 +61,14 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data.data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.name}</TableCell>
-                <TableCell className={styles.tableCell}>{row.role}</TableCell>
-                <TableCell className={styles.tableCell}>{row.area}</TableCell>
-                <TableCell className={styles.tableCell}>{row.status}</TableCell>
-                <TableCell className={styles.tableCell}>{row.like}</TableCell>
+                <TableCell className={styles.tableCell}>{row.title}</TableCell>
+                <TableCell className={styles.tableCell}>{row.meta}</TableCell>
+                <TableCell className={styles.tableCell}>{row.created_at}</TableCell>
+                <TableCell className={styles.tableCell}>{row.content}</TableCell>
+                <TableCell className={styles.tableCell}>{row.url_image_meta}</TableCell>
                 <TableCell className={styles.tableCell}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
