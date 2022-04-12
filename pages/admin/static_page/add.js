@@ -41,7 +41,7 @@ export default function AdminEditStaticPage() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={3} justifyContent = 'center'>
+        <Grid container spacing={3} justifyContent='center'>
           <Grid item xs={10}>
             <Controller
               name='title'
@@ -57,7 +57,7 @@ export default function AdminEditStaticPage() {
                 />
               )}
             />
-            {errors.title && <FormHelperText error >{errors.title.message}</FormHelperText>}
+            {errors.title && <FormHelperText error>{errors.title.message}</FormHelperText>}
           </Grid>
 
           <Grid item xs={10}>
@@ -77,7 +77,7 @@ export default function AdminEditStaticPage() {
                 />
               )}
             />
-            {errors.meta && <FormHelperText error >{errors.meta.message}</FormHelperText>}
+            {errors.meta && <FormHelperText error>{errors.meta.message}</FormHelperText>}
           </Grid>
 
           <Grid item xs={7}>
@@ -95,7 +95,7 @@ export default function AdminEditStaticPage() {
                 />
               )}
             />
-            {errors.url && <FormHelperText error >{errors.url.message}</FormHelperText>}
+            {errors.url && <FormHelperText error>{errors.url.message}</FormHelperText>}
           </Grid>
 
           <Grid item xs={3}>
@@ -105,14 +105,14 @@ export default function AdminEditStaticPage() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} justifyContent = 'center'>
+        <Grid container spacing={3} justifyContent='center'>
           <Grid item xs={10}>
             <Editor id='editor' onInit={(evt, editor) => (editorRef.current = editor)} init={initMCE} />
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} justifyContent = 'center'>
-          <Grid item xs = {10} >
+        <Grid container spacing={3} justifyContent='center'>
+          <Grid item xs={10}>
             <Button type='submit' variant='contained' color='primary' className={style.buttonAuth} fullWidth>
               Submit
             </Button>

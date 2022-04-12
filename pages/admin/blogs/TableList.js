@@ -47,7 +47,13 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
+<<<<<<< HEAD
                 <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>
+=======
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>
+                  {item}
+                </TableCell>
+>>>>>>> f634ced (conflix)
               ))}
             </TableRow>
           </TableHead>
@@ -61,9 +67,18 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell className={styles.tableCell}>{row.status}</TableCell>
                 <TableCell className={styles.tableCell}>{row.views}</TableCell>
                 <TableCell className={styles.tableCell}>
+<<<<<<< HEAD
                   <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row)}/>
                   <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
+=======
+                  <VisibilityIcon
+                    className={`${styles.tableLink} ${styles.hoverIcon}`}
+                    onClick={() => onView(row.id)}
+                  />
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)} />
+>>>>>>> f634ced (conflix)
                 </TableCell>
               </TableRow>
             ))}
