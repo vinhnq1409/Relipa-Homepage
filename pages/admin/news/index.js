@@ -43,7 +43,6 @@ export default function News() {
   
   const deleteNewItem = async(id) => {
     const response = await del(`news/${id}`)
-    console.log('response', response)
     return response.data
   }
 
