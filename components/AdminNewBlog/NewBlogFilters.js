@@ -47,8 +47,9 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
                     value={sort}
                     onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
                   >
-                    <MenuItem value={'Ascending'}>Ascending</MenuItem>
-                    <MenuItem value={'Descending'}>Descending</MenuItem>
+                    <MenuItem value={''}>None</MenuItem>
+                    <MenuItem value={'asc'}>Ascending</MenuItem>
+                    <MenuItem value={'desc'}>Descending</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

@@ -26,8 +26,8 @@ export default function News() {
   const [filters, setFilters] = useState({
     title: '',
     sort: '',
-    start_date: null,
-    end_date: moment().format('yyyy/MM/DD')
+    // start_date: null,
+    // end_date: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
@@ -35,6 +35,17 @@ export default function News() {
   })
   const [isSearch, setIsSearch] = useState(false)
   const [openSnackbar, setOpenSnackbar] = useState(false)
+
+  const getDataNewList = async () => {
+    const response = await get('news', { ...filters, ...params })
+    return response.data
+  }
+  
+  const deleteNewItem = async(id) => {
+    const response = await del(`news/${id}`)
+    console.log('response', response)
+    return response.data
+  }
 
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
   const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
@@ -47,16 +58,6 @@ export default function News() {
       setOpenSnackbar(true)
     }
   })
-
-  const getDataNewList = async () => {
-    const response = await get('news', { ...filters, ...params })
-    return response.data
-  }
-
-  const deleteNewItem = async(id) => {
-    const response = await del(`news/${id}`)
-    return response.data
-  }
 
   const handleCloseSnackBars = () => {
     setOpenSnackbar(false)
