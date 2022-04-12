@@ -1,0 +1,22 @@
+.paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+}
+
+.submit {
+
+}
+
+.avatar {
+  width: 80px !important;
+  height: 80px !important;
+}
+
+.title {
+  text-transform: uppercase;
+}
