@@ -31,7 +31,7 @@ export default function News() {
   })
   const [isSearch, setIsSearch] = useState(false)
 
-  const getDataNewList = async() => {
+  const getDataNewList = async () => {
     const response = await get('news', { ...filters, ...params })
     return response
   }
@@ -81,10 +81,7 @@ export default function News() {
       query: {
         slug: 'about',
         mode: 'edit',
-        name: {
-          titile: 'a',
-          meta: 'b'
-        }
+        id: '2'
       }
     })
   }

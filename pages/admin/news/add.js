@@ -26,14 +26,14 @@ export default function AddNews() {
   const [notification, setNotification] = useState({ notification: false, title: true })
 
   useEffect(() => {
-    const hashNews  = Object.keys(news).length !== 0
-    setValue('title',hashNews? news.title:'')
-    setValue('desc',hashNews? news.desc:'')
-    setValue('meta',hashNews? news.meta :'')
-    setValue('url_image_meta', hashNews? news.urlImageMeta:'')
-    setValue('tags', hashNews? news.tags:'')
-    setValue('friendly_url', hashNews? news.friendlyUrl:'')
-    setValueEditor(hashNews?news.content:'')
+    const hashNews = Object.keys(news).length !== 0
+    setValue('title', hashNews ? news.title : '')
+    setValue('desc', hashNews ? news.desc : '')
+    setValue('meta', hashNews ? news.meta : '')
+    setValue('url_image_meta', hashNews ? news.urlImageMeta : '')
+    setValue('tags', hashNews ? news.tags : '')
+    setValue('friendly_url', hashNews ? news.friendlyUrl : '')
+    setValueEditor(hashNews ? news.content : '')
   }, [])
 
   const validationSchema = Yup.object().shape({
@@ -239,13 +239,15 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {Object.keys(news).length === 0 ? (
-              <>
-              <BtnLoading  loading={loading} onClick={handleSubmit(onCreate)} />
-              </>
-            ) : (
-              <BtnLoading  loading={loading} onClick={handleSubmit(onUpdate)} />
-            )}
+            <BtnLoading
+              loading={loading}
+              onClick={
+                router.query?.id !== undefined && router.query?.mode === 'edit'
+                  ? handleSubmit(onUpdate)
+                  : handleSubmit(onCreate)
+              }
+              idCreate={router.query.id}
+            />
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
