@@ -189,7 +189,7 @@ export default function AdminAddAcount() {
                   render={({ field }) => (
                     <div>
                       <InputLabel id='area'>{trans.admin_account.area}</InputLabel>
-                      <Select labelId='area' value={area} onChange={handleChangeArea} fullWidth {...field}>
+                      <Select labelId='area' defaultValue={area} onChange={handleChangeArea} fullWidth {...field}>
                         <MenuItem value={0}>None</MenuItem>
                         <MenuItem value={1}>Div 1</MenuItem>
                         <MenuItem value={2}>Div 2</MenuItem>
@@ -206,7 +206,7 @@ export default function AdminAddAcount() {
                   render={({ field }) => (
                     <div>
                       <InputLabel id='role'>{trans.admin_account.role}</InputLabel>
-                      <Select labelId='role' value={role} onChange={handleChangeRole} fullWidth {...field}>
+                      <Select labelId='role' defaultValue={role} onChange={handleChangeRole} fullWidth {...field}>
                         <MenuItem value={0}>Member</MenuItem>
                         <MenuItem value={1}>Admin</MenuItem>
                         <MenuItem value={2}>Partner</MenuItem>
@@ -214,15 +214,6 @@ export default function AdminAddAcount() {
                     </div>
                   )}
                 />
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <InputLabel id='role'>Role</InputLabel>
-                <Select labelId='role' defaultValue={role} onChange={handleChangeRole} fullWidth>
-                  <MenuItem value={0}>Member</MenuItem>
-                  <MenuItem value={1}>Admin</MenuItem>
-                  <MenuItem value={2}>Partner</MenuItem>
-                </Select>
               </Grid>
             </Grid>
 
