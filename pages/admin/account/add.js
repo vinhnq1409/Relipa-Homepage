@@ -197,31 +197,12 @@ export default function AdminAddAcount() {
                 </Select>
               </Grid>
 
-              <Grid item xs = {12} sm = {6}>
-                <InputLabel id='area'>Area</InputLabel>
-                <Select
-                  labelId='area'
-                  defaultValue={area}
-                  onChange = {handleChangeArea}
-                  fullWidth
-                >
-                  <MenuItem value = {0}>None</MenuItem>
-                  <MenuItem value = {1}>Div 1</MenuItem>
-                  <MenuItem value = {2}>Div 2</MenuItem>
-                </Select>
-              </Grid>
-
-              <Grid item xs = {12} sm = {6}>
+              <Grid item xs={12} sm={6}>
                 <InputLabel id='role'>Role</InputLabel>
-                <Select
-                  labelId='role'
-                  value={role}
-                  onChange = {handleChangeRole}
-                  fullWidth
-                >
-                  <MenuItem value = {0}>Member</MenuItem>
-                  <MenuItem value = {1}>Admin</MenuItem>
-                  <MenuItem value = {2}>Partner</MenuItem>
+                <Select labelId='role' defaultValue={role} onChange={handleChangeRole} fullWidth>
+                  <MenuItem value={0}>Member</MenuItem>
+                  <MenuItem value={1}>Admin</MenuItem>
+                  <MenuItem value={2}>Partner</MenuItem>
                 </Select>
               </Grid>
             </Grid>
