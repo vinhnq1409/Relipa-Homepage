@@ -8,7 +8,7 @@ const BtnLoading = ({ loading, onClick, idCreate }) => {
       <div className={styles.root}>
         <div className={styles.wrapper}>
           <Button variant='contained' className={styles.button} color='primary' disabled={loading} onClick={onClick}>
-            {idCreate === undefined ? 'Create' : 'Edit'}
+            {idCreate === undefined ? 'Create' : 'Update'}
           </Button>
           {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
         </div>

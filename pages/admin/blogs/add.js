@@ -7,30 +7,46 @@ import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-import { resetBlog } from '../../../redux/slices/blogSlice'
 import styles from '../../../styles/AdminBlogs.module.css'
-import { post, put } from '../../../api/BaseRequest'
-import { useMutation } from 'react-query'
+import { get, post, put } from '../../../api/BaseRequest'
+import { useQuery, useMutation } from 'react-query'
+import BtnLoading from '../../../components/button/BtnLoading'
 
 export default function Add() {
   const editorRef = useRef(null)
   const router = useRouter()
-  const dispatch = useDispatch()
-  const { blog } = useSelector((state) => state.blog)
+  const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
-  useEffect(() => {
-    if (Object.keys(blog).length !== 0) {
-      setValue('title', blog.title)
-      setValue('desc', blog.desc)
-      setValue('meta', blog.meta)
-      setValue('url_image_meta', blog.urlImageMeta)
-      setValue('tags', blog.tags)
-      setValue('friendly_url', blog.friendlyUrl)
-      setValueEditor(blog.content)
-    }
-  }, [])
 
+  useEffect(() => {
+    if (dataBlog) {
+      setValue('title', dataBlog.title)
+      setValue('desc', dataBlog.desc)
+      setValue('meta', dataBlog.meta)
+      setValue('url_image_meta', dataBlog.urlImageMeta)
+      setValue('tags', dataBlog.tags)
+      setValue('friendly_url', dataBlog.friendlyUrl)
+      setValueEditor(dataBlog.content)
+    }
+  }, [dataBlog])
+
+  const getBlog = async () => {
+    return await get(`blogs/${id}`)
+  }
+
+  const postBlog = async (data) => {
+    return await post('blogs', data)
+  }
+
+  const putBlog = async (data) => {
+    return await put(`blogs/${id}`, data)
+  }
+
+  const { data: dataBlog, isLoading: isGetingBlogAPI, status } = useQuery('getBlog', getBlog)
+  const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog)
+  const { mutate: putBlogAPI, isLoading: isPutingBlogAPI } = useMutation(putBlog)
+
+  console.log(isPostingBlogAPI)
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     desc: Yup.string().required('Description is required'),
@@ -62,21 +78,6 @@ export default function Add() {
     setValue
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const postBlogAPI = (data) => {
-    return post('URL', data)
-  }
-  const putBlogAPI = (data) => {
-    return put('URL', data)
-  }
-  const usePostBlog = () => {
-    return useMutation(postBlogAPI)
-  }
-  const usePutBlog = () => {
-    return useMutation(putBlogAPI)
-  }
-  const { mutate: postBlog } = usePostBlog()
-  const { mutate: putBlog } = usePutBlog()
-
   const onCreate = (data) => {
     if (editorRef.current) {
       let newData
@@ -84,7 +85,7 @@ export default function Add() {
         ...data,
         content: editorRef.current.getContent()
       }
-      postBlog(newData)
+      postBlogAPI(newData)
     }
   }
   const onUpdate = (data) => {
@@ -94,7 +95,7 @@ export default function Add() {
         ...data,
         content: editorRef.current.getContent()
       }
-      putBlog(newData)
+      putBlogAPI(newData)
     }
   }
   const onResetURL = (data) => {
@@ -103,7 +104,6 @@ export default function Add() {
     setValue('friendly_url', resetFriendlyUrl)
   }
   const onCancel = () => {
-    dispatch(resetBlog())
     router.push('/admin/blogs')
   }
 
@@ -126,7 +126,14 @@ export default function Add() {
               name='desc'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Description' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='Description'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
@@ -156,7 +163,14 @@ export default function Add() {
               name='url_image_meta'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL meta image' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL meta image'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
@@ -166,7 +180,14 @@ export default function Add() {
               name='friendly_url'
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='URL friendly' id='outlined-required' variant='outlined' {...field} />
+                <TextField
+                  fullWidth
+                  multiline
+                  label='URL friendly'
+                  id='outlined-required'
+                  variant='outlined'
+                  {...field}
+                />
               )}
             />
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
@@ -189,12 +210,8 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <Button onClick={handleSubmit(onCreate)} className={styles.button} variant='contained' color='primary'>
-              Create
-            </Button>
-            <Button onClick={handleSubmit(onUpdate)} className={styles.button} variant='contained' color='primary'>
-              Update
-            </Button>
+            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} idCreate={id} />}
+            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} idCreate={id} />}
             <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
               Cancel
             </Button>
