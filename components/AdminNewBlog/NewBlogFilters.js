@@ -1,11 +1,8 @@
 import React from 'react'
 import styles from '../../styles/AdminNewBlogFilters.module.css'
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
-import MomentUtils from '@date-io/moment'
 import {
   Button,
   Typography,
-  Container,
   Grid,
   FormControl,
   TextField,
