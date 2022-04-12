@@ -13,7 +13,6 @@ import style from '../../../styles/admin/StaticPage.module.css'
 
 export default function StaticPage() {
   const trans = useTrans()
-  console.log(trans)
   const router = useRouter()
   const data = JSON.parse(dataJson)
   // const [data, setData] = useState('')
@@ -43,6 +42,7 @@ export default function StaticPage() {
   return (
     <>
       <div className= {style.dFlex}>
+<<<<<<< HEAD
         <Button onClick={handleCreate} color='primary' variant='contained' className= {style.buttonLeft}>Create New</Button>
       </div>
       <TableList
@@ -52,6 +52,56 @@ export default function StaticPage() {
         onUpdate={handleUpdate}
         onDelete={handleDelete}
       />
+=======
+        <Button className={style.buttonLeft} color='primary' variant='contained' onClick={handleChangeURL}>
+          {trans.static_page.createNew}
+        </Button>
+      </div>
+      <Paper sx={{ width: '100%' }}>
+        <TableContainer>
+          <Table stickyHeader={true}>
+            <TableHead>
+              <TableRow>
+                {headerTable.map((item) => (
+                  <TableCell align='justify' variant='head' key={item.id}>
+                    {item.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {data.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell> {index + 1} </TableCell>
+                  <TableCell>{item.title}</TableCell>
+                  <TableCell>{item.author}</TableCell>
+                  <TableCell>{item.date}</TableCell>
+                  <TableCell>{item.status}</TableCell>
+                  <TableCell>{item.view}</TableCell>
+                  <TableCell>
+                    <Link href='#'>{<VisibilityIcon color='secondary' className= {style.icon} fontSize='small' />}</Link> |{' '}
+                    {''}
+                    <Link href={{ pathname: 'static_page/add', query: { slug: 'about', mode: 'edit' }}} passHref>
+                      {<EditIcon className= {style.icon} color='primary' fontSize='small' />}
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 15]}
+          component='div'
+          rowsPerPage={rowsPerPage}
+          count={data.length}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+>>>>>>> e551726 (fix version)
     </>
   )
 }
