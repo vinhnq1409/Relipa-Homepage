@@ -19,7 +19,7 @@ export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
   const dispatch = useDispatch()
-  const { blog } = useSelector((state) => state.blog)
+  const { blog } = useSelector((state) => state.new)
   const [valueEditor, setValueEditor] = useState('')
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState({ notification: false, title: true })
@@ -33,6 +33,14 @@ export default function AddNews() {
       setValue('tags', blog.tags)
       setValue('friendly_url', blog.friendlyUrl)
       setValueEditor(blog.content)
+    } else {
+      setValue('title', '')
+      setValue('desc', '')
+      setValue('meta', '')
+      setValue('url_image_meta', '')
+      setValue('tags', '')
+      setValue('friendly_url', '')
+      setValueEditor('')
     }
   }, [])
 
@@ -239,34 +247,37 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <div className={styles.root}>
-              <div className={styles.wrapper}>
-                <Button
-                  variant='contained'
-                  className={styles.button}
-                  color='primary'
-                  disabled={loading}
-                  onClick={handleSubmit(onCreate)}
-                >
-                  Create
-                </Button>
-                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+            {Object.keys(blog).length === 0 ? (
+              <div className={styles.root}>
+                <div className={styles.wrapper}>
+                  <Button
+                    variant='contained'
+                    className={styles.button}
+                    color='primary'
+                    disabled={loading}
+                    onClick={handleSubmit(onCreate)}
+                  >
+                    Create
+                  </Button>
+                  {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+                </div>
               </div>
-            </div>
-            <div className={styles.root}>
-              <div className={styles.wrapper}>
-                <Button
-                  onClick={handleSubmit(onUpdate)}
-                  className={styles.button}
-                  variant='contained'
-                  disabled={loading}
-                  color='primary'
-                >
-                  Update
-                </Button>
-                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+            ) : (
+              <div className={styles.root}>
+                <div className={styles.wrapper}>
+                  <Button
+                    onClick={handleSubmit(onUpdate)}
+                    className={styles.button}
+                    variant='contained'
+                    disabled={loading}
+                    color='primary'
+                  >
+                    Update
+                  </Button>
+                  {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
+                </div>
               </div>
-            </div>
+            )}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
