@@ -1,19 +1,19 @@
 import React from "react";
-import { Table, TableBody, TableContainer, Paper } from "@material-ui/core";
-import { EnhancedTableHead } from "./tableHeader";
+import { Link, TableRow, TableCell, Table } from "@material-ui/core";
 
-export const CommonTable = ({
-  headCells
-}) => {
+export const TableList = ({ id, item }) => {
+
   return (
-    <Paper sx = {{width: '100%'}}>
-      <TableContainer>
-        <Table stickyHeader = {true}>
-          <EnhancedTableHead 
-            headCells={headCells}
-          />
-        </Table>
-      </TableContainer>
-    </Paper>
+    <>
+      <TableRow key={id}>
+        <TableCell> {id + 1} </TableCell>
+        <TableCell>{item.subject}</TableCell>
+        <TableCell>{item.author}</TableCell>
+        <TableCell>
+          <Link>View</Link> | {' '}
+          <Link>Edit</Link>
+        </TableCell>
+      </TableRow>
+    </>
   )
-};
+}

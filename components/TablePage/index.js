@@ -1,15 +1,13 @@
 import React from "react";
-import { TableList } from "./componentTable/tableItem";
-import { CommonTable } from "./componentTable/tableList";
+import { TableList } from "./componentTable/tableList";
+import { CommonTable } from "./componentTable/CommonTable";
 
-export const RenderPage = (props) => {
-  const {sort,handleClickSort} = props;
-
+export const RenderPage = () => {
   const headerTable = [
-    { id: "no", isSort: false, label: 'No'},
-    { id: "subject", isSort: false, label: 'Subject'},
-    { id: "author", isSort: false, label: 'Author'},
-    { id: "detail", isSort: false, label: 'Detail' },
+    { id: "no", isSort: false, label: "No" },
+    { id: "subject", isSort: false, label: "Subject" },
+    { id: "author", isSort: false, label: "Author" },
+    { id: "detail", isSort: false, label: "Detail" },
   ];
 
   const data = [
@@ -34,13 +32,12 @@ export const RenderPage = (props) => {
       author: "Nguyễn Văn An",
     },
   ];
+  
   return (
     <>
-      <CommonTable
-        headCells={headerTable}
-      >
-        {data.map((item,index) => (
-          <TableList key = {index} id = {index} item = {item} />
+      <CommonTable headCells={headerTable}>
+        {data.map((item, index) => (
+          <TableList key={index} id={index} item={item} />
         ))}
       </CommonTable>
     </>
