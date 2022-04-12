@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { useRouter } from 'next/router'
 // creates a beautiful scrollbar
-import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 import { makeStyles } from '@material-ui/core/styles'
 // core components
 import Navbar from 'components/Navbars/Navbar.js'
@@ -27,11 +26,7 @@ export default function Admin({ children, ...rest }) {
   const classes = useStyles()
   // ref to help us initialize PerfectScrollbar on windows devices
   const mainPanel = createRef()
-  // states and functions
-  const [image, setImage] = useState(bgImage)
-  const [color, setColor] = useState('white')
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [fixedClasses, setFixedClasses] = useState('dropdown show')
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const dispatch = useDispatch()
   const [roleUser] = useState('member')
@@ -64,20 +59,6 @@ export default function Admin({ children, ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-  //set background for slide bar
-  const handleImageClick = (image) => {
-    setImage(image)
-  }
-  const handleColorClick = (color) => {
-    setColor(color)
-  }
-  const handleFixedClick = () => {
-    if (fixedClasses === 'dropdown') {
-      setFixedClasses('dropdown show')
-    } else {
-      setFixedClasses('dropdown')
-    }
-  }
 
   return (
     <>
@@ -87,10 +68,10 @@ export default function Admin({ children, ...rest }) {
             routes={routes}
             logoText={'Relipa Admin'}
             logo={logo}
-            image={image}
+            image={bgImage}
             handleDrawerToggle={handleDrawerToggle}
             open={mobileOpen}
-            color={color}
+            color='white'
             {...rest}
           />
           <div className={classes.mainPanel} ref={mainPanel}>
@@ -99,14 +80,6 @@ export default function Admin({ children, ...rest }) {
               <div className={classes.container}>{children}</div>
             </div>
             <Footer />
-            <FixedPlugin
-              handleImageClick={handleImageClick}
-              handleColorClick={handleColorClick}
-              bgColor={color}
-              bgImage={image}
-              handleFixedClick={handleFixedClick}
-              fixedClasses={fixedClasses}
-            />
           </div>
         </div>
       ) : (
