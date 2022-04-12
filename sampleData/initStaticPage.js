@@ -100,9 +100,3 @@ export const headerJson = JSON.stringify(tableHead)
 //     slug: '10'
 //   }
 // ]
-
-<<<<<<< HEAD
-=======
-// 
-  
->>>>>>> 1606dd2 (upload transalte vietnam)

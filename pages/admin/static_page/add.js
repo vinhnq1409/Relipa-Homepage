@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import { TextField, Button, FormHelperText, Grid, CircularProgress } from '@material-ui/core'
+import { TextField, Button, FormHelperText, Grid, CircularProgress, ButtonGroup } from '@material-ui/core'
 import { Editor } from '@tinymce/tinymce-react'
 import { initMCE } from '../../../sampleData/initMCE'
 import { Controller, useForm } from 'react-hook-form'
@@ -34,11 +34,18 @@ export default function AdminEditStaticPage() {
   const {
     handleSubmit,
     formState: { errors },
-    control
+    control,
+    reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onSubmit = (data, e) => {
     if (editorRef.current) {}
+  }
+
+  const onReset = () => {
+    reset({
+      ...defaultValues
+    })
   }
   return (
     <>
@@ -113,18 +120,17 @@ export default function AdminEditStaticPage() {
           </Grid>
         </Grid>
 
-        <Grid container justifyContent='center'>
-          <Grid container xs={4} justifyContent='center'>
-            <Grid item xs={5}>
+        <Grid container spacing={3} justifyContent='center'>
+          <Grid container justifyContent='center'>
+            <ButtonGroup color='primary' >
               <Button type='submit' variant='contained' color='primary' className={style.buttonSubmit}>
                 {trans.static_page.submit}
               </Button>
-            </Grid>
-            <Grid item xs={5}>
-              <Button variant='contained' color='primary' className={style.buttonSubmit}>
+
+              <Button onClick={onReset} variant='contained' color='primary' className={style.buttonSubmit}>
                 {trans.static_page.reset}
               </Button>
-            </Grid>
+            </ButtonGroup>
           </Grid>
         </Grid>
       </form>

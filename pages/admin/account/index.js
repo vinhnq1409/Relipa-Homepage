@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core'
 import { dataUJson, headerUJson } from '../../../sampleData/userInfo'
 import TableListAdmin from './tableAdmin'
 import { useRouter } from 'next/router'
+import useTrans from '../../../i18n/useTrans'
 import style from '../../../styles/admin/StaticPage.module.css'
 export default function Account() {
   const trans = useTrans()

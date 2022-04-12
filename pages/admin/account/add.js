@@ -218,9 +218,19 @@ export default function AdminAddAcount() {
                 </Select>
               </Grid>
             </Grid>
-            <Button type='submit' fullWidth variant='contained' color='primary' className={style.submit}>
-              {trans.admin_account.submit}
-            </Button>
+
+            <Grid container align = 'center' xs={12}>
+              <Grid xs = {6}>
+                <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                  {trans.admin_account.submit}
+                </Button>
+              </Grid>
+              <Grid xs = {6}>
+                <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                  {trans.admin_account.reset}
+                </Button>
+              </Grid>
+            </Grid>
           </form>
         </div>
         <div>

@@ -29,6 +29,7 @@
         "area": "Bộ phận",
         "role": "Vị trí",
         "submit": "Xác nhận",
+        "reset":"Nhập lại",
         "create_account": "Tạo tài khoản",
         "total_user": "Tổng số người dùng",
         "item_per_page": "Số người dùng mỗi trang"

@@ -29,6 +29,7 @@
         "area": "Area",
         "role": "Role",
         "submit": "Submit",
+        "reset": "Reset",
         "create_account": "Create Account",
         "total_user": "Total User",
         "item_per_page": "Item per page"
