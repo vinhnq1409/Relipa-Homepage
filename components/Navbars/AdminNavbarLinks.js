@@ -23,6 +23,11 @@ import useWindowSize from 'components/Hooks/useWindowSize.js'
 import { logoutApi } from '../../api/reactQueryApi'
 import styles from 'assets/jss/nextjs-material-dashboard/components/headerLinksStyle.js'
 import { removeCookie, STORAGEKEY } from '../../utils/storage'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
+import FormChangePassword from '../changePassword/FormChangePassword'
+import stylesModule from '../../styles/admin/signin.module.css'
 
 export default function AdminNavbarLinks() {
   const router = useRouter()
@@ -35,6 +40,7 @@ export default function AdminNavbarLinks() {
   const [openNotification, setOpenNotification] = useState(null)
   const [openProfile, setOpenProfile] = useState(null)
   const [openLanguage, setOpenLanguage] = useState(null)
+  const [open, setOpen] = useState(false)
 
   const handleClickNotification = (event) => {
     if (openNotification && openNotification.contains(event.target)) {
@@ -71,6 +77,12 @@ export default function AdminNavbarLinks() {
   }
   const handleCloseLanguage = () => {
     setOpenLanguage(null)
+  }
+  const handleOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
   }
   return (
     <div>
@@ -232,6 +244,9 @@ export default function AdminNavbarLinks() {
                     <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Profile
                     </MenuItem>
+                    <MenuItem onClick={handleOpen} className={classes.dropdownItem}>
+                      Change password
+                    </MenuItem>
                     <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
                       Settings
                     </MenuItem>
@@ -246,6 +261,24 @@ export default function AdminNavbarLinks() {
           )}
         </Poppers>
       </div>
+      <Modal
+        aria-labelledby='transition-modal-title'
+        aria-describedby='transition-modal-description'
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500
+        }}
+      >
+        <Fade in={open}>
+          <div className={stylesModule.modal_wrapper}>
+            <FormChangePassword />
+          </div>
+        </Fade>
+      </Modal>
     </div>
   )
 }

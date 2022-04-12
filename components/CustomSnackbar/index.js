@@ -10,7 +10,12 @@ function Alert(props) {
 export default function CustomizedSnackbars({ message, open, onClose, severity }) {
   return (
     <div className={styles.fw}>
-      <Snackbar open={open} autoHideDuration={3000} onClose={onClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={onClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+      >
         <Alert onClose={onClose} severity={severity}>
           {message}
         </Alert>

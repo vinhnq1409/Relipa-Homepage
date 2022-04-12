@@ -3,8 +3,12 @@ import { post, get } from './BaseRequest'
 
 // signin Api
 export const signinApi = () => {
-  // return useMutation((dataForm) => post('oauth/token', dataForm))
-  return useMutation((dataForm) => post('user/login', dataForm))
+  return useMutation((dataForm) => post('login', dataForm))
 }
 // logout api
-export const logoutApi = () => get(`user/logout`)
+export const logoutApi = () => get(`logout`)
+
+//change password
+export const changePasswordApi = () => {
+  return useMutation((dataForm) => post('changePassword', dataForm))
+}
