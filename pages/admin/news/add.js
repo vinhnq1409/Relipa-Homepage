@@ -14,26 +14,26 @@ import { post, put } from '../../../api/BaseRequest'
 import { resetNews } from '../../../redux/slices/newsSlice'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import Notification from '../../../components/Notification/Notification'
+import BtnLoading from '../../../components/button/BtnLoading'
 
 export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
   const dispatch = useDispatch()
-  const { blog } = useSelector((state) => state.blog)
+  const { news } = useSelector((state) => state.new)
   const [valueEditor, setValueEditor] = useState('')
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState({ notification: false, title: true })
 
   useEffect(() => {
-    if (Object.keys(blog).length !== 0) {
-      setValue('title', blog.title)
-      setValue('desc', blog.desc)
-      setValue('meta', blog.meta)
-      setValue('url_image_meta', blog.urlImageMeta)
-      setValue('tags', blog.tags)
-      setValue('friendly_url', blog.friendlyUrl)
-      setValueEditor(blog.content)
-    }
+    const hashNews = Object.keys(news).length !== 0
+    setValue('title', hashNews ? news.title : '')
+    setValue('desc', hashNews ? news.desc : '')
+    setValue('meta', hashNews ? news.meta : '')
+    setValue('url_image_meta', hashNews ? news.urlImageMeta : '')
+    setValue('tags', hashNews ? news.tags : '')
+    setValue('friendly_url', hashNews ? news.friendlyUrl : '')
+    setValueEditor(hashNews ? news.content : '')
   }, [])
 
   const validationSchema = Yup.object().shape({
@@ -239,34 +239,15 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <div className={styles.root}>
-              <div className={styles.wrapper}>
-                <Button
-                  variant='contained'
-                  className={styles.button}
-                  color='primary'
-                  disabled={loading}
-                  onClick={handleSubmit(onCreate)}
-                >
-                  Create
-                </Button>
-                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
-              </div>
-            </div>
-            <div className={styles.root}>
-              <div className={styles.wrapper}>
-                <Button
-                  onClick={handleSubmit(onUpdate)}
-                  className={styles.button}
-                  variant='contained'
-                  disabled={loading}
-                  color='primary'
-                >
-                  Update
-                </Button>
-                {loading && <CircularProgress size={24} className={styles.buttonProgress} />}
-              </div>
-            </div>
+            <BtnLoading
+              loading={loading}
+              onClick={
+                router.query?.id !== undefined && router.query?.mode === 'edit'
+                  ? handleSubmit(onUpdate)
+                  : handleSubmit(onCreate)
+              }
+              idCreate={router.query.id}
+            />
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
