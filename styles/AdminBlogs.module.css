@@ -59,31 +59,10 @@
   margin-top: 30px;
 }
 
-/* .border{
-  border: 1px solid black;
-  border-radius: 4px;
-  position: relative;
-  padding: 40px;
+.flex2{
+  display: flex !important;
+  justify-content: center;
 }
-
-.heading{
-  padding: 0 10px;
-  position: absolute;
-  top: 0;
-  left: 20;
-  transform: translateY(-60%);
-  z-index: 99;
-  background-color: #eeeeee;
-}
-
-.formLabel{
-  width: 20%;
-}
-
-.formSelect{
-  height: 45px;
-  background-color: unset;
-} */
 
 /* CSS ADD BLOGS */
 .full {
