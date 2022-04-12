@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Admin from 'layouts/Admin.js'
 import moment from 'moment'
-import { useQuery } from 'react-query'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-import { Container } from '@material-ui/core'
-
 import TableList from '../../../components/Table/Table'
-import { get } from '../../../api/BaseRequest'
+import { get , del } from '../../../api/BaseRequest'
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
+import CustomizedSnackbars from '../../../components/CustomSnackbar'
+import { Paper } from '@material-ui/core'
+import styles from '../../../styles/AdminNew.module.css'
 
-const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
+const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
   { id: 1, subject: 'subject1', author: 'Truc', date: '22/04/2022', status: 'public', views: 666 },
   { id: 2, subject: 'subject2', author: 'Truc', date: '22/04/2022', status: 'public', views: 666 },
@@ -19,26 +20,47 @@ const data = [
 ]
 
 export default function News() {
+  const dispatch = useDispatch()
+  const queryClient = useQueryClient()
+
   const [filters, setFilters] = useState({
     title: '',
     sort: '',
-    start_date: null,
-    end_date: moment().format('yyyy/MM/DD')
+    // start_date: null,
+    // end_date: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
   const [isSearch, setIsSearch] = useState(false)
+  const [openSnackbar, setOpenSnackbar] = useState(false)
 
   const getDataNewList = async () => {
     const response = await get('news', { ...filters, ...params })
-    return response
+    return response.data
+  }
+  
+  const deleteNewItem = async(id) => {
+    const response = await del(`news/${id}`)
+    return response.data
   }
 
-  const dispatch = useDispatch()
-
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
+  const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
+    retry: 3,
+    onError: (_error, _blog) => {
+      setOpenSnackbar(true)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('getDataNewList')
+      setOpenSnackbar(true)
+    }
+  })
+
+  const handleCloseSnackBars = () => {
+    setOpenSnackbar(false)
+  }
 
   const handleSearch = () => {
     setIsSearch(!isSearch)
@@ -87,7 +109,8 @@ export default function News() {
   }
 
   const handleDelete = (id) => {
-    console.log('Delete', id)
+    // console.log('Delete', id)
+    mutateDeleteNew(id)
   }
 
   // Start code add blogs
@@ -98,7 +121,7 @@ export default function News() {
   }
 
   return (
-    <div className='new'>
+    <Paper className={styles.new}>
       <NewFilters
         header={'NEW'}
         handleSearch={handleSearch}
@@ -116,7 +139,13 @@ export default function News() {
         params={params}
         setParams={setParams}
       />
-    </div>
+      {isSuccess && (
+        <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleCloseSnackBars} />
+      )}
+      {isErrorDelete && (
+        <CustomizedSnackbars open={openSnackbar} message={errorDelete.message} severity='error' onClose={handleCloseSnackBars} />
+      )}
+    </Paper>
   )
 }
 
