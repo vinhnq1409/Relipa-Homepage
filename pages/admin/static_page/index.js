@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import useTrans from '../../../i18n/useTrans'
+<<<<<<< HEAD
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
 import { Button } from '@material-ui/core'
 import style from '../../../styles/admin/StaticPage.module.css'
+=======
+>>>>>>> 7a4070a (fix dashboard admin)
 
 export default function StaticPage() {
+  const trans = useTrans()
+  console.log(trans)
   const router = useRouter()
   const data = JSON.parse(dataJson)
   // const [data, setData] = useState('')
