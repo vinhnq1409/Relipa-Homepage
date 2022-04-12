@@ -4,7 +4,7 @@ const { publicRuntimeConfig } = getConfig()
 
 const getUrlPrefix = () => '/'
 const instance = axios.create({
-  baseURL: publicRuntimeConfig.apiUrl,
+  baseURL: publicRuntimeConfig.apiUrl
 })
 
 export function setAuthHeader(token) {
@@ -30,8 +30,8 @@ const put = async (url, data = {}) => {
       response = await instance.put(getUrlPrefix() + url, data, {
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       })
     }
     return _responseHandler(response)
@@ -78,8 +78,8 @@ const patch = async (url, data = {}) => {
       response = await instance.patch(getUrlPrefix() + url, data, {
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       })
     }
     return _responseHandler(response)

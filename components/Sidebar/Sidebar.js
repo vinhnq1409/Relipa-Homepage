@@ -19,7 +19,7 @@ import styles from 'assets/jss/nextjs-material-dashboard/components/sidebarStyle
 
 export default function Sidebar(props) {
   //role
-  const [roleUser] = useState('member')
+  const [roleUser] = useState('admin')
   // used for checking current route
   const router = useRouter()
   // creates styles for this component

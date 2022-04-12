@@ -73,7 +73,7 @@ export default function Add() {
   }
   const usePutBlog = () => {
     return useMutation(putBlogAPI)
-  } 
+  }
   const { mutate: postBlog } = usePostBlog()
   const { mutate: putBlog } = usePutBlog()
 
