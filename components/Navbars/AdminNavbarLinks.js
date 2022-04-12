@@ -85,7 +85,7 @@ export default function AdminNavbarLinks() {
     setOpen(false)
   }
   return (
-    <div>
+    <div className={classes.appbar}>
       <div className={classes.searchWrapper}>
         <CustomInput
           formControlProps={{
@@ -102,164 +102,166 @@ export default function AdminNavbarLinks() {
           <Search />
         </Button>
       </div>
-      <div className={classes.manager}>
-        <Button
-          color={size.width > 959 ? 'transparent' : 'white'}
-          justIcon={size.width > 959}
-          simple={!(size.width > 959)}
-          aria-label='Language'
-          className={classes.buttonLink}
-          onClick={handleClickLanguage}
-        >
-          <Language className={classes.icons} />
-          <Hidden mdUp implementation='css'>
-            <p onClick={handleCloseLanguage} className={classes.linkText}>
-              Language
-            </p>
-          </Hidden>
-        </Button>
-        <Poppers
-          open={Boolean(openLanguage)}
-          anchorEl={openLanguage}
-          transition
-          disablePortal
-          className={classNames({ [classes.popperClose]: !openLanguage }) + ' ' + classes.popperNav}
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              id='notification-menu-list-grow'
-              style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleCloseLanguage}>
-                  <MenuList role='menu'>
-                    <MenuItem onClick={() => changeLang('vi')} className={classes.dropdownItem}>
-                      VI
-                    </MenuItem>
-                    <MenuItem onClick={() => changeLang('en')} className={classes.dropdownItem}>
-                      EN
-                    </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Poppers>
-      </div>
+      <div>
+        <div className={classes.manager}>
+          <Button
+            color={size.width > 959 ? 'transparent' : 'white'}
+            justIcon={size.width > 959}
+            simple={!(size.width > 959)}
+            aria-label='Language'
+            className={classes.buttonLink}
+            onClick={handleClickLanguage}
+          >
+            <Language className={classes.icons} />
+            <Hidden mdUp implementation='css'>
+              <p onClick={handleCloseLanguage} className={classes.linkText}>
+                Language
+              </p>
+            </Hidden>
+          </Button>
+          <Poppers
+            open={Boolean(openLanguage)}
+            anchorEl={openLanguage}
+            transition
+            disablePortal
+            className={classNames({ [classes.popperClose]: !openLanguage }) + ' ' + classes.popperNav}
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id='notification-menu-list-grow'
+                style={{
+                  transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleCloseLanguage}>
+                    <MenuList role='menu'>
+                      <MenuItem onClick={() => changeLang('vi')} className={classes.dropdownItem}>
+                        VI
+                      </MenuItem>
+                      <MenuItem onClick={() => changeLang('en')} className={classes.dropdownItem}>
+                        EN
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Poppers>
+        </div>
 
-      <div className={classes.manager}>
-        <Button
-          color={size.width > 959 ? 'transparent' : 'white'}
-          justIcon={size.width > 959}
-          simple={!(size.width > 959)}
-          aria-owns={openNotification ? 'notification-menu-list-grow' : null}
-          aria-haspopup='true'
-          onClick={handleClickNotification}
-          className={classes.buttonLink}
-        >
-          <Notifications className={classes.icons} />
-          <span className={classes.notifications}>5</span>
-          <Hidden mdUp implementation='css'>
-            <p onClick={handleCloseNotification} className={classes.linkText}>
-              Notification
-            </p>
-          </Hidden>
-        </Button>
-        <Poppers
-          open={Boolean(openNotification)}
-          anchorEl={openNotification}
-          transition
-          disablePortal
-          className={classNames({ [classes.popperClose]: !openNotification }) + ' ' + classes.popperNav}
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              id='notification-menu-list-grow'
-              style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleCloseNotification}>
-                  <MenuList role='menu'>
-                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
-                      Mike John responded to your email
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
-                      You have 5 new tasks
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
-                      You{"'"}re now friend with Andrew
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
-                      Another Notification
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
-                      Another One
-                    </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Poppers>
-      </div>
-      <div className={classes.manager}>
-        <Button
-          color={size.width > 959 ? 'transparent' : 'white'}
-          justIcon={size.width > 959}
-          simple={!(size.width > 959)}
-          aria-owns={openProfile ? 'profile-menu-list-grow' : null}
-          aria-haspopup='true'
-          onClick={handleClickProfile}
-          className={classes.buttonLink}
-        >
-          <Person className={classes.icons} />
-          <Hidden mdUp implementation='css'>
-            <p className={classes.linkText}>Profile</p>
-          </Hidden>
-        </Button>
-        <Poppers
-          open={Boolean(openProfile)}
-          anchorEl={openProfile}
-          transition
-          disablePortal
-          className={classNames({ [classes.popperClose]: !openProfile }) + ' ' + classes.popperNav}
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              id='profile-menu-list-grow'
-              style={{
-                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleCloseProfile}>
-                  <MenuList role='menu'>
-                    <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
-                      Profile
-                    </MenuItem>
-                    <MenuItem onClick={handleOpen} className={classes.dropdownItem}>
-                      Change password
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
-                      Settings
-                    </MenuItem>
-                    <Divider light />
-                    <MenuItem onClick={handleLogout} className={classes.dropdownItem}>
-                      Logout
-                    </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Poppers>
+        <div className={classes.manager}>
+          <Button
+            color={size.width > 959 ? 'transparent' : 'white'}
+            justIcon={size.width > 959}
+            simple={!(size.width > 959)}
+            aria-owns={openNotification ? 'notification-menu-list-grow' : null}
+            aria-haspopup='true'
+            onClick={handleClickNotification}
+            className={classes.buttonLink}
+          >
+            <Notifications className={classes.icons} />
+            <span className={classes.notifications}>5</span>
+            <Hidden mdUp implementation='css'>
+              <p onClick={handleCloseNotification} className={classes.linkText}>
+                Notification
+              </p>
+            </Hidden>
+          </Button>
+          <Poppers
+            open={Boolean(openNotification)}
+            anchorEl={openNotification}
+            transition
+            disablePortal
+            className={classNames({ [classes.popperClose]: !openNotification }) + ' ' + classes.popperNav}
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id='notification-menu-list-grow'
+                style={{
+                  transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleCloseNotification}>
+                    <MenuList role='menu'>
+                      <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                        Mike John responded to your email
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                        You have 5 new tasks
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                        You{"'"}re now friend with Andrew
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                        Another Notification
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseNotification} className={classes.dropdownItem}>
+                        Another One
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Poppers>
+        </div>
+        <div className={classes.manager}>
+          <Button
+            color={size.width > 959 ? 'transparent' : 'white'}
+            justIcon={size.width > 959}
+            simple={!(size.width > 959)}
+            aria-owns={openProfile ? 'profile-menu-list-grow' : null}
+            aria-haspopup='true'
+            onClick={handleClickProfile}
+            className={classes.buttonLink}
+          >
+            <Person className={classes.icons} />
+            <Hidden mdUp implementation='css'>
+              <p className={classes.linkText}>Profile</p>
+            </Hidden>
+          </Button>
+          <Poppers
+            open={Boolean(openProfile)}
+            anchorEl={openProfile}
+            transition
+            disablePortal
+            className={classNames({ [classes.popperClose]: !openProfile }) + ' ' + classes.popperNav}
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id='profile-menu-list-grow'
+                style={{
+                  transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleCloseProfile}>
+                    <MenuList role='menu'>
+                      <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
+                        Profile
+                      </MenuItem>
+                      <MenuItem onClick={handleOpen} className={classes.dropdownItem}>
+                        Change password
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseProfile} className={classes.dropdownItem}>
+                        Settings
+                      </MenuItem>
+                      <Divider light />
+                      <MenuItem onClick={handleLogout} className={classes.dropdownItem}>
+                        Logout
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Poppers>
+        </div>
       </div>
       <Modal
         aria-labelledby='transition-modal-title'
