@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import { dataUJson, headerUJson } from '../../../sampleData/userInfo'
 import TableListAdmin from './tableAdmin'
 import { useRouter } from 'next/router'
-import style from '../../../style/admin/StaticPage.module.css'
+import style from '../../../styles/admin/StaticPage.module.css'
 export default function Account() {
   const router = useRouter()
   const dataUse = JSON.parse(dataUJson)

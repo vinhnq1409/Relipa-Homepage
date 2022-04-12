@@ -19,7 +19,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
-import style from '../../../style/admin/AdminAccount.module.css'
+import style from '../../../styles/admin/AdminAccount.module.css'
 
 export default function AdminAddAcount() {
   const [type, setType] = useState('password')

@@ -6,7 +6,7 @@ import useTrans from '../../../i18n/useTrans'
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
 import { Button } from '@material-ui/core'
-import style from '../../../style/admin/StaticPage.module.css'
+import style from '../../../styles/admin/StaticPage.module.css'
 
 export default function StaticPage() {
   const router = useRouter()

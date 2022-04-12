@@ -1,20 +1,22 @@
-import Grid from '@material-ui/core/Grid'
-import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
-import Select from '@material-ui/core/Select'
+import {
+  Grid,
+  MenuItem,
+  Paper,
+  Select,
+  FormControl,
+  TableHead,
+  TableCell,
+  Table,
+  TableRow,
+  TableBody
+} from '@material-ui/core'
 import Pagination from '@material-ui/lab/Pagination'
-import FormControl from '@material-ui/core/FormControl'
 import Muted from '../../../components/Typography/Muted'
 import styles from '../../../styles/AdminBlogs.module.css'
-import TableHead from '@material-ui/core/TableHead'
-import TableCell from '@material-ui/core/TableCell'
-import Table from '@material-ui/core/Table'
-import TableRow from '@material-ui/core/TableRow'
-import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const [params, setParams] = useState({})
@@ -40,7 +42,7 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
         <Grid item className={styles.flex}>
           <Muted>Item per page:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue = {number} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue={number} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
