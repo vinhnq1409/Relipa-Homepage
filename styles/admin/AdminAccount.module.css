@@ -9,16 +9,26 @@
 }
 
 .submit {
+<<<<<<< HEAD:styles/admin/AdminAccount.module.css
   margin: 30px 0 !important;
 }
 
 .avatar {
   width: 120px !important;
   height: 120px !important;
+=======
+
+}
+
+.avatar {
+  width: 80px !important;
+  height: 80px !important;
+>>>>>>> b286d38 (conflix):style/admin/AdminAccount.module.css
 }
 
 .title {
   text-transform: uppercase;
+<<<<<<< HEAD:styles/admin/AdminAccount.module.css
   margin: 1em !important;
   font-size: 30px !important;
   font-weight: bold !important;
@@ -30,4 +40,6 @@
 
 .icon:hover {
   opacity: 0.5;
+=======
+>>>>>>> b286d38 (conflix):style/admin/AdminAccount.module.css
 }
