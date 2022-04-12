@@ -4,8 +4,6 @@ import TableList from '../../../components/Table/Table'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { addBlog } from '../../../redux/slices/blogSlice'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
@@ -97,37 +95,18 @@ export default function Blogs() {
 
   // Start code add blogs
   const router = useRouter()
-  const dispatch = useDispatch()
 
   const handleCreate = () => {
     router.push('/admin/blogs/add')
   }
 
-  const handleUpdate = (blog) => {
-    dispatch(
-      addBlog({
-        id: 1,
-        title: 'A nice article',
-        desc: 'This is blog description',
-        meta: 'This is blog meta',
-        urlImageMeta: 'This is url image meta',
-        content: 'This is blog content',
-        tags: 'This is blog content',
-        friendlyUrl: 'This is blog url friendly'
-      })
-    )
+  const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/blogs/add',
-      query: {
-        slug: 'about',
-        mode: 'edit',
-        name: {
-          titile: 'a',
-          meta: 'b'
-        }
-      }
+      query: { slug: 'about', mode: 'edit', id: '6' }
     })
   }
+
   // End code add blogs
 
   const handleDelete = (id) => {
