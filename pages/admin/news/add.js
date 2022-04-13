@@ -1,47 +1,93 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, CircularProgress, Grid, Snackbar, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { Controller, useForm } from 'react-hook-form'
-import { useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-
 import styles from '../../../styles/AdminBlogs.module.css'
-import { post, put } from '../../../api/BaseRequest'
-import { resetNews } from '../../../redux/slices/newsSlice'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
-import Notification from '../../../components/Notification/Notification'
+import { get, post, put } from '../../../api/BaseRequest'
+import { useQuery, useMutation } from 'react-query'
 import BtnLoading from '../../../components/button/BtnLoading'
+import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
 export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
-  const dispatch = useDispatch()
-  const { news } = useSelector((state) => state.new)
+  const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [notification, setNotification] = useState({ notification: false, title: true })
+  const [snackbar, setSnackbar] = useState({
+    message: '',
+    open: false,
+    severity: 'success'
+  })
+
+  const getNews = async () => {
+    return await get(`news/${id}`)
+  }
+
+  const postNews = async (data) => {
+    return await post('news', data)
+  }
+
+  const putNews = async (data) => {
+    return await put(`news/${id}`, data)
+  }
+
+  const { data: dataNews, remove: removeData } = useQuery('getNews', getNews, { enabled: !!id })
+
+  const { mutate: postNewsAPI, isLoading: isPostingNewsAPI } = useMutation(postNews, {
+    onSuccess: () => {
+      setSnackbar({ message: 'Create success !!', open: true, severity: 'success' })
+      setTimeout(() => {
+        router.push('/admin/news/')
+      }, 2000)
+    },
+    onError: (error) => {
+      const listError = Object.values(error.response.data.errors)
+      listError.forEach((element) => {
+        setSnackbar({ message: element, open: true, severity: 'error' })
+      })
+    }
+  })
+
+  const { mutate: putNewsAPI, isLoading: isPutingNewsAPI } = useMutation(putNews, {
+    onSuccess: () => {
+      setSnackbar({ message: 'Edit success !!', open: true, severity: 'success' })
+      setTimeout(() => {
+        router.push('/admin/news/')
+      }, 2000)
+    },
+    onError: (error) => {
+      const listError = Object.values(error.response.data.errors)
+      listError.forEach((element) => {
+        setSnackbar({ message: element, open: true, severity: 'error' })
+      })
+    }
+  })
 
   useEffect(() => {
-    const hashNews = Object.keys(news).length !== 0
-    setValue('title', hashNews ? news.title : '')
-    setValue('desc', hashNews ? news.desc : '')
-    setValue('meta', hashNews ? news.meta : '')
-    setValue('url_image_meta', hashNews ? news.urlImageMeta : '')
-    setValue('tags', hashNews ? news.tags : '')
-    setValue('friendly_url', hashNews ? news.friendlyUrl : '')
-    setValueEditor(hashNews ? news.content : '')
+    if (!router.query.id) {
+      removeData()
+    }
   }, [])
 
+  useEffect(() => {
+    setValue('title', dataNews?.data.title)
+    setValue('desc', dataNews?.data.desc)
+    setValue('meta', dataNews?.data.meta)
+    setValue('url_image_meta', dataNews?.data.url_image_meta)
+    setValue('friendly_url', dataNews?.data.friendly_url)
+    setValueEditor(dataNews?.data.content)
+  }, [dataNews])
+
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
     friendly_url: Yup.string().required('Url friendly is required'),
-    tags: Yup.string().required('Tags is required'),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
       .matches(
@@ -56,7 +102,6 @@ export default function AddNews() {
     meta: '',
     url_image_meta: '',
     content: '',
-    tags: '',
     friendly_url: ''
   }
 
@@ -67,73 +112,31 @@ export default function AddNews() {
     setValue
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const postNewsAPI = (data) => {
-    return post('URL', data)
-  }
-
-  const putNewsAPI = (data) => {
-    return put('URL', data)
-  }
-
-  const usePostNews = () => {
-    return useMutation(postNewsAPI)
-  }
-
-  const usePutNews = () => {
-    return useMutation(putNewsAPI)
-  }
-
-  const { mutate: postNews } = usePostNews()
-  const { mutate: putNews } = usePutNews()
-
   const onCreate = (data) => {
-    setLoading(true)
     if (editorRef.current) {
-      let newData
-      newData = {
+      const newData = {
         ...data,
         content: editorRef.current.getContent()
       }
-      postNews(newData)
+      postNewsAPI(newData)
     }
   }
-
   const onUpdate = (data) => {
-    setLoading(true)
     if (editorRef.current) {
-      let newData
-      newData = {
+      const newData = {
         ...data,
         content: editorRef.current.getContent()
       }
-      putNews(newData)
+      putNewsAPI(newData)
     }
   }
-
   const onResetURL = (data) => {
     const { title } = data
     const resetFriendlyUrl = title.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
-
   const onCancel = () => {
-    dispatch(resetNews())
     router.push('/admin/news')
-  }
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return
-    }
-    setNotification({ notification: false })
-  }
-
-  const onNotification = () => {
-    setNotification({ notification: true, title: 'This is a success message!', severity: 'success' })
-  }
-
-  const onFail = () => {
-    setNotification({ notification: true, title: 'This is a success message!', severity: 'error' })
   }
 
   return (
@@ -176,16 +179,6 @@ export default function AddNews() {
               )}
             />
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
-          </Grid>
-          <Grid item xs={12}>
-            <Controller
-              name='tags'
-              control={control}
-              render={({ field }) => (
-                <TextField fullWidth multiline label='Tags' id='outlined-required' variant='outlined' {...field} />
-              )}
-            />
-            {errors.tags && <Typography className={styles.error}>{errors.tags.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -239,25 +232,20 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            <BtnLoading
-              loading={loading}
-              onClick={
-                router.query?.id !== undefined && router.query?.mode === 'edit'
-                  ? handleSubmit(onUpdate)
-                  : handleSubmit(onCreate)
-              }
-              idCreate={router.query.id}
-            />
+            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} idCreate={id} />}
+            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} idCreate={id} />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
-            </Button>
-            <Button onClick={onNotification} className={styles.button} variant='contained'>
-              Notification
             </Button>
           </Grid>
         </Grid>
       </form>
-      <Notification open={notification} handleClose={handleClose} />
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </>
   )
 }
