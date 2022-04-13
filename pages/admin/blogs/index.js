@@ -1,30 +1,16 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import TableList from '../../../components/Table/Table'
+import TableList from '../../../components/AdminNewBlog/Table'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
+import Paper from '@material-ui/core/Paper'
+import styles from '../../../styles/AdminBlogs.module.css'
 
-const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
-// const data1 = [
-//   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 4, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 5, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 6, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 7, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 8, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 9, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
-//   { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
-// ]
-
-
-
-
+const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 
 export default function Blogs() {
   const [params, setParams] = useState({
@@ -36,45 +22,51 @@ export default function Blogs() {
     page: 1
   })
 
-  const [openSnackbar, setOpenSnackbar] = useState(false)
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    type: ''
+  })
+
 
   const handleClose = () => {
     setOpenSnackbar(false)
   }
 
-  // const getBlogs = async() => {
-  //   return await get('blogs', params)
-  // }
   const getBlogs = () => {
-    return get('blogs')
+    return get('blogs', params)
   }
+
   const deleteBlog = (blogId) => {
-    return del(`blogs/${blogId}`)
+    return del(`blogss/${blogId}`)
   }
-  // const { refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
   const queryClient = useQueryClient()
-  const { mutate, isSuccess, isError: isErrorDelete, error: errorDelete } = useMutation(deleteBlog, {
-    // onMutate: async(blogId) => {
-    //   await queryClient.cancelQueries('admin/blogs')
-    //   const prevData = queryClient.getQueryData('admin/blogs')
-    //   queryClient.setQueriesData('admin/blogs', (oldData) => {
-    //     return oldData.filter((blog) => blog.id !== blogId)
-    //   })
-    //   return prevData
-    // },
-    onError: (_error, _blog, context) => {
-      // queryClient.setQueryData('admin/blogs', context.prevData)
-      setOpenSnackbar(true)
+  const {
+    mutate,
+    isSuccess,
+    isError: isErrorDelete,
+    error: errorDelete
+  } = useMutation(deleteBlog, {
+    onError: (error) => {
+      setSnackbar({
+        open: true,
+        message: 'Delete failed!',
+        type: 'error'
+      })
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries('admin/blogs')
-      setOpenSnackbar(true)
+      setSnackbar({
+        open: true,
+        message: 'Delete success!',
+        type: 'success'
+      })
     }
   })
 
   const handleSearch = () => {
-    // console.log(params)
     refetch()
   }
   const handleResetForm = () => {
@@ -110,12 +102,11 @@ export default function Blogs() {
   // End code add blogs
 
   const handleDelete = (id) => {
-    // console.log('Delete', id)
     mutate(id)
   }
 
   return (
-    <>
+    <Paper className={styles.paper}>
       <NewFilters
         header={'BLOG'}
         handleSearch={handleSearch}
@@ -126,20 +117,17 @@ export default function Blogs() {
       />
       <TableList
         tableHead={tableHead}
-        data={data}
+        data={data?.data}
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}
         setParams={setParams}
+        // count={Math.round(data?.total / params.per_page)}
+        count={data?.total / params.per_page}
       />
-      {isSuccess && (
-        <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleClose} />
-      )}
-      {isErrorDelete && (
-        <CustomizedSnackbars open={openSnackbar} message={errorDelete.message} severity='error' onClose={handleClose} />
-      )}
-    </>
+      <CustomizedSnackbars open={snackbar.open} message={snackbar.message} severity={snackbar.type} />
+    </Paper>
   )
 }
 

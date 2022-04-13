@@ -31,16 +31,14 @@
   border-spacing: 0;
   border-collapse: collapse;
 }
-
-.tableLink {
-  margin-right: 10px !important;
-  margin-left: 10px !important;
-  cursor: pointer;
-  font-size: 1.3rem !important;
+.tableBody{
+  min-height: 538.47px !important;
 }
 
-.tableCell{
-  text-align: center !important;
+.tableLink {
+  margin-right: 20px !important;
+  cursor: pointer;
+  font-size: 1.3rem !important;
 }
 
 .hoverIcon:hover{
@@ -61,7 +59,6 @@
 
 .flex2{
   display: flex !important;
-  justify-content: center;
 }
 
 /* CSS ADD BLOGS */
@@ -82,6 +79,9 @@
 .error {
   color: red;
   font-size: 10px;
+}
+.paper{
+  padding: 25px 25px 15px 25px;
 }
 /* CSS ADD BLOGS */
 

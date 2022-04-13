@@ -16,7 +16,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Typography from '@material-ui/core/Typography'
 
-const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
+const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
 
@@ -44,22 +44,22 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
-                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>
+                <TableCell className={styles.white} key={item}>
                   {item}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className={styles.tableBody}>
             {data?.map((row) => (
               <TableRow key={row.id}>
-                <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.title}</TableCell>
-                <TableCell className={styles.tableCell}>{row.author}</TableCell>
-                <TableCell className={styles.tableCell}>{row.date}</TableCell>
-                <TableCell className={styles.tableCell}>{row.status}</TableCell>
-                <TableCell className={styles.tableCell}>{row.views}</TableCell>
-                <TableCell className={`${styles.tableCell} ${styles.flex2}`}>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.title}</TableCell>
+                <TableCell>{row.author}</TableCell>
+                <TableCell>{row.date}</TableCell>
+                <TableCell>{row.status}</TableCell>
+                <TableCell>{row.views}</TableCell>
+                <TableCell className={styles.flex2}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
                     onClick={() => onView(row.id)}
@@ -89,7 +89,16 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           </DialogActions>
         </DialogContent>
       </Dialog>
-      <Pagination className={styles.center} count={1} onChange={handlePaginationChange} />
+      {count > 1 && (
+        <Pagination
+          className={styles.center}
+          count={Math.round(count)}
+          onChange={handlePaginationChange}
+          showFirstButton
+          showLastButton
+          page={params.page}
+        />
+      )}
     </div>
   )
 }
