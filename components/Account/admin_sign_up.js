@@ -17,7 +17,7 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import useTrans from '../../i18n/useTrans'
 import style from '../../styles/admin/AdminAccount.module.css'
-const Admin_Sign_Up = ({handleSubmit}) => {
+const AdminSignUp = ({handleSubmit, onSubmit }) => {
   const trans = useTrans()
   return (
     <Container component='main' maxWidth='sm'>
@@ -173,4 +173,4 @@ const Admin_Sign_Up = ({handleSubmit}) => {
   )
 }
 
-export default Admin_Sign_Up
+export default AdminSignUp

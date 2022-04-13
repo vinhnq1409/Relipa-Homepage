@@ -30,7 +30,7 @@ import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
 import style from '../../../styles/admin/AdminAccount.module.css'
 import 'react-toastify/dist/ReactToastify.css'
-import Admin_Sign_Up from '../../../components/Account/admin_sign_up'
+import AdminSignUp from '../../../components/Account/admin_sign_up'
 
 export default function AdminAddAcount() {
   const router = useRouter()
@@ -293,8 +293,7 @@ export default function AdminAddAcount() {
             </form>
           </div>
         </Container>
-      ) : (<Admin_Sign_Up handleSubmit = {handleSubmit} onSubmit = {onSubmit}/>)}
-        
+      ) : (<AdminSignUp handleSubmit = {handleSubmit} onSubmit = {onSubmit}/>)}
       <ToastContainer
         position='top-right'
         autoClose={2000}
