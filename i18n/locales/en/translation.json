@@ -21,8 +21,8 @@
         "placeholder_url": "Enter URL path"
     },
     "admin_account": {
-        "sign_up": "Sign In",
-        "user_name": "User name",
+        "sign_up": "Sign Up",
+        "name": "User name",
         "email": "Email",
         "password": "Password",
         "re_password": "Confirm Password",
@@ -30,6 +30,7 @@
         "role": "Role",
         "submit": "Submit",
         "reset": "Reset",
+        "edit": "Edit",
         "create_account": "Create Account",
         "total_user": "Total User",
         "item_per_page": "Item per page"

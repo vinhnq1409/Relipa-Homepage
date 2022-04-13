@@ -36,7 +36,7 @@ export default function News() {
   const [isSearch, setIsSearch] = useState(false)
   const [openSnackbar, setOpenSnackbar] = useState({open: false, message: ''})
 
-  const getDataNewList = async () => {
+  const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
     return response
   }

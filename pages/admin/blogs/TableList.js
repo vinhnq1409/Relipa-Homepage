@@ -1,28 +1,21 @@
-import {
-  Grid,
-  MenuItem,
-  Paper,
-  Select,
-  FormControl,
-  TableHead,
-  TableCell,
-  Table,
-  TableRow,
-  TableBody
-} from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import MenuItem from '@material-ui/core/MenuItem'
+import Paper from '@material-ui/core/Paper'
+import Select from '@material-ui/core/Select'
 import Pagination from '@material-ui/lab/Pagination'
+import FormControl from '@material-ui/core/FormControl'
 import Muted from '../../../components/Typography/Muted'
 import styles from '../../../styles/AdminBlogs.module.css'
+import TableHead from '@material-ui/core/TableHead'
+import TableCell from '@material-ui/core/TableCell'
+import Table from '@material-ui/core/Table'
+import TableRow from '@material-ui/core/TableRow'
+import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { useState } from 'react'
-import useTrans from '../../../i18n/useTrans'
 
-const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
-  const trans = useTrans()
-  const [params, setParams] = useState({})
-  
+const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams }) => {
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
@@ -35,14 +28,12 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
     <div className={styles.container}>
       <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Muted>
-            {trans.admin_account.total_user}: {data?.length}
-          </Muted>
+          <Muted>Total number of records: {data.length}</Muted>
         </Grid>
         <Grid item className={styles.flex}>
-          <Muted>{trans.admin_account.item_per_page}:</Muted>
+          <Muted>Item per page:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue={10} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue={params.per_page} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
@@ -56,27 +47,23 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
           <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
-                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>
-                  {item}
-                </TableCell>
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>   
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.length && data.map((row) => (
+            {data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.name}</TableCell>
-                <TableCell className={styles.tableCell}>{row.email}</TableCell>
-                <TableCell className={styles.tableCell}>{row?.roles[0]?.title}</TableCell>
-                <TableCell className={styles.tableCell}>{row?.created_at?.slice(0, 10)}</TableCell>
+                <TableCell className={styles.tableCell}>{row.subject}</TableCell>
+                <TableCell className={styles.tableCell}>{row.author}</TableCell>
+                <TableCell className={styles.tableCell}>{row.date}</TableCell>
+                <TableCell className={styles.tableCell}>{row.status}</TableCell>
+                <TableCell className={styles.tableCell}>{row.views}</TableCell>
                 <TableCell className={styles.tableCell}>
-                  <VisibilityIcon
-                    className={`${styles.tableLink} ${styles.hoverIcon}`}
-                    onClick={() => onView(row.id)}
-                  />
-                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
-                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)} />
+                  <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row)}/>
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
                 </TableCell>
               </TableRow>
             ))}
@@ -88,4 +75,4 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   )
 }
 
-export default TableListAdmin
+export default TableList

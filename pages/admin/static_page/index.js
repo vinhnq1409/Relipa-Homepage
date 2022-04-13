@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { headerJson, dataJson } from '../../../sampleData/initStaticPage'
+import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
@@ -11,17 +11,12 @@ import style from '../../../styles/admin/StaticPage.module.css'
 export default function StaticPage() {
   const trans = useTrans()
   const router = useRouter()
-  const [data, setData] = useState(JSON.parse(dataJson))
+  const data = JSON.parse(dataJson)
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
-  // useEffect(() => {
-  //   async function getData() {
-  //     setData(await get(`api/v1/static-page`))
-  //   }
-  //   getData()
-  // }, [])
+
   const headerTable = JSON.parse(headerJson)
 
   const handleView = (id) => {
