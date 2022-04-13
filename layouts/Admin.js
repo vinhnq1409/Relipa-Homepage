@@ -2,6 +2,7 @@ import React, { useEffect, useState, createRef } from 'react'
 import { useRouter } from 'next/router'
 // creates a beautiful scrollbar
 import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 // core components
 import Navbar from 'components/Navbars/Navbar.js'
 import Footer from 'components/Footer/Footer.js'
@@ -78,9 +79,9 @@ export default function Admin({ children, ...rest }) {
           />
           <div className={classes.mainPanel} ref={mainPanel}>
             <Navbar routes={routes} handleDrawerToggle={handleDrawerToggle} {...rest} />
-            <div className={classes.content}>
+            <Paper elevation={3} className={classes.content}>
               <div className={classes.container}>{children}</div>
-            </div>
+            </Paper>
             <Footer />
           </div>
         </div>

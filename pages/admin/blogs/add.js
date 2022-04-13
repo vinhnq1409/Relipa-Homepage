@@ -30,15 +30,15 @@ export default function Add() {
     }
   }, [dataBlog])
 
-  const getBlog = async () => {
+  const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async (data) => {
+  const postBlog = async(data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async (data) => {
+  const putBlog = async(data) => {
     return await put(`blogs/${id}`, data)
   }
 

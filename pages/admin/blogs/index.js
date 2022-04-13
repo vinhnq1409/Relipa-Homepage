@@ -10,9 +10,25 @@ import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import Paper from '@material-ui/core/Paper'
 import styles from '../../../styles/AdminBlogs.module.css'
 
+<<<<<<< HEAD
 const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 
 
+=======
+const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
+// const data1 = [
+//   { id: 1, subject: 'subject1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 2, subject: 'subject2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 3, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 4, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 5, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 6, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 7, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 8, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 9, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
+//   { id: 10, subject: 'subject3', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 }
+// ]
+>>>>>>> d7776f6 (remove lib don't use, style dashboard)
 
 export default function Blogs() {
   const [params, setParams] = useState({
