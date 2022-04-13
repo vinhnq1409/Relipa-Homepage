@@ -28,21 +28,12 @@ export default function Add() {
   const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
-<<<<<<< HEAD
-
-  const postBlog = async(data) => {
-    return await post('blogs', data)
-  }
-
-  const putBlog = async(data) => {
-=======
   
   const postBlog = async (data) => {
     return await post('blogs', data)
   }
   
   const putBlog = async (data) => {
->>>>>>> dbfdb41 (handle error, seccess)
     return await put(`blogs/${id}`, data)
   }
   
@@ -164,14 +155,6 @@ export default function Add() {
     router.push('/admin/blogs')
   }
 
-  const onTest = () => {
-    setSnackbar({
-      ...snackbar,
-      message: 'huhu',
-      open: true, 
-      severity: 'error'
-    })
-  }
   return (
     <>
       <form>
@@ -279,9 +262,6 @@ export default function Add() {
             {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} idCreate={id} />}
             <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
               Cancel
-            </Button>
-            <Button onClick={onTest} className={styles.button} variant='contained' color='primary'>
-              Test
             </Button>
           </Grid>
         </Grid>
