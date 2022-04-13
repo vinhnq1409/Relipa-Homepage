@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
-import { useQuery, useMutation, useQueryClient  } from 'react-query'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -28,15 +28,15 @@ export default function Add() {
   const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
-  
-  const postBlog = async (data) => {
+
+  const postBlog = async(data) => {
     return await post('blogs', data)
   }
-  
-  const putBlog = async (data) => {
+
+  const putBlog = async(data) => {
     return await put(`blogs/${id}`, data)
   }
-  
+
   const { data: dataBlog, isLoading: isGetingBlogAPI, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
@@ -48,7 +48,7 @@ export default function Add() {
       })
     },
     onError: (error) => {
-      for(const key in error.response.data.errors){
+      for (const key in error.response.data.errors) {
         setSnackbar({
           open: true,
           severity: 'error',
@@ -68,7 +68,7 @@ export default function Add() {
       })
     },
     onError: (error) => {
-      for(const key in error.response.data.errors){
+      for (const key in error.response.data.errors) {
         setSnackbar({
           open: true,
           severity: 'error',
@@ -78,9 +78,9 @@ export default function Add() {
       }
     }
   })
-  
+
   useEffect(() => {
-    if(!id){
+    if (!id) {
       removeBlogs()
     }
     setValue('title', dataBlog?.data.title)
@@ -122,7 +122,7 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue, 
+    setValue,
     reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
