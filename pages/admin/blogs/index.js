@@ -7,12 +7,8 @@ import { useRouter } from 'next/router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import Paper from '@material-ui/core/Paper'
-import styles from '../../../styles/AdminBlogs.module.css'
 
 const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
-
-
 
 export default function Blogs() {
   const [params, setParams] = useState({
@@ -40,7 +36,7 @@ export default function Blogs() {
 
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
   const queryClient = useQueryClient()
-  const {mutate} = useMutation(deleteBlog, {
+  const { mutate } = useMutation(deleteBlog, {
     onError: (error) => {
       setSnackbar({
         open: true,
@@ -59,7 +55,7 @@ export default function Blogs() {
   })
 
   const handleClose = () => {
-    setSnackbar({...snackbar, open: false})
+    setSnackbar({ ...snackbar, open: false })
   }
 
   const handleSearch = () => {
@@ -102,7 +98,7 @@ export default function Blogs() {
   }
 
   return (
-    <Paper className={styles.paper}>
+    <>
       <NewFilters
         header={'BLOG'}
         handleSearch={handleSearch}
@@ -121,8 +117,13 @@ export default function Blogs() {
         setParams={setParams}
         count={data?.total / params.per_page}
       />
-      <CustomizedSnackbars open={snackbar.open} message={snackbar.message} severity={snackbar.type} onClose={handleClose} />
-    </Paper>
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.type}
+        onClose={handleClose}
+      />
+    </>
   )
 }
 

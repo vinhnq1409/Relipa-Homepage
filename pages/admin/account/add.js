@@ -44,11 +44,11 @@ export default function AdminAddAcount() {
     { id: 5, name: 'Partner' }
   ]
 
-  const getUser = async () => await get(`users/${id}`)
+  const getUser = async() => await get(`users/${id}`)
 
-  const postUser = async (data) => await post('users', data)
+  const postUser = async(data) => await post('users', data)
 
-  const putUser = async (data) => await put(`users/${id}`, data)
+  const putUser = async(data) => await put(`users/${id}`, data)
 
   const { data: dataUser, isLoading: isGettingUserAPI, status } = useQuery('getUser', getUser)
 
@@ -81,7 +81,7 @@ export default function AdminAddAcount() {
 
   const shemaEdit = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
-    email: Yup.string().required('Please enter email in fill'),
+    email: Yup.string().required('Please enter email in fill')
   })
 
   const defaultValue = {
@@ -157,7 +157,7 @@ export default function AdminAddAcount() {
       email: data.email,
       roles: data.roles
     })
-    router.push({pathname: '/admin/account'})
+    router.push({ pathname: '/admin/account' })
   }
 
   const onReset = () => {

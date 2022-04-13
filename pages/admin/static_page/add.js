@@ -1,20 +1,11 @@
 import React, { useRef, useState } from 'react'
 import Admin from 'layouts/Admin.js'
-<<<<<<< HEAD
 import { TextField, Button, FormHelperText, Grid, CircularProgress, ButtonGroup } from '@material-ui/core'
 import { Editor } from '@tinymce/tinymce-react'
 import { initMCE } from '../../../sampleData/initMCE'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import style from '../../../styles/admin/StaticPage.module.css'
-=======
-import { TextField, Button, FormHelperText, Grid, CircularProgress } from '@material-ui/core'
-import { Editor } from '@tinymce/tinymce-react'
-import { initMCE } from '../../../sampleData/initMCE'
-import { Controller, useForm } from 'react-hook-form'
-import style from '../../../style/admin/StaticPage.module.css'
-import * as Yup from 'yup'
->>>>>>> 5f2243e (add button reset)
 import { yupResolver } from '@hookform/resolvers/yup'
 import useTrans from '../../../i18n/useTrans'
 
@@ -132,7 +123,7 @@ export default function AdminEditStaticPage() {
 
         <Grid container spacing={3} justifyContent='center'>
           <Grid container justifyContent='center'>
-            <ButtonGroup color='primary' >
+            <ButtonGroup color='primary'>
               <Button type='submit' variant='contained' color='primary' className={style.buttonSubmit}>
                 {trans.static_page.submit}
               </Button>

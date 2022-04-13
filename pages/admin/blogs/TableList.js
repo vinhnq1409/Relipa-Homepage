@@ -47,7 +47,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
-                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>   
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>
               ))}
             </TableRow>
           </TableHead>

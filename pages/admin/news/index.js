@@ -5,12 +5,10 @@ import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
 import TableList from '../../../components/AdminNewBlog/Table'
-import { get , del } from '../../../api/BaseRequest'
+import { get, del } from '../../../api/BaseRequest'
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import Paper from '@material-ui/core/Paper'
-import styles from '../../../styles/AdminNew.module.css'
 
 const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
@@ -25,7 +23,7 @@ export default function News() {
 
   const [filters, setFilters] = useState({
     title: '',
-    sort: '',
+    sort: ''
     // start_date: null,
     // end_date: moment().format('yyyy/MM/DD')
   })
@@ -34,20 +32,25 @@ export default function News() {
     page: 1
   })
   const [isSearch, setIsSearch] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState({open: false, message: ''})
+  const [openSnackbar, setOpenSnackbar] = useState({ open: false, message: '' })
 
   const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
     return response
   }
-  
+
   const deleteNewItem = async(id) => {
     const response = await del(`news/${id}`)
     return response.data
   }
 
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
-  const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
+  const {
+    mutate: mutateDeleteNew,
+    isSuccess,
+    isError: isErrorDelete,
+    error: errorDelete
+  } = useMutation(deleteNewItem, {
     onError: (error) => {
       setOpenSnackbar({
         open: true,
@@ -126,7 +129,7 @@ export default function News() {
   }
 
   return (
-    <Paper className={styles.new}>
+    <>
       <NewFilters
         header={'NEW'}
         handleSearch={handleSearch}
@@ -146,12 +149,22 @@ export default function News() {
         count={dataNewList?.total / params.per_page}
       />
       {isSuccess && (
-        <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleCloseSnackBars} />
+        <CustomizedSnackbars
+          open={openSnackbar}
+          message='Delete success!'
+          severity='success'
+          onClose={handleCloseSnackBars}
+        />
       )}
       {isErrorDelete && (
-        <CustomizedSnackbars open={openSnackbar} message={openSnackbar.message} severity='error' onClose={handleCloseSnackBars} />
+        <CustomizedSnackbars
+          open={openSnackbar}
+          message={errorDelete.message}
+          severity='error'
+          onClose={handleCloseSnackBars}
+        />
       )}
-    </Paper>
+    </>
   )
 }
 

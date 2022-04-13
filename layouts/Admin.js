@@ -2,6 +2,7 @@ import React, { useEffect, useState, createRef } from 'react'
 import { useRouter } from 'next/router'
 // creates a beautiful scrollbar
 import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 // core components
 import Navbar from 'components/Navbars/Navbar.js'
 import Footer from 'components/Footer/Footer.js'
@@ -16,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
 import SignIn from '../pages/admin/signin'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import dashboardRoutes from '../routes'
 import { fiterRoleUser } from '../utils/roles'
 
@@ -77,9 +79,12 @@ export default function Admin({ children, ...rest }) {
             {...rest}
           />
           <div className={classes.mainPanel} ref={mainPanel}>
-            <Navbar routes={routes} handleDrawerToggle={handleDrawerToggle} {...rest} />
-            <div className={classes.content}>
-              <div className={classes.container}>{children}</div>
+            <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
+            <div className={classes.body}>
+              <Breadcrumb routes={routes} />
+              <Paper elevation={3} className={classes.content}>
+                <div className={classes.container}>{children}</div>
+              </Paper>
             </div>
             <Footer />
           </div>
