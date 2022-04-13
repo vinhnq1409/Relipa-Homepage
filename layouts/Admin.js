@@ -30,8 +30,8 @@ export default function Admin({ children, ...rest }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const dispatch = useDispatch()
-  const { infoUser } = useSelector((state) => state.userInfo)
-  const [roleUser] = useState(infoUser !== {} ? fiterRoleUser(infoUser?.roles) : '')
+  const { infoUser, loading } = useSelector((state) => state.userInfo)
+  const roleUser = !loading && Object.keys(infoUser).length !== 0 ? fiterRoleUser(infoUser?.roles) : ''
 
   if (token) {
     const currentTime = Date.now() / 1000

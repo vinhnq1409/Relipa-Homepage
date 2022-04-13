@@ -22,6 +22,7 @@ const infoUserSlice = createSlice({
     })
     builder.addCase(getInfoUser.rejected, (state) => {
       state.messages = 'Get infoUser fail'
+      state.loading = false
     })
   }
 })

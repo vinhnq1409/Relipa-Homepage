@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
@@ -21,8 +21,8 @@ import { useSelector } from 'react-redux'
 
 export default function Sidebar(props) {
   //role
-  const { infoUser } = useSelector((state) => state.userInfo)
-  const [roleUser] = useState(infoUser !== {} ? fiterRoleUser(infoUser?.roles) : '')
+  const { infoUser, loading } = useSelector((state) => state.userInfo)
+  const roleUser = !loading && Object.keys(infoUser).length !== 0 ? fiterRoleUser(infoUser?.roles) : ''
   // used for checking current route
   const router = useRouter()
   // creates styles for this component
@@ -36,11 +36,11 @@ export default function Sidebar(props) {
   const routerRole = routes.filter((route) => {
     return route?.role.includes(roleUser)
   })
-  var links = (
+  const links = (
     <List className={classes.list}>
       {routerRole.map((prop, key) => {
-        var activePro = ' '
-        var listItemClasses
+        const activePro = ' '
+        let listItemClasses
         if (prop.path === '/upgrade-to-pro') {
           activePro = classes.activePro + ' '
           listItemClasses = classNames({
