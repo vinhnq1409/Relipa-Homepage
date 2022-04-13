@@ -42,13 +42,6 @@ export default function AdminAddAcount() {
   const { data: dataUser, isLoading } = useQuery('getUser', getUser)
   console.log(dataUser)
 
-  useEffect(() => {
-    if (dataUser) {
-      setValue('nameEdit', dataUser.data.name)
-      setValue('email', dataUser.data.email)
-      setValue('roles', [1])
-    }
-  }, [dataUser])
 
   const defaultValue = {
     name: '',
@@ -166,11 +159,10 @@ export default function AdminAddAcount() {
                   control={control}
                   render={({ field }) => (
                     <TextField
-                      name='name'
+                      name='Username'
                       variant='outlined'
-                      required
                       fullWidth
-                      id='name'
+                      id='Name'
                       label={trans.admin_account.name}
                       {...field}
                     />
@@ -185,7 +177,7 @@ export default function AdminAddAcount() {
                   control={control}
                   render={({ field }) => (
                     <TextField
-                      name='email'
+                      name='Email'
                       variant='outlined'
                       required
                       fullWidth
