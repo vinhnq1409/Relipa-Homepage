@@ -1,23 +1,20 @@
 import React from 'react'
 import styles from '../../styles/AdminNewBlogFilters.module.css'
-import {
-  Button,
-  Typography,
-  Grid,
-  FormControl,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  Box
-} from '@material-ui/core/'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl'
+import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
   const { title, sort } = filters
 
   return (
     <>
-      <Box>
+      <div>
         <Grid spacing={3} container justify='space-between' alignItems='center'>
           <Grid item container spacing={3} alignItems='center' xs={12} md={12} lg={9}>
             <Grid item xs={12} sm={4} md={4} >
@@ -55,7 +52,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
               </Grid>
             </Grid>
 
-            <Grid item  xs={12} sm={2} md={4}>
+            <Grid item xs={12} sm={2} md={4}>
               <Button variant='contained' color='primary' onClick={handleSearch}>
                 SEARCH
               </Button>
@@ -68,7 +65,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             </Button>
           </Grid>
         </Grid>
-      </Box>
+      </div>
     </>
   )
 }

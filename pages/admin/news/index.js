@@ -9,7 +9,7 @@ import { get , del } from '../../../api/BaseRequest'
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import { Paper } from '@material-ui/core'
+import Paper from '@material-ui/core/Paper'
 import styles from '../../../styles/AdminNew.module.css'
 
 const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
@@ -34,11 +34,11 @@ export default function News() {
     page: 1
   })
   const [isSearch, setIsSearch] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState(false)
+  const [openSnackbar, setOpenSnackbar] = useState({open: false, message: ''})
 
   const getDataNewList = async () => {
     const response = await get('news', { ...filters, ...params })
-    return response.data
+    return response
   }
   
   const deleteNewItem = async(id) => {
@@ -49,11 +49,17 @@ export default function News() {
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
   const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
     onError: (error) => {
-      setOpenSnackbar(true)
+      setOpenSnackbar({
+        open: true,
+        message: 'Delete Failed!'
+      })
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries('getDataNewList')
-      setOpenSnackbar(true)
+      setOpenSnackbar({
+        open: true,
+        message: 'Delete Success!'
+      })
     }
   })
 
@@ -131,18 +137,19 @@ export default function News() {
       />
       <TableList
         tableHead={tableHead}
-        data={dataNewList || data}
+        data={dataNewList?.data || data}
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}
         setParams={setParams}
+        count={dataNewList?.total / params.per_page}
       />
       {isSuccess && (
         <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleCloseSnackBars} />
       )}
       {isErrorDelete && (
-        <CustomizedSnackbars open={openSnackbar} message={errorDelete.message} severity='error' onClose={handleCloseSnackBars} />
+        <CustomizedSnackbars open={openSnackbar} message={openSnackbar.message} severity='error' onClose={handleCloseSnackBars} />
       )}
     </Paper>
   )
