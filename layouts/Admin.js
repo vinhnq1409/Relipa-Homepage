@@ -63,32 +63,33 @@ export default function Admin({ children, ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-
   return (
     <>
-      {token ? (
-        <div className={classes.wrapper}>
-          <Sidebar
-            routes={routes}
-            logoText={'Relipa Admin'}
-            logo={logo}
-            image={bgImage}
-            handleDrawerToggle={handleDrawerToggle}
-            open={mobileOpen}
-            color='white'
-            {...rest}
-          />
-          <div className={classes.mainPanel} ref={mainPanel}>
-            <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
-            <div className={classes.body}>
-              <Breadcrumb routes={routes} />
-              <Paper elevation={3} className={classes.content}>
-                <div className={classes.container}>{children}</div>
-              </Paper>
+      {!!token ? (
+        <>
+          <div className={classes.wrapper}>
+            <Sidebar
+              routes={routes}
+              logoText={'Relipa Admin'}
+              logo={logo}
+              image={bgImage}
+              handleDrawerToggle={handleDrawerToggle}
+              open={mobileOpen}
+              color='white'
+              {...rest}
+            />
+            <div className={classes.mainPanel} ref={mainPanel}>
+              <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
+              <div className={classes.body}>
+                <Breadcrumb routes={routes} />
+                <Paper elevation={3} className={classes.content}>
+                  <div className={classes.container}>{children}</div>
+                </Paper>
+              </div>
+              <Footer />
             </div>
-            <Footer />
           </div>
-        </div>
+        </>
       ) : (
         <SignIn />
       )}
