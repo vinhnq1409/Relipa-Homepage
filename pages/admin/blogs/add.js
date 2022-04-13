@@ -2,53 +2,100 @@ import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { Controller, useForm } from 'react-hook-form'
+import { useQuery, useMutation, useQueryClient  } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import styles from '../../../styles/AdminBlogs.module.css'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { get, post, put } from '../../../api/BaseRequest'
-import { useQuery, useMutation } from 'react-query'
 import BtnLoading from '../../../components/button/BtnLoading'
+import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
 export default function Add() {
   const editorRef = useRef(null)
   const router = useRouter()
+  const queryClient = useQueryClient()
   const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
-
-  useEffect(() => {
-    if (dataBlog) {
-      setValue('title', dataBlog.title)
-      setValue('desc', dataBlog.desc)
-      setValue('meta', dataBlog.meta)
-      setValue('url_image_meta', dataBlog.urlImageMeta)
-      setValue('tags', dataBlog.tags)
-      setValue('friendly_url', dataBlog.friendlyUrl)
-      setValueEditor(dataBlog.content)
-    }
-  }, [dataBlog])
+  const [snackbar, setSnackbar] = useState({
+    message: '',
+    open: false,
+    severity: 'success'
+  })
 
   const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
-
-  const postBlog = async(data) => {
+  
+  const postBlog = async (data) => {
     return await post('blogs', data)
   }
-
-  const putBlog = async(data) => {
+  
+  const putBlog = async (data) => {
     return await put(`blogs/${id}`, data)
   }
+  
+  const { data: dataBlog, isLoading: isGetingBlogAPI, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
 
-  const { data: dataBlog, isLoading: isGetingBlogAPI, status } = useQuery('getBlog', getBlog)
-  const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog)
-  const { mutate: putBlogAPI, isLoading: isPutingBlogAPI } = useMutation(putBlog)
+  const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
+    onSuccess: () => {
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        message: 'Post is successful'
+      })
+    },
+    onError: (error) => {
+      for(const key in error.response.data.errors){
+        setSnackbar({
+          open: true,
+          severity: 'error',
+          message: `Post is failed: ${error.response.data.errors[key]}` || 'POST is failed'
+        })
+        break
+      }
+    }
+  })
 
-  console.log(isPostingBlogAPI)
+  const { mutate: putBlogAPI, isLoading: isPutingBlogAPI } = useMutation(putBlog, {
+    onSuccess: () => {
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        message: 'Update is successful'
+      })
+    },
+    onError: (error) => {
+      for(const key in error.response.data.errors){
+        setSnackbar({
+          open: true,
+          severity: 'error',
+          message: `Update is failed: ${error.response.data.errors[key]}` || 'Update is failed'
+        })
+        break
+      }
+    }
+  })
+  
+  useEffect(() => {
+    if(!id){
+      removeBlogs()
+    }
+    setValue('title', dataBlog?.data.title)
+    setValue('desc', dataBlog?.data.desc)
+    setValue('meta', dataBlog?.data.meta)
+    setValue('url_image_meta', dataBlog?.data.url_image_meta)
+    setValue('tags', dataBlog?.data.tags)
+    setValue('friendly_url', dataBlog?.data.friendly_url)
+    setValueEditor(dataBlog?.data.content)
+  }, [dataBlog])
+
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
+    title: Yup.string()
+      .required('Title is required')
+      .min(10, 'The title must be at least 10 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
     friendly_url: Yup.string().required('Url friendly is required'),
@@ -75,7 +122,8 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue
+    setValue, 
+    reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -218,6 +266,12 @@ export default function Add() {
           </Grid>
         </Grid>
       </form>
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </>
   )
 }
