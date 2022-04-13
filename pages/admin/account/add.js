@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState} from 'react'
 import Admin from 'layouts/Admin.js'
 import {
   Avatar,
@@ -8,7 +8,6 @@ import {
   Grid,
   Container,
   Typography,
-  IconButton,
   InputLabel,
   Select,
   MenuItem,
@@ -30,14 +29,12 @@ import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
 import style from '../../../styles/admin/AdminAccount.module.css'
 import 'react-toastify/dist/ReactToastify.css'
-import AdminSignUp from '../../../components/Account/admin_sign_up'
+import AdminSignUp from '../../../components/Account/AdminSignUp'
 
 export default function AdminAddAcount() {
   const router = useRouter()
   const trans = useTrans()
   const { id } = router.query
-  const [type, setType] = useState('password')
-  const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [open, setOpen] = useState(false)
   const [confirm, setConfirm] = useState(false)
@@ -73,18 +70,6 @@ export default function AdminAddAcount() {
     }
   }, [dataUser])
 
-  const schemaAdd = Yup.object().shape({
-    name: Yup.string().required('Please enter usename in fill'),
-    email: Yup.string().required('Please enter email in fill'),
-    password: Yup.string()
-      .min(8, 'Password must be at least ')
-      .max(30, 'Password too long')
-      .required('new password is required'),
-    re_password: Yup.string()
-      .required('Confirm Password is required')
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-  })
-
   const shemaEdit = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
     email: Yup.string().required('Please enter email in fill')
@@ -105,46 +90,36 @@ export default function AdminAddAcount() {
     reset,
     setValue
   } = useForm({
-    resolver: yupResolver(router.query.mode === 'add' ? schemaAdd : shemaEdit)
+    resolver: yupResolver(shemaEdit)
   })
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword)
-    if (showPassword === false) {
-      setType('text')
-    } else {
-      setType('password')
-    }
-  }
 
   const handleChangeRole = (event) => {
     setRole(event.target.value)
   }
 
-  const onSubmit = (data) => {
-    const paramApi = {
-      ...data
-    }
-    postUserAPI(paramApi)
-    toast.success('Create account success', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined
-    })
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      reset({ ...defaultValue })
-      router.push({ pathname: '/admin/account' })
-    }, 2000)
-  }
+  // const onSubmit = (data) => {
+  //   const paramApi = {
+  //     ...data
+  //   }
+  //   postUserAPI(paramApi)
+  //   toast.success('Create account success', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined
+  //   })
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //     reset({ ...defaultValue })
+  //     router.push({ pathname: '/admin/account' })
+  //   }, 2000)
+  // }
 
   const onError = (data) => {
-    console.log(data)
     toast.warn('Please fill out the form completely', {
       position: 'top-right',
       autoClose: 2000,
@@ -293,7 +268,7 @@ export default function AdminAddAcount() {
             </form>
           </div>
         </Container>
-      ) : (<AdminSignUp handleSubmit = {handleSubmit} onSubmit = {onSubmit}/>)}
+      ) : (<AdminSignUp />)}
       <ToastContainer
         position='top-right'
         autoClose={2000}
