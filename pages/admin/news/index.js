@@ -9,7 +9,7 @@ import { get , del } from '../../../api/BaseRequest'
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import { Paper } from '@material-ui/core'
+import Paper from '@material-ui/core/Paper'
 import styles from '../../../styles/AdminNew.module.css'
 
 const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
