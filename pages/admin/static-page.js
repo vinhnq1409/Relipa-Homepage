@@ -1,9 +1,9 @@
-import React from "react";
-import { RenderPage } from "../../components/TablePage";
-import Admin from "layouts/Admin.js";
+import React from 'react'
+import { RenderPage } from '../../components/TablePage'
+import Admin from 'layouts/Admin.js'
 
 export default function StaticPage() {
-  return <RenderPage />;
+  return <RenderPage />
 }
 
-StaticPage.layout = Admin;
+StaticPage.layout = Admin

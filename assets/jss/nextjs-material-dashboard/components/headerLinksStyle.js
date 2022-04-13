@@ -26,7 +26,7 @@ const headerLinksStyle = (theme) => ({
     display: 'flex',
     justifyContent: 'space-between ',
     paddingLeft: '30px',
-    paddingRight: '15px',
+    paddingRight: '30px',
     alignItems: 'center'
   },
   linkText: {

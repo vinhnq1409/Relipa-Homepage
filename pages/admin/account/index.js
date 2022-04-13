@@ -7,20 +7,20 @@ import { useQuery, useMutation } from 'react-query'
 import TableListAdmin from './tableAdmin'
 import useTrans from '../../../i18n/useTrans'
 import style from '../../../styles/admin/StaticPage.module.css'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 export default function Account() {
   const trans = useTrans()
   const router = useRouter()
   const tableHead = JSON.parse(headerUJson)
 
-  const getUser = async () => {
+  const getUser = async() => {
     return await get(`users`)
   }
 
-  const {data: dataUser, isLoading: isGetingUserAPI, status} = useQuery(`getUser`, getUser)
+  const { data: dataUser, isLoading: isGetingUserAPI, status } = useQuery(`getUser`, getUser)
 
-  const delUsers = async (id) => {
+  const delUsers = async(id) => {
     return await del(`users/${id}`)
   }
 
@@ -37,7 +37,7 @@ export default function Account() {
   }
 
   const changeURL = () => {
-    router.push({ pathname: 'account/add', query: { slug: 'about', mode: 'add' } })
+    router.push({ pathname: 'account/add', query: { slug: 'about', mode: 'add' }})
   }
 
   return (

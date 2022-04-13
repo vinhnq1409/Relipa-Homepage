@@ -23,18 +23,9 @@ const appStyle = (theme) => ({
     padding: '0 2% 2% 2%'
   },
   content: {
-<<<<<<< HEAD
-<<<<<<< HEAD
     // marginTop: "70px",
-    padding: "30px 15px",
-    minHeight: "calc(100vh - 123px)",
-=======
-    marginTop: '70px',
-=======
->>>>>>> 08b7b85 (done breadcrumbs link)
     padding: '30px 15px',
     minHeight: 'calc(100vh - 123px)'
->>>>>>> d7776f6 (remove lib don't use, style dashboard)
   },
   container,
   map: {

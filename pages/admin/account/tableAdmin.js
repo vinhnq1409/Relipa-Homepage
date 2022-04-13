@@ -22,7 +22,7 @@ import useTrans from '../../../i18n/useTrans'
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const trans = useTrans()
   const [params, setParams] = useState({})
-  
+
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }

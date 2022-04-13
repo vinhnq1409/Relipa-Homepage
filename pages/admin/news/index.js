@@ -4,21 +4,11 @@ import Admin from 'layouts/Admin.js'
 import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-<<<<<<< HEAD
 import TableList from '../../../components/AdminNewBlog/Table'
-import { get , del } from '../../../api/BaseRequest'
-=======
-import TableList from '../../../components/Table/Table'
 import { get, del } from '../../../api/BaseRequest'
->>>>>>> d7776f6 (remove lib don't use, style dashboard)
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-<<<<<<< HEAD
-import Paper from '@material-ui/core/Paper'
-=======
->>>>>>> 08b7b85 (done breadcrumbs link)
-import styles from '../../../styles/AdminNew.module.css'
 
 const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
@@ -42,37 +32,30 @@ export default function News() {
     page: 1
   })
   const [isSearch, setIsSearch] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState({open: false, message: ''})
+  const [openSnackbar, setOpenSnackbar] = useState({ open: false, message: '' })
 
-  const getDataNewList = async () => {
+  const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
     return response
   }
 
-  const deleteNewItem = async (id) => {
+  const deleteNewItem = async(id) => {
     const response = await del(`news/${id}`)
     return response.data
   }
 
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
-<<<<<<< HEAD
-  const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
-    onError: (error) => {
-      setOpenSnackbar({
-        open: true,
-        message: 'Delete Failed!'
-      })
-=======
   const {
     mutate: mutateDeleteNew,
     isSuccess,
     isError: isErrorDelete,
     error: errorDelete
   } = useMutation(deleteNewItem, {
-    retry: 3,
-    onError: (_error, _blog) => {
-      setOpenSnackbar(true)
->>>>>>> d7776f6 (remove lib don't use, style dashboard)
+    onError: (error) => {
+      setOpenSnackbar({
+        open: true,
+        message: 'Delete Failed!'
+      })
     },
     onSuccess: () => {
       queryClient.invalidateQueries('getDataNewList')
@@ -146,7 +129,7 @@ export default function News() {
   }
 
   return (
-    <div className={styles.new}>
+    <>
       <NewFilters
         header={'NEW'}
         handleSearch={handleSearch}
@@ -174,18 +157,14 @@ export default function News() {
         />
       )}
       {isErrorDelete && (
-<<<<<<< HEAD
-        <CustomizedSnackbars open={openSnackbar} message={openSnackbar.message} severity='error' onClose={handleCloseSnackBars} />
-=======
         <CustomizedSnackbars
           open={openSnackbar}
           message={errorDelete.message}
           severity='error'
           onClose={handleCloseSnackBars}
         />
->>>>>>> d7776f6 (remove lib don't use, style dashboard)
       )}
-    </div>
+    </>
   )
 }
 
