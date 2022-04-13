@@ -12,6 +12,8 @@ import styles from '../../../styles/AdminBlogs.module.css'
 
 const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 
+
+
 export default function Blogs() {
   const [params, setParams] = useState({
     title: '',
