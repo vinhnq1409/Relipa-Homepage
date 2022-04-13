@@ -10,5 +10,5 @@ export const logoutApi = () => get(`logout`)
 
 //change password
 export const changePasswordApi = () => {
-  return useMutation((dataForm) => post('changePassword', dataForm))
+  return useMutation((dataForm) => post('change-password', dataForm))
 }

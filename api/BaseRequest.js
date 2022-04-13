@@ -1,5 +1,6 @@
 import axios from 'axios'
 import getConfig from 'next/config'
+import { removeCookie, STORAGEKEY } from '../utils/storage'
 const { publicRuntimeConfig } = getConfig()
 
 const getUrlPrefix = () => '/'
@@ -65,6 +66,8 @@ const _responseHandler = (response, url) => {
 
 const _errorHandler = (err) => {
   if (err.response && err.response.status === 401) {
+    removeCookie(STORAGEKEY.ACCESS_TOKEN)
+    window.location.href = '/admin'
   }
   throw err
 }

@@ -12,11 +12,12 @@ import bgImage from 'assets/img/sidebar-4.jpg'
 import { getCookie, removeCookie, STORAGEKEY } from '../utils/storage/index'
 import { setAuthHeader } from '../api/BaseRequest'
 import jwt_decode from 'jwt-decode'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
 import SignIn from '../pages/admin/signin'
 import dashboardRoutes from '../routes'
+import { fiterRoleUser } from '../utils/roles'
 
 export default function Admin({ children, ...rest }) {
   // used for checking current route
@@ -29,7 +30,8 @@ export default function Admin({ children, ...rest }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const dispatch = useDispatch()
-  const [roleUser] = useState('member')
+  const { infoUser } = useSelector((state) => state.userInfo)
+  const [roleUser] = useState(infoUser !== {} ? fiterRoleUser(infoUser?.roles) : '')
 
   if (token) {
     const currentTime = Date.now() / 1000

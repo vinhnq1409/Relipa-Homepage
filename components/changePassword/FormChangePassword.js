@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import styles from '../../styles/admin/signin.module.css'
-import getConfig from 'next/config'
-import { changePasswordApi } from '../../api/reactQueryApi'
+import { changePasswordApi, logoutApi } from '../../api/reactQueryApi'
 import CustomizedSnackbars from '../CustomSnackbar/index'
+import { removeCookie, STORAGEKEY } from '../../utils/storage'
 
 export default function FormChangePassword() {
+  const router = useRouter()
   const { mutate: changePassword, isSuccess } = changePasswordApi()
-  const [openSnackbar, setOpenSnackbar] = useState(true)
+  const [openSnackbar, setOpenSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: ''
+  })
 
   const {
     register,
@@ -30,19 +31,31 @@ export default function FormChangePassword() {
   }
 
   const onSubmit = (data) => {
-    console.log(data)
     const { old_password, new_password, password_confirm } = data
-    new_password !== password_confirm ? (
-      <CustomizedSnackbars
-        open={openSnackbar}
-        message='Confirm password failed '
-        severity='error'
-        onClose={handleClose}
-      />
-    ) : (
-      changePassword({ old_password, new_password })
-    )
+    new_password !== password_confirm
+      ? setOpenSnackbar({
+          open: true,
+          message: 'Confirm password failed',
+          severity: 'error'
+        })
+      : changePassword({ old_password, new_password })
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      setOpenSnackbar({
+        open: true,
+        message: 'Change password successfully',
+        severity: 'success'
+      })
+      setTimeout(() => {
+        logoutApi().then(() => {
+          removeCookie(STORAGEKEY.ACCESS_TOKEN)
+          router.push('/admin')
+        })
+      }, 2000)
+    }
+  }, [isSuccess])
 
   return (
     <Container className={styles.wrapper_changepass} component='main' maxWidth='xs'>
@@ -90,6 +103,12 @@ export default function FormChangePassword() {
           </Button>
         </form>
       </div>
+      <CustomizedSnackbars
+        open={openSnackbar?.open}
+        message={openSnackbar?.message}
+        severity={openSnackbar?.severity}
+        onClose={handleClose}
+      />
     </Container>
   )
 }

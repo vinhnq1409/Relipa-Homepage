@@ -64,8 +64,8 @@ export default function AdminNavbarLinks() {
   }
   const handleLogout = () => {
     logoutApi().then(() => {
-      router.push('/')
       removeCookie(STORAGEKEY.ACCESS_TOKEN)
+      router.push('/')
     })
   }
   const handleClickLanguage = (event) => {
@@ -264,9 +264,9 @@ export default function AdminNavbarLinks() {
         </div>
       </div>
       <Modal
+        className={stylesModule.modal_wrapper}
         aria-labelledby='transition-modal-title'
         aria-describedby='transition-modal-description'
-        className={classes.modal}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -276,9 +276,7 @@ export default function AdminNavbarLinks() {
         }}
       >
         <Fade in={open}>
-          <div className={stylesModule.modal_wrapper}>
             <FormChangePassword />
-          </div>
         </Fade>
       </Modal>
     </div>
