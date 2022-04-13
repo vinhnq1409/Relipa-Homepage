@@ -1,25 +1,39 @@
-import React, { useState } from 'react'
-import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
+import React, { useEffect, useState } from 'react'
+import { headerJson } from '../../../sampleData/initStaticPage'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
 import useTrans from '../../../i18n/useTrans'
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
+<<<<<<< HEAD
 import style from '../../../styles/admin/StaticPage.module.css'
 
+=======
+>>>>>>> 72a96fc (conflix)
 
 export default function StaticPage() {
-  const trans = useTrans()
   const router = useRouter()
+<<<<<<< HEAD
   const [data, setData] = useState(JSON.parse(dataJson))
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
   
+=======
+  const [data, setData] = useState('')
+  useEffect(() => {
+    async function getData() {
+      setData(await get(`api/v1/static-page`))
+    }
+    getData()
+  }, [])
+>>>>>>> 72a96fc (conflix)
   const headerTable = JSON.parse(headerJson)
 
+  
+  console.log(data)
   const handleView = (id) => {
     // console.log('View', id)
   }
