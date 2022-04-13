@@ -35,7 +35,6 @@ export default function AdminAddAcount() {
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-<<<<<<< HEAD
   const [role, setRole] = useState([])
   const listRole = [
     { id: 1, name: 'Super Admin' },
@@ -75,10 +74,6 @@ export default function AdminAddAcount() {
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
   })
-=======
-  const [area, setArea] = useState(0)
-  const [role, setRole] = useState(0)
->>>>>>> 5f2243e (add button reset)
 
   const defaultValue = {
     name: '',
