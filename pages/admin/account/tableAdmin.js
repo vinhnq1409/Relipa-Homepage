@@ -19,7 +19,6 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useState } from 'react'
 import useTrans from '../../../i18n/useTrans'
 
-
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const trans = useTrans()
   const [params, setParams] = useState({})
