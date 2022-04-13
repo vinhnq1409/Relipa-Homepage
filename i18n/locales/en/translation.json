@@ -22,6 +22,7 @@
     },
     "admin_account": {
         "sign_up": "Sign Up",
+        "edit_page": "Edit",
         "name": "User name",
         "email": "Email",
         "password": "Password",

@@ -22,6 +22,7 @@
     },
     "admin_account": {
         "sign_up": "Đăng ký",
+        "edit_page": "Sửa thông tin",
         "name": "Tên người dùng",
         "email": "Email",
         "password": "Mật khẩu",

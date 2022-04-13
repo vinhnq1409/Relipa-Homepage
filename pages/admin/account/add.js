@@ -13,20 +13,24 @@ import {
   Select,
   MenuItem,
   FormHelperText,
-  CircularProgress
+  CircularProgress,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Dialog,
+  DialogContentText
 } from '@material-ui/core'
 import { ToastContainer, toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import useTrans from '../../../i18n/useTrans'
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-import VisibilityIcon from '@material-ui/icons/Visibility'
 import { get, post, put } from '../../../api/BaseRequest'
 import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
 import style from '../../../styles/admin/AdminAccount.module.css'
 import 'react-toastify/dist/ReactToastify.css'
+import Admin_Sign_Up from '../../../components/Account/admin_sign_up'
 
 export default function AdminAddAcount() {
   const router = useRouter()
@@ -35,6 +39,8 @@ export default function AdminAddAcount() {
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [confirm, setConfirm] = useState(false)
   const [role, setRole] = useState([])
   const listRole = [
     { id: 1, name: 'Super Admin' },
@@ -133,7 +139,7 @@ export default function AdminAddAcount() {
     setTimeout(() => {
       setLoading(false)
       reset({ ...defaultValue })
-      router.push({ pathname: '/' })
+      router.push({ pathname: '/admin/account' })
     }, 2000)
   }
 
@@ -151,13 +157,30 @@ export default function AdminAddAcount() {
   }
 
   const onEdit = (data) => {
-    putUser({
-      ...dataUser,
-      name: data.name,
-      email: data.email,
-      roles: data.roles
-    })
-    router.push({ pathname: '/admin/account' })
+    setOpen(false)
+    if (confirm) {
+      putUser({
+        ...dataUser,
+        name: data.name,
+        email: data.email,
+        roles: data.roles
+      })
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        router.push({ pathname: '/admin/account' })
+      }, 2000)
+    }
+  }
+
+  const handleConfirm = () => {
+    setOpen(true)
+    setConfirm(true)
+  }
+
+  const handleCancel = () => {
+    setConfirm(false)
+    setOpen(false)
   }
 
   const onReset = () => {
@@ -173,7 +196,7 @@ export default function AdminAddAcount() {
           <div className={style.paper}>
             <Avatar className={style.avatar} />
             <Typography component={'h1'} variant='h5' className={style.title}>
-              {trans.admin_account.sign_up}
+              {trans.admin_account.edit_page}
             </Typography>
 
             <form className={style.form} noValidate>
@@ -252,7 +275,12 @@ export default function AdminAddAcount() {
 
               <Grid container align='center' xs={12}>
                 <Grid xs={6}>
-                  <Button onClick={handleSubmit(onEdit, onError)} variant='contained' color='primary' className={style.submit}>
+                  <Button
+                    onClick={handleConfirm}
+                    variant='contained'
+                    color='primary'
+                    className={style.submit}
+                  >
                     {trans.admin_account.submit}
                   </Button>
                 </Grid>
@@ -264,169 +292,9 @@ export default function AdminAddAcount() {
               </Grid>
             </form>
           </div>
-          <div>{loading && <CircularProgress />}</div>
         </Container>
-      ) : (
-        <Container component='main' maxWidth='sm'>
-          <CssBaseline />
-          <div className={style.paper}>
-            <Avatar className={style.avatar} />
-            <Typography component={'h1'} variant='h5' className={style.title}>
-              {trans.admin_account.sign_up}
-            </Typography>
-
-            <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={12}>
-                  <Controller
-                    name='name'
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        name='name'
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='name'
-                        label={trans.admin_account.name}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                        {...field}
-                      />
-                    )}
-                  />
-                  {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
-                </Grid>
-
-                <Grid item xs={12} sm={12}>
-                  <Controller
-                    name='email'
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        name='email'
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='email'
-                        label={trans.admin_account.email}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                        {...field}
-                      />
-                    )}
-                  />
-                  {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
-                </Grid>
-
-                <Grid item xs={12} sm={12}>
-                  <Controller
-                    name='password'
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        name='password'
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='password'
-                        label={trans.admin_account.password}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                        type={type}
-                        {...field}
-                        InputProps={{
-                          endAdornment: (
-                            <IconButton onClick={handleClickShowPassword}>
-                              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                            </IconButton>
-                          )
-                        }}
-                      />
-                    )}
-                  />
-                  {errors.password && <FormHelperText error>{errors.password.message}</FormHelperText>}
-                </Grid>
-
-                <Grid item xs={12} sm={12}>
-                  <Controller
-                    name='re_password'
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        name='re_password'
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='re_password'
-                        label={trans.admin_account.re_password}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                        type={type}
-                        {...field}
-                        InputProps={{
-                          endAdornment: (
-                            <IconButton id='re_pass' onClick={handleClickShowPassword}>
-                              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                            </IconButton>
-                          )
-                        }}
-                      />
-                    )}
-                  />
-                  {errors.re_password && <FormHelperText error>{errors.re_password.message}</FormHelperText>}
-                </Grid>
-
-                <Grid item xs={12} sm={12}>
-                  <Controller
-                    name='roles'
-                    control={control}
-                    defaultValue={role}
-                    render={({ field }) => (
-                      <div>
-                        <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
-                        <Select
-                          labelId='roles'
-                          multiple
-                          defaultValue={0}
-                          onChange={handleChangeRole}
-                          fullWidth
-                          {...field}
-                        >
-                          {listRole.map((role) => (
-                            <MenuItem key={role.id} value={role.id}>
-                              {role.name}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </div>
-                    )}
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container align='center' xs={12}>
-                <Grid xs={6}>
-                  <Button type='submit' variant='contained' color='primary' className={style.submit}>
-                    {trans.admin_account.submit}
-                  </Button>
-                </Grid>
-                <Grid xs={6}>
-                  <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
-                    {trans.admin_account.reset}
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </div>
-          <div>{loading && <CircularProgress />}</div>
-        </Container>
-      )}
-
+      ) : (<Admin_Sign_Up handleSubmit = {handleSubmit} onSubmit = {onSubmit}/>)}
+        
       <ToastContainer
         position='top-right'
         autoClose={2000}
@@ -438,6 +306,24 @@ export default function AdminAddAcount() {
         draggable
         pauseOnHover
       />
+      <Dialog open = {loading} fullScreen className= {style.dialogLoading}>
+        <DialogContent className= {style.contentBgLoading}>
+          <CircularProgress size={80} />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={open} onClose={handleCancel} >
+        <DialogContent>
+          <DialogContentText maxWidth='sm'>Are you sure you want to change this data?</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleSubmit(onEdit, onError)} color='primary' variant='contained'>
+            Confirm
+          </Button>
+          <Button onClick={handleCancel} color='secondary' variant='contained'>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
