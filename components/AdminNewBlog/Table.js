@@ -16,11 +16,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Typography from '@material-ui/core/Typography'
 
-<<<<<<< HEAD:components/AdminNewBlog/Table.js
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
-=======
-const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count, hidePaginate }) => {
->>>>>>> 7eb0fb7 (pagination & page-container):components/Table/Table.js
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
 
@@ -93,7 +89,6 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           </DialogActions>
         </DialogContent>
       </Dialog>
-<<<<<<< HEAD:components/AdminNewBlog/Table.js
       {count > 1 && (
         <Pagination
           className={styles.center}
@@ -104,9 +99,6 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
           page={params.page}
         />
       )}
-=======
-      {hidePaginate && <Pagination className={styles.center} count={count} onChange={handlePaginationChange} showFirstButton showLastButton page={params.page} />}
->>>>>>> 7eb0fb7 (pagination & page-container):components/Table/Table.js
     </div>
   )
 }
