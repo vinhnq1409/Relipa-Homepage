@@ -38,8 +38,6 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
     setParams({ ...params, page: page })
   }
 
-  console.log('data', data)
-
   return (
     <div className={styles.container}>
       <div className={styles.tableResponsive}>
