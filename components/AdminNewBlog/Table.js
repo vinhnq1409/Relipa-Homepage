@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Typography from '@material-ui/core/Typography'
+import noData from '../../assets/img/no-data-found.png'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
@@ -36,6 +37,8 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
+
+  console.log('data', data)
 
   return (
     <div className={styles.container}>
@@ -74,6 +77,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
             ))}
           </TableBody>
         </Table>
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
       </div>
       <Dialog open={openConfirmDelete} onClose={handleClose} fullWidth={true}>
         <DialogTitle>Delete</DialogTitle>
