@@ -22,7 +22,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import useTrans from '../../../i18n/useTrans'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
-import { get, post } from '../../../api/BaseRequest'
+import { get, post, put } from '../../../api/BaseRequest'
 import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
 import style from '../../../styles/admin/AdminAccount.module.css'
@@ -40,17 +40,21 @@ export default function AdminAddAcount() {
     { id: 1, name: 'Super Admin' },
     { id: 2, name: 'Admin' },
     { id: 3, name: 'Editor' },
-    { id: 4, name: 'Partner' },
-    { id: 5, name: 'Employee' }
+    { id: 4, name: 'Contributor' },
+    { id: 5, name: 'Partner' }
   ]
 
   const getUser = async () => await get(`users/${id}`)
 
   const postUser = async (data) => await post('users', data)
 
+  const putUser = async (data) => await put(`users/${id}`, data)
+
   const { data: dataUser, isLoading: isGettingUserAPI, status } = useQuery('getUser', getUser)
 
   const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
+
+  const { mutate: putBlogAPI, isLoading: isPuttingUserAPI } = useMutation(putUser)
 
   useEffect(() => {
     if (dataUser) {
@@ -63,7 +67,7 @@ export default function AdminAddAcount() {
     }
   }, [dataUser])
 
-  const schema = Yup.object().shape({
+  const schemaAdd = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
     email: Yup.string().required('Please enter email in fill'),
     password: Yup.string()
@@ -73,6 +77,11 @@ export default function AdminAddAcount() {
     re_password: Yup.string()
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
+  })
+
+  const shemaEdit = Yup.object().shape({
+    name: Yup.string().required('Please enter usename in fill'),
+    email: Yup.string().required('Please enter email in fill'),
   })
 
   const defaultValue = {
@@ -90,7 +99,7 @@ export default function AdminAddAcount() {
     reset,
     setValue
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(router.query.mode === 'add' ? schemaAdd : shemaEdit)
   })
 
   const handleClickShowPassword = () => {
@@ -129,6 +138,7 @@ export default function AdminAddAcount() {
   }
 
   const onError = (data) => {
+    console.log(data)
     toast.warn('Please fill out the form completely', {
       position: 'top-right',
       autoClose: 2000,
@@ -141,8 +151,13 @@ export default function AdminAddAcount() {
   }
 
   const onEdit = (data) => {
-    console.log('huhu')
-    console.log(data)
+    putUser({
+      ...dataUser,
+      name: data.name,
+      email: data.email,
+      roles: data.roles
+    })
+    router.push({pathname: '/admin/account'})
   }
 
   const onReset = () => {
@@ -161,7 +176,7 @@ export default function AdminAddAcount() {
               {trans.admin_account.sign_up}
             </Typography>
 
-            <form onSubmit={handleSubmit(onEdit)} className={style.form} noValidate>
+            <form className={style.form} noValidate>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                   <Controller
@@ -237,7 +252,7 @@ export default function AdminAddAcount() {
 
               <Grid container align='center' xs={12}>
                 <Grid xs={6}>
-                  <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                  <Button onClick={handleSubmit(onEdit, onError)} variant='contained' color='primary' className={style.submit}>
                     {trans.admin_account.submit}
                   </Button>
                 </Grid>

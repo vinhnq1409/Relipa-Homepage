@@ -6,46 +6,17 @@ import { Button } from '@material-ui/core'
 import useTrans from '../../../i18n/useTrans'
 import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import style from '../../../styles/admin/StaticPage.module.css'
 
-=======
->>>>>>> 72a96fc (conflix)
-
 export default function StaticPage() {
+  const trans = useTrans()
   const router = useRouter()
-<<<<<<< HEAD
-  const [data, setData] = useState(JSON.parse(dataJson))
+  const data = JSON.parse(dataJson)
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
-  
-=======
-  const [data, setData] = useState('')
-  useEffect(() => {
-    async function getData() {
-      setData(await get(`api/v1/static-page`))
-    }
-    getData()
-  }, [])
->>>>>>> 72a96fc (conflix)
-=======
-import { Button } from '@material-ui/core'
-import style from '../../../style/admin/StaticPage.module.css'
 
-export default function StaticPage() {
-  const router = useRouter()
-  const data = JSON.parse(dataJson)
-  // const [data, setData] = useState('')
-  // useEffect(() => {
-  //   async function getData() {
-  //     setData(await get(`api/v1/static-page`))
-  //   }
-  //   getData()
-  // }, [])
->>>>>>> 73757c3 (test version)
   const headerTable = JSON.parse(headerJson)
 
   const handleView = (id) => {
