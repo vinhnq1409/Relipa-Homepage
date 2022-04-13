@@ -12,7 +12,6 @@ import style from '../../../styles/admin/StaticPage.module.css'
 
 export default function StaticPage() {
   const trans = useTrans()
-  console.log(trans)
   const router = useRouter()
   const [data, setData] = useState(JSON.parse(dataJson))
   const [params, setParams] = useState({
