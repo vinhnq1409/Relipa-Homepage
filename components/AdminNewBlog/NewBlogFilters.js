@@ -55,7 +55,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
               </Grid>
             </Grid>
 
-            <Grid item spacing={3} xs={12} sm={2} md={4}>
+            <Grid item  xs={12} sm={2} md={4}>
               <Button variant='contained' color='primary' onClick={handleSearch}>
                 SEARCH
               </Button>

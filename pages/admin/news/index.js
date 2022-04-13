@@ -4,7 +4,7 @@ import Admin from 'layouts/Admin.js'
 import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-import TableList from '../../../components/Table/Table'
+import TableList from '../../../components/AdminNewBlog/Table'
 import { get , del } from '../../../api/BaseRequest'
 import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
@@ -48,8 +48,7 @@ export default function News() {
 
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
   const { mutate: mutateDeleteNew, isSuccess, isError: isErrorDelete, error: errorDelete} = useMutation(deleteNewItem, { 
-    retry: 3,
-    onError: (_error, _blog) => {
+    onError: (error) => {
       setOpenSnackbar(true)
     },
     onSettled: () => {
