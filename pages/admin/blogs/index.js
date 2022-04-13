@@ -28,27 +28,17 @@ export default function Blogs() {
     type: ''
   })
 
-
-  const handleClose = () => {
-    setOpenSnackbar(false)
-  }
-
   const getBlogs = () => {
     return get('blogs', params)
   }
 
   const deleteBlog = (blogId) => {
-    return del(`blogss/${blogId}`)
+    return del(`blogs/${blogId}`)
   }
 
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
   const queryClient = useQueryClient()
-  const {
-    mutate,
-    isSuccess,
-    isError: isErrorDelete,
-    error: errorDelete
-  } = useMutation(deleteBlog, {
+  const {mutate} = useMutation(deleteBlog, {
     onError: (error) => {
       setSnackbar({
         open: true,
@@ -65,6 +55,10 @@ export default function Blogs() {
       })
     }
   })
+
+  const handleClose = () => {
+    setSnackbar({...snackbar, open: false})
+  }
 
   const handleSearch = () => {
     refetch()
@@ -123,10 +117,9 @@ export default function Blogs() {
         onDelete={handleDelete}
         params={params}
         setParams={setParams}
-        // count={Math.round(data?.total / params.per_page)}
         count={data?.total / params.per_page}
       />
-      <CustomizedSnackbars open={snackbar.open} message={snackbar.message} severity={snackbar.type} />
+      <CustomizedSnackbars open={snackbar.open} message={snackbar.message} severity={snackbar.type} onClose={handleClose} />
     </Paper>
   )
 }
