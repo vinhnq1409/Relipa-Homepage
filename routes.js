@@ -1,15 +1,13 @@
-import Dashboard from '@material-ui/icons/Dashboard'
-import Person from '@material-ui/icons/Person'
-import Notifications from '@material-ui/icons/Notifications'
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
-import AssignmentIcon from '@material-ui/icons/Assignment'
-import PagesIcon from '@material-ui/icons/Pages'
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
-import CodeIcon from '@material-ui/icons/Code'
-import GroupWorkIcon from '@material-ui/icons/GroupWork'
-import WorkIcon from '@material-ui/icons/Work'
-import HomeIcon from '@material-ui/icons/Home'
-
+import Dashboard from "@material-ui/icons/Dashboard";
+import Person from "@material-ui/icons/Person";
+import LibraryBooks from "@material-ui/icons/LibraryBooks";
+import Notifications from "@material-ui/icons/Notifications";
+import Unarchive from "@material-ui/icons/Unarchive";
+import Language from "@material-ui/icons/Language";
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import PagesIcon from '@material-ui/icons/Pages';
+import InfoIcon from '@material-ui/icons/Info'
 const dashboardRoutes = [
   {
     path: '/',

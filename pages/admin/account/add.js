@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import Admin from 'layouts/Admin.js'
 import {
   Avatar,
@@ -36,45 +36,32 @@ export default function AdminAddAcount() {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [role, setRole] = useState([])
-
-  const getUser = async () => await get(`users/${id}`)
-
-  const { data: dataUser, isLoading } = useQuery('getUser', getUser)
-  console.log(dataUser)
-
-
-  const defaultValue = {
-    name: '',
-    email: '',
-    password: '',
-    re_password: '',
-    roles: []
-  }
-
   const listRole = [
     { id: 1, name: 'Super Admin' },
     { id: 2, name: 'Admin' },
-    { id: 3, name: 'Member' },
+    { id: 3, name: 'Editor' },
     { id: 4, name: 'Partner' },
     { id: 5, name: 'Employee' }
   ]
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword)
-    if (showPassword === false) {
-      setType('text')
-    } else {
-      setType('password')
-    }
-  }
+  const getUser = async () => await get(`users/${id}`)
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-    reset,
-    setValue
-  } = useForm({ resolver: yupResolver(schema) })
+  const postUser = async (data) => await post('users', data)
+
+  const { data: dataUser, isLoading: isGettingUserAPI, status } = useQuery('getUser', getUser)
+
+  const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
+
+  useEffect(() => {
+    if (dataUser) {
+      setValue('name', dataUser?.data.name)
+      setValue('email', dataUser?.data.email)
+      setValue(
+        'roles',
+        dataUser?.data.roles?.map((item) => item.id)
+      )
+    }
+  }, [dataUser])
 
   const schema = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
@@ -88,15 +75,36 @@ export default function AdminAddAcount() {
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
   })
 
+  const defaultValue = {
+    name: '',
+    email: '',
+    password: '',
+    re_password: '',
+    roles: []
+  }
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+    setValue
+  } = useForm({
+    resolver: yupResolver(schema)
+  })
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword)
+    if (showPassword === false) {
+      setType('text')
+    } else {
+      setType('password')
+    }
+  }
+
   const handleChangeRole = (event) => {
     setRole(event.target.value)
   }
-
-  const postUser = async (data) => {
-    return await post('users', data)
-  }
-
-  const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
 
   const onSubmit = (data) => {
     const paramApi = {
@@ -116,7 +124,7 @@ export default function AdminAddAcount() {
     setTimeout(() => {
       setLoading(false)
       reset({ ...defaultValue })
-      router.push({ pathname: 'account' })
+      router.push({ pathname: '/' })
     }, 2000)
   }
 
@@ -133,6 +141,7 @@ export default function AdminAddAcount() {
   }
 
   const onEdit = (data) => {
+    console.log('huhu')
     console.log(data)
   }
 
@@ -143,153 +152,266 @@ export default function AdminAddAcount() {
   }
   return (
     <>
-      <Container component='main' maxWidth='sm'>
-        <CssBaseline />
-        <div className={style.paper}>
-          <Avatar className={style.avatar} />
-          <Typography component={'h1'} variant='h5' className={style.title}>
-            {trans.admin_account.sign_up}
-          </Typography>
+      {router.query.mode === 'edit' ? (
+        <Container component='main' maxWidth='sm'>
+          <CssBaseline />
+          <div className={style.paper}>
+            <Avatar className={style.avatar} />
+            <Typography component={'h1'} variant='h5' className={style.title}>
+              {trans.admin_account.sign_up}
+            </Typography>
 
-          <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='name'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='Username'
-                      variant='outlined'
-                      fullWidth
-                      id='Name'
-                      label={trans.admin_account.name}
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='email'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='Email'
-                      variant='outlined'
-                      required
-                      fullWidth
-                      id='email'
-                      label={trans.admin_account.email}
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='password'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='password'
-                      variant='outlined'
-                      required
-                      fullWidth
-                      id='password'
-                      label={trans.admin_account.password}
-                      type={type}
-                      {...field}
-                      InputProps={{
-                        endAdornment: (
-                          <IconButton onClick={handleClickShowPassword}>
-                            {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                          </IconButton>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                {errors.password && <FormHelperText error>{errors.password.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='re_password'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='re_password'
-                      variant='outlined'
-                      required
-                      fullWidth
-                      id='re_password'
-                      label={trans.admin_account.re_password}
-                      type={type}
-                      {...field}
-                      InputProps={{
-                        endAdornment: (
-                          <IconButton id='re_pass' onClick={handleClickShowPassword}>
-                            {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                          </IconButton>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                {errors.re_password && <FormHelperText error>{errors.re_password.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='roles'
-                  control={control}
-                  defaultValue={role}
-                  render={({ field }) => (
-                    <div>
-                      <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
-                      <Select
-                        labelId='roles'
-                        multiple
-                        defaultValue={0}
-                        onChange={handleChangeRole}
-                        // input = {<Input />}
+            <form onSubmit={handleSubmit(onEdit)} className={style.form} noValidate>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='name'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='name'
+                        variant='outlined'
+                        required
                         fullWidth
-                        // renderValue={(selected) => console.log(selected)}
+                        id='name'
+                        label={trans.admin_account.name}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
                         {...field}
-                      >
-                        {listRole.map((role) => (
-                          <MenuItem key={role.id} value={role.id}>
-                            {role.name}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </div>
-                  )}
-                />
-              </Grid>
-            </Grid>
+                      />
+                    )}
+                  />
+                  {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
+                </Grid>
 
-            <Grid container align='center' xs={12}>
-              <Grid xs={6}>
-                <Button type='submit' variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.submit}
-                </Button>
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='email'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='email'
+                        variant='outlined'
+                        required
+                        fullWidth
+                        id='email'
+                        label={trans.admin_account.email}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
+                        {...field}
+                      />
+                    )}
+                  />
+                  {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='roles'
+                    control={control}
+                    defaultValue={role}
+                    render={({ field }) => (
+                      <div>
+                        <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
+                        <Select
+                          labelId='roles'
+                          multiple
+                          defaultValue={0}
+                          onChange={handleChangeRole}
+                          fullWidth
+                          {...field}
+                        >
+                          {listRole.map((role) => (
+                            <MenuItem key={role.id} value={role.id}>
+                              {role.name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </div>
+                    )}
+                  />
+                </Grid>
               </Grid>
-              <Grid xs={6}>
-                <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.reset}
-                </Button>
+
+              <Grid container align='center' xs={12}>
+                <Grid xs={6}>
+                  <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                    {trans.admin_account.submit}
+                  </Button>
+                </Grid>
+                <Grid xs={6}>
+                  <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
+                    {trans.admin_account.reset}
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <div>{loading && <CircularProgress />}</div>
-      </Container>
+            </form>
+          </div>
+          <div>{loading && <CircularProgress />}</div>
+        </Container>
+      ) : (
+        <Container component='main' maxWidth='sm'>
+          <CssBaseline />
+          <div className={style.paper}>
+            <Avatar className={style.avatar} />
+            <Typography component={'h1'} variant='h5' className={style.title}>
+              {trans.admin_account.sign_up}
+            </Typography>
+
+            <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='name'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='name'
+                        variant='outlined'
+                        required
+                        fullWidth
+                        id='name'
+                        label={trans.admin_account.name}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
+                        {...field}
+                      />
+                    )}
+                  />
+                  {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='email'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='email'
+                        variant='outlined'
+                        required
+                        fullWidth
+                        id='email'
+                        label={trans.admin_account.email}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
+                        {...field}
+                      />
+                    )}
+                  />
+                  {errors.email && <FormHelperText error>{errors.email.message}</FormHelperText>}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='password'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='password'
+                        variant='outlined'
+                        required
+                        fullWidth
+                        id='password'
+                        label={trans.admin_account.password}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
+                        type={type}
+                        {...field}
+                        InputProps={{
+                          endAdornment: (
+                            <IconButton onClick={handleClickShowPassword}>
+                              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                          )
+                        }}
+                      />
+                    )}
+                  />
+                  {errors.password && <FormHelperText error>{errors.password.message}</FormHelperText>}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='re_password'
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name='re_password'
+                        variant='outlined'
+                        required
+                        fullWidth
+                        id='re_password'
+                        label={trans.admin_account.re_password}
+                        InputLabelProps={{
+                          shrink: true
+                        }}
+                        type={type}
+                        {...field}
+                        InputProps={{
+                          endAdornment: (
+                            <IconButton id='re_pass' onClick={handleClickShowPassword}>
+                              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                          )
+                        }}
+                      />
+                    )}
+                  />
+                  {errors.re_password && <FormHelperText error>{errors.re_password.message}</FormHelperText>}
+                </Grid>
+
+                <Grid item xs={12} sm={12}>
+                  <Controller
+                    name='roles'
+                    control={control}
+                    defaultValue={role}
+                    render={({ field }) => (
+                      <div>
+                        <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
+                        <Select
+                          labelId='roles'
+                          multiple
+                          defaultValue={0}
+                          onChange={handleChangeRole}
+                          fullWidth
+                          {...field}
+                        >
+                          {listRole.map((role) => (
+                            <MenuItem key={role.id} value={role.id}>
+                              {role.name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </div>
+                    )}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container align='center' xs={12}>
+                <Grid xs={6}>
+                  <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                    {trans.admin_account.submit}
+                  </Button>
+                </Grid>
+                <Grid xs={6}>
+                  <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
+                    {trans.admin_account.reset}
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+          <div>{loading && <CircularProgress />}</div>
+        </Container>
+      )}
+
       <ToastContainer
         position='top-right'
         autoClose={2000}
