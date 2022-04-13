@@ -16,10 +16,13 @@ import Icon from '@material-ui/core/Icon'
 import AdminNavbarLinks from 'components/Navbars/AdminNavbarLinks.js'
 import RTLNavbarLinks from 'components/Navbars/RTLNavbarLinks.js'
 import styles from 'assets/jss/nextjs-material-dashboard/components/sidebarStyle.js'
+import { fiterRoleUser } from '../../utils/roles'
+import { useSelector } from 'react-redux'
 
 export default function Sidebar(props) {
   //role
-  const [roleUser] = useState('admin')
+  const { infoUser } = useSelector((state) => state.userInfo)
+  const [roleUser] = useState(infoUser !== {} ? fiterRoleUser(infoUser?.roles) : '')
   // used for checking current route
   const router = useRouter()
   // creates styles for this component
