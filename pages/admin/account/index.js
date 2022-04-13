@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Admin from 'layouts/Admin.js'
+<<<<<<< HEAD
 import { Button } from '@material-ui/core'
 import { headerUJson } from '../../../sampleData/userInfo'
 import { get, del } from '../../../api/BaseRequest'
@@ -48,6 +49,20 @@ export default function Account() {
         </Button>
       </div>
       <TableListAdmin data={dataUser?.data} tableHead={tableHead} onView={onView} onUpdate={onUpdate} onDelete={onDelete} />
+=======
+import TableList from '../blogs/TableList'
+import { dataUJson, headerUJson } from '../../../sampleData/userInfo'
+
+export default function Account() {
+  const dataUse = JSON.parse(dataUJson)
+  const tableHead = JSON.parse(headerUJson)
+  return (
+    <>
+      <TableList
+        data={dataUse}
+        tableHead = {tableHead}
+      />
+>>>>>>> 73757c3 (test version)
     </>
   )
 }

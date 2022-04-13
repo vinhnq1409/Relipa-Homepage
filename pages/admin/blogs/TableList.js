@@ -18,12 +18,13 @@ import { useEffect, useState } from 'react'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const [params, setParams] = useState({})
-  useEffect(() => {
-    setParams({
-      page: data.current_page,
-      per_page: data.per_page
-    })
-  }, [data])
+  const number = 20
+  // useEffect(() => {
+  //   setParams({
+  //     page: data.current_page,
+  //     per_page: data.per_page
+  //   })
+  // }, [data])
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
@@ -39,7 +40,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
         <Grid item className={styles.flex}>
           <Muted>Item per page:</Muted>
           <FormControl variant='outlined' size='small'>
-            <Select className={styles.select} defaultValue = {params.per_page} onChange={handleSelectChange}>
+            <Select className={styles.select} defaultValue = {number} onChange={handleSelectChange}>
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='30'>30</MenuItem>
               <MenuItem value='50'>50</MenuItem>
@@ -58,14 +59,14 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.data?.map((row) => (
+            {data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
-                <TableCell className={styles.tableCell}>{row.title}</TableCell>
-                <TableCell className={styles.tableCell}>{row.meta}</TableCell>
-                <TableCell className={styles.tableCell}>{row.created_at}</TableCell>
-                <TableCell className={styles.tableCell}>{row.content}</TableCell>
-                <TableCell className={styles.tableCell}>{row.url_image_meta}</TableCell>
+                <TableCell className={styles.tableCell}>{row.name}</TableCell>
+                <TableCell className={styles.tableCell}>{row.role}</TableCell>
+                <TableCell className={styles.tableCell}>{row.area}</TableCell>
+                <TableCell className={styles.tableCell}>{row.status}</TableCell>
+                <TableCell className={styles.tableCell}>{row.like}</TableCell>
                 <TableCell className={styles.tableCell}>
                   <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row)}/>
