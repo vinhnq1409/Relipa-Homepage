@@ -42,7 +42,7 @@ export default function News() {
   }
   
   const deleteNewItem = async(id) => {
-    const response = await del(`newss/${id}`)
+    const response = await del(`news/${id}`)
     return response.data
   }
 
@@ -62,8 +62,6 @@ export default function News() {
       })
     }
   })
-
-  console.log(dataNewList?.total)
 
   const handleCloseSnackBars = () => {
     setOpenSnackbar(false)
