@@ -37,7 +37,7 @@ export default function Blogs() {
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
   const queryClient = useQueryClient()
   const { mutate } = useMutation(deleteBlog, {
-    onError: (error) => {
+    onError: () => {
       setSnackbar({
         open: true,
         message: 'Delete failed!',
