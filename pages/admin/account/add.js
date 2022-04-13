@@ -17,31 +17,38 @@ import {
 } from '@material-ui/core'
 import { ToastContainer, toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import useTrans from '../../../i18n/useTrans'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
-import style from '../../../styles/admin/AdminAccount.module.css'
-import 'react-toastify/dist/ReactToastify.css'
 import { get, post } from '../../../api/BaseRequest'
 import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
+import style from '../../../styles/admin/AdminAccount.module.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AdminAddAcount() {
   const router = useRouter()
   const trans = useTrans()
-  const [userId, ] = useState(router.query.id)
+  const { id } = router.query
   const [type, setType] = useState('password')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [role, setRole] = useState([])
 
-  const getUser = () => get(`users/${userId}`)
+  const getUser = async () => await get(`users/${id}`)
 
-  const {data: dataUser, isLoading} = useQuery(`getUser`, getUser)
+  const { data: dataUser, isLoading } = useQuery('getUser', getUser)
+  console.log(dataUser)
 
-  console.log(dataUser.data)
+  useEffect(() => {
+    if (dataUser) {
+      setValue('nameEdit', dataUser.data.name)
+      setValue('email', dataUser.data.email)
+      setValue('roles', [1])
+    }
+  }, [dataUser])
 
   const defaultValue = {
     name: '',
@@ -50,7 +57,6 @@ export default function AdminAddAcount() {
     re_password: '',
     roles: []
   }
-
 
   const listRole = [
     { id: 1, name: 'Super Admin' },
@@ -75,7 +81,7 @@ export default function AdminAddAcount() {
     formState: { errors },
     reset,
     setValue
-  } = useForm({ defaultValues: dataUser?.data, resolver: yupResolver(schema) })
+  } = useForm({ resolver: yupResolver(schema) })
 
   const schema = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
@@ -131,6 +137,10 @@ export default function AdminAddAcount() {
       draggable: true,
       progress: undefined
     })
+  }
+
+  const onEdit = (data) => {
+    console.log(data)
   }
 
   const onReset = () => {

@@ -30,6 +30,7 @@
         "role": "Role",
         "submit": "Submit",
         "reset": "Reset",
+        "edit": "Edit",
         "create_account": "Create Account",
         "total_user": "Total User",
         "item_per_page": "Item per page"

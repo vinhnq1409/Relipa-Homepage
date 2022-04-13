@@ -16,12 +16,7 @@ export default function StaticPage() {
     per_page: 10,
     page: 1
   })
-  // useEffect(() => {
-  //   async function getData() {
-  //     setData(await get(`api/v1/static-page`))
-  //   }
-  //   getData()
-  // }, [])
+  
   const headerTable = JSON.parse(headerJson)
 
   const handleView = (id) => {
