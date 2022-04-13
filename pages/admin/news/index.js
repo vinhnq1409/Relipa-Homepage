@@ -38,7 +38,7 @@ export default function News() {
 
   const getDataNewList = async () => {
     const response = await get('news', { ...filters, ...params })
-    return response.data
+    return response
   }
   
   const deleteNewItem = async(id) => {
@@ -62,6 +62,8 @@ export default function News() {
       })
     }
   })
+
+  console.log(dataNewList?.total)
 
   const handleCloseSnackBars = () => {
     setOpenSnackbar(false)
@@ -137,12 +139,13 @@ export default function News() {
       />
       <TableList
         tableHead={tableHead}
-        data={dataNewList || data}
+        data={dataNewList?.data || data}
         onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}
         setParams={setParams}
+        count={dataNewList?.total / params.per_page}
       />
       {isSuccess && (
         <CustomizedSnackbars open={openSnackbar} message='Delete success!' severity='success' onClose={handleCloseSnackBars} />
