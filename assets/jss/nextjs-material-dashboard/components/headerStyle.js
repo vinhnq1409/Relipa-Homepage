@@ -14,18 +14,18 @@ import {
 const headerStyle = () => ({
   appBar: {
     backgroundColor: 'white',
-    boxShadow: 'none',
-    borderBottom: '0',
-    marginBottom: '0',
+    // boxShadow: 'none',
+    // borderBottom: '0',
+    // marginBottom: '0',
     position: 'relative',
     width: '100%',
-    zIndex: '1029',
-    color: grayColor[7],
-    border: '0',
-    borderRadius: '3px',
-    transition: 'all 150ms ease 0s',
-    minHeight: '50px',
-    display: 'block'
+    // zIndex: '1029',
+    color: grayColor[7]
+    // border: '0',
+    // borderRadius: '3px',
+    // transition: 'all 150ms ease 0s',
+    // minHeight: '50px',
+    // display: 'block',
   },
   container: {
     ...container,
@@ -71,6 +71,14 @@ const headerStyle = () => ({
     backgroundColor: dangerColor[0],
     color: whiteColor,
     ...defaultBoxShadow
+  },
+  demo: {
+    position: 'fixed',
+    backgroundColor: 'white',
+    width: 'calc(100% - 260px)',
+    padding: '10px 0',
+    maxWidth: 'inherit',
+    borderBottom: ' 1px solid #e7e7e7'
   }
 })
 
