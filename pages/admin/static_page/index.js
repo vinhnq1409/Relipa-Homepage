@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { headerJson, dataJson } from '../../../sampleData/initStaticPage'
+import React, { useState } from 'react'
+import { dataJson, headerJson } from '../../../sampleData/initStaticPage'
+import Link from 'next/link'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
@@ -8,8 +9,10 @@ import TableList from '../blogs/TableList'
 import { get } from '../../../api/BaseRequest'
 import style from '../../../styles/admin/StaticPage.module.css'
 
+
 export default function StaticPage() {
   const trans = useTrans()
+  console.log(trans)
   const router = useRouter()
   const [data, setData] = useState(JSON.parse(dataJson))
   const [params, setParams] = useState({
