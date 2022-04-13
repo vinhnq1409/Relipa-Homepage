@@ -27,12 +27,12 @@ export const initFullProps = {
     input.click()
   },
   automatic_uploads: true,
-  images_upload_url: 'postAcceptor.php',
+  images_upload_url: 'http://10.1.4.246/api/v1/media',
   images_reuse_filename: true,
   plugins: [
     'advlist autolink lists link image charmap print preview anchor',
     'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table paste code help wordcount',
+    'insertdatetime media table paste code help wordcount'
   ],
   menubar: 'file edit view insert format tools table help',
   toolbar:
@@ -40,5 +40,5 @@ export const initFullProps = {
     'alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | ' +
     'pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
   branding: false,
-  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 }

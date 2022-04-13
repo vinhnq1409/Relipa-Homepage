@@ -4,11 +4,10 @@ import Admin from 'layouts/Admin.js'
 import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-import TableList from '../../../components/AdminNewBlog/Table'
 import { get, del } from '../../../api/BaseRequest'
-import { addNews } from '../../../redux/slices/newsSlice'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
+import TableList from '../../../components/AdminNewBlog/Table'
 
 const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
@@ -18,7 +17,6 @@ const data = [
 ]
 
 export default function News() {
-  const dispatch = useDispatch()
   const queryClient = useQueryClient()
 
   const [filters, setFilters] = useState({
@@ -93,25 +91,13 @@ export default function News() {
     // console.log('View', id)
   }
 
-  const handleUpdate = (blog) => {
-    dispatch(
-      addNews({
-        id: 1,
-        title: 'A nice article',
-        desc: 'This is blog description',
-        meta: 'This is blog meta',
-        urlImageMeta: 'This is url image meta',
-        content: 'This is blog content',
-        tags: 'This is blog content',
-        friendlyUrl: 'This is blog url friendly'
-      })
-    )
+  const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/news/add',
       query: {
         slug: 'about',
         mode: 'edit',
-        id: '2'
+        id: id
       }
     })
   }
