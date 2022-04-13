@@ -50,7 +50,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
               ))}
             </TableRow>
           </TableHead>
-          <TableBody className={styles.tableBody}>
+          <TableBody>
             {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
