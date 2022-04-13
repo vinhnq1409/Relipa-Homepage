@@ -12,7 +12,7 @@ import HomeIcon from '@material-ui/icons/Home'
 
 const dashboardRoutes = [
   {
-    path: '/',
+    path: '/dashboard',
     name: 'Dashboard',
     icon: Dashboard,
     layout: '/admin',

@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ export default function Sidebar(props) {
   const classes = useStyles()
   // verifies if routeName is the one active (in browser input)
   function activeRoute(routeName) {
-    return router.route.indexOf(routeName) > -1 ? true : false
+    return router.route === routeName
   }
   const { color, logo, image, logoText, routes } = props
   const routerRole = routes.filter((route) => {
@@ -39,24 +39,16 @@ export default function Sidebar(props) {
   const links = (
     <List className={classes.list}>
       {routerRole.map((prop, key) => {
-        const activePro = ' '
         let listItemClasses
-        if (prop.path === '/upgrade-to-pro') {
-          activePro = classes.activePro + ' '
-          listItemClasses = classNames({
-            [' ' + classes[color]]: true
-          })
-        } else {
-          listItemClasses = classNames({
-            [' ' + classes[color]]: activeRoute(prop.layout + prop.path)
-          })
-        }
+        listItemClasses = classNames({
+          [' ' + classes[color]]: activeRoute(prop.layout + prop.path)
+        })
         const whiteFontClasses = classNames({
-          [' ' + classes.whiteFont]: activeRoute(prop.layout + prop.path) || prop.path === '/upgrade-to-pro'
+          [' ' + classes.whiteFont]: activeRoute(prop.layout + prop.path)
         })
         return (
           <Link href={prop.layout + prop.path} key={key}>
-            <a className={activePro + classes.item}>
+            <a className={classes.item}>
               <ListItem button className={classes.itemLink + listItemClasses}>
                 {typeof prop.icon === 'string' ? (
                   <Icon
@@ -87,20 +79,20 @@ export default function Sidebar(props) {
       })}
     </List>
   )
-  var brand = (
+  const brand = (
     <div className={classes.logo}>
-      <a
-        href='#'
-        className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive
-        })}
-        // target="_blank" relipa-logo link
-      >
-        <div className={classes.logoImage}>
-          <img src={logo} alt='logo' className={classes.img} />
-        </div>
-        {logoText}
-      </a>
+      <Link href='/admin'>
+        <a
+          className={classNames(classes.logoLink, {
+            [classes.logoLinkRTL]: props.rtlActive
+          })}
+        >
+          <div className={classes.logoImage}>
+            <img src={logo} alt='logo' className={classes.img} />
+          </div>
+          {logoText}
+        </a>
+      </Link>
     </div>
   )
   return (
