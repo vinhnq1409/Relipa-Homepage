@@ -1,0 +1,11 @@
+.breadcrumbs {
+    margin: 10px 0 ;
+    display: flex ;
+    justify-content: space-between 
+  }
+  .breadcrumbs_title {
+    color: #6c757d ;
+  }
+  .breadcrumbs_link  {
+    color: #727cf5 ;
+  }

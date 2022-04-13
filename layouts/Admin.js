@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
 import SignIn from '../pages/admin/signin'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import dashboardRoutes from '../routes'
 import { fiterRoleUser } from '../utils/roles'
 
@@ -78,10 +79,13 @@ export default function Admin({ children, ...rest }) {
             {...rest}
           />
           <div className={classes.mainPanel} ref={mainPanel}>
-            <Navbar routes={routes} handleDrawerToggle={handleDrawerToggle} {...rest} />
-            <Paper elevation={3} className={classes.content}>
-              <div className={classes.container}>{children}</div>
-            </Paper>
+            <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
+            <div className={classes.body}>
+              <Breadcrumb routes={routes} />
+              <Paper elevation={3} className={classes.content}>
+                <div className={classes.container}>{children}</div>
+              </Paper>
+            </div>
             <Footer />
           </div>
         </div>

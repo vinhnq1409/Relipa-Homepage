@@ -71,14 +71,6 @@ const headerStyle = () => ({
     backgroundColor: dangerColor[0],
     color: whiteColor,
     ...defaultBoxShadow
-  },
-  //style breadcrumb
-  Breadcrumbs: {
-    display: 'flex',
-    justifyContent: 'space-between ',
-    paddingLeft: '30px',
-    paddingRight: '15px',
-    marginTop: '10px'
   }
 })
 
