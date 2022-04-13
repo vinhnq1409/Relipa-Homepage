@@ -89,5 +89,4 @@ const dashboardRoutes = [
     role: ['Super Admin', 'Admin']
   }
 ]
-
 export default dashboardRoutes
