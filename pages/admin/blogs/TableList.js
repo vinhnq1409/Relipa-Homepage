@@ -53,9 +53,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
           <TableHead className={styles.tableHead}>
             <TableRow>
               {tableHead.map((item) => (
-                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>
-                  {item}
-                </TableCell>
+                <TableCell className={`${styles.tableCell} ${styles.white}`} key={item}>{item}</TableCell>   
               ))}
             </TableRow>
           </TableHead>
@@ -69,12 +67,9 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete }) => {
                 <TableCell className={styles.tableCell}>{row.content}</TableCell>
                 <TableCell className={styles.tableCell}>{row.url_image_meta}</TableCell>
                 <TableCell className={styles.tableCell}>
-                  <VisibilityIcon
-                    className={`${styles.tableLink} ${styles.hoverIcon}`}
-                    onClick={() => onView(row.id)}
-                  />
-                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
-                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)} />
+                  <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onView(row.id)}/>
+                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row)}/>
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)}/>
                 </TableCell>
               </TableRow>
             ))}
