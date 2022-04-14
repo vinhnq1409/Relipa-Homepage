@@ -1,11 +1,11 @@
 import React from 'react'
 import Pagination from '@material-ui/lab/Pagination'
-import styles from '../../../styles/AdminBlogs.module.css'
+import styles from '../../styles/AdminBlogs.module.css'
 import { TableHead, TableCell, Table, TableRow, TableBody } from '@material-ui/core'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import noData from '../../../assets/img/no-data-found.png'
+import noData from '../../assets/img/no-data-found.png'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
   const handlePaginationChange = (e, page) => {
