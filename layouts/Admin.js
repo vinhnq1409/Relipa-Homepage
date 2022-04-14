@@ -45,7 +45,6 @@ export default function Admin({ children, ...rest }) {
   useEffect(() => {
     if (token) {
       dispatch(getInfoUser())
-      setIsToken(true)
     }
   }, [token])
 
@@ -66,10 +65,9 @@ export default function Admin({ children, ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-  const [isToken, setIsToken] = useState(false)
   return (
-    <>
-      {isToken ? (
+    <div suppressHydrationWarning={true}>
+      {token ? (
         <div className={classes.wrapper}>
           <Sidebar
             routes={routes}
@@ -95,6 +93,6 @@ export default function Admin({ children, ...rest }) {
       ) : (
         <SignIn />
       )}
-    </>
+    </div>
   )
 }
