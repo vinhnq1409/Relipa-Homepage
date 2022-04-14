@@ -11,8 +11,8 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
 
   return (
     <>
-      <Grid container justify='space-between' alignItems='center'>
-        <Grid item md={10} container spacing={2} alignItems='center'>
+      <Grid container justify='space-between' alignItems='center' spacing={1}>
+        <Grid item md={12} lg={10} container spacing={2} alignItems='center'>
           <Grid item>
             <TextField
               placeholder='Search...'
@@ -26,12 +26,12 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             <Typography variant='subtitle2' component='span'>
               Sort by
             </Typography>
-            <TextField 
-              select 
-              variant='outlined' 
-              className={styles.sort_by} 
-              size='small' 
-              defaultValue='' 
+            <TextField
+              select
+              variant='outlined'
+              className={styles.sort_by}
+              size='small'
+              defaultValue=''
               value={sort}
               onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
             >
@@ -46,7 +46,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             </Button>
           </Grid>
         </Grid>
-        <Grid item sm={12} md={2} className={styles.flexRight}>
+        <Grid item lg={2} className={styles.flexRight}>
           <Button variant='contained' color='primary' onClick={() => onCreate()}>
             CREATE
           </Button>

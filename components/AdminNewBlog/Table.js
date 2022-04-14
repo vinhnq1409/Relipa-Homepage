@@ -77,7 +77,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
         </Table>
         {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
       </div>
-      <Dialog open={openConfirmDelete} onClose={handleClose} fullWidth={true}>
+      <Dialog open={openConfirmDelete} onClose={handleClose} fullWidth>
         <DialogTitle>Delete</DialogTitle>
         <DialogContent>
           <Typography>Do you really want to delete this?</Typography>
