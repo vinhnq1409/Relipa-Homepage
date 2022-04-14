@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from '../../styles/AdminNewBlogFilters.module.css'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import { Button, Typography, TextField, MenuItem } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
+import useTrans from '../../i18n/useTrans'
 
 const AccountFilter = ({ handleSearch, filters, setFilters, onCreate }) => {
   const { email, sort } = filters
+  const trans = useTrans()
 
   return (
     <>
@@ -33,13 +32,13 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate }) => {
           </Grid>
           <Grid item>
             <Button variant='contained' color='primary' onClick={handleSearch}>
-              SEARCH
+              {trans.admin_account.search}
             </Button>
           </Grid>
         </Grid>
         <Grid item sm={12} md={2} className={styles.flexRight}>
           <Button variant='contained' color='primary' onClick={() => onCreate()}>
-            CREATE
+            {trans.admin_account.create_account}
           </Button>
         </Grid>
       </Grid>

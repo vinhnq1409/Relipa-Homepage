@@ -123,6 +123,10 @@ export const AdminSignUp = () => {
     })
   }
 
+  const onCancel = () => {
+    router.push({ pathname: '/admin/account' })
+  }
+
   return (
     <>
       <Container component='main' maxWidth='sm'>
@@ -266,8 +270,9 @@ export const AdminSignUp = () => {
                 />
               </Grid>
               <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
-                <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName={trans.admin_account.create} />
-                <BtnLoading onClick={onReset} variant='contained' btnName={trans.admin_account.reset} color='primary' />
+                <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName={trans.admin_account.create} color='primary' />
+                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} color='secondary' />
+                <BtnLoading onClick={onCancel} btnName={trans.admin_account.cancel} />
               </Grid>
             </Grid>
           </form>
