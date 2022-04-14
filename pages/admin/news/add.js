@@ -1,7 +1,7 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, Input, TextField, Typography } from '@material-ui/core'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
@@ -18,21 +18,22 @@ export default function AddNews() {
   const router = useRouter()
   const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
+  const [selectedFile, setSelectedFile] = useState(null)
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
     severity: 'success'
   })
 
-  const getNews = async() => {
+  const getNews = async () => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async(data) => {
+  const postNews = async (data) => {
     return await post('news', data)
   }
 
-  const putNews = async(data) => {
+  const putNews = async (data) => {
     return await put(`news/${id}`, data)
   }
 
@@ -135,6 +136,14 @@ export default function AddNews() {
     const resetFriendlyUrl = title.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
+
+  const onFileUpload = async (e) => {
+    const formData = new FormData()
+    formData.append('file', e.target.files[0], e.target.files[0].name)
+    const { location } = await post('media', formData)
+    setValue('url_image_meta', `http://${location}`)
+  }
+
   const onCancel = () => {
     router.push('/admin/news')
   }
@@ -180,7 +189,7 @@ export default function AddNews() {
             />
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={10}>
             <Controller
               name='url_image_meta'
               control={control}
@@ -196,6 +205,20 @@ export default function AddNews() {
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
+          </Grid>
+          <Grid item xs={2}>
+            <input
+              type='file'
+              accept='image/*'
+              onChange={onFileUpload}
+              style={{ display: 'none' }}
+              id='contained-button-file'
+            />
+            <label htmlFor='contained-button-file'>
+              <Button className={styles.full} variant='contained' color='primary' component='span'>
+                Upload
+              </Button>
+            </label>
           </Grid>
           <Grid item xs={10}>
             <Controller
