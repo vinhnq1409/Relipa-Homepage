@@ -18,7 +18,7 @@ function UserProfile() {
 
   const {
     register,
-    handleSubmit,
+    handleSubmit
   } = useForm()
 
   const onSubmit = (data) => {
@@ -32,49 +32,49 @@ function UserProfile() {
         <div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={8}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Card>
-                <CardHeader color='primary'>
-                  <h4>My Profile</h4>
-                </CardHeader>
-                <CardBody>
-                  <GridContainer>
-                    <GridItem xs={12} sm={12} md={12}>
-                      <TextField
-                        variant='outlined'
-                        margin='normal'
-                        required
-                        fullWidth
-                        name='email'
-                        {...register('email', { required: true })}
-                        label='Email'
-                        type='email'
-                        id='email'
-                        disabled
-                        defaultValue={infoUser?.email}
-                      />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={12}>
-                    <TextField
-                        variant='outlined'
-                        margin='normal'
-                        required
-                        fullWidth
-                        name='name'
-                        {...register('name', { required: true })}
-                        label='User name'
-                        type='text'
-                        id='name'
-                        disabled
-                        defaultValue={infoUser?.name}
-                      />
-                    </GridItem>
-                  </GridContainer>
-                </CardBody>
-                <CardFooter>
-                  <Button disabled type='submit' color='primary'>Update Profile</Button>
-                </CardFooter>
-              </Card>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Card>
+                  <CardHeader color='primary'>
+                    <h4>My Profile</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <GridContainer>
+                      <GridItem xs={12} sm={12} md={12}>
+                        <TextField
+                          variant='outlined'
+                          margin='normal'
+                          required
+                          fullWidth
+                          name='email'
+                          {...register('email', { required: true })}
+                          label='Email'
+                          type='email'
+                          id='email'
+                          disabled
+                          defaultValue={infoUser?.email}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={12}>
+                        <TextField
+                          variant='outlined'
+                          margin='normal'
+                          required
+                          fullWidth
+                          name='name'
+                          {...register('name', { required: true })}
+                          label='User name'
+                          type='text'
+                          id='name'
+                          disabled
+                          defaultValue={infoUser?.name}
+                        />
+                      </GridItem>
+                    </GridContainer>
+                  </CardBody>
+                  <CardFooter>
+                    <Button disabled type='submit' color='primary'>Update Profile</Button>
+                  </CardFooter>
+                </Card>
               </form>
             </GridItem>
             <GridItem xs={12} sm={12} md={4}>

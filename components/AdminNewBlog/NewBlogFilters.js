@@ -26,12 +26,12 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             <Typography variant='subtitle2' component='span'>
               Sort by
             </Typography>
-            <TextField 
-              select 
-              variant='outlined' 
-              className={styles.sort_by} 
-              size='small' 
-              defaultValue='' 
+            <TextField
+              select
+              variant='outlined'
+              className={styles.sort_by}
+              size='small'
+              defaultValue=''
               value={sort}
               onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
             >
