@@ -65,8 +65,7 @@ export default function Admin({ children, ...rest }) {
   }
   return (
     <>
-      {!!token ? (
-        <>
+      { token ? (
           <div className={classes.wrapper}>
             <Sidebar
               routes={routes}
@@ -89,7 +88,6 @@ export default function Admin({ children, ...rest }) {
               <Footer />
             </div>
           </div>
-        </>
       ) : (
         <SignIn />
       )}
