@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { useQuery, useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -16,7 +16,6 @@ import CustomizedSnackbars from '../../../components/CustomSnackbar'
 export default function Add() {
   const editorRef = useRef(null)
   const router = useRouter()
-  const queryClient = useQueryClient()
   const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
   const [snackbar, setSnackbar] = useState({
@@ -37,7 +36,7 @@ export default function Add() {
     return await put(`blogs/${id}`, data)
   }
 
-  const { data: dataBlog, isLoading: isGetingBlogAPI, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
+  const { data: dataBlog, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -122,14 +121,12 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue,
-    reset
+    setValue
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {
-      let newData
-      newData = {
+      const newData = {
         ...data,
         content: editorRef.current.getContent()
       }
@@ -138,8 +135,7 @@ export default function Add() {
   }
   const onUpdate = (data) => {
     if (editorRef.current) {
-      let newData
-      newData = {
+      const newData = {
         ...data,
         content: editorRef.current.getContent()
       }
@@ -258,8 +254,8 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} idCreate={id} />}
-            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} idCreate={id} />}
+            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' />}
+            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' />}
             <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
               Cancel
             </Button>

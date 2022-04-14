@@ -24,15 +24,15 @@ export default function AddNews() {
     severity: 'success'
   })
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('news', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await put(`news/${id}`, data)
   }
 
@@ -232,8 +232,8 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} idCreate={id} />}
-            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} idCreate={id} />}
+            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' />}
+            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
