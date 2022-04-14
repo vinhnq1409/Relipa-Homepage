@@ -32,6 +32,8 @@
         "create": "Create",
         "reset": "Reset",
         "edit": "Edit",
+        "search": "Search",
+        "cancel": "Cancel",
         "create_account": "Create Account",
         "total_user": "Total User",
         "item_per_page": "Item per page",

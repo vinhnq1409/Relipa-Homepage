@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import { headerUJson } from '../../../sampleData/userInfo'
 import { get, del } from '../../../api/BaseRequest'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import TableListAdmin from '../../../components/Account/tableAdmin'
@@ -15,7 +14,7 @@ export default function Account() {
   const userId = useRef()
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const tableHead = JSON.parse(headerUJson)
+  const tableHead = ['ID', 'Name', 'Email', 'Role', 'Create At', 'Action']
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
