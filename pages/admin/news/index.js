@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import Admin from 'layouts/Admin.js'
 import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
@@ -49,7 +48,7 @@ export default function News() {
     isError: isErrorDelete,
     error: errorDelete
   } = useMutation(deleteNewItem, {
-    onError: (error) => {
+    onError: () => {
       setOpenSnackbar({
         open: true,
         message: 'Delete Failed!'
