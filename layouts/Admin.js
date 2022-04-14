@@ -81,7 +81,7 @@ export default function Admin({ children, ...rest }) {
               <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
               <div className={classes.body}>
                 <Breadcrumb routes={routes} />
-                <Paper elevation={3} className={classes.content}>
+                <Paper elevation={0} variant='outlined' className={classes.content}>
                   <div className={classes.container}>{children}</div>
                 </Paper>
               </div>

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
 // core components
-import styles from 'assets/jss/nextjs-material-dashboard/components/footerStyle.js'
+import styles from 'assets/jss/nextjs-material-dashboard/components/headerHomeStyle'
 
 export default function Header(props) {
   const useStyles = makeStyles(styles)
@@ -15,37 +15,37 @@ export default function Header(props) {
     <header>
       <List className={classes.list}>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/">
+          <Link href='/'>
             <a className={classes.block}>Home</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/company-profile">
+          <Link href='/company-profile'>
             <a className={classes.block}>Company</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/news">
+          <Link href='/news'>
             <a className={classes.block}>News</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/blogs">
+          <Link href='/blogs'>
             <a className={classes.block}>Blogs</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/our-work">
+          <Link href='/our-work'>
             <a className={classes.block}>our-work</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/contact">
+          <Link href='/contact'>
             <a className={classes.block}> Contact</a>
           </Link>
         </ListItem>
         <ListItem className={classes.inlineBlock}>
-          <Link href="/admin">
+          <Link href='/admin'>
             <a className={classes.block}>Admin Test</a>
           </Link>
         </ListItem>

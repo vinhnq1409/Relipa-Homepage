@@ -14,7 +14,7 @@ const queryClient = new QueryClient()
 
 Router.events.on('routeChangeStart', (url) => {
   document.body.classList.add('body-page-transition')
-  ReactDOM.render(<PageChange path={url} />, document.getElementById('page-transition'))
+  ReactDOM.render(<PageChange />, document.getElementById('page-transition'))
 })
 Router.events.on('routeChangeComplete', () => {
   ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
