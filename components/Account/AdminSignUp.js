@@ -3,11 +3,9 @@ import { useForm, Controller } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { toast } from 'react-toastify'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import {
   Avatar,
-  Button,
   CssBaseline,
   TextField,
   Grid,
@@ -23,8 +21,10 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import useTrans from '../../i18n/useTrans'
 import style from '../../styles/admin/AdminAccount.module.css'
-import { Loading } from '../Progress/Loading'
-import { post } from '../../api/BaseRequest'
+// import { Loading } from '../Progress/Loading'
+import { get, post } from '../../api/BaseRequest'
+import BtnLoading from '../../components/button/BtnLoading'
+import CustomizedSnackbars from '../CustomSnackbar'
 
 export const AdminSignUp = () => {
   const trans = useTrans()
@@ -33,13 +33,11 @@ export const AdminSignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [role, setRole] = useState([])
-  const listRole = [
-    { id: 1, name: 'Super Admin' },
-    { id: 2, name: 'Admin' },
-    { id: 3, name: 'Editor' },
-    { id: 4, name: 'Contributor' },
-    { id: 5, name: 'Partner' }
-  ]
+  const [snackbar, setSnackbar] = useState({
+    message: '',
+    open: false,
+    severity: 'success'
+  })
 
   const defaultValue = {
     name: '',
@@ -49,20 +47,45 @@ export const AdminSignUp = () => {
     roles: []
   }
 
-  const postUser = async (data) => await post('users', data)
+  const getRoles = async() => await get(`roles`)
 
-  const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
+  const postUser = async(data) => await post('users', data)
+
+  const { data: dataRoles } = useQuery(`getRoles`, getRoles)
+
+  const { mutate: postUserAPI } = useMutation(postUser, {
+    onError: (error) => {
+      const { data } = error.response
+      setSnackbar({
+        open: true,
+        message: Object.values(data.errors)[0],
+        severity: 'error'
+      })
+    },
+    onSuccess: () => {
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        message: 'Create account success'
+      })
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        router.push({ pathname: '/admin/account' })
+      }, 2000)
+    }
+  })
 
   const schemaAdd = Yup.object().shape({
-    name: Yup.string().required('Please enter usename in fill'),
-    email: Yup.string().required('Please enter email in fill'),
+    name: Yup.string().required(trans.admin_account.schema_name),
+    email: Yup.string().required(trans.admin_account.schema_email),
     password: Yup.string()
-      .min(8, 'Password must be at least ')
-      .max(30, 'Password too long')
-      .required('new password is required'),
+      .min(8, trans.admin_account.schema_password_min_8)
+      .max(30, trans.admin_account.schema_password)
+      .required(trans.admin_account.schema_password_max_30),
     re_password: Yup.string()
-      .required('Confirm Password is required')
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required(trans.admin_account.schema_re_password)
+      .oneOf([Yup.ref('password'), null], trans.admin_account.schema_re_password_same)
   })
 
   const {
@@ -92,33 +115,6 @@ export const AdminSignUp = () => {
       ...data
     }
     postUserAPI(paramApi)
-    toast.success('Create account success', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined
-    })
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      reset({ ...defaultValue })
-      router.push({ pathname: '/admin/account' })
-    }, 2000)
-  }
-
-  const onError = (data) => {
-    toast.warn('Please fill out the form completely', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined
-    })
   }
 
   const onReset = () => {
@@ -137,7 +133,7 @@ export const AdminSignUp = () => {
             {trans.admin_account.sign_up}
           </Typography>
 
-          <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
+          <form className={style.form} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <Controller
@@ -259,9 +255,9 @@ export const AdminSignUp = () => {
                         fullWidth
                         {...field}
                       >
-                        {listRole.map((role) => (
+                        {dataRoles?.data.map((role) => (
                           <MenuItem key={role.id} value={role.id}>
-                            {role.name}
+                            {role.title}
                           </MenuItem>
                         ))}
                       </Select>
@@ -269,24 +265,20 @@ export const AdminSignUp = () => {
                   )}
                 />
               </Grid>
-            </Grid>
-
-            <Grid container align='center' xs={12}>
-              <Grid xs={6}>
-                <Button type='submit' variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.submit}
-                </Button>
-              </Grid>
-              <Grid xs={6}>
-                <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.reset}
-                </Button>
+              <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
+                <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName={trans.admin_account.create} />
+                <BtnLoading onClick={onReset} variant='contained' btnName={trans.admin_account.reset} color='primary' />
               </Grid>
             </Grid>
           </form>
         </div>
       </Container>
-      <Loading open={loading} />
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </>
   )
 }

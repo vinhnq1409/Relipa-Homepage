@@ -1,11 +1,12 @@
 import React from 'react'
-import { DialogActions, DialogContent, Dialog, DialogContentText, Button } from '@material-ui/core'
+import { DialogActions, DialogContent, Dialog, DialogContentText, Button, DialogTitle } from '@material-ui/core'
 
-export const Dialogs = ({ open, handleCancel, title, onClick }) => {
+export const Dialogs = ({ open, handleCancel, title, content, onClick }) => {
   return (
-    <Dialog open={open} onClose={handleCancel}>
+    <Dialog open={open} onClose={handleCancel} fullWidth>
+      <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText maxWidth='sm'>{title}</DialogContentText>
+        <DialogContentText maxWidth='lg'>{content}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClick} color='primary' variant='contained'>

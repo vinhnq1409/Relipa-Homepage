@@ -29,11 +29,18 @@
         "re_password": "Nhập lại mật khẩu",
         "area": "Bộ phận",
         "role": "Vị trí",
-        "submit": "Xác nhận",
+        "create": "Tạo mới",
         "reset":"Nhập lại",
         "edit":"Chỉnh sửa",
         "create_account": "Tạo tài khoản",
         "total_user": "Tổng số người dùng",
-        "item_per_page": "Số người dùng mỗi trang"
+        "item_per_page": "Số người dùng mỗi trang",
+        "schema_name": "Bạn cần điền trường tên",
+        "schema_email": "Bạn cần điền trường email",
+        "schema_password": "Bạn cần nhập mật khẩu",
+        "schema_password_min_8": "Mật khẩu cần ít nhất 8 ký tự",
+        "schema_password_max_30": "Mật khẩu tối đa là 30 ký tự",
+        "schema_re_password": "Cần nhập xác nhận lại mật khẩu",
+        "schema_re_password_same": "Mật khẩu chưa trùng khớp"
     } 
 }

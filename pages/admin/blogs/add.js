@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
-import { useQuery, useMutation } from 'react-query'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -36,7 +36,7 @@ export default function Add() {
     return await put(`blogs/${id}`, data)
   }
 
-  const { data: dataBlog, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
+  const { data: dataBlog, isLoading: isGetingBlogAPI, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -121,7 +121,8 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue
+    setValue,
+    reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {

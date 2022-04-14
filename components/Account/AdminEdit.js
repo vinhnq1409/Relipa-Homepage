@@ -5,10 +5,8 @@ import { useRouter } from 'next/router'
 import { get, put } from '../../api/BaseRequest'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { toast } from 'react-toastify'
 import {
   Avatar,
-  Button,
   CssBaseline,
   TextField,
   Grid,
@@ -22,7 +20,8 @@ import {
 import style from '../../styles/admin/AdminAccount.module.css'
 import useTrans from '../../i18n/useTrans'
 import { Dialogs } from '../Progress/Dialog'
-import { Loading } from '../Progress/Loading'
+import CustomizedSnackbars from '../CustomSnackbar'
+import BtnLoading from '../button/BtnLoading'
 
 export const AdminEdit = () => {
   const trans = useTrans()
@@ -30,16 +29,12 @@ export const AdminEdit = () => {
   const { id } = router.query
   const [role, setRole] = useState([])
   const [open, setOpen] = useState(false)
-  const [confirm, setConfirm] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  const listRole = [
-    { id: 1, name: 'Super Admin' },
-    { id: 2, name: 'Admin' },
-    { id: 3, name: 'Editor' },
-    { id: 4, name: 'Contributor' },
-    { id: 5, name: 'Partner' }
-  ]
+  const [snackbar, setSnackbar] = useState({
+    message: '',
+    open: false,
+    severity: 'success'
+  })
 
   const defaultValue = {
     name: '',
@@ -49,13 +44,38 @@ export const AdminEdit = () => {
     roles: []
   }
 
+  const getRoles = async() => await get(`roles`)
+
   const getUser = async() => await get(`users/${id}`)
 
   const putUser = async(data) => await put(`users/${id}`, data)
 
-  const { data: dataUser, isLoading: isGettingUserAPI, status } = useQuery('getUser', getUser)
+  const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 
-  const { mutate: putUserAPI, isLoading: isPuttingUserAPI } = useMutation(putUser)
+  const { data: dataUser } = useQuery('getUser', getUser)
+
+  const { mutate: putUserAPI } = useMutation(putUser, {
+    onError: (error) => {
+      const { data } = error.response
+      setSnackbar({
+        open: true,
+        message: Object.values(data.errors)[0],
+        severity: 'error'
+      })
+    },
+    onSuccess: () => {
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        message: 'Edit data account success'
+      })
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        router.push({ pathname: '/admin/account' })
+      }, 2000)
+    }
+  })
 
   useEffect(() => {
     if (dataUser) {
@@ -88,33 +108,14 @@ export const AdminEdit = () => {
     setRole(event.target.value)
   }
 
-  const onError = (data) => {
-    toast.warn('Please fill out the form completely', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined
-    })
-  }
-
   const onEdit = (data) => {
     setOpen(false)
-    if (confirm) {
-      putUser({
-        ...dataUser,
-        name: data.name,
-        email: data.email,
-        roles: data.roles
-      })
-      setLoading(true)
-      setTimeout(() => {
-        setLoading(false)
-        router.push({ pathname: '/admin/account' })
-      }, 2000)
-    }
+    putUserAPI({
+      ...dataUser,
+      name: data.name,
+      email: data.email,
+      roles: data.roles
+    })
   }
 
   const onReset = () => {
@@ -125,11 +126,9 @@ export const AdminEdit = () => {
 
   const handleConfirm = () => {
     setOpen(true)
-    setConfirm(true)
   }
 
   const handleCancel = () => {
-    setConfirm(false)
     setOpen(false)
   }
 
@@ -205,9 +204,9 @@ export const AdminEdit = () => {
                         fullWidth
                         {...field}
                       >
-                        {listRole.map((role) => (
+                        {dataRoles?.data.map((role) => (
                           <MenuItem key={role.id} value={role.id}>
-                            {role.name}
+                            {role.title}
                           </MenuItem>
                         ))}
                       </Select>
@@ -215,25 +214,29 @@ export const AdminEdit = () => {
                   )}
                 />
               </Grid>
-            </Grid>
-
-            <Grid container align='center' xs={12}>
-              <Grid xs={6}>
-                <Button onClick={handleConfirm} variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.submit}
-                </Button>
-              </Grid>
-              <Grid xs={6}>
-                <Button onClick={onReset} variant='contained' color='primary' className={style.submit}>
-                  {trans.admin_account.reset}
-                </Button>
+              <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
+                <BtnLoading loading={loading} onClick={handleConfirm} btnName={trans.admin_account.edit} />
+                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} />
               </Grid>
             </Grid>
           </form>
         </div>
       </Container>
-      <Loading open={loading} />
-      <Dialogs open = {open} handleCancel = {handleCancel} title = {'Are you sure you want to change the data?'} onClick = {handleSubmit(onEdit, onError)} />
+
+      <Dialogs
+        open={open}
+        handleCancel={handleCancel}
+        title={'Change data'}
+        content={'Are you sure you want to change the data?'}
+        onClick={handleSubmit(onEdit)}
+      />
+
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </>
   )
 }
