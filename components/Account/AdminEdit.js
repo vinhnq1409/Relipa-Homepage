@@ -124,6 +124,10 @@ export const AdminEdit = () => {
     })
   }
 
+  const onCancel = () => {
+    router.push({ pathname: '/admin/account' })
+  }
+
   const handleConfirm = () => {
     setOpen(true)
   }
@@ -215,8 +219,9 @@ export const AdminEdit = () => {
                 />
               </Grid>
               <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
-                <BtnLoading loading={loading} onClick={handleConfirm} btnName={trans.admin_account.edit} />
-                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} />
+                <BtnLoading loading={loading} onClick={handleConfirm} btnName={trans.admin_account.edit} color = 'primary' />
+                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} color = 'secondary' />
+                <BtnLoading onClick={onCancel} btnName={trans.admin_account.cancel} />
               </Grid>
             </Grid>
           </form>

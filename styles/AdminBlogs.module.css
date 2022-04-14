@@ -81,6 +81,9 @@
   color: red;
   font-size: 10px;
 }
+.buttonNone {
+  display: none;
+}
 
 /* CSS ADD BLOGS */
 

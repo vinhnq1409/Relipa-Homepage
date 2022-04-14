@@ -44,7 +44,7 @@ const dashboardRoutes = [
     name: 'Account',
     icon: SupervisorAccountIcon,
     layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
+    role: ['Super Admin']
   },
   {
     path: '/dev-info',
