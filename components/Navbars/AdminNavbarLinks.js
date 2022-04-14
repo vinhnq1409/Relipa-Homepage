@@ -276,7 +276,7 @@ export default function AdminNavbarLinks() {
         }}
       >
         <Fade in={open}>
-          <FormChangePassword />
+          <FormChangePassword handleCancel={handleClose} />
         </Fade>
       </Modal>
     </div>
