@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { useQuery, useMutation } from 'react-query'
 import { useRouter } from 'next/router'
+import { get, put } from '../../api/BaseRequest'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
-import { useMutation } from 'react-query'
 import {
   Avatar,
   Button,
@@ -13,26 +14,25 @@ import {
   Grid,
   Container,
   Typography,
-  IconButton,
   InputLabel,
   Select,
   MenuItem,
   FormHelperText
 } from '@material-ui/core'
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import useTrans from '../../i18n/useTrans'
 import style from '../../styles/admin/AdminAccount.module.css'
+import useTrans from '../../i18n/useTrans'
+import { Dialogs } from '../Progress/Dialog'
 import { Loading } from '../Progress/Loading'
-import { post } from '../../api/BaseRequest'
 
-export const AdminSignUp = () => {
+export const AdminEdit = () => {
   const trans = useTrans()
   const router = useRouter()
-  const [type, setType] = useState('password')
-  const [showPassword, setShowPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const { id } = router.query
   const [role, setRole] = useState([])
+  const [open, setOpen] = useState(false)
+  const [confirm, setConfirm] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   const listRole = [
     { id: 1, name: 'Super Admin' },
     { id: 2, name: 'Admin' },
@@ -49,64 +49,43 @@ export const AdminSignUp = () => {
     roles: []
   }
 
-  const postUser = async (data) => await post('users', data)
+  const getUser = async() => await get(`users/${id}`)
 
-  const { mutate: postUserAPI, isLoading: isPostingUserAPI } = useMutation(postUser)
+  const putUser = async(data) => await put(`users/${id}`, data)
 
-  const schemaAdd = Yup.object().shape({
+  const { data: dataUser, isLoading: isGettingUserAPI, status } = useQuery('getUser', getUser)
+
+  const { mutate: putUserAPI, isLoading: isPuttingUserAPI } = useMutation(putUser)
+
+  useEffect(() => {
+    if (dataUser) {
+      setValue('name', dataUser?.data.name)
+      setValue('email', dataUser?.data.email)
+      setValue(
+        'roles',
+        dataUser?.data.roles?.map((item) => item.id)
+      )
+    }
+  }, [dataUser])
+
+  const shemaEdit = Yup.object().shape({
     name: Yup.string().required('Please enter usename in fill'),
-    email: Yup.string().required('Please enter email in fill'),
-    password: Yup.string()
-      .min(8, 'Password must be at least ')
-      .max(30, 'Password too long')
-      .required('new password is required'),
-    re_password: Yup.string()
-      .required('Confirm Password is required')
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    email: Yup.string().required('Please enter email in fill')
   })
 
   const {
     handleSubmit,
     control,
     formState: { errors },
-    reset
+    reset,
+    setValue
   } = useForm({
-    resolver: yupResolver(schemaAdd)
+    defaultValue,
+    resolver: yupResolver(shemaEdit)
   })
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword)
-    if (showPassword === false) {
-      setType('text')
-    } else {
-      setType('password')
-    }
-  }
 
   const handleChangeRole = (event) => {
     setRole(event.target.value)
-  }
-
-  const onSubmit = (data) => {
-    const paramApi = {
-      ...data
-    }
-    postUserAPI(paramApi)
-    toast.success('Create account success', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined
-    })
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      reset({ ...defaultValue })
-      router.push({ pathname: '/admin/account' })
-    }, 2000)
   }
 
   const onError = (data) => {
@@ -121,10 +100,37 @@ export const AdminSignUp = () => {
     })
   }
 
+  const onEdit = (data) => {
+    setOpen(false)
+    if (confirm) {
+      putUser({
+        ...dataUser,
+        name: data.name,
+        email: data.email,
+        roles: data.roles
+      })
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        router.push({ pathname: '/admin/account' })
+      }, 2000)
+    }
+  }
+
   const onReset = () => {
     reset({
       ...defaultValue
     })
+  }
+
+  const handleConfirm = () => {
+    setOpen(true)
+    setConfirm(true)
+  }
+
+  const handleCancel = () => {
+    setConfirm(false)
+    setOpen(false)
   }
 
   return (
@@ -134,10 +140,10 @@ export const AdminSignUp = () => {
         <div className={style.paper}>
           <Avatar className={style.avatar} />
           <Typography component={'h1'} variant='h5' className={style.title}>
-            {trans.admin_account.sign_up}
+            {trans.admin_account.edit_page}
           </Typography>
 
-          <form onSubmit={handleSubmit(onSubmit, onError)} className={style.form} noValidate>
+          <form className={style.form} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <Controller
@@ -185,66 +191,6 @@ export const AdminSignUp = () => {
 
               <Grid item xs={12} sm={12}>
                 <Controller
-                  name='password'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='password'
-                      variant='outlined'
-                      required
-                      fullWidth
-                      id='password'
-                      label={trans.admin_account.password}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                      type={type}
-                      {...field}
-                      InputProps={{
-                        endAdornment: (
-                          <IconButton onClick={handleClickShowPassword}>
-                            {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                          </IconButton>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                {errors.password && <FormHelperText error>{errors.password.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
-                  name='re_password'
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      name='re_password'
-                      variant='outlined'
-                      required
-                      fullWidth
-                      id='re_password'
-                      label={trans.admin_account.re_password}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                      type={type}
-                      {...field}
-                      InputProps={{
-                        endAdornment: (
-                          <IconButton id='re_pass' onClick={handleClickShowPassword}>
-                            {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                          </IconButton>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                {errors.re_password && <FormHelperText error>{errors.re_password.message}</FormHelperText>}
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Controller
                   name='roles'
                   control={control}
                   defaultValue={role}
@@ -273,7 +219,7 @@ export const AdminSignUp = () => {
 
             <Grid container align='center' xs={12}>
               <Grid xs={6}>
-                <Button type='submit' variant='contained' color='primary' className={style.submit}>
+                <Button onClick={handleConfirm} variant='contained' color='primary' className={style.submit}>
                   {trans.admin_account.submit}
                 </Button>
               </Grid>
@@ -287,6 +233,7 @@ export const AdminSignUp = () => {
         </div>
       </Container>
       <Loading open={loading} />
+      <Dialogs open = {open} handleCancel = {handleCancel} title = {'Are you sure you want to change the data?'} onClick = {handleSubmit(onEdit, onError)} />
     </>
   )
 }

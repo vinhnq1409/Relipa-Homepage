@@ -22,7 +22,6 @@ import useTrans from '../../../i18n/useTrans'
 const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
   const trans = useTrans()
   const [params, setParams] = useState({})
-
   const handleSelectChange = (e) => {
     setParams({ ...params, per_page: e.target.value })
   }
@@ -63,7 +62,7 @@ const TableListAdmin = ({ tableHead, data, onView, onUpdate, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.length && data.map((row) => (
+            {Array.isArray(data) && data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className={styles.tableCell}>{row.id}</TableCell>
                 <TableCell className={styles.tableCell}>{row.name}</TableCell>

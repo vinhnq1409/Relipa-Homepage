@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Admin from 'layouts/Admin.js'
 import { Button } from '@material-ui/core'
 import { headerUJson } from '../../../sampleData/userInfo'
@@ -14,11 +14,11 @@ export default function Account() {
   const router = useRouter()
   const tableHead = JSON.parse(headerUJson)
 
-  const getUser = async() => {
-    return await get(`users`)
-  }
+  const getUser = async() => await get(`users`)
 
-  const { data: dataUser, isLoading: isGetingUserAPI, status } = useQuery(`getUser`, getUser)
+  const { data: dataUser, isLoading: isGetingUserAPI, status } = useQuery(`getUser`, getUser, {
+    initialData: { data: [] }
+  })
 
   const delUsers = async(id) => {
     return await del(`users/${id}`)
