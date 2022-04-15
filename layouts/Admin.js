@@ -43,7 +43,9 @@ export default function Admin({ children, ...rest }) {
   }
 
   useEffect(() => {
-    if (token) dispatch(getInfoUser())
+    if (token) {
+      dispatch(getInfoUser())
+    }
   }, [token])
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export default function Admin({ children, ...rest }) {
     setMobileOpen(!mobileOpen)
   }
   return (
-    <>
+    <div>
       {token ? (
         <div className={classes.wrapper}>
           <Sidebar
@@ -93,6 +95,6 @@ export default function Admin({ children, ...rest }) {
       ) : (
         <SignIn />
       )}
-    </>
+    </div>
   )
 }
