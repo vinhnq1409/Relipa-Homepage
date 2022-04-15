@@ -1,7 +1,7 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, Input, TextField, Typography } from '@material-ui/core'
+import { Button, Grid,  TextField, Typography } from '@material-ui/core'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import { Controller, useForm } from 'react-hook-form'
 import * as Yup from 'yup'
@@ -18,22 +18,21 @@ export default function AddNews() {
   const router = useRouter()
   const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
-  const [selectedFile, setSelectedFile] = useState(null)
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
     severity: 'success'
   })
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('news', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await put(`news/${id}`, data)
   }
 
@@ -138,7 +137,7 @@ export default function AddNews() {
     setValue('friendly_url', resetFriendlyUrl)
   }
 
-  const onFileUpload = async (e) => {
+  const onFileUpload = async(e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -256,8 +255,8 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isGetingNewsAPI||isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
-            {id && <BtnLoading loading={isGetingNewsAPI|| isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            {!id && <BtnLoading loading={isGetingNewsAPI || isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isGetingNewsAPI || isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
