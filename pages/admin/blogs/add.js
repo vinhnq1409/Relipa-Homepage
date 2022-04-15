@@ -123,7 +123,8 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue
+    setValue,
+    getValues
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -156,9 +157,9 @@ export default function Add() {
     setValue('url_image_meta', `http://${location}`)
   }
 
-  const onResetURL = (data) => {
-    const { title } = data
-    const resetFriendlyUrl = title.trim().replace(/ /g, '-')
+  const onResetURL = () => {
+    const valueTitle = getValues('title')
+    const resetFriendlyUrl = valueTitle.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
   const onCancel = () => {
@@ -266,7 +267,7 @@ export default function Add() {
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button className={styles.full} onClick={handleSubmit(onResetURL)} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
               Reset URL
             </Button>
           </Grid>
@@ -283,9 +284,9 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' />}
-            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' />}
-            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
+            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
           </Grid>
