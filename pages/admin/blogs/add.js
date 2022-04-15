@@ -103,7 +103,19 @@ export default function Add() {
       .min(10, 'The title must be at least 10 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
-    friendly_url: Yup.string().required('Url friendly is required'),
+    friendly_url: Yup.string()
+      .required('Url friendly is required')
+      .matches(/^\S+$/, 'friendly_url is no spaces')
+      .test(
+        'friendly url',
+        'friendly url no Vietnamese characters ',
+        (value) => {
+          if(!!value){
+            let result = value.match(/[^a-zA-z0-9]/)
+            return !result
+          }
+        }
+      ),
     tags: Yup.string().required('Tags is required'),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
