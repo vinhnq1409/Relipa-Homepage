@@ -196,7 +196,7 @@ export default function AdminEditStaticPage() {
             />
             <label htmlFor='contained-button-file'>
               <Button className={style.full} variant='contained' color='primary' component='span'>
-                Upload
+                {trans.static_page.upload}
               </Button>
             </label>
           </Grid>
@@ -230,9 +230,9 @@ export default function AdminEditStaticPage() {
           </Grid>
 
           <Grid item xs={10} className = {style.buttonCenter}>
-            <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName = 'Create page' color='primary' />
-            <Button onClick={onReset} className={style.button} variant = 'contained' color='secondary'>Reset</Button>
-            <Button onClick={onCancel} className={style.button} variant = 'contained'>Cancel</Button>
+            <BtnLoading className={style.button} loading={loading} onClick={handleSubmit(onSubmit)} btnName = {trans.static_page.createNew} color='primary' />
+            <Button onClick={onReset} className={style.button} variant = 'contained' color='secondary'>{trans.static_page.reset}</Button>
+            <Button onClick={onCancel} className={style.button} variant = 'contained'>{trans.static_page.cancel}</Button>
           </Grid>
         </Grid>
       </form>

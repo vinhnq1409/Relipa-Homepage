@@ -74,7 +74,7 @@
 }
 .button {
   height: 50px;
-  min-width: 100px !important;
+  min-width: 120px !important;
   margin: 0 12px !important;
 }
 .error {
