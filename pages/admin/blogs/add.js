@@ -36,7 +36,11 @@ export default function Add() {
     return await put(`blogs/${id}`, data)
   }
 
+<<<<<<< HEAD
   const { data: dataBlog, remove: removeBlogs, isLoading: isGetBlogAPI } = useQuery('getBlog', getBlog, { enabled: !!id })
+=======
+  const { data: dataBlog, remove: removeBlogs, isLoading: isgetBlogAPI } = useQuery('getBlog', getBlog, { enabled: !!id })
+>>>>>>> e0e7a42 (checkout loading get api)
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -284,8 +288,13 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
+<<<<<<< HEAD
             {!id && <BtnLoading loading={isGetBlogAPI || isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
             {id && <BtnLoading loading={isGetBlogAPI || isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+=======
+            {!id && <BtnLoading loading={isgetBlogAPI || isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isgetBlogAPI || isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+>>>>>>> e0e7a42 (checkout loading get api)
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
