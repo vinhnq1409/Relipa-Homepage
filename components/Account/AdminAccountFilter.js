@@ -18,7 +18,7 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate, dataRoles 
               variant='outlined'
               size='small'
               value={email}
-              onChange={(e) => setFilters({ ...filters, email: e.target.value})}
+              onChange={(e) => setFilters({ ...filters, email: e.target.value })}
             />
           </Grid>
           <Grid item className={styles.flex}>
