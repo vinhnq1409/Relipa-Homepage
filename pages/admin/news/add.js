@@ -37,7 +37,7 @@ export default function AddNews() {
     return await put(`news/${id}`, data)
   }
 
-  const { data: dataNews, remove: removeData } = useQuery('getNews', getNews, { enabled: !!id })
+  const { data: dataNews, remove: removeData, isLoading: isGetingNewsAPI } = useQuery('getNews', getNews, { enabled: !!id })
 
   const { mutate: postNewsAPI, isLoading: isPostingNewsAPI } = useMutation(postNews, {
     onSuccess: () => {
@@ -239,7 +239,7 @@ export default function AddNews() {
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button className={styles.full} onClick={handleSubmit(onResetURL)} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
               Reset URL
             </Button>
           </Grid>
@@ -256,8 +256,8 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
-            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            {!id && <BtnLoading loading={isGetingNewsAPI||isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isGetingNewsAPI|| isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
