@@ -66,7 +66,7 @@ export default function Admin({ children, ...rest }) {
     setMobileOpen(!mobileOpen)
   }
   return (
-    <div suppressHydrationWarning={true}>
+    <div>
       {token ? (
         <div className={classes.wrapper}>
           <Sidebar
