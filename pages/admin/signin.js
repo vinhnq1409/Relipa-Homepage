@@ -13,8 +13,6 @@ import { useForm } from 'react-hook-form'
 import { STORAGEKEY, getCookie, setCookie } from '../../utils/storage'
 import { signinApi } from '../../api/reactQueryApi'
 import styles from '../../styles/admin/signin.module.css'
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
 
 export default function SignIn() {
   const router = useRouter()
@@ -23,8 +21,7 @@ export default function SignIn() {
 
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
   } = useForm()
 
   const onSubmit = (data) => {

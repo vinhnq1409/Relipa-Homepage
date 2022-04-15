@@ -23,8 +23,7 @@ export default function FormChangePassword({ handleCancel }) {
 
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
   } = useForm()
 
   const handleClose = () => {
@@ -35,10 +34,10 @@ export default function FormChangePassword({ handleCancel }) {
     const { old_password, new_password, password_confirm } = data
     new_password !== password_confirm
       ? setOpenSnackbar({
-          open: true,
-          message: 'Confirm password failed',
-          severity: 'error'
-        })
+        open: true,
+        message: 'Confirm password failed',
+        severity: 'error'
+      })
       : changePassword({ old_password, new_password })
   }
 

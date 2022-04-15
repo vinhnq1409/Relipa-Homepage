@@ -49,18 +49,20 @@ export default function Admin({ children, ...rest }) {
   }, [token])
 
   useEffect(() => {
-    const routerUser = dashboardRoutes.filter((router) => {
-      return router?.role.includes(roleUser)
-    })
+    if (Object.keys(infoUser).length !== 0) {
+      const routerUser = dashboardRoutes.filter((router) => {
+        return router?.role.includes(roleUser)
+      })
 
-    const isUseRouter = routerUser.some((item) => {
-      return `${item?.layout}${item?.path}`.includes(router.asPath)
-    })
+      const isUseRouter = routerUser.some((item) => {
+        return `${item?.layout}${item?.path}`.includes(router.asPath)
+      })
 
-    if (!isUseRouter) {
-      router.push('/admin')
+      if (!isUseRouter) {
+        router.push('/admin')
+      }
     }
-  }, [])
+  }, [infoUser])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
