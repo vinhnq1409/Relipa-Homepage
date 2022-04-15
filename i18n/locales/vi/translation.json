@@ -17,6 +17,7 @@
         "submit": "Tải lên",
         "reset": "Nhập lại",
         "placeholder_title": "Nhập tên tiêu đề",
+        "placeholder_author": "Nhập tên người tạo",
         "placeholder_describe": "Nhập mô tả tiêu đề",
         "placeholder_url": "Nhập đường dẫn URL"
     },
@@ -44,5 +45,8 @@
         "schema_password_max_30": "Mật khẩu tối đa là 30 ký tự",
         "schema_re_password": "Cần nhập xác nhận lại mật khẩu",
         "schema_re_password_same": "Mật khẩu chưa trùng khớp"
-    } 
+    },
+    "admin_blog": {
+        
+    }
 }

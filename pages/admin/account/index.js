@@ -79,11 +79,6 @@ export default function Account() {
     setTimeout(() => {
       setLoading(false)
     }, 2000)
-    setSnackbar({
-      open: true,
-      message: 'Delete data success',
-      severity: 'error'
-    })
   }
 
   const handleSearch = () => {
@@ -106,7 +101,8 @@ export default function Account() {
       <Dialogs
         open={open}
         handleCancel={handleCancel}
-        title={'Are you sure you want to delete?'}
+        title='Delete'
+        content = 'Are you sure you want to delete?'
         onClick={handleDelete}
       />
       <Loading open={loading} />

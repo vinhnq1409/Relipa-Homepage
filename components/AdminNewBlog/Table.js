@@ -52,7 +52,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.title}</TableCell>
                 <TableCell>{row.author}</TableCell>
-                <TableCell>{row.date}</TableCell>
+                <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.views}</TableCell>
                 <TableCell className={styles.flex2}>
@@ -76,7 +76,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
       {count > 1 && (
         <Pagination
           className={styles.center}
-          count={Math.round(count)}
+          count={Math.ceil(count)}
           onChange={handlePaginationChange}
           showFirstButton
           showLastButton

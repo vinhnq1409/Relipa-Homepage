@@ -68,7 +68,7 @@ export default function Admin({ children, ...rest }) {
     setMobileOpen(!mobileOpen)
   }
   return (
-    <div>
+    <>
       {token ? (
         <div className={classes.wrapper}>
           <Sidebar

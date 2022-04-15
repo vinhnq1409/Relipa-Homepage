@@ -21,7 +21,6 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import useTrans from '../../i18n/useTrans'
 import style from '../../styles/admin/AdminAccount.module.css'
-// import { Loading } from '../Progress/Loading'
 import { get, post } from '../../api/BaseRequest'
 import BtnLoading from '../../components/button/BtnLoading'
 import CustomizedSnackbars from '../CustomSnackbar'
@@ -138,7 +137,7 @@ export const AdminSignUp = () => {
           </Typography>
 
           <form className={style.form} noValidate>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} justifyContent = 'center'>
               <Grid item xs={12} sm={12}>
                 <Controller
                   name='name'
@@ -269,7 +268,7 @@ export const AdminSignUp = () => {
                   )}
                 />
               </Grid>
-              <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
+              <Grid item xs={12} className={style.contentBgLoading}>
                 <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName={trans.admin_account.create} color='primary' />
                 <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} color='secondary' />
                 <BtnLoading onClick={onCancel} btnName={trans.admin_account.cancel} />
