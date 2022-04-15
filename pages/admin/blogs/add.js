@@ -36,7 +36,7 @@ export default function Add() {
     return await put(`blogs/${id}`, data)
   }
 
-  const { data: dataBlog, remove: removeBlogs } = useQuery('getBlog', getBlog, { enabled: !!id })
+  const { data: dataBlog, remove: removeBlogs, isLoading: isGetBlogAPI } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -284,8 +284,8 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
-            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            {!id && <BtnLoading loading={isGetBlogAPI || isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isGetBlogAPI || isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
