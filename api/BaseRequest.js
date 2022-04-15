@@ -12,7 +12,7 @@ export function setAuthHeader(token) {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-const get = async (url, params = {}) => {
+const get = async(url, params = {}) => {
   try {
     const config = { params: params }
     const response = await instance.get(getUrlPrefix() + url, config)
@@ -22,7 +22,7 @@ const get = async (url, params = {}) => {
   }
 }
 
-const put = async (url, data = {}) => {
+const put = async(url, data = {}) => {
   try {
     let response = {}
     if (data.toLocaleString() === '[object FormData]') {
@@ -41,7 +41,7 @@ const put = async (url, data = {}) => {
   }
 }
 
-const post = async (url, data = {}) => {
+const post = async(url, data = {}) => {
   try {
     const response = await instance.post(getUrlPrefix() + url, data)
     return _responseHandler(response)
@@ -50,7 +50,7 @@ const post = async (url, data = {}) => {
   }
 }
 
-const del = async (url, data = {}) => {
+const del = async(url, data = {}) => {
   try {
     const response = await instance.delete(getUrlPrefix() + url, { data })
     return _responseHandler(response)
@@ -67,12 +67,12 @@ const _responseHandler = (response, url) => {
 const _errorHandler = (err) => {
   if (err.response && err.response.status === 401) {
     removeCookie(STORAGEKEY.ACCESS_TOKEN)
-    // window.location.href = '/admin'
+    window.location.href = '/admin'
   }
   throw err
 }
 
-const patch = async (url, data = {}) => {
+const patch = async(url, data = {}) => {
   try {
     let response = {}
     if (data.toLocaleString() === '[object FormData]') {

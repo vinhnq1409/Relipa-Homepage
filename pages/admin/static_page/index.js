@@ -1,20 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
-import useTrans from '../../../i18n/useTrans'
 import TableList from '../../../components/AdminNewBlog/Table'
 import { del, get } from '../../../api/BaseRequest'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import { Dialogs } from '../../../components/Progress/Dialog'
 import { Loading } from '../../../components/Progress/Loading'
 
 export default function StaticPage() {
-  const idStatic = useRef()
-  const trans = useTrans()
   const router = useRouter()
-  const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [params, setParams] = useState({
     per_page: 10,
@@ -61,9 +56,13 @@ export default function StaticPage() {
   const handleUpdate = (id) => {
     router.push({ pathname: 'static_page/add', query: { slug: 'about', mode: 'edit' }})
   }
-  const openDialogs = (id) => {
-    setOpen(true)
-    idStatic.current = id
+
+  const handleDelete = (id) => {
+    mutate(id)
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
   }
 
   const handleCreate = (id) => {
@@ -78,27 +77,15 @@ export default function StaticPage() {
     setSnackbar({ ...snackbar, open: false })
   }
 
-  const handleCancel = () => {
-    setOpen(false)
-  }
-
-  const handleDelete = () => {
-    setOpen(false)
-    mutate(idStatic.current)
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }
   return (
     <>
       <NewFilters handleSearch={handleSearch} filters={params} setFilters={setParams} onCreate={handleCreate} />
       <TableList
         tableHead={tableHead}
-        data={data.data}
+        data={data?.data}
         onView={handleView}
         onUpdate={handleUpdate}
-        onDelete={openDialogs}
+        onDelete={handleDelete}
         params={params}
         setParams={setParams}
         count={data?.total / params.per_page}
@@ -109,13 +96,6 @@ export default function StaticPage() {
         severity={snackbar.type}
         onClose={handleClose}
       />
-      {/* <Dialogs
-        open={open}
-        handleCancel={handleCancel}
-        title='Delete'
-        content='Are you sure you want to delete?'
-        onClick={handleDelete}
-      /> */}
       <Loading open={loading} />
     </>
   )
