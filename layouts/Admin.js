@@ -95,6 +95,6 @@ export default function Admin({ children, ...rest }) {
       ) : (
         <SignIn />
       )}
-    </div>
+    </>
   )
 }
