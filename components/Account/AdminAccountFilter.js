@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from '../../styles/AdminNewBlogFilters.module.css'
-import { Button, Typography, TextField, MenuItem } from '@material-ui/core'
+import { Button, Typography, TextField, MenuItem, Menu } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import useTrans from '../../i18n/useTrans'
 
-const AccountFilter = ({ handleSearch, filters, setFilters, onCreate }) => {
-  const { email, sort } = filters
+const AccountFilter = ({ handleSearch, filters, setFilters, onCreate, dataRoles }) => {
+  const { email, role } = filters
   const trans = useTrans()
 
   return (
@@ -14,20 +14,22 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate }) => {
         <Grid item md={10} container spacing={2} alignItems='center'>
           <Grid item>
             <TextField
-              placeholder='Search...'
+              placeholder= {trans.admin_account.placeholder_text_search}
               variant='outlined'
               size='small'
               value={email}
-              onChange={(e) => setFilters({ ...filters, email: e.target.value })}
+              onChange={(e) => setFilters({ ...filters, email: e.target.value})}
             />
           </Grid>
           <Grid item className={styles.flex}>
             <Typography variant='subtitle2' component='span'>
-              Sort by
+              {trans.admin_account.role}
             </Typography>
-            <TextField select variant='outlined' className={styles.sort_by} size='small' defaultValue='' value={sort}>
-              <MenuItem value={'asc'}>Ascending</MenuItem>
-              <MenuItem value={'desc'}>Descending</MenuItem>
+            <TextField select variant='outlined' className={styles.sort_by} size='small' defaultValue= {role} onChange = {(e) => setFilters({ ...filters, role: e.target.value })}>
+              <MenuItem value = ''>None</MenuItem>
+              {Array.isArray(dataRoles) && dataRoles.map((role) => (
+                <MenuItem key={role.id} value = {role.id}>{role.title}</MenuItem>
+              ))}
             </TextField>
           </Grid>
           <Grid item>

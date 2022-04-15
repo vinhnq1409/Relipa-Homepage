@@ -33,6 +33,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.roles[0].title}</TableCell>
                 <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
+                <TableCell>{row.updated_at?.slice(0, 10)}</TableCell>
                 <TableCell className={styles.flex2}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}

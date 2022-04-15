@@ -14,7 +14,7 @@ export default function Account() {
   const userId = useRef()
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const tableHead = ['ID', 'Name', 'Email', 'Role', 'Create At', 'Action']
+  const tableHead = ['ID', 'Name', 'Email', 'Role', 'Create At', 'Update At', 'Action']
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
@@ -23,14 +23,19 @@ export default function Account() {
   const [params, setParams] = useState({
     page: 1,
     per_page: 10,
-    email: ''
+    email: '',
+    role: ''
   })
+
+  const getRoles = async() => await get(`roles`)
 
   const getUser = async() => await get(`users`, params)
 
   const delUsers = async(id) => await del(`users/${id}`)
 
   const { data: dataUser, refetch } = useQuery([`getUser`, params.per_page, params.page], getUser)
+
+  const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 
   const queryClient = useQueryClient()
 
@@ -87,7 +92,7 @@ export default function Account() {
 
   return (
     <>
-      <AccountFilter handleSearch={handleSearch} filters={params} setFilters={setParams} onCreate={handleCreate} />
+      <AccountFilter handleSearch={handleSearch} filters={params} setFilters={setParams} onCreate={handleCreate} dataRoles = {dataRoles?.data} />
       <TableListAdmin
         tableHead={tableHead}
         data={dataUser?.data}
