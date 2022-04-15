@@ -171,7 +171,7 @@ export default function Add() {
 
   const onResetURL = () => {
     const valueTitle = getValues('title')
-    const resetFriendlyUrl = valueTitle.trim().replace(/ /g, '-')
+    const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
   const onCancel = () => {
