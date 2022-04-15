@@ -67,7 +67,7 @@ const _responseHandler = (response, url) => {
 const _errorHandler = (err) => {
   if (err.response && err.response.status === 401) {
     removeCookie(STORAGEKEY.ACCESS_TOKEN)
-    window.location.href = '/admin'
+    // window.location.href = '/admin'
   }
   throw err
 }

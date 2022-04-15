@@ -1,5 +1,4 @@
 
-const tableHead = ['No', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 const data = [
   { id: 1, title: 'title1', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
   { id: 2, title: 'title2', author: 'Nam', date: '22/04/2022', status: 'public', views: 666 },
@@ -7,4 +6,3 @@ const data = [
 ]
 
 export const dataJson = JSON.stringify(data)
-export const headerJson = JSON.stringify(tableHead)
