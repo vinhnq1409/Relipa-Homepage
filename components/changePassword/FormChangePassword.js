@@ -23,8 +23,7 @@ export default function FormChangePassword({ handleCancel }) {
 
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
   } = useForm()
 
   const handleClose = () => {

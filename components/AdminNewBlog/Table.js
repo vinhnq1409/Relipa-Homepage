@@ -9,13 +9,8 @@ import TableBody from '@material-ui/core/TableBody'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Typography from '@material-ui/core/Typography'
 import noData from '../../assets/img/no-data-found.png'
+import { Dialogs } from '../Progress/Dialog'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
@@ -77,20 +72,7 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
         </Table>
         {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
       </div>
-      <Dialog open={openConfirmDelete} onClose={handleClose} fullWidth={true}>
-        <DialogTitle>Delete</DialogTitle>
-        <DialogContent>
-          <Typography>Do you really want to delete this?</Typography>
-          <DialogActions>
-            <Button onClick={handleDelete} variant='contained' color='secondary'>
-              Yes
-            </Button>
-            <Button onClick={handleClose} variant='contained'>
-              Cancel
-            </Button>
-          </DialogActions>
-        </DialogContent>
-      </Dialog>
+      <Dialogs open={openConfirmDelete} handleCancel={handleClose} title='Delete' content='Do you really want to delete this?' onClick={handleDelete} />
       {count > 1 && (
         <Pagination
           className={styles.center}
