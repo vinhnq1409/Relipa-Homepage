@@ -43,56 +43,58 @@ export default function Admin({ children, ...rest }) {
   }
 
   useEffect(() => {
-    if (token) dispatch(getInfoUser())
+    if (token) {
+      dispatch(getInfoUser())
+    }
   }, [token])
 
   useEffect(() => {
-    const routerUser = dashboardRoutes.filter((router) => {
-      return router?.role.includes(roleUser)
-    })
+    if (Object.keys(infoUser).length !== 0) {
+      const routerUser = dashboardRoutes.filter((router) => {
+        return router?.role.includes(roleUser)
+      })
 
-    const isUseRouter = routerUser.some((item) => {
-      return `${item?.layout}${item?.path}`.includes(router.asPath)
-    })
+      const isUseRouter = routerUser.some((item) => {
+        return `${item?.layout}${item?.path}`.includes(router.asPath)
+      })
 
-    if (!isUseRouter) {
-      router.push('/admin')
+      if (!isUseRouter) {
+        router.push('/admin')
+      }
     }
-  }, [])
+  }, [infoUser])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
   return (
-    <>
-      {!!token ? (
-        <>
-          <div className={classes.wrapper}>
-            <Sidebar
-              routes={routes}
-              logoText={'Relipa Admin'}
-              logo={logo}
-              image={bgImage}
-              handleDrawerToggle={handleDrawerToggle}
-              open={mobileOpen}
-              color='white'
-              {...rest}
-            />
-            <div className={classes.mainPanel} ref={mainPanel}>
-              <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
-              <div className={classes.body}>
-                <Breadcrumb routes={routes} />
-                <Paper elevation={0} variant='outlined' className={classes.content}>
-                  <div className={classes.container}>{children}</div>
-                </Paper>
-              </div>
-              <Footer />
+    <div>
+      {token ? (
+        <div className={classes.wrapper}>
+          <Sidebar
+            routes={routes}
+            logoText={'Relipa Admin'}
+            logo={logo}
+            image={bgImage}
+            handleDrawerToggle={handleDrawerToggle}
+            open={mobileOpen}
+            color='white'
+            {...rest}
+          />
+          <div className={classes.mainPanel} ref={mainPanel}>
+            <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
+            <div className={classes.body}>
+              <Breadcrumb routes={routes} />
+              <Paper elevation={0} variant='outlined' className={classes.content}>
+                <div className={classes.container}>{children}</div>
+              </Paper>
             </div>
+            <Footer />
           </div>
-        </>
+        </div>
       ) : (
         <SignIn />
       )}
-    </>
+    </div>
   )
 }

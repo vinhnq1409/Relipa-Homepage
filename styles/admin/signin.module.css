@@ -1,5 +1,6 @@
 .wrapper_changepass {
   background-color: #fff;
+  position: relative;
 }
 .modal_wrapper {
   height: 100vh;
@@ -34,4 +35,13 @@
 .title_change {
   padding-top: 20px;
   text-align: center;
+}
+.btn_cancel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.btn_cancel:hover {
+  opacity:0.6;
 }

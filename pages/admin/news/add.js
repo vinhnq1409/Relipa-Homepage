@@ -110,7 +110,8 @@ export default function AddNews() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue
+    setValue,
+    getValues
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -131,9 +132,9 @@ export default function AddNews() {
       putNewsAPI(newData)
     }
   }
-  const onResetURL = (data) => {
-    const { title } = data
-    const resetFriendlyUrl = title.trim().replace(/ /g, '-')
+  const onResetURL = () => {
+    const valueTitle = getValues('title')
+    const resetFriendlyUrl = valueTitle.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
 
@@ -255,8 +256,8 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' />}
-            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' />}
+            {!id && <BtnLoading loading={isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>

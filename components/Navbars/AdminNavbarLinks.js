@@ -63,9 +63,9 @@ export default function AdminNavbarLinks() {
     setOpenProfile(null)
   }
   const handleLogout = () => {
-    logoutApi().then(() => {
-      removeCookie(STORAGEKEY.ACCESS_TOKEN)
-      router.push('/')
+    logoutApi().then(async() => {
+      await removeCookie(STORAGEKEY.ACCESS_TOKEN)
+      await router.push('/')
     })
   }
   const handleClickLanguage = (event) => {
@@ -276,7 +276,7 @@ export default function AdminNavbarLinks() {
         }}
       >
         <Fade in={open}>
-          <FormChangePassword />
+          <FormChangePassword handleCancel={handleClose} />
         </Fade>
       </Modal>
     </div>

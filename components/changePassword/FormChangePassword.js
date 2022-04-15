@@ -10,10 +10,11 @@ import styles from '../../styles/admin/signin.module.css'
 import { changePasswordApi, logoutApi } from '../../api/reactQueryApi'
 import CustomizedSnackbars from '../CustomSnackbar/index'
 import { removeCookie, STORAGEKEY } from '../../utils/storage'
+import ClearIcon from '@material-ui/icons/Clear'
 
-export default function FormChangePassword() {
+export default function FormChangePassword({ handleCancel }) {
   const router = useRouter()
-  const { mutate: changePassword, isSuccess } = changePasswordApi()
+  const { mutate: changePassword, isSuccess, data } = changePasswordApi()
   const [openSnackbar, setOpenSnackbar] = useState({
     open: false,
     message: '',
@@ -22,8 +23,7 @@ export default function FormChangePassword() {
 
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
   } = useForm()
 
   const handleClose = () => {
@@ -43,22 +43,31 @@ export default function FormChangePassword() {
 
   useEffect(() => {
     if (isSuccess) {
-      setOpenSnackbar({
-        open: true,
-        message: 'Change password successfully',
-        severity: 'success'
-      })
-      setTimeout(() => {
-        logoutApi().then(() => {
-          removeCookie(STORAGEKEY.ACCESS_TOKEN)
-          router.push('/admin')
+      if (data?.code === 403) {
+        setOpenSnackbar({
+          open: true,
+          message: 'Change password error',
+          severity: 'error'
         })
-      }, 2000)
+      } else {
+        setOpenSnackbar({
+          open: true,
+          message: 'Change password successfully',
+          severity: 'success'
+        })
+        setTimeout(() => {
+          logoutApi().then(() => {
+            removeCookie(STORAGEKEY.ACCESS_TOKEN)
+            router.push('/admin')
+          })
+        }, 2000)
+      }
     }
   }, [isSuccess])
 
   return (
     <Container className={styles.wrapper_changepass} component='main' maxWidth='xs'>
+      <ClearIcon className={styles.btn_cancel} onClick={(e) => handleCancel()} />
       <CssBaseline />
       <div className={styles.paper}>
         <Typography className={styles.title_change} component='h4' color='primary' variant='h4'>

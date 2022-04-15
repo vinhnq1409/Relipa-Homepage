@@ -22,17 +22,27 @@
     },
     "admin_account": {
         "sign_up": "Sign Up",
+        "edit_page": "Edit",
         "name": "User name",
         "email": "Email",
         "password": "Password",
         "re_password": "Confirm Password",
         "area": "Area",
         "role": "Role",
-        "submit": "Submit",
+        "create": "Create",
         "reset": "Reset",
         "edit": "Edit",
+        "search": "Search",
+        "cancel": "Cancel",
         "create_account": "Create Account",
         "total_user": "Total User",
-        "item_per_page": "Item per page"
+        "item_per_page": "Item per page",
+        "schema_name": "Please enter usename in fill",
+        "schema_email": "Please enter email in fill",
+        "schema_password": "Password is required",
+        "schema_password_min_8": "Password must be at least",
+        "schema_password_max_30": "Password too long",
+        "schema_re_password": "Confirm Password is required",
+        "schema_re_password_same": "Passwords must match"
     }
 }

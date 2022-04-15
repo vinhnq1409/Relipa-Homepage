@@ -32,3 +32,13 @@
 .icon:hover {
   opacity: 0.5;
 }
+
+.dialogLoading {
+  opacity: 0.85;
+}
+
+.contentBgLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

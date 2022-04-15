@@ -1,34 +1,13 @@
-import { useState } from 'react'
+import React from 'react'
 import Pagination from '@material-ui/lab/Pagination'
 import styles from '../../styles/AdminBlogs.module.css'
-import TableHead from '@material-ui/core/TableHead'
-import TableCell from '@material-ui/core/TableCell'
-import Table from '@material-ui/core/Table'
-import TableRow from '@material-ui/core/TableRow'
-import TableBody from '@material-ui/core/TableBody'
+import { TableHead, TableCell, Table, TableRow, TableBody } from '@material-ui/core'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
-import { Dialogs } from '../Progress/Dialog'
 
 const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
-  const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
-  const [deleteId, setDeleteId] = useState(null)
-
-  const handleOpen = (id) => {
-    setOpenConfirmDelete(true)
-    setDeleteId(id)
-  }
-  const handleClose = () => {
-    setOpenConfirmDelete(false)
-  }
-
-  const handleDelete = () => {
-    onDelete(deleteId)
-    handleClose()
-  }
-
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
@@ -50,21 +29,17 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
             {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
-                <TableCell>{row.title}</TableCell>
-                <TableCell>{row.author}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>{row.status}</TableCell>
-                <TableCell>{row.views}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.roles[0].title}</TableCell>
+                <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell className={styles.flex2}>
                   <VisibilityIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
                     onClick={() => onView(row.id)}
                   />
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
-                  <DeleteIcon
-                    className={`${styles.tableLink} ${styles.hoverIcon}`}
-                    onClick={() => handleOpen(row.id)}
-                  />
+                  <DeleteIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onDelete(row.id)} />
                 </TableCell>
               </TableRow>
             ))}
@@ -72,11 +47,10 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
         </Table>
         {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
       </div>
-      <Dialogs open={openConfirmDelete} handleCancel={handleClose} title='Delete' content='Do you really want to delete this?' onClick={handleDelete} />
       {count > 1 && (
         <Pagination
           className={styles.center}
-          count={Math.round(count)}
+          count={Math.ceil(count)}
           onChange={handlePaginationChange}
           showFirstButton
           showLastButton

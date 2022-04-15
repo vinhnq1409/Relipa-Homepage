@@ -45,16 +45,17 @@ export default function Add() {
         open: true,
         message: 'Post is successful'
       })
+      setTimeout(()=>{
+        router.push('/admin/blogs')
+      }, 2000)
     },
     onError: (error) => {
-      for (const key in error.response.data.errors) {
-        setSnackbar({
-          open: true,
-          severity: 'error',
-          message: `Post is failed: ${error.response.data.errors[key]}` || 'POST is failed'
-        })
-        break
-      }
+      const { errors } = error.response.data
+      setSnackbar({
+        open: true,
+        severity: 'error',
+        message: `Post is failed: ${Object.values(errors)[0][0]}` || 'POST is failed'
+      })
     }
   })
 
@@ -65,16 +66,17 @@ export default function Add() {
         open: true,
         message: 'Update is successful'
       })
+      setTimeout(()=>{
+        router.push('/admin/blogs')
+      }, 2000)
     },
     onError: (error) => {
-      for (const key in error.response.data.errors) {
-        setSnackbar({
-          open: true,
-          severity: 'error',
-          message: `Update is failed: ${error.response.data.errors[key]}` || 'Update is failed'
-        })
-        break
-      }
+      const { errors } = error.response.data
+      setSnackbar({
+        open: true,
+        severity: 'error',
+        message: `Put is failed: ${Object.values(errors)[0][0]}` || 'Put is failed'
+      })
     }
   })
 
@@ -121,7 +123,8 @@ export default function Add() {
     handleSubmit,
     formState: { errors },
     control,
-    setValue
+    setValue,
+    getValues
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -142,9 +145,21 @@ export default function Add() {
       putBlogAPI(newData)
     }
   }
-  const onResetURL = (data) => {
-    const { title } = data
-    const resetFriendlyUrl = title.trim().replace(/ /g, '-')
+
+  const onPictureUpload = async(e) => {
+    const formData = new FormData()
+    formData.append(
+      'file',
+      e.target.files[0],
+      e.target.files[0].name
+    )
+    const { location } = await post('media', formData)
+    setValue('url_image_meta', `http://${location}`)
+  }
+
+  const onResetURL = () => {
+    const valueTitle = getValues('title')
+    const resetFriendlyUrl = valueTitle.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
   const onCancel = () => {
@@ -202,7 +217,7 @@ export default function Add() {
             />
             {errors.tags && <Typography className={styles.error}>{errors.tags.message}</Typography>}
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={10}>
             <Controller
               name='url_image_meta'
               control={control}
@@ -218,6 +233,21 @@ export default function Add() {
               )}
             />
             {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
+          </Grid>
+          <Grid item xs={2}>
+            <input
+              accept='image/*'
+              className={styles.buttonNone}
+              id='contained-button-file'
+              multiple
+              type='file'
+              onChange={onPictureUpload}
+            />
+            <label htmlFor='contained-button-file'>
+              <Button className={styles.full} variant='contained' color='primary' component='span'>
+                Upload
+              </Button>
+            </label>
           </Grid>
           <Grid item xs={10}>
             <Controller
@@ -237,7 +267,7 @@ export default function Add() {
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button className={styles.full} onClick={handleSubmit(onResetURL)} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
               Reset URL
             </Button>
           </Grid>
@@ -254,9 +284,9 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' />}
-            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' />}
-            <Button onClick={onCancel} className={styles.button} variant='contained' color='primary'>
+            {!id && <BtnLoading loading={isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
           </Grid>

@@ -4,7 +4,6 @@ import Home from '../../layouts/Home'
 
 export default function News() {
   const router = useRouter()
-  console.log(router.query)
   return <div>News</div>
 }
 
