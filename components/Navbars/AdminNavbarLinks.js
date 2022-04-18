@@ -62,11 +62,10 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null)
   }
-  const handleLogout = () => {
-    logoutApi().then(async() => {
-      await removeCookie(STORAGEKEY.ACCESS_TOKEN)
-      await router.push('/')
-    })
+  const handleLogout = async() => {
+    await logoutApi()
+    await removeCookie(STORAGEKEY.ACCESS_TOKEN)
+    await router.push('/admin/signin')
   }
   const handleClickLanguage = (event) => {
     if (openLanguage && openLanguage.contains(event.target)) {

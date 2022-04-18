@@ -176,7 +176,7 @@ export default function Add() {
       ...defaultValues
     })
   }
-  
+
   const onCancel = () => {
     router.push('/admin/static_page')
   }

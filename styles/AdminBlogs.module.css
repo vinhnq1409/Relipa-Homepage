@@ -59,7 +59,8 @@
 }
 
 .flex2{
-  display: flex !important;
+  /* display: flex !important; */
+  width: 125px;
 }
 
 /* CSS ADD BLOGS */
