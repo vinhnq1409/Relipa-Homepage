@@ -7,7 +7,14 @@ export default function News() {
   const router = useRouter()
   return (
     <div>
-      <HeadHome/>
+      <HeadHome
+        title={'this is News'}
+        contentTitle={'this is News content title'}
+        contentImg={'this is News link img'}
+        contentOgUrl={'this is News content og url '}
+        contentKeywords={'this is News contents key word'}
+        contentDescription={'this is News content description'}
+      />
       News
     </div>
   )
