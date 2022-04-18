@@ -111,7 +111,7 @@ export default function AdminEditStaticPage() {
     <>
       <form>
         <Grid container spacing={3} justifyContent='center'>
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <Controller
               name='title'
               control={control}
@@ -129,7 +129,7 @@ export default function AdminEditStaticPage() {
             {errors.title && <FormHelperText error>{errors.title.message}</FormHelperText>}
           </Grid>
 
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <Controller
               name='author'
               control={control}
@@ -147,7 +147,7 @@ export default function AdminEditStaticPage() {
             {errors.author && <FormHelperText error>{errors.author.message}</FormHelperText>}
           </Grid>
 
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <Controller
               name='meta'
               control={control}
@@ -167,7 +167,7 @@ export default function AdminEditStaticPage() {
             {errors.meta && <FormHelperText error>{errors.meta.message}</FormHelperText>}
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xs={10}>
             <Controller
               name='url_image_meta'
               control={control}
@@ -201,7 +201,7 @@ export default function AdminEditStaticPage() {
             </label>
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xs={10}>
             <Controller
               name='friendly_url'
               control={control}
@@ -225,11 +225,11 @@ export default function AdminEditStaticPage() {
             </Button>
           </Grid>
 
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <Editor id='editor' onInit={(evt, editor) => (editorRef.current = editor)} init={initMCE} />
           </Grid>
 
-          <Grid item xs={10} className = {style.buttonCenter}>
+          <Grid item xs={12} className = {style.buttonCenter}>
             <BtnLoading className={style.button} loading={loading} onClick={handleSubmit(onSubmit)} btnName = {trans.static_page.createNew} color='primary' />
             <Button onClick={onReset} className={style.button} variant = 'contained' color='secondary'>{trans.static_page.reset}</Button>
             <Button onClick={onCancel} className={style.button} variant = 'contained'>{trans.static_page.cancel}</Button>
