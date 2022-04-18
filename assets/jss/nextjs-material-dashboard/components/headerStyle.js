@@ -66,7 +66,7 @@ const headerStyle = () => ({
     position: 'fixed',
     backgroundColor: 'white',
     width: 'calc(100% - 260px)',
-    padding: '10px 0',
+    padding: '7px 0',
     maxWidth: 'inherit',
     borderBottom: ' 1px solid #e7e7e7'
   }

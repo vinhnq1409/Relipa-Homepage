@@ -23,6 +23,7 @@ import Card from 'components/Card/Card.js'
 import CardHeader from 'components/Card/CardHeader.js'
 import CardIcon from 'components/Card/CardIcon.js'
 import CardFooter from 'components/Card/CardFooter.js'
+import Link from 'next/link'
 
 import { bugs, website, server } from 'sampleData/general.js'
 
@@ -48,7 +49,11 @@ function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <ChromeReaderModeIcon />
-                <div>Get more info ...</div>
+                <div>
+                  <Link href='/admin/blogs'>
+                    <a className={classes.getMoreInfo}>Get more info ...</a>
+                  </Link>
+                </div>
               </div>
             </CardFooter>
           </Card>
@@ -67,7 +72,9 @@ function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <DateRange />
-                Get more info ...
+                <Link href='/admin/news'>
+                  <a className={classes.getMoreInfo}>Get more info ...</a>
+                </Link>
               </div>
             </CardFooter>
           </Card>

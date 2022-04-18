@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../../styles/AdminNewBlogFilters.module.css'
-import { Button, Typography, TextField, MenuItem, Menu } from '@material-ui/core'
+import { Button, Typography, TextField, MenuItem } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import useTrans from '../../i18n/useTrans'
 

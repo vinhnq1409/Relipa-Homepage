@@ -46,47 +46,47 @@ const dashboardRoutes = [
     layout: '/admin',
     role: ['Super Admin']
   },
-  {
-    path: '/dev-info',
-    name: 'DEV Info',
-    icon: CodeIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  },
-  {
-    path: '/partner',
-    name: 'Partner',
-    icon: GroupWorkIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  },
-  {
-    path: '/project',
-    name: 'Project',
-    icon: WorkIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  },
-  {
-    path: '/client',
-    name: 'Client',
-    icon: HomeIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    icon: Person,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
-  },
-  {
-    path: '/notifications',
-    name: 'Notifications',
-    icon: Notifications,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  }
+  // {
+  //   path: '/dev-info',
+  //   name: 'DEV Info',
+  //   icon: CodeIcon,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // },
+  // {
+  //   path: '/partner',
+  //   name: 'Partner',
+  //   icon: GroupWorkIcon,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // },
+  // {
+  //   path: '/project',
+  //   name: 'Project',
+  //   icon: WorkIcon,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // },
+  // {
+  //   path: '/client',
+  //   name: 'Client',
+  //   icon: HomeIcon,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // },
+  // {
+  //   path: '/profile',
+  //   name: 'Profile',
+  //   icon: Person,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin', 'Editor']
+  // },
+  // {
+  //   path: '/notifications',
+  //   name: 'Notifications',
+  //   icon: Notifications,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // }
 ]
 export default dashboardRoutes

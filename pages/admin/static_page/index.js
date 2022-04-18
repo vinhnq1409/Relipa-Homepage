@@ -14,7 +14,8 @@ export default function StaticPage() {
   const [params, setParams] = useState({
     per_page: 10,
     page: 1,
-    title: ''
+    title: '',
+    sort: ''
   })
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -24,7 +25,10 @@ export default function StaticPage() {
 
   const tableHead = ['No', 'Title', 'Author', 'Date', 'Status', 'Views', 'Action']
 
-  const getStaticPage = async() => await get(`static-page`)
+  const getStaticPage = async() => {
+    const response = await get('static-page', params)
+    return response
+  }
 
   const delStaticPage = async(id) => await del(`static-page/${id}`)
 

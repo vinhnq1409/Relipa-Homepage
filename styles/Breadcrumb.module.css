@@ -1,10 +1,11 @@
 .breadcrumbs {
-    margin: 10px 0 ;
+    padding: 10px 0;
     display: flex ;
     justify-content: space-between 
   }
   .breadcrumbs_title {
     color: #6c757d ;
+    line-height: 44px !important;
   }
   .breadcrumbs_link  {
     color: #727cf5 ;
