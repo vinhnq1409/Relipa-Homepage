@@ -7,14 +7,12 @@ import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
 // core components
 import styles from 'assets/jss/nextjs-material-dashboard/components/headerHomeStyle'
-import HeadHome from '../Head/Head'
 
 export default function Header(props) {
   const useStyles = makeStyles(styles)
   const classes = useStyles()
   return (
     <>
-      <HeadHome />
       <header>
         <List className={classes.list}>
           <ListItem className={classes.inlineBlock}>
