@@ -14,6 +14,7 @@ export default function Header(props) {
   const classes = useStyles()
   return (
     <>
+      <HeadHome />
       <header>
         <List className={classes.list}>
           <ListItem className={classes.inlineBlock}>

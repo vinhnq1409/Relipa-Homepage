@@ -1,13 +1,18 @@
 import React from 'react'
 import Home from '../../layouts/Home'
-import Head from 'next/head'
+import HeadHome from '../../components/Head/Head'
 
 export default function CompanyProfile() {
   return (
     <div>
-      <Head>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
+      <HeadHome
+        title={'this is company'}
+        contentTitle={'this is company content title'}
+        contentImg={'this is company link img'}
+        contentOgUrl={'this is company content og url '}
+        contentKeywords={'this is company contents key word'}
+        contentDescription={'this is company content description'}
+      />
       Company Profile
     </div>
   )

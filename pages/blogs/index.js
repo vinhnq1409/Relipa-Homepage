@@ -1,21 +1,18 @@
 import React from 'react'
 import Home from '../../layouts/Home'
-import Head from 'next/head'
+import HeadHome from '../../components/Head/Head'
 
 export default function Blogs() {
-  const contentDescription = 'abc'
   return (
     <div>
-      <Head>
-        <meta
-          name='description'
-          content={
-            contentDescription ||
-            'Relipa software provides excellent IT outsourcing services in Blockchain Development Services - AI Technology - Web Mobile Application - White Label Blockchain Solutions'
-          }
-          key='title'
-        />
-      </Head>
+      <HeadHome
+        title={'this is Blog'}
+        contentTitle={'this is Blog content title'}
+        contentImg={'this is Blog link img'}
+        contentOgUrl={'this is Blog content og url '}
+        contentKeywords={'this is Blog contents key word'}
+        contentDescription={'this is Blog content description'}
+      />
       Blogs
     </div>
   )
