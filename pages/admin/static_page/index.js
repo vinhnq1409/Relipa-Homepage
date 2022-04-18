@@ -54,7 +54,10 @@ export default function StaticPage() {
   const handleView = (id) => {}
 
   const handleUpdate = (id) => {
-    router.push({ pathname: 'static_page/add', query: { slug: 'about', mode: 'edit' }})
+    router.push({
+      pathname: 'static_page/add',
+      query: { slug: 'about', mode: 'edit', id: id }
+    })
   }
 
   const handleDelete = (id) => {
