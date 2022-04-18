@@ -1,75 +1,157 @@
-import React, { useRef, useState } from 'react'
 import Admin from 'layouts/Admin.js'
-import { TextField, Button, FormHelperText, Grid } from '@material-ui/core'
+import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { initMCE } from '../../../sampleData/initMCE'
+import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import { Controller, useForm } from 'react-hook-form'
-import { post } from '../../../api/BaseRequest'
+import { useQuery, useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import useTrans from '../../../i18n/useTrans'
-import BtnLoading from '../../../components/button/BtnLoading'
-import style from '../../../styles/admin/StaticPage.module.css'
-import { useMutation } from 'react-query'
 import { useRouter } from 'next/router'
+import styles from '../../../styles/AdminBlogs.module.css'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import { get, post, put } from '../../../api/BaseRequest'
+import BtnLoading from '../../../components/button/BtnLoading'
+import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-export default function AdminEditStaticPage() {
-  const trans = useTrans()
-  const router = useRouter()
-  const [loading, setLoading] = useState(false)
+export default function Add() {
   const editorRef = useRef(null)
+  const router = useRouter()
+  const { id } = router.query
+  const [valueEditor, setValueEditor] = useState('')
   const [snackbar, setSnackbar] = useState({
-    open: false,
     message: '',
+    open: false,
     severity: 'success'
   })
 
-  const postStaticPage = async(data) => await post(`static-page`, data)
+  const getStaticPage = async() => {
+    return await get(`static-page/${id}`)
+  }
 
-  const { mutate } = useMutation(postStaticPage, {
+  const postStaticPage = async(data) => {
+    return await post('static-page', data)
+  }
+
+  const putStaticPage = async(data) => {
+    return await put(`static-page/${id}`, data)
+  }
+
+  const { data: dataStaticPage, remove: removeStaticPage, isLoading: isGetStaticPageAPI } = useQuery('getStaticPage', getStaticPage, { enabled: !!id })
+
+  const { mutate: postStaticPageAPI, isLoading: isPostingStaticPageAPI } = useMutation(postStaticPage, {
     onSuccess: () => {
       setSnackbar({
         ...snackbar,
         open: true,
-        message: 'Create success'
+        message: 'Create is successful'
       })
-      setLoading(true)
-      setTimeout(() => {
-        setLoading(true)
-        router.push({ pathname: '/admin/static_page' })
+      setTimeout(()=>{
+        router.push('/admin/static_page')
       }, 2000)
     },
     onError: (error) => {
-      const { data } = error.response
+      const { errors } = error.response.data
       setSnackbar({
         open: true,
-        message: Object.values(data.errors)[0],
-        severity: 'error'
+        severity: 'error',
+        message: `Post is failed: ${Object.values(errors)[0][0]}` || 'POST is failed'
       })
     }
   })
 
-  const defaultValues = {
-    title: '',
-    author: '',
-    meta: '',
-    friendly_url: ''
-  }
+  const { mutate: putStaticPageAPI, isLoading: isPutingStaticPageAPI } = useMutation(putStaticPage, {
+    onSuccess: () => {
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        message: 'Update is successful'
+      })
+      setTimeout(()=>{
+        router.push('/admin/static_page')
+      }, 2000)
+    },
+    onError: (error) => {
+      const { errors } = error.response.data
+      setSnackbar({
+        open: true,
+        severity: 'error',
+        message: `Put is failed: ${Object.values(errors)[0][0]}` || 'Put is failed'
+      })
+    }
+  })
+
+  useEffect(() => {
+    if (!id) {
+      removeStaticPage()
+    }
+    setValue('title', dataStaticPage?.data.title)
+    setValue('meta', dataStaticPage?.data.meta)
+    setValue('url_image_meta', dataStaticPage?.data.url_image_meta)
+    setValue('friendly_url', dataStaticPage?.data.friendly_url)
+    setValueEditor(dataStaticPage?.data.content)
+  }, [dataStaticPage])
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('this field needs to be filled out'),
-    author: Yup.string().required('this field needs to be filled out'),
-    meta: Yup.string().required('this field needs to be filled out'),
-    friendly_url: Yup.string().required('this field needs to be filled out')
+    title: Yup.string()
+      .required('Title is required')
+      .min(10, 'The title must be at least 10 characters'),
+    meta: Yup.string().required('Meta is required'),
+    friendly_url: Yup.string()
+      .required('Url friendly is required')
+      .matches(/^\S+$/, 'friendly_url is no spaces')
+      .test(
+        'friendly url',
+        'friendly url no Vietnamese characters ',
+        (value) => {
+          if (value) {
+            const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+            return !result
+          }
+        }
+      ),
+    url_image_meta: Yup.string()
+      .required('Url image meta is required')
+      .matches(
+        /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
+        'Enter correct url!'
+      )
   })
+
+  const defaultValues = {
+    title: '',
+    meta: '',
+    url_image_meta: '',
+    content: '',
+    friendly_url: ''
+  }
 
   const {
     handleSubmit,
     formState: { errors },
     control,
-    reset,
-    setValue
+    setValue,
+    getValues,
+    reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
+
+  const onCreate = (data) => {
+    if (editorRef.current) {
+      const newData = {
+        ...data,
+        content: editorRef.current.getContent()
+      }
+      postStaticPageAPI(newData)
+    }
+  }
+  const onUpdate = (data) => {
+    if (editorRef.current) {
+      const newData = {
+        ...data,
+        content: editorRef.current.getContent()
+      }
+      putStaticPageAPI(newData)
+    }
+  }
 
   const onPictureUpload = async(e) => {
     const formData = new FormData()
@@ -82,91 +164,47 @@ export default function AdminEditStaticPage() {
     setValue('url_image_meta', `http://${location}`)
   }
 
-  const onResetURL = (data) => {
-    const { title } = data
-    const resetFriendlyUrl = title.trim().replace(/ /g, '-')
+  const onResetURL = () => {
+    const valueTitle = getValues('title')
+    const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-')
     setValue('friendly_url', resetFriendlyUrl)
   }
 
-  const onSubmit = (data) => {
-    if (editorRef.current) {
-      const newData = {
-        ...data,
-        content: editorRef.current.getContent()
-      }
-      mutate(newData)
-    }
-  }
-
   const onReset = () => {
+    setValueEditor('')
     reset({
       ...defaultValues
     })
   }
-
+  
   const onCancel = () => {
-    router.push({ pathname: '/admin/static_page' })
+    router.push('/admin/static_page')
   }
+
   return (
     <>
       <form>
-        <Grid container spacing={3} justifyContent='center'>
+        <Grid container spacing={3}>
           <Grid item xs={12}>
             <Controller
               name='title'
               control={control}
               render={({ field }) => (
-                <TextField
-                  label={trans.static_page.title}
-                  id='outlined-required'
-                  variant='outlined'
-                  placeholder={trans.static_page.placeholder_title}
-                  {...field}
-                  fullWidth
-                />
+                <TextField fullWidth multiline label='Title' id='outlined-required' variant='outlined' {...field} />
               )}
             />
-            {errors.title && <FormHelperText error>{errors.title.message}</FormHelperText>}
+            {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
           </Grid>
-
-          <Grid item xs={12}>
-            <Controller
-              name='author'
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  label={trans.static_page.author}
-                  id='outlined-required'
-                  variant='outlined'
-                  placeholder={trans.static_page.placeholder_author}
-                  {...field}
-                  fullWidth
-                />
-              )}
-            />
-            {errors.author && <FormHelperText error>{errors.author.message}</FormHelperText>}
-          </Grid>
-
           <Grid item xs={12}>
             <Controller
               name='meta'
               control={control}
               render={({ field }) => (
-                <TextField
-                  label={trans.static_page.describe}
-                  id='outlined-required'
-                  variant='outlined'
-                  placeholder={trans.static_page.placeholder_describe}
-                  {...field}
-                  multiline
-                  minRows={5}
-                  fullWidth
-                />
+                <TextField fullWidth multiline label='Meta' id='outlined-required' variant='outlined' {...field} />
               )}
             />
-            {errors.meta && <FormHelperText error>{errors.meta.message}</FormHelperText>}
+            {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
           </Grid>
-
           <Grid item xs={10}>
             <Controller
               name='url_image_meta'
@@ -182,25 +220,23 @@ export default function AdminEditStaticPage() {
                 />
               )}
             />
-            {errors.url_image_meta && <FormHelperText>{errors.url_image_meta.message}</FormHelperText>}
+            {errors.url_image_meta && <Typography className={styles.error}>{errors.url_image_meta.message}</Typography>}
           </Grid>
-
           <Grid item xs={2}>
             <input
               accept='image/*'
-              className={style.buttonNone}
+              className={styles.buttonNone}
               id='contained-button-file'
               multiple
               type='file'
               onChange={onPictureUpload}
             />
             <label htmlFor='contained-button-file'>
-              <Button className={style.full} variant='contained' color='primary' component='span'>
-                {trans.static_page.upload}
+              <Button className={styles.full} variant='contained' color='primary' component='span'>
+                Upload
               </Button>
             </label>
           </Grid>
-
           <Grid item xs={10}>
             <Controller
               name='friendly_url'
@@ -216,28 +252,42 @@ export default function AdminEditStaticPage() {
                 />
               )}
             />
-            {errors.friendly_url && <FormHelperText>{errors.friendly_url.message}</FormHelperText>}
+            {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
-
           <Grid item xs={2}>
-            <Button fullWidth className= {style.buttonAuth} onClick={handleSubmit(onResetURL)} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
               Reset URL
             </Button>
           </Grid>
-
           <Grid item xs={12}>
-            <Editor id='editor' onInit={(evt, editor) => (editorRef.current = editor)} init={initMCE} />
+            <Editor
+              id='editor'
+              value={valueEditor}
+              apiKey={apiKey}
+              onInit={(evt, editor) => (editorRef.current = editor)}
+              onEditorChange={(newValueEditor) => setValueEditor(newValueEditor)}
+              init={{
+                ...initFullProps
+              }}
+            />
           </Grid>
-
-          <Grid item xs={12} className = {style.buttonCenter}>
-            <BtnLoading className={style.button} loading={loading} onClick={handleSubmit(onSubmit)} btnName = {trans.static_page.createNew} color='primary' />
-            <Button onClick={onReset} className={style.button} variant = 'contained' color='secondary'>{trans.static_page.reset}</Button>
-            <Button onClick={onCancel} className={style.button} variant = 'contained'>{trans.static_page.cancel}</Button>
+          <Grid item xs={12} className={styles.flexCenter}>
+            {!id && <BtnLoading loading={isGetStaticPageAPI || isPostingStaticPageAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
+            {id && <BtnLoading loading={isGetStaticPageAPI || isPutingStaticPageAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            <Button onClick={onReset} className={styles.button} variant = 'contained' color='secondary'>Reset</Button>
+            <Button onClick={onCancel} className={styles.button} variant='contained'>
+              Cancel
+            </Button>
           </Grid>
         </Grid>
       </form>
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </>
   )
 }
-
-AdminEditStaticPage.layout = Admin
+Add.layout = Admin

@@ -95,7 +95,7 @@ export default function AddNews() {
         'friendly url no Vietnamese characters ',
         (value) => {
           if (value) {
-            const result = value.match(/[^a-zA-z0-9]/)
+            const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
             return !result
           }
         }
@@ -122,7 +122,8 @@ export default function AddNews() {
     formState: { errors },
     control,
     setValue,
-    getValues
+    getValues,
+    reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -134,6 +135,7 @@ export default function AddNews() {
       postNewsAPI(newData)
     }
   }
+
   const onUpdate = (data) => {
     if (editorRef.current) {
       const newData = {
@@ -143,6 +145,7 @@ export default function AddNews() {
       putNewsAPI(newData)
     }
   }
+
   const onResetURL = () => {
     const valueTitle = getValues('title')
     const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-')
@@ -154,6 +157,13 @@ export default function AddNews() {
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
     setValue('url_image_meta', `http://${location}`)
+  }
+
+  const onReset = () => {
+    setValueEditor('')
+    reset({
+      ...defaultValues
+    })
   }
 
   const onCancel = () => {
@@ -269,6 +279,7 @@ export default function AddNews() {
           <Grid item xs={12} className={styles.flexCenter}>
             {!id && <BtnLoading loading={isGetingNewsAPI || isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
             {id && <BtnLoading loading={isGetingNewsAPI || isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
+            <Button onClick={onReset} className={styles.button} variant = 'contained' color='secondary'>Reset</Button>
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
