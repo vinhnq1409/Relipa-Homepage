@@ -21,15 +21,17 @@ export default function News() {
   const [filters, setFilters] = useState({
     title: '',
     sort: ''
-    // start_date: null,
-    // end_date: moment().format('yyyy/MM/DD')
   })
   const [params, setParams] = useState({
     per_page: 10,
     page: 1
   })
   const [isSearch, setIsSearch] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState({ open: false, message: '' })
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    type: ''
+  })
 
   const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
@@ -45,26 +47,27 @@ export default function News() {
   const {
     mutate: mutateDeleteNew,
     isSuccess,
-    isError: isErrorDelete,
-    error: errorDelete
+    isError: isErrorDelete
   } = useMutation(deleteNewItem, {
     onError: () => {
-      setOpenSnackbar({
+      setSnackbar({
         open: true,
-        message: 'Delete Failed!'
+        message: 'Delete Failed!',
+        type: 'error'
       })
     },
     onSuccess: () => {
       queryClient.invalidateQueries('getDataNewList')
-      setOpenSnackbar({
+      setSnackbar({
         open: true,
-        message: 'Delete Success!'
+        message: 'Delete Success!',
+        type: 'success'
       })
     }
   })
 
   const handleCloseSnackBars = () => {
-    setOpenSnackbar(false)
+    setSnackbar({ ...snackbar, open: false })
   }
 
   const handleSearch = () => {
@@ -135,17 +138,17 @@ export default function News() {
       />
       {isSuccess && (
         <CustomizedSnackbars
-          open={openSnackbar}
-          message='Delete success!'
-          severity='success'
+          open={snackbar.open}
+          message={snackbar.message}
+          severity={snackbar.type}
           onClose={handleCloseSnackBars}
         />
       )}
       {isErrorDelete && (
         <CustomizedSnackbars
-          open={openSnackbar}
-          message={errorDelete.message}
-          severity='error'
+          open={snackbar.open}
+          message={snackbar.message}
+          severity={snackbar.type}
           onClose={handleCloseSnackBars}
         />
       )}

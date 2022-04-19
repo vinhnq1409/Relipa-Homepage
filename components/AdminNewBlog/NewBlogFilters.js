@@ -22,7 +22,7 @@ const NewFilters = ({ handleSearch, filters, setFilters, onCreate }) => {
             />
           </Grid>
           <Grid item className={styles.flex}>
-            <Typography variant='subtitle2' component='span'>
+            <Typography component='span'>
               Sort by
             </Typography>
             <TextField

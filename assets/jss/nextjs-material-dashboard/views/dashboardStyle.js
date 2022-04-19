@@ -77,6 +77,9 @@ const dashboardStyle = {
       lineHeight: "1",
     },
   },
+  getMoreInfo: {
+    color: '#727274'
+  }
 };
 
 export default dashboardStyle;

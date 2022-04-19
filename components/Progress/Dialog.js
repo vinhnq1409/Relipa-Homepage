@@ -6,7 +6,7 @@ export const Dialogs = ({ open, handleCancel, title, content, onClick }) => {
     <Dialog open={open} onClose={handleCancel} fullWidth>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText maxWidth='lg'>{content}</DialogContentText>
+        <DialogContentText maxwidth='lg'>{content}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClick} color='primary' variant='contained'>
