@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
@@ -10,31 +10,44 @@ import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { STORAGEKEY, getCookie, setCookie } from '../../utils/storage'
-import { signinApi } from '../../api/reactQueryApi'
+import { STORAGEKEY, setCookie } from '../../utils/storage'
+import { post } from '../../api/BaseRequest'
 import styles from '../../styles/admin/signin.module.css'
+import { useMutation } from 'react-query'
+import CustomizedSnackbars from '../../components/CustomSnackbar'
 
 export default function SignIn() {
   const router = useRouter()
-  const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
-  const { mutate: signin, data, isSuccess } = signinApi()
+
+  const [snackbar, setSnackbar] = useState({
+    messageSnackbar: '',
+    open: false,
+    severity: ''
+  })
+
+  const signInApi = async(data) => {
+    return await post('login', data)
+  }
+
+  const { mutate: signIn } = useMutation(signInApi, {
+    onSuccess: (data) => {
+      setCookie(STORAGEKEY.ACCESS_TOKEN, data?.access_token)
+      router.push('/admin')
+    },
+    onError: () => {
+      setSnackbar({
+        open: true,
+        severity: 'error',
+        messageSnackbar: 'Email or Password incorrect'
+      })
+    }
+  })
 
   const { register, handleSubmit } = useForm()
 
   const onSubmit = (data) => {
-    signin(data)
+    signIn(data)
   }
-
-  useEffect(() => {
-    if (isSuccess) {
-      setCookie(STORAGEKEY.ACCESS_TOKEN, data?.access_token)
-      router.push('/admin')
-    }
-  }, [isSuccess])
-
-  useEffect(() => {
-    if (token) router.push('/admin')
-  }, [token])
 
   return (
     <Container className={styles.wrapper} component='main' maxWidth='xs'>
@@ -91,6 +104,12 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.messageSnackbar}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </Container>
   )
 }

@@ -10,8 +10,10 @@ import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import AccountFilter from '../../../components/Account/AdminAccountFilter'
 
 export default function Account() {
+  const queryClient = useQueryClient()
   const router = useRouter()
   const userId = useRef()
+
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const tableHead = ['ID', 'Name', 'Email', 'Role', 'Create At', 'Update At', 'Action']
@@ -36,8 +38,6 @@ export default function Account() {
   const { data: dataUser, refetch } = useQuery([`getUser`, params.per_page, params.page], getUser)
 
   const { data: dataRoles } = useQuery(`getRoles`, getRoles)
-
-  const queryClient = useQueryClient()
 
   const { mutate } = useMutation(delUsers, {
     onError: (error) => {
