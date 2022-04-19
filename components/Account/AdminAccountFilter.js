@@ -14,7 +14,7 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate, dataRoles 
         <Grid item md={10} container spacing={2} alignItems='center'>
           <Grid item>
             <TextField
-              placeholder= {trans.admin_account.placeholder_text_search}
+              placeholder={trans.admin_account.placeholder_text_search}
               variant='outlined'
               size='small'
               value={email}
@@ -25,11 +25,21 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate, dataRoles 
             <Typography variant='subtitle2' component='span'>
               {trans.admin_account.role}
             </Typography>
-            <TextField select variant='outlined' className={styles.sort_by} size='small' defaultValue= {role} onChange = {(e) => setFilters({ ...filters, role: e.target.value })}>
-              <MenuItem value = ''>None</MenuItem>
-              {Array.isArray(dataRoles) && dataRoles.map((role) => (
-                <MenuItem key={role.id} value = {role.id}>{role.title}</MenuItem>
-              ))}
+            <TextField
+              select
+              variant='outlined'
+              className={styles.sort_by}
+              size='small'
+              defaultValue={role}
+              onChange={(e) => setFilters({ ...filters, role: e.target.value })}
+            >
+              <MenuItem value=''>None</MenuItem>
+              {Array.isArray(dataRoles) &&
+                dataRoles.map((role) => (
+                  <MenuItem key={role.id} value={role.id}>
+                    {role.title}
+                  </MenuItem>
+                ))}
             </TextField>
           </Grid>
           <Grid item>

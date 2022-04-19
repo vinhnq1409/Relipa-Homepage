@@ -19,10 +19,7 @@ export default function SignIn() {
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const { mutate: signin, data, isSuccess } = signinApi()
 
-  const {
-    register,
-    handleSubmit
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
   const onSubmit = (data) => {
     signin(data)
