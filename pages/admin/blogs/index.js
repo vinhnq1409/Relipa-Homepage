@@ -12,7 +12,7 @@ const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action
 
 export default function Blogs() {
   const router = useRouter()
-
+  const queryClient = useQueryClient()
   const [params, setParams] = useState({
     title: '',
     sort: '',
@@ -37,7 +37,6 @@ export default function Blogs() {
   }
 
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
-  const queryClient = useQueryClient()
   const { mutate } = useMutation(deleteBlog, {
     onError: () => {
       setSnackbar({
@@ -63,6 +62,7 @@ export default function Blogs() {
   const handleSearch = () => {
     refetch()
   }
+
   const handleResetForm = () => {
     setParams({
       title: '',
@@ -74,12 +74,6 @@ export default function Blogs() {
     })
   }
 
-  // --action--
-  const handleView = (id) => {
-    // console.log('View', id)
-  }
-
-  // Start code add blogs
   const handleCreate = () => {
     router.push('/admin/blogs/add')
   }
@@ -90,7 +84,6 @@ export default function Blogs() {
       query: { slug: 'about', mode: 'edit', id: id }
     })
   }
-  // End code add blogs
 
   const handleDelete = (id) => {
     mutate(id)
@@ -107,9 +100,9 @@ export default function Blogs() {
         onCreate={handleCreate}
       />
       <TableList
+        namePage='/blogs'
         tableHead={tableHead}
         data={data?.data}
-        onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}

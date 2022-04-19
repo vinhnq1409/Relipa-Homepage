@@ -12,7 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
 import { Dialogs } from '../Progress/Dialog'
 
-const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
+const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setParams, count }) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
 
@@ -56,10 +56,9 @@ const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setPar
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.views}</TableCell>
                 <TableCell className={styles.flex2}>
-                  <VisibilityIcon
-                    className={`${styles.tableLink} ${styles.hoverIcon}`}
-                    onClick={() => onView(row.id)}
-                  />
+                  <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
+                    <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
+                  </a>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
                   <DeleteIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}

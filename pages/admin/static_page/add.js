@@ -23,6 +23,22 @@ export default function Add() {
     open: false,
     severity: 'success'
   })
+  const defaultValues = {
+    title: '',
+    meta: '',
+    url_image_meta: '',
+    content: '',
+    friendly_url: ''
+  }
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset
+  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const getStaticPage = async() => {
     return await get(`static-page/${id}`)
@@ -116,23 +132,6 @@ export default function Add() {
         'Enter correct url!'
       )
   })
-
-  const defaultValues = {
-    title: '',
-    meta: '',
-    url_image_meta: '',
-    content: '',
-    friendly_url: ''
-  }
-
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    setValue,
-    getValues,
-    reset
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {
