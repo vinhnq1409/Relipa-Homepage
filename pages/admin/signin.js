@@ -32,9 +32,9 @@ export default function SignIn() {
     }
   }, [isSuccess])
 
-  // useEffect(() => {
-  //   if (token) router.push('/admin')
-  // }, [token])
+  useEffect(() => {
+    if (token) router.push('/admin')
+  }, [token])
 
   return (
     <Container className={styles.wrapper} component='main' maxWidth='xs'>
