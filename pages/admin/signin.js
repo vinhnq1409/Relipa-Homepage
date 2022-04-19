@@ -19,10 +19,7 @@ export default function SignIn() {
   const token = getCookie(STORAGEKEY.ACCESS_TOKEN)
   const { mutate: signin, data, isSuccess } = signinApi()
 
-  const {
-    register,
-    handleSubmit
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
   const onSubmit = (data) => {
     signin(data)
@@ -35,9 +32,9 @@ export default function SignIn() {
     }
   }, [isSuccess])
 
-  useEffect(() => {
-    if (token) router.push('/admin')
-  }, [token])
+  // useEffect(() => {
+  //   if (token) router.push('/admin')
+  // }, [token])
 
   return (
     <Container className={styles.wrapper} component='main' maxWidth='xs'>
