@@ -33,15 +33,6 @@ export default function AddNews() {
     friendly_url: ''
   }
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    setValue,
-    getValues,
-    reset
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
-
   const getNews = async() => {
     return await get(`news/${id}`)
   }
@@ -54,7 +45,11 @@ export default function AddNews() {
     return await put(`news/${id}`, data)
   }
 
-  const { data: dataNews, remove: removeData, isLoading: isGetingNewsAPI } = useQuery('getNews', getNews, { enabled: !!id })
+  const {
+    data: dataNews,
+    remove: removeData,
+    isLoading: isGetingNewsAPI
+  } = useQuery('getNews', getNews, { enabled: !!id })
 
   const { mutate: postNewsAPI, isLoading: isPostingNewsAPI } = useMutation(postNews, {
     onSuccess: () => {
@@ -108,16 +103,12 @@ export default function AddNews() {
     friendly_url: Yup.string()
       .required('Url friendly is required')
       .matches(/^\S+$/, 'friendly_url is no spaces')
-      .test(
-        'friendly url',
-        'friendly url no Vietnamese characters ',
-        (value) => {
-          if (value) {
-            const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
-            return !result
-          }
+      .test('friendly url', 'friendly url no Vietnamese characters ', (value) => {
+        if (value) {
+          const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+          return !result
         }
-      ),
+      }),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
       .matches(
@@ -125,6 +116,15 @@ export default function AddNews() {
         'Enter correct url!'
       )
   })
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset
+  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {
@@ -277,9 +277,25 @@ export default function AddNews() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isGetingNewsAPI || isPostingNewsAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
-            {id && <BtnLoading loading={isGetingNewsAPI || isPutingNewsAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
-            <Button onClick={onReset} className={styles.button} variant = 'contained' color='secondary'>Reset</Button>
+            {!id && (
+              <BtnLoading
+                loading={isGetingNewsAPI || isPostingNewsAPI}
+                onClick={handleSubmit(onCreate)}
+                btnName='Create'
+                color='primary'
+              />
+            )}
+            {id && (
+              <BtnLoading
+                loading={isGetingNewsAPI || isPutingNewsAPI}
+                onClick={handleSubmit(onUpdate)}
+                btnName='Update'
+                color='primary'
+              />
+            )}
+            <Button onClick={onReset} className={styles.button} variant='contained' color='secondary'>
+              Reset
+            </Button>
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>

@@ -34,15 +34,6 @@ export default function Add() {
     friendly_url: ''
   }
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    setValue,
-    getValues,
-    reset
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
-
   const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
@@ -55,7 +46,11 @@ export default function Add() {
     return await put(`blogs/${id}`, data)
   }
 
-  const { data: dataBlog, remove: removeBlogs, isLoading: isGetBlogAPI } = useQuery('getBlog', getBlog, { enabled: !!id })
+  const {
+    data: dataBlog,
+    remove: removeBlogs,
+    isLoading: isGetBlogAPI
+  } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -64,7 +59,7 @@ export default function Add() {
         open: true,
         message: 'Post is successful'
       })
-      setTimeout(()=>{
+      setTimeout(() => {
         router.push('/admin/blogs')
       }, 2000)
     },
@@ -85,7 +80,7 @@ export default function Add() {
         open: true,
         message: 'Update is successful'
       })
-      setTimeout(()=>{
+      setTimeout(() => {
         router.push('/admin/blogs')
       }, 2000)
     },
@@ -113,24 +108,18 @@ export default function Add() {
   }, [dataBlog])
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string()
-      .required('Title is required')
-      .min(10, 'The title must be at least 10 characters'),
+    title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
     friendly_url: Yup.string()
       .required('Url friendly is required')
       .matches(/^\S+$/, 'friendly_url is no spaces')
-      .test(
-        'friendly url',
-        'friendly url no Vietnamese characters ',
-        (value) => {
-          if (value) {
-            const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
-            return !result
-          }
+      .test('friendly url', 'friendly url no Vietnamese characters ', (value) => {
+        if (value) {
+          const result = value.match(/[^a-zA-Z0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/)
+          return !result
         }
-      ),
+      }),
     tags: Yup.string().required('Tags is required'),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
@@ -139,6 +128,15 @@ export default function Add() {
         'Enter correct url!'
       )
   })
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset
+  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {
@@ -162,11 +160,7 @@ export default function Add() {
 
   const onPictureUpload = async(e) => {
     const formData = new FormData()
-    formData.append(
-      'file',
-      e.target.files[0],
-      e.target.files[0].name
-    )
+    formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
     setValue('url_image_meta', `http://${location}`)
   }
@@ -306,9 +300,25 @@ export default function Add() {
             />
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
-            {!id && <BtnLoading loading={isGetBlogAPI || isPostingBlogAPI} onClick={handleSubmit(onCreate)} btnName='Create' color='primary' />}
-            {id && <BtnLoading loading={isGetBlogAPI || isPutingBlogAPI} onClick={handleSubmit(onUpdate)} btnName='Update' color='primary' />}
-            <Button onClick={onReset} className={styles.button} variant = 'contained' color='secondary'>Reset</Button>
+            {!id && (
+              <BtnLoading
+                loading={isGetBlogAPI || isPostingBlogAPI}
+                onClick={handleSubmit(onCreate)}
+                btnName='Create'
+                color='primary'
+              />
+            )}
+            {id && (
+              <BtnLoading
+                loading={isGetBlogAPI || isPutingBlogAPI}
+                onClick={handleSubmit(onUpdate)}
+                btnName='Update'
+                color='primary'
+              />
+            )}
+            <Button onClick={onReset} className={styles.button} variant='contained' color='secondary'>
+              Reset
+            </Button>
             <Button onClick={onCancel} className={styles.button} variant='contained'>
               Cancel
             </Button>
