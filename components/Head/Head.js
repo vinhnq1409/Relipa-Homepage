@@ -55,7 +55,7 @@ const HeadHome = ({ title, contentImg, contentDescription, contentOgUrl, content
         />
         <meta property='twitter:image' content={contentImg || '/img'} />
         <meta property='next-head-count' content='26' />
-        <meta property='google-site-verification' content='JCH9_esCIzO91Wbte9_9Hk5CynW3Ir-TEmZgJUc51wU' />
+        <meta name='google-site-verification' content='aEcygQCLY-in4GgZ5Wbay7XAM25GhbbS8pv6W5PCtk0' />
       </Head>
     </>
   )
