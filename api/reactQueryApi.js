@@ -2,7 +2,7 @@ import { useMutation } from 'react-query'
 import { post, get } from './BaseRequest'
 
 // signin Api
-export const signinApi = () => {
+export const signInApi = () => {
   return useMutation((dataForm) => post('login', dataForm))
 }
 // logout api

@@ -32,6 +32,7 @@ import styles from 'assets/jss/nextjs-material-dashboard/views/dashboardStyle.js
 function Dashboard() {
   const useStyles = makeStyles(styles)
   const classes = useStyles()
+
   return (
     <div>
       <GridContainer>
@@ -43,7 +44,8 @@ function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Blogs</p>
               <h3 className={classes.cardTitle}>
-                500 <small> views/week</small>
+                <div>500</div>
+                <small>views/week</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -66,7 +68,8 @@ function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>News</p>
               <h3 className={classes.cardTitle}>
-                34,245 <small> views/week</small>
+                <div>34,245</div>
+                <small>views/week</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -86,7 +89,9 @@ function Dashboard() {
                 <Icon>info_outline</Icon>
               </CardIcon>
               <p className={classes.cardCategory}>Partner</p>
-              <h3 className={classes.cardTitle}>75</h3>
+              <h3 className={classes.cardTitle}>
+                <div>75</div>
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>

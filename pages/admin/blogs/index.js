@@ -11,6 +11,8 @@ import CustomizedSnackbars from '../../../components/CustomSnackbar'
 const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
 
 export default function Blogs() {
+  const router = useRouter()
+
   const [params, setParams] = useState({
     title: '',
     sort: '',
@@ -78,8 +80,6 @@ export default function Blogs() {
   }
 
   // Start code add blogs
-  const router = useRouter()
-
   const handleCreate = () => {
     router.push('/admin/blogs/add')
   }
@@ -90,7 +90,6 @@ export default function Blogs() {
       query: { slug: 'about', mode: 'edit', id: id }
     })
   }
-
   // End code add blogs
 
   const handleDelete = (id) => {
