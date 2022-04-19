@@ -30,7 +30,7 @@ const AccountFilter = ({ handleSearch, filters, setFilters, onCreate, dataRoles 
               variant='outlined'
               className={styles.sort_by}
               size='small'
-              defaultValue={role}
+              value={role}
               onChange={(e) => setFilters({ ...filters, role: e.target.value })}
             >
               <MenuItem value=''>None</MenuItem>
