@@ -10,6 +10,7 @@ import { Loading } from '../../../components/Progress/Loading'
 
 export default function StaticPage() {
   const router = useRouter()
+  const queryClient = useQueryClient()
   const [loading, setLoading] = useState(false)
   const [params, setParams] = useState({
     per_page: 10,
@@ -34,8 +35,6 @@ export default function StaticPage() {
 
   const { data, refetch } = useQuery([`getStaticPage`, params.per_page, params.page], getStaticPage)
 
-  const queryClient = useQueryClient()
-
   const { mutate } = useMutation(delStaticPage, {
     onError: (error) => {
       const { data } = error.response
@@ -54,8 +53,6 @@ export default function StaticPage() {
       })
     }
   })
-
-  const handleView = (id) => {}
 
   const handleUpdate = (id) => {
     router.push({
@@ -88,9 +85,9 @@ export default function StaticPage() {
     <>
       <NewFilters handleSearch={handleSearch} filters={params} setFilters={setParams} onCreate={handleCreate} />
       <TableList
+        namePage=''
         tableHead={tableHead}
         data={data?.data}
-        onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}

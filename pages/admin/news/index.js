@@ -17,6 +17,7 @@ const data = [
 
 export default function News() {
   const queryClient = useQueryClient()
+  const router = useRouter()
 
   const [filters, setFilters] = useState({
     title: '',
@@ -88,11 +89,6 @@ export default function News() {
     })
   }
 
-  // --action--
-  const handleView = (id) => {
-    // console.log('View', id)
-  }
-
   const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/news/add',
@@ -105,12 +101,8 @@ export default function News() {
   }
 
   const handleDelete = (id) => {
-    // console.log('Delete', id)
     mutateDeleteNew(id)
   }
-
-  // Start code add blogs
-  const router = useRouter()
 
   const onCreate = () => {
     router.push('/admin/news/add')
@@ -127,9 +119,9 @@ export default function News() {
         setFilters={setFilters}
       />
       <TableList
+        namePage='/news'
         tableHead={tableHead}
         data={dataNewList?.data || data}
-        onView={handleView}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
         params={params}

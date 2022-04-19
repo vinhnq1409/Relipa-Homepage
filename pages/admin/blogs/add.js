@@ -24,6 +24,25 @@ export default function Add() {
     severity: 'success'
   })
 
+  const defaultValues = {
+    title: '',
+    desc: '',
+    meta: '',
+    url_image_meta: '',
+    content: '',
+    tags: '',
+    friendly_url: ''
+  }
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset
+  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
+
   const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
@@ -120,25 +139,6 @@ export default function Add() {
         'Enter correct url!'
       )
   })
-
-  const defaultValues = {
-    title: '',
-    desc: '',
-    meta: '',
-    url_image_meta: '',
-    content: '',
-    tags: '',
-    friendly_url: ''
-  }
-
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    setValue,
-    getValues,
-    reset
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {

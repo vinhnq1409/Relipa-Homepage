@@ -24,6 +24,24 @@ export default function AddNews() {
     severity: 'success'
   })
 
+  const defaultValues = {
+    title: '',
+    desc: '',
+    meta: '',
+    url_image_meta: '',
+    content: '',
+    friendly_url: ''
+  }
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset
+  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
+
   const getNews = async() => {
     return await get(`news/${id}`)
   }
@@ -107,24 +125,6 @@ export default function AddNews() {
         'Enter correct url!'
       )
   })
-
-  const defaultValues = {
-    title: '',
-    desc: '',
-    meta: '',
-    url_image_meta: '',
-    content: '',
-    friendly_url: ''
-  }
-
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    setValue,
-    getValues,
-    reset
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {

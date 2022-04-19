@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, forwardRef } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
@@ -12,7 +12,7 @@ import CustomizedSnackbars from '../CustomSnackbar/index'
 import { removeCookie, STORAGEKEY } from '../../utils/storage'
 import ClearIcon from '@material-ui/icons/Clear'
 
-export default function FormChangePassword({ handleCancel }) {
+const FormChangePassword = ({ handleCancel }, ref) => {
   const router = useRouter()
   const { mutate: changePassword, isSuccess, data } = changePasswordApi()
   const [openSnackbar, setOpenSnackbar] = useState({
@@ -66,7 +66,7 @@ export default function FormChangePassword({ handleCancel }) {
   }, [isSuccess])
 
   return (
-    <Container className={styles.wrapper_changepass} component='main' maxWidth='xs'>
+    <Container ref={ref} className={styles.wrapper_changepass} component='main' maxWidth='xs' tabIndex={-1}>
       <ClearIcon className={styles.btn_cancel} onClick={(e) => handleCancel()} />
       <CssBaseline />
       <div className={styles.paper}>
@@ -121,3 +121,5 @@ export default function FormChangePassword({ handleCancel }) {
     </Container>
   )
 }
+
+export default forwardRef(FormChangePassword)
