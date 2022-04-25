@@ -16,6 +16,16 @@ class MyDocument extends Document {
           <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' />
           <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
           <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+
+          {/* <script href="../public/user-page/js/popper.min.js"></script>
+          <script href="../public/user-page/js/bootstrap.js"></script>
+
+          <script href="../public/user-page/js/isotope.pkgd.min.js"></script>
+          <script href="../public/user-page/js/swiper-bundle.min.js"></script>
+          <script href="../public/user-page/js/aos.js"></script>
+
+          <script href="../public/user-page/js/main.js"></script>
+          <script href="../public/user-page/js/isotop-filter.js"></script> */}
         </Head>
         <body>
           <div id='page-transition'></div>
