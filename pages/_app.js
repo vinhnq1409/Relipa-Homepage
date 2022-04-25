@@ -8,6 +8,13 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import PageChange from 'components/PageChange/PageChange.js'
 
 import '../assets/css/nextjs-material-dashboard.css'
+
+import '../public/user-page/css/line-awesome.min.css'
+
+import '../public/user-page/css/aos.css'
+import '../public/user-page/css/swiper-bundle.min.css'
+import '../public/user-page/css/template.css'
+
 import { Provider } from 'react-redux'
 
 const queryClient = new QueryClient()
