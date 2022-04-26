@@ -1,0 +1,12 @@
+.sidebar_list a::before {
+  content: '\f105';
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 16px;
+  font-family: 'Line Awesome Free';
+  font-weight: 900;
+}
+.list_unstyled {
+  padding-left: 0;
+  list-style: none;
+}
