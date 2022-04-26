@@ -22,9 +22,9 @@ export default function Company() {
       <BlockBanner />
       <div id='main'>
         <BlockBreadcrumb />
-        <div class='container'>
-          <div class='row'>
-            <div class='col-lg-10'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-10'>
               <BlockCompanyProfile />
               <BlockCEOMessage />
               <BlockMissionValues />

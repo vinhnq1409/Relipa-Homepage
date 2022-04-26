@@ -1,44 +1,44 @@
 const BlockService = () => {
   return (
-    <section class='section section-aos section-service py-0' data-aos='fade-up'>
-      <div class='container'>
-        <div class='section-heading section-heading-shadow'>
-          <h2 class='section-title' title='Service'>
+    <section className='section section-aos section-service py-0' data-aos='fade-up'>
+      <div className='container'>
+        <div className='section-heading section-heading-shadow'>
+          <h2 className='section-title' title='Service'>
             Service
           </h2>
         </div>
         <div
-          class='swiper-carousel swiper-carousel--arrow-length swiper-carousel--highlight-active'
+          className='swiper-carousel swiper-carousel--arrow-length swiper-carousel--highlight-active'
           data-aos='zoom-in'
           data-aos-delay='400'
           data-carousel='swiper'
           slide-autoplay='false'
-          slide-centeredSlides='true'
+          // slide-centeredSlides='true'
           slide-speed='800'
           slide-item='3'
           slide-loop='true'
         >
-          <div class='swiper-container'>
-            <div class='swiper-wrapper'>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
+          <div className='swiper-container'>
+            <div className='swiper-wrapper'>
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>01.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>01.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -46,25 +46,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>02.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>02.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -72,25 +72,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>03.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>03.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -98,25 +98,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>01.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>01.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -124,25 +124,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>02.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>02.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -150,25 +150,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>03.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>03.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -176,25 +176,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>01.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>01.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -202,25 +202,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>02.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>02.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -228,25 +228,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>03.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>03.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -254,25 +254,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>01.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>01.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -280,25 +280,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>02.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>02.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -306,25 +306,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>03.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>03.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -332,25 +332,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-01.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>01.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>01.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -358,25 +358,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-02.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>02.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>02.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -384,25 +384,25 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div class='swiper-slide'>
-                <div class='card card-overlay'>
-                  <div class='card-thumb lazyload'>
-                    <a class='card-thumb-overlay' href='#'>
-                      <img class='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
+              <div className='swiper-slide'>
+                <div className='card card-overlay'>
+                  <div className='card-thumb lazyload'>
+                    <a className='card-thumb-overlay' href='#'>
+                      <img className='card-img-top' src='user-page/img/home/sr-03.png' width='278' height='469' alt='...' />
                     </a>
                   </div>
-                  <div class='card-body'>
-                    <div class='card-index'>03.</div>
-                    <h3 class='card-title'>
+                  <div className='card-body'>
+                    <div className='card-index'>03.</div>
+                    <h3 className='card-title'>
                       <a href='#'>Lab-type Development </a>
                     </h3>
-                    <div class='card-text'>
+                    <div className='card-text'>
                       What is lab-based development? We build a dedicated development team for each project within our
                       company, and as a member of the customer's team, we commit to the goals of the project.
                     </div>
-                    <div class='card-bottom'>
-                      <div class='d-grid'>
-                        <a href='#' class='btn btn-primary btn-block btn-lg rounded-0'>
+                    <div className='card-bottom'>
+                      <div className='d-grid'>
+                        <a href='#' className='btn btn-primary btn-block btn-lg rounded-0'>
                           SEE MORE
                         </a>
                       </div>
@@ -411,11 +411,11 @@ const BlockService = () => {
                 </div>
               </div>
             </div>
-            <div class='swiper-pagination'></div>
+            <div className='swiper-pagination'></div>
           </div>
-          <div class='swiper-controls'>
-            <div class='swiper-button-prev'></div>
-            <div class='swiper-button-next'></div>
+          <div className='swiper-controls'>
+            <div className='swiper-button-prev'></div>
+            <div className='swiper-button-next'></div>
           </div>
         </div>
       </div>

@@ -4,43 +4,7 @@
   var brandLoadingTime = 3000,
       progressPercent = 0,
       progressBar;
-  // var $loadingWrap = document.getElementById('loading'),
-  //     $progressLoading = $loadingWrap.querySelector('.progressLoading'),
-  //     $messageLoading = $loadingWrap.querySelector('.loading-message');
-
-  // var progressLoading = function () {
-  //   if (progressPercent >= 100) {
-  //     clearInterval(progressBar);
-  //   } else {
-  //     progressPercent++;
-  //     $progressLoading.style.width = progressPercent + '%';
-  //   }
-  // };
-
-  // var hideLoading = function () {
-  //   // console.log('hide');
-  //   progressPercent = 100;
-  //   $progressLoading.style.width = progressPercent + '%';
-  //   clearInterval(progressBar);
-  //   $loadingWrap.classList.remove('loading');
-  //   document.body.classList.remove('on-popup');
-  // };
-
-  // var showLoading = function (loadingText) {
-  //   //animation progress loading bar
-  //   document.body.classList.add('on-popup');
-  //   progressPercent = 0;
-  //   $progressLoading.style.width = progressPercent + '%'; // $messageLoading.innerHTML(loadingText);
-
-  //   $loadingWrap.classList.add('loading'); // clearInterval(progressBar);
-
-  //   setTimeout(function () {
-  //     progressBar = setInterval(progressLoading, 10);
-  //   }, 300);
-  // };
-
-  // showLoading(); //document ready
-
+  
   document.addEventListener('DOMContentLoaded', function () {
     var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -266,4 +230,3 @@
     });
   });
 })();
-//# sourceMappingURL=main.js.map
