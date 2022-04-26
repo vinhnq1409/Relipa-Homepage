@@ -16,10 +16,10 @@ import jwt_decode from 'jwt-decode'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInfoUser } from '../redux/slices/userInfo'
 import logo from 'assets/img/relipa-logo.png'
-import SignIn from '../pages/admin/signin'
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import dashboardRoutes from '../routes'
 import { fiterRoleUser } from '../utils/roles'
+import Head from 'next/head'
 
 export default function Admin({ children, ...rest }) {
   // used for checking current route
@@ -75,27 +75,32 @@ export default function Admin({ children, ...rest }) {
   }
   
   return (
-    <div className={classes.wrapper}>
-      <Sidebar
-        routes={routes}
-        logoText={'Relipa CMS'}
-        logo={logo}
-        image={bgImage}
-        handleDrawerToggle={handleDrawerToggle}
-        open={mobileOpen}
-        color='white'
-        {...rest}
-      />
-      <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
-        <div className={classes.body}>
-          <Breadcrumb routes={routes} />
-          <Paper elevation={0} variant='outlined' className={classes.content}>
-            <div className={classes.container}>{children}</div>
-          </Paper>
+    <>
+      <Head>
+        <link rel="stylesheet" href="/admin/css/nextjs-material-dashboard.css" />
+      </Head>
+      <div className={classes.wrapper}>
+        <Sidebar
+          routes={routes}
+          logoText={'Relipa CMS'}
+          logo={logo}
+          image={bgImage}
+          handleDrawerToggle={handleDrawerToggle}
+          open={mobileOpen}
+          color='white'
+          {...rest}
+        />
+        <div className={classes.mainPanel} ref={mainPanel}>
+          <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
+          <div className={classes.body}>
+            <Breadcrumb routes={routes} />
+            <Paper elevation={0} variant='outlined' className={classes.content}>
+              <div className={classes.container}>{children}</div>
+            </Paper>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </>
   )
 }
