@@ -13,11 +13,11 @@ export default function Home({ children, ...rest }) {
     <>
       <Head>
         <link rel='stylesheet' href='/user-page/css/line-awesome.min.css' />
-        <link rel='stylesheet' href='/user-page/css/aos.css' />
+        {/* <link rel='stylesheet' href='/user-page/css/aos.css' /> */}
         <link rel='stylesheet' href='/user-page/css/swiper-bundle.min.css' />
         <link rel='stylesheet' href='/user-page/css/template.css' />
       </Head>
-      <div>
+      <div id="wrapper">
         <Header />
         <div>{children}</div>
         <Footer />
