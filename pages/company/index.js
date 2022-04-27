@@ -7,6 +7,7 @@ import BlockCompanyProfile from '../../components/HomePage/Company/BlockCompanyP
 import BlockCEOMessage from '../../components/HomePage/Company/BlockCEOMessage'
 import BlockMissionValues from '../../components/HomePage/Company/BlockMissionValues'
 import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers'
+import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 
 export default function Company() {
   return (
@@ -30,6 +31,7 @@ export default function Company() {
               <BlockMissionValues />
               <BlockCoreMembers />
             </div>
+            <BlockSideBar />
           </div>
         </div>
       </div>

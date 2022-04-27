@@ -1,8 +1,12 @@
+import useTrans from '../../../i18n/useTrans'
+
 const BlockCoreMembers = () => {
+    const trans = useTrans()
+    const language = trans.user.company.CoreMember
     return ( 
         <section className="section section-aos" id="core-member" data-aos="fade-up">
         <div className="section-content-header line-bottom text-primary">
-            <h2 className="section-content-title">Core Members</h2>
+            <h2 className="section-content-title">{language.Core_Members}</h2>
         </div>
         <div className="row">
             <div className="col-6">
@@ -16,9 +20,9 @@ const BlockCoreMembers = () => {
                             </div>
                             <div className="card-body text-center">
                                 <h3 className="card-title">
-                                    <a href="#">Trần Xuân Đức</a>
+                                    <a href="#">Tran Xuan Duc</a>
                                 </h3>
-                                <div className="card-meta">Chức vụ</div>
+                                <div className="card-meta">{language.PresidentCEO}</div>
                             </div>
                         </div>
                     </div>
@@ -31,9 +35,9 @@ const BlockCoreMembers = () => {
                             </div>
                             <div className="card-body text-center">
                                 <h3 className="card-title">
-                                    <a href="#">Phùng Quang Huy</a>
+                                    <a href="#">Phung Quang Huy</a>
                                 </h3>
-                                <div className="card-meta">Chức vụ</div>
+                                <div className="card-meta">{language.DevelopmentManager}</div>
                             </div>
                         </div>
                     </div>
@@ -50,9 +54,9 @@ const BlockCoreMembers = () => {
                             </div>
                             <div className="card-body text-center">
                                 <h3 className="card-title">
-                                    <a href="#">Nguyễn Quang Tuyến</a>
+                                    <a href="#">Nguyen Quang Tuyen</a>
                                 </h3>
-                                <div className="card-meta">Chức vụ</div>
+                                <div className="card-meta">{language.Representative}</div>
                             </div>
                         </div>
                     </div>
@@ -65,9 +69,9 @@ const BlockCoreMembers = () => {
                             </div>
                             <div className="card-body text-center">
                                 <h3 className="card-title">
-                                    <a href="#">Nguyễn Kim Giang</a>
+                                    <a href="#">Nguyen Kim Giang</a>
                                 </h3>
-                                <div className="card-meta">Chức vụ</div>
+                                <div className="card-meta">{language.DevelopmentDepartment}</div>
                             </div>
                         </div>
                     </div>
