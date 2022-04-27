@@ -1,4 +1,8 @@
+import useTrans from '../../../i18n/useTrans'
+
 const BlockBanner = () => {
+  const trans = useTrans()
+  const language = trans.user.company.banner
   return (
     <div className='container'>
       <section className='section section-aos section-banner section-sub-banner py-0' data-aos='fade-down'>
@@ -11,8 +15,8 @@ const BlockBanner = () => {
           </div>
           <div className='container'>
             <div className='section-heading section-heading-shadow'>
-              <h2 className='section-title' title='Company'>
-                Company
+              <h2 className='section-title' title={language.company}>
+                {language.company}
               </h2>
             </div>
           </div>
