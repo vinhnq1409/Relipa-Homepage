@@ -137,7 +137,7 @@ export default function AdminNavbarLinks() {
                   <ClickAwayListener onClickAway={handleCloseLanguage}>
                     <MenuList role='menu'>
                       <MenuItem onClick={() => changeLang('japan')} className={classes.dropdownItem}>
-                        VI
+                        Japan
                       </MenuItem>
                       <MenuItem onClick={() => changeLang('en')} className={classes.dropdownItem}>
                         EN

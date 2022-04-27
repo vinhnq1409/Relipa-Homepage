@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 export default function HomeFooter(props) {
   const trans = useTrans()
   const { locales } = useRouter()
-  console.log(locales)
 
   return (
     <footer id='footer'>
