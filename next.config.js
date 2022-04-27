@@ -14,7 +14,7 @@ module.exports = withPlugins([[withImages]], {
     apiUrl: process.env.API_URL,
   },
   i18n: {
-    locales: ['japan', 'en'],
+    locales: ['ja', 'en'],
     defaultLocale: 'en',
     localeDetection: false,
   },

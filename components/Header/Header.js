@@ -48,7 +48,7 @@ export default function Header(props) {
               </li>
               <li className='nav-item dropdown'>
                 <Link href='/service'>
-                  <a className={`nav-link dropdown-toggle ${isCheckCurrentLink('/business') ? 'active' : ''}`} role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                  <a className={`nav-link dropdown-toggle ${isCheckCurrentLink('/service') ? 'active' : ''}`} role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                     {trans.user.header.service}
                   </a>
                 </Link>
@@ -134,7 +134,7 @@ export default function Header(props) {
               </a>
             </div> */}
             <div className='language-block'>
-              <a className={`cursor ${(locale === 'japan') ? 'active' : ''}`} onClick={() => changeLang('japan')}>JP</a>
+              <a className={`cursor ${(locale === 'ja') ? 'active' : ''}`} onClick={() => changeLang('ja')}>JP</a>
               
               <span className='px-2'>/ </span>
               <a className={`cursor ${(locale === 'en') ? 'active' : ''}`} onClick={() => changeLang('en')}>
