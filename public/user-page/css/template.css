@@ -15380,3 +15380,7 @@ a.avatar:hover:after {
   font-family: 'Line Awesome Free';
   font-weight: 900;
 }
+
+.cursor {
+  cursor: pointer;
+}

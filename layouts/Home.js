@@ -3,10 +3,20 @@ import Footer from '../components/Footer/HomeFooter'
 import Header from '../components/Header/Header'
 import Head from 'next/head'
 import { MainJS } from '../public/user-page/js/main'
+import { useRouter } from 'next/router'
 
 export default function Home({ children, ...rest }) {
+  const { route}  = useRouter()
+
   useEffect(() => {
     MainJS()
+
+    if(route !== '/'){
+      document.body.classList.remove('header-over-content')
+    }
+    if(route === '/'){
+      document.body.classList.add('header-over-content')
+    }
   }, [])
   
   return (
