@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router'
 
-import en from './locales/en/translation'
-import vi from './locales/vi/translation'
+import en from './locales/en/language'
+// import vi from './locales/vi/language'
+import japan from './locales/japan/language'
 
 // the translations
 
 const useTrans = () => {
   const { locale } = useRouter()
 
-  const trans = locale === 'vi' ? vi : en
+  const trans = locale === 'japan' ? japan : en
 
   return trans
 }

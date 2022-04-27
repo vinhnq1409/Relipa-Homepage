@@ -8,6 +8,7 @@ export default function Home({ children, ...rest }) {
   useEffect(() => {
     MainJS()
   }, [])
+  
   return (
     <>
       <Head>

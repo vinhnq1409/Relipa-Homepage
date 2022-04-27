@@ -1,0 +1,103 @@
+{
+  "language": {
+    "language": "Japan"
+  },
+  "static_page": {
+    "no": "No",
+    "subject": "Subject",
+    "author": "Author",
+    "detail": "Detail",
+    "view": "View",
+    "edit": "Edit",
+    "createNew": "Create New",
+    "title": "Title",
+    "describe": "Describe",
+    "url_path": "URL path",
+    "authorized": "Authorized",
+    "submit": "Submit",
+    "reset": "Reset",
+    "search": "Search",
+    "upload": "Upload",
+    "cancel": "Cancel",
+    "placeholder_text_search": "Search.....",
+    "placeholder_title": "Enter title name",
+    "placeholder_author": "Enter author name",
+    "placeholder_describe": "Enter describe name",
+    "placeholder_url": "Enter URL path"
+  },
+  
+  "admin_account": {
+    "sign_up": "Sign Up",
+    "edit_page": "Edit",
+    "name": "User name",
+    "email": "Email",
+    "password": "Password",
+    "re_password": "Confirm Password",
+    "area": "Area",
+    "role": "Role",
+    "create": "Create",
+    "reset": "Reset",
+    "edit": "Edit",
+    "search": "Search",
+    "cancel": "Cancel",
+    "create_account": "Create Account",
+    "total_user": "Total User",
+    "item_per_page": "Item per page",
+    "placeholder_text_search": "Search....",
+    "schema_name": "Please enter usename in fill",
+    "schema_email": "Please enter email in fill",
+    "schema_password": "Password is required",
+    "schema_password_min_8": "Password must be at least",
+    "schema_password_max_30": "Password too long",
+    "schema_re_password": "Confirm Password is required",
+    "schema_re_password_same": "Passwords must match"
+  },
+
+  "user": {
+    "header": {
+      "company": "COMPANY",
+      "business": "BUSINESS",
+      "service": "SERVICE",
+      "about_service": "About Service",
+      "lap-type": "Lab-type Development",
+      "web_system": "Web System Development",
+      "business_system": "Business System Development",
+      "blockchain": "Blockchain Development",
+      "smartphone_application": "Smartphone application development",
+      "case_student": "CASE STUDENT",
+      "news": "NEWS",
+      "blog": "BLOG",
+      "contact": "CONTACT"
+    },
+    "footer": {
+      "japan": "日本",
+      "japan_address": "〒151-0063 東京都渋谷区富ヶ谷1-14-14スタンフォードアネックスビル3F",
+      "vietnam": "ベトナム",
+
+      "corporate_information": "企業情報",
+      "company_profile": "会社概要",
+      "representative_message": "代表メッセージ",
+      "introducing_core": "コアメンバー紹介",
+      "mission": "ミッションとコア・バリュー",
+
+      "business": "事業内容",
+      "about_service": "サービスについて",
+      "lab-type": "ラボ型開発",
+      "web_system": "Web・システム開発",
+      "business_system": "業務系システム開発",
+      "blockchain": "ブロックチェーン開発",
+      "smartphone_application": "スマホアプリ開発",
+
+      "development_results": "開発実績",
+      "webSystem": "Web system development",
+
+      "resources": "リソース",
+      "news": "ニュース ",
+      "blog": "ブログ",
+
+      "inquiry": "お問い合わせ ",
+      "privacy_policy": "プライバシーポリシー"
+    },
+    "home_page": {}
+  }
+}
