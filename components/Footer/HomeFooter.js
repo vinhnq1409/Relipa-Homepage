@@ -1,11 +1,13 @@
 /*eslint-disable*/
 import React from 'react'
-// @material-ui/core components
-
-// core components
-import styles from '../../styles/user/Footer.module.css'
+import useTrans from '../../i18n/useTrans'
+import { useRouter } from 'next/router'
 
 export default function HomeFooter(props) {
+  const trans = useTrans()
+  const { locales } = useRouter()
+  console.log(locales)
+
   return (
     <footer id='footer'>
       <div className='container'>
@@ -39,14 +41,14 @@ export default function HomeFooter(props) {
               </div>
             </div>
             <div className='widget'>
-              <h3 className='widget-title'>日本</h3>
+              <h3 className='widget-title'>{trans.user.footer.japan}</h3>
               <div className='widget-content'>
                 <div className='text-icon'>
                   <span className='text-icon__icon'>
                     <img src={require('/public/user-page/img/icons/location.svg')} width='24' height='24' alt='' />
                   </span>
                   <span className='text-icon__content'>
-                    〒151-0063 東京都渋谷区富ヶ谷1-14-14スタンフォードアネックスビル3F
+                    {trans.user.footer.japan_address}
                   </span>
                 </div>
                 <div className='text-icon'>
@@ -64,7 +66,7 @@ export default function HomeFooter(props) {
               </div>
             </div>
             <div className='widget'>
-              <h3 className='widget-title'>ベトナム</h3>
+              <h3 className='widget-title'>{trans.user.footer.vietnam}</h3>
               <div className='widget-content'>
                 <div className='text-icon'>
                   <span className='text-icon__icon'>
@@ -91,94 +93,94 @@ export default function HomeFooter(props) {
           </div>
           <div className='col-lg-5 offset-lg-1'>
             <div className='row'>
-              <div className='col-6'>
+              <div className={(locales[0]==='en') ? 'col-8': 'col-6'}>
                 <div className='widget'>
-                  <h3 className='widget-title'> 企業情報 </h3>
+                  <h3 className='widget-title'> {trans.user.footer.corporate_information}</h3>
                   <div className='widget-content'>
                     <ul className='list-unstyled sidebar-list'>
                       <li className=''>
-                        <a href='#'>会社概要</a>
+                        <a href='#'>{trans.user.footer.company_profile}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>代表メッセージ</a>
+                        <a href='#'>{trans.user.footer.representative_message}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>コアメンバー紹介</a>
+                        <a href='#'>{trans.user.footer.introducing_core}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ミッションとコア・バリュー</a>
+                        <a href='#'>{trans.user.footer.mission}</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className='widget'>
-                  <h3 className='widget-title'> 企業情報 </h3>
+                  <h3 className='widget-title'> {trans.user.footer.business}</h3>
                   <div className='widget-content'>
                     <ul className='list-unstyled sidebar-list'>
                       <li className=''>
-                        <a href='#'>サービスについて</a>
+                        <a href='#'>{trans.user.footer.about_service}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ラボ型開発</a>
+                        <a href='#'>{trans.user.footer.lab_type}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>コアメンバー紹介</a>
+                        <a href='#'>{trans.user.footer.web_system}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ミッションとコア・バリュー</a>
+                        <a href='#'>{trans.user.footer.business_system}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ミッションとコア・バリュー</a>
+                        <a href='#'>{trans.user.footer.blockchain}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ミッションとコア・バリュー</a>
+                        <a href='#'>{trans.user.footer.smartphone_application}</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className='widget'>
-                  <h3 className='widget-title'> 企業情報 </h3>
+                  <h3 className='widget-title'> {trans.user.footer.development_results} </h3>
                   <div className='widget-content'>
                     <ul className='list-unstyled sidebar-list'>
                       <li className=''>
-                        <a href='#'>会社概要</a>
+                        <a href='#'>{trans.user.footer.resources}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>代表メッセージ</a>
+                        <a href='#'>{trans.user.footer.webSystem}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>コアメンバー紹介</a>
+                        <a href='#'>{trans.user.footer.blockchain}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>ミッションとコア・バリュー</a>
+                        <a href='#'>{trans.user.footer.smartphone_application}</a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className='col-6'>
+              <div className={(locales[0]==='en') ? 'col-4': 'col-6'}>
                 <div className='widget'>
-                  <h3 className='widget-title'> 企業情報 </h3>
+                  <h3 className='widget-title'> {trans.user.footer.resources}</h3>
                   <div className='widget-content'>
                     <ul className='list-unstyled sidebar-list'>
                       <li className=''>
-                        <a href='#'>会社概要</a>
+                        <a href='#'>{trans.user.footer.news}</a>
                       </li>
                       <li className=''>
-                        <a href='#'>代表メッセージ</a>
+                        <a href='#'>{trans.user.footer.blog}</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className='widget'>
-                  <h3 className='widget-title'> 企業情報 </h3>
+                  <h3 className='widget-title'> {trans.user.footer.inquiry} </h3>
                   <div className='widget-content'>
                     <ul className='list-unstyled sidebar-list'>
                       <li>
-                        <a href='#'>サービスについて </a>
+                        <a href='#'>{trans.user.footer.inquiry}</a>
                       </li>
                       <li>
-                        <a href='#'>ラボ型開発</a>
+                        <a href='#'>{trans.user.footer.privacy_policy}</a>
                       </li>
                     </ul>
                   </div>

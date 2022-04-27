@@ -1,7 +1,9 @@
 /*eslint-disable*/
 import React from 'react'
+import useTrans from '../../i18n/useTrans'
 
 export default function Header(props) {
+  const trans = useTrans()
 
   return (
     <header id='header'>
@@ -16,12 +18,12 @@ export default function Header(props) {
             <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
                 <a className='nav-link active' aria-current='page' href='company.html'>
-                  COMPANY
+                  {trans.user.header.company}
                 </a>
               </li>
               <li className='nav-item'>
                 <a className='nav-link' href='business.html'>
-                  BUSINESS
+                  {trans.user.header.business}
                 </a>
               </li>
               <li className='nav-item dropdown'>
@@ -32,59 +34,59 @@ export default function Header(props) {
                   data-bs-toggle='dropdown'
                   aria-expanded='false'
                 >
-                  SERVICE
+                  {trans.user.header.service}
                 </a>
                 <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
                   <li>
                     <a className='dropdown-item' href='service.html'>
-                      About Service
+                      {trans.user.header.about_service}
                     </a>
                   </li>
                   <li>
                     <a className='dropdown-item' href='lab-type-development.html'>
-                      Lab-type Development
+                      {trans.user.header.lap_type}
                     </a>
                   </li>
                   <li>
                     <a className='dropdown-item' href='project-1.html'>
-                      Web System Development
+                      {trans.user.header.web_system}
                     </a>
                   </li>
                   <li>
                     <a className='dropdown-item' href='project-2.html'>
-                      Business System Development
+                      {trans.user.header.business_system}
                     </a>
                   </li>
                   <li>
                     <a className='dropdown-item' href='project-1.html'>
-                      Blockchain Development
+                      {trans.user.header.blockchain}
                     </a>
                   </li>
                   <li>
                     <a className='dropdown-item' href='project-2.html'>
-                      Smartphone Application Development
+                      {trans.user.header.smartphone_application}
                     </a>
                   </li>
                 </ul>
               </li>
               <li className='nav-item dropdown'>
                 <a className='nav-link' href='culture.html'>
-                  CASE STUDIES
+                  {trans.user.header.case_student}
                 </a>
               </li>
               <li className='nav-item'>
                 <a className='nav-link' href='environment.html'>
-                  NEWS
+                  {trans.user.header.news}
                 </a>
               </li>
               <li className='nav-item'>
                 <a className='nav-link' href='qna.html'>
-                  BLOG
+                  {trans.user.header.blog}
                 </a>
               </li>
               <li className='nav-item dropdown'>
                 <a className='nav-link' href='culture.html'>
-                  CONTACT
+                  {trans.user.header.contact}
                 </a>
               </li>
             </ul>
