@@ -44,11 +44,11 @@ export const AdminEdit = () => {
     roles: []
   }
 
-  const getRoles = async () => await get(`roles`)
+  const getRoles = async() => await get(`roles`)
 
-  const getUser = async () => await get(`users/${id}`)
+  const getUser = async() => await get(`users/${id}`)
 
-  const putUser = async (data) => await put(`users/${id}`, data)
+  const putUser = async(data) => await put(`users/${id}`, data)
 
   const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 

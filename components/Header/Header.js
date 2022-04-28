@@ -133,7 +133,7 @@ export default function Header(props) {
               </a>
             </div> */}
             <div className='language-block'>
-              <a className={`cursor ${locale === 'japan' ? 'active' : ''}`} onClick={() => changeLang('ja')}>
+              <a className={`cursor ${locale === 'ja' ? 'active' : ''}`} onClick={() => changeLang('ja')}>
                 JP
               </a>
 

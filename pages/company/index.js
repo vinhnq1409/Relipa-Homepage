@@ -8,6 +8,7 @@ import BlockCEOMessage from '../../components/HomePage/Company/BlockCEOMessage'
 import BlockMissionValues from '../../components/HomePage/Company/BlockMissionValues'
 import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers'
 import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
+import HomePage from '../../layouts/Home'
 
 export default function Company() {
   return (
@@ -20,23 +21,24 @@ export default function Company() {
         contentKeywords={'this is company contents key word'}
         contentDescription={'this is company content description'}
       />
-      <BlockBanner />
-      <div id='main'>
-        <BlockBreadcrumb />
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-10'>
-              <BlockCompanyProfile />
-              <BlockCEOMessage />
-              <BlockMissionValues />
-              <BlockCoreMembers />
+      <HomePage>
+        <BlockBanner />
+        <div id='main'>
+          <BlockBreadcrumb />
+          <div className='container'>
+            <div className='row'>
+              <div className='col-lg-10'>
+                <BlockCompanyProfile />
+                <BlockCEOMessage />
+                <BlockMissionValues />
+                <BlockCoreMembers />
+              </div>
+              <BlockSideBar />
             </div>
-            <BlockSideBar />
           </div>
         </div>
-      </div>
+      </HomePage>
     </div>
   )
 }
 
-Company.layout = Home

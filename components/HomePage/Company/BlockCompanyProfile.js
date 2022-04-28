@@ -65,9 +65,9 @@ const BlockCompanyProfile = () => {
                     <iframe
                       src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6482.816291410384!2d139.691454!3d35.666951!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbfbe989a567f68c4!2zKOagqinjgrnjgr_jg7Pjg5Xjgqnjg7zjg4k!5e0!3m2!1sja!2sjp!4v1651029385426!5m2!1sja!2sjp'
                       style={{ border: 0 }}
-                      allowfullscreen=''
+                      allowFullScreen=''
                       loading='lazy'
-                      referrerpolicy='no-referrer-when-downgrade'
+                      referrerPolicy='no-referrer-when-downgrade'
                     ></iframe>
                   </div>
                 </div>
@@ -147,9 +147,9 @@ const BlockCompanyProfile = () => {
                     <iframe
                       src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.68577240962!2d105.782507!3d21.018962!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe05c647fe184c739!2sRELIPA%20CO.%2C%20LTD!5e0!3m2!1sja!2sus!4v1651029601655!5m2!1sja!2sus'
                       style={{ border: 0 }}
-                      allowfullscreen=''
+                      allowFullScreen=''
                       loading='lazy'
-                      referrerpolicy='no-referrer-when-downgrade'
+                      referrerPolicy='no-referrer-when-downgrade'
                     ></iframe>
                   </div>
                 </div>
