@@ -46,9 +46,9 @@ export const AdminSignUp = () => {
     roles: []
   }
 
-  const getRoles = async () => await get(`roles`)
+  const getRoles = async() => await get(`roles`)
 
-  const postUser = async (data) => await post('users', data)
+  const postUser = async(data) => await post('users', data)
 
   const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 

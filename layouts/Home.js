@@ -6,19 +6,18 @@ import { MainJS } from '../public/user-page/js/main'
 import { useRouter } from 'next/router'
 
 export default function Home({ children, ...rest }) {
-  const { route}  = useRouter()
+  const { route } = useRouter()
 
   useEffect(() => {
     MainJS()
 
-    if(route !== '/'){
+    if (route !== '/') {
       document.body.classList.remove('header-over-content')
-    }
-    if(route === '/'){
+    } else {
       document.body.classList.add('header-over-content')
     }
   }, [])
-  
+
   return (
     <>
       <Head>

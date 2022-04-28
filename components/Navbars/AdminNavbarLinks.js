@@ -32,7 +32,8 @@ import stylesModule from '../../styles/admin/signin.module.css'
 export default function AdminNavbarLinks() {
   const router = useRouter()
   const changeLang = (lang) => {
-    router.push('/', '/', { locale: lang })
+    router.push(`${router.pathname}`, `${router.pathname}`, { locale: lang })
+    localStorage.setItem('languageRelipa', lang)
   }
   const size = useWindowSize()
   const useStyles = makeStyles(styles)
@@ -136,8 +137,8 @@ export default function AdminNavbarLinks() {
                 <Paper>
                   <ClickAwayListener onClickAway={handleCloseLanguage}>
                     <MenuList role='menu'>
-                      <MenuItem onClick={() => changeLang('japan')} className={classes.dropdownItem}>
-                        Japan
+                      <MenuItem onClick={() => changeLang('ja')} className={classes.dropdownItem}>
+                        JP
                       </MenuItem>
                       <MenuItem onClick={() => changeLang('en')} className={classes.dropdownItem}>
                         EN
