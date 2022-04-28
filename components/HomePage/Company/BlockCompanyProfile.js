@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockCompanyProfile = () => {
   const trans = useTrans()
-  const language = trans.user.company.profile
+  const language = trans.company.company.profile
   return (
     <section className='section section-aos' id='company' data-aos='fade-up'>
       <div className='section-content-header line-bottom text-primary'>

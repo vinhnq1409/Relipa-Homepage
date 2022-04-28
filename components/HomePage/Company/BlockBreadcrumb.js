@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockBreadcrumb = () => {
   const trans = useTrans()
-  const language = trans.user.company.Breadcrumb
+  const language = trans.company.company.Breadcrumb
   return (
     <section className='section-aos section-breadcrumb' data-aos='fade-up'>
       <div className='container'>

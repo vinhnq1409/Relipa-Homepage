@@ -2,7 +2,7 @@ import useTrans from '../../../../i18n/useTrans'
 
 const BlockStepToUse = () => {
   const trans = useTrans()
-  const language = trans.user.service.aboutService.steps
+  const language = trans.aboutService.aboutService.steps
   return (
     <section className='section section-steps section-aos' data-aos='fade-up'>
       <div className='container'>

@@ -2,7 +2,7 @@ import useTrans from '../../../../i18n/useTrans'
 
 const BlockCompare = () => {
   const trans = useTrans()
-  const language = trans.user.service.aboutService
+  const language = trans.aboutService.aboutService
   return (
     <section className='section section-compare pb-0 section-aos' data-aos='fade-up'>
       <div className='container'>

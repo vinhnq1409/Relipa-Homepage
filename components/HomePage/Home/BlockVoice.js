@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockVoice = () => {
   const trans = useTrans()
-  const language = trans.user.home.voice
+  const language = trans.home.home.voice
   return (
     <>
       <section className='section section-aos py-0 section-voice' data-aos='fade-up'>

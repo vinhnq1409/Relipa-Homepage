@@ -2,7 +2,7 @@ import useTrans from '../../../../i18n/useTrans'
 
 const BlockWhy = () => {
   const trans = useTrans()
-  const language = trans.user.service.aboutService.why
+  const language = trans.aboutService.aboutService.why
   return (
     <section className='section section-why section-aos' data-aos='fade-up'>
       <div className='container'>

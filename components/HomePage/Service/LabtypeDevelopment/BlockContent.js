@@ -1,7 +1,7 @@
 import useTrans from '../../../../i18n/useTrans'
 const BlockContent = () => {
   const trans = useTrans()
-  const language = trans.user.service.labTypeDevelopment
+  const language = trans.labtypeDevelopment.labTypeDevelopment
 
   return (
     <>

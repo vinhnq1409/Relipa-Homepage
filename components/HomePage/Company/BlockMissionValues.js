@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockMissionValues = () => {
   const trans = useTrans()
-  const language = trans.user.company.MissionValues
+  const language = trans.company.company.MissionValues
   return (
     <section className='section section-aos' id='mission' data-aos='fade-up'>
       <div className='section-content-header line-bottom text-primary'>
@@ -18,9 +18,7 @@ const BlockMissionValues = () => {
       </div>
       <div className='mission-box text-center'>
         <h2 className='mission-box-title text-primary mb-2'>{language.VISION}</h2>
-        <div>
-          {language.vision1}
-        </div>
+        <div>{language.vision1}</div>
       </div>
       <div className='mission-box text-center'>
         <h2 className='card-title text-primary mb-2'>{language.CORE_VALUES}</h2>

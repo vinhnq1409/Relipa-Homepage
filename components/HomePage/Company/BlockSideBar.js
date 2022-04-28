@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockSideBar = () => {
   const trans = useTrans()
-  const language = trans.user.company.SideBar
+  const language = trans.company.company.SideBar
   return (
     <div className='col-lg-2 d-none d-lg-block'>
       <section className='section section-aos' data-aos='fade-up'>
