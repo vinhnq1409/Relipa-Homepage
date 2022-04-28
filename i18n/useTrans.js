@@ -9,7 +9,7 @@ import japan from './locales/japan/language'
 const useTrans = () => {
   const { locale } = useRouter()
 
-  const trans = locale === 'japan' ? japan : en
+  const trans = locale === 'ja' ? japan : en
 
   return trans
 }
