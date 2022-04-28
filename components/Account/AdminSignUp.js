@@ -46,9 +46,9 @@ export const AdminSignUp = () => {
     roles: []
   }
 
-  const getRoles = async() => await get(`roles`)
+  const getRoles = async () => await get(`roles`)
 
-  const postUser = async(data) => await post('users', data)
+  const postUser = async (data) => await post('users', data)
 
   const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 
@@ -76,15 +76,15 @@ export const AdminSignUp = () => {
   })
 
   const schemaAdd = Yup.object().shape({
-    name: Yup.string().required(trans.admin_account.schema_name),
-    email: Yup.string().required(trans.admin_account.schema_email),
+    name: Yup.string().required(trans.admin.admin_account.schema_name),
+    email: Yup.string().required(trans.admin.admin_account.schema_email),
     password: Yup.string()
-      .min(8, trans.admin_account.schema_password_min_8)
-      .max(30, trans.admin_account.schema_password)
-      .required(trans.admin_account.schema_password_max_30),
+      .min(8, trans.admin.admin_account.schema_password_min_8)
+      .max(30, trans.admin.admin_account.schema_password)
+      .required(trans.admin.admin_account.schema_password_max_30),
     re_password: Yup.string()
-      .required(trans.admin_account.schema_re_password)
-      .oneOf([Yup.ref('password'), null], trans.admin_account.schema_re_password_same)
+      .required(trans.admin.admin_account.schema_re_password)
+      .oneOf([Yup.ref('password'), null], trans.admin.admin_account.schema_re_password_same)
   })
 
   const {
@@ -133,11 +133,11 @@ export const AdminSignUp = () => {
         <div className={style.paper}>
           <Avatar className={style.avatar} />
           <Typography component={'h1'} variant='h5' className={style.title}>
-            {trans.admin_account.sign_up}
+            {trans.admin.admin_account.sign_up}
           </Typography>
 
           <form className={style.form} noValidate>
-            <Grid container spacing={2} justifyContent = 'center'>
+            <Grid container spacing={2} justifyContent='center'>
               <Grid item xs={12} sm={12}>
                 <Controller
                   name='name'
@@ -149,7 +149,7 @@ export const AdminSignUp = () => {
                       required
                       fullWidth
                       id='name'
-                      label={trans.admin_account.name}
+                      label={trans.admin.admin_account.name}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -171,7 +171,7 @@ export const AdminSignUp = () => {
                       required
                       fullWidth
                       id='email'
-                      label={trans.admin_account.email}
+                      label={trans.admin.admin_account.email}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -193,7 +193,7 @@ export const AdminSignUp = () => {
                       required
                       fullWidth
                       id='password'
-                      label={trans.admin_account.password}
+                      label={trans.admin.admin_account.password}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -223,7 +223,7 @@ export const AdminSignUp = () => {
                       required
                       fullWidth
                       id='re_password'
-                      label={trans.admin_account.re_password}
+                      label={trans.admin.admin_account.re_password}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -249,7 +249,7 @@ export const AdminSignUp = () => {
                   defaultValue={role}
                   render={({ field }) => (
                     <div>
-                      <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
+                      <InputLabel id='roles'>{trans.admin.admin_account.role}</InputLabel>
                       <Select
                         labelId='roles'
                         multiple
@@ -269,9 +269,14 @@ export const AdminSignUp = () => {
                 />
               </Grid>
               <Grid item xs={12} className={style.contentBgLoading}>
-                <BtnLoading loading={loading} onClick={handleSubmit(onSubmit)} btnName={trans.admin_account.create} color='primary' />
-                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} color='secondary' />
-                <BtnLoading onClick={onCancel} btnName={trans.admin_account.cancel} />
+                <BtnLoading
+                  loading={loading}
+                  onClick={handleSubmit(onSubmit)}
+                  btnName={trans.admin.admin_account.create}
+                  color='primary'
+                />
+                <BtnLoading onClick={onReset} btnName={trans.admin.admin_account.reset} color='secondary' />
+                <BtnLoading onClick={onCancel} btnName={trans.admin.admin_account.cancel} />
               </Grid>
             </Grid>
           </form>

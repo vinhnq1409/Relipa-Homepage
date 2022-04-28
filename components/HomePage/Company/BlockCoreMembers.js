@@ -2,7 +2,7 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockCoreMembers = () => {
   const trans = useTrans()
-  const language = trans.user.company.CoreMember
+  const language = trans.company.company.CoreMember
   return (
     <section className='section section-aos' id='core-member' data-aos='fade-up'>
       <div className='section-content-header line-bottom text-primary'>
@@ -17,7 +17,7 @@ const BlockCoreMembers = () => {
                   <a href='#'>
                     <img
                       className='card-img-top'
-                      src='user-page/img/company/img-2.png'
+                      src='/user-page/img/company/img-2.png'
                       width='210'
                       height='350'
                       alt='...'
@@ -38,7 +38,7 @@ const BlockCoreMembers = () => {
                   <a href='#'>
                     <img
                       className='card-img-top'
-                      src='user-page/img/company/img-3.png'
+                      src='/user-page/img/company/img-3.png'
                       width='210'
                       height='350'
                       alt='...'
@@ -63,7 +63,7 @@ const BlockCoreMembers = () => {
                   <a href='#'>
                     <img
                       className='card-img-top'
-                      src='user-page/img/company/img-4.png'
+                      src='/user-page/img/company/img-4.png'
                       width='210'
                       height='350'
                       alt='...'
@@ -84,7 +84,7 @@ const BlockCoreMembers = () => {
                   <a href='#'>
                     <img
                       className='card-img-top'
-                      src='user-page/img/company/img-5.png'
+                      src='/user-page/img/company/img-5.png'
                       width='210'
                       height='350'
                       alt='...'

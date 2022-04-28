@@ -2,7 +2,8 @@ import useTrans from '../../../i18n/useTrans'
 
 const BlockNew = () => {
   const trans = useTrans()
-  const language = trans.user.home
+  const language = trans.home.home
+
   return (
     <>
       <section className='section section-aos section-news' data-aos='fade-up'>

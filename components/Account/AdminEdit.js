@@ -44,11 +44,11 @@ export const AdminEdit = () => {
     roles: []
   }
 
-  const getRoles = async() => await get(`roles`)
+  const getRoles = async () => await get(`roles`)
 
-  const getUser = async() => await get(`users/${id}`)
+  const getUser = async () => await get(`users/${id}`)
 
-  const putUser = async(data) => await put(`users/${id}`, data)
+  const putUser = async (data) => await put(`users/${id}`, data)
 
   const { data: dataRoles } = useQuery(`getRoles`, getRoles)
 
@@ -143,7 +143,7 @@ export const AdminEdit = () => {
         <div className={style.paper}>
           <Avatar className={style.avatar} />
           <Typography component={'h1'} variant='h5' className={style.title}>
-            {trans.admin_account.edit_page}
+            {trans.admin.admin_account.edit_page}
           </Typography>
 
           <form className={style.form} noValidate>
@@ -159,7 +159,7 @@ export const AdminEdit = () => {
                       required
                       fullWidth
                       id='name'
-                      label={trans.admin_account.name}
+                      label={trans.admin.admin_account.name}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -181,7 +181,7 @@ export const AdminEdit = () => {
                       required
                       fullWidth
                       id='email'
-                      label={trans.admin_account.email}
+                      label={trans.admin.admin_account.email}
                       InputLabelProps={{
                         shrink: true
                       }}
@@ -199,7 +199,7 @@ export const AdminEdit = () => {
                   defaultValue={role}
                   render={({ field }) => (
                     <div>
-                      <InputLabel id='roles'>{trans.admin_account.role}</InputLabel>
+                      <InputLabel id='roles'>{trans.admin.admin_account.role}</InputLabel>
                       <Select
                         labelId='roles'
                         multiple
@@ -219,9 +219,14 @@ export const AdminEdit = () => {
                 />
               </Grid>
               <Grid item align='center' xs={12} className={style.contentBgLoading} spacing={3}>
-                <BtnLoading loading={loading} onClick={handleConfirm} btnName={trans.admin_account.edit} color = 'primary' />
-                <BtnLoading onClick={onReset} btnName={trans.admin_account.reset} color = 'secondary' />
-                <BtnLoading onClick={onCancel} btnName={trans.admin_account.cancel} />
+                <BtnLoading
+                  loading={loading}
+                  onClick={handleConfirm}
+                  btnName={trans.admin.admin_account.edit}
+                  color='primary'
+                />
+                <BtnLoading onClick={onReset} btnName={trans.admin.admin_account.reset} color='secondary' />
+                <BtnLoading onClick={onCancel} btnName={trans.admin.admin_account.cancel} />
               </Grid>
             </Grid>
           </form>

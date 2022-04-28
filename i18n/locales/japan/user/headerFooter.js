@@ -1,0 +1,41 @@
+export default {
+  header: {
+    company: 'COMPANY',
+    business: 'BUSINESS',
+    service: 'SERVICE',
+    about_service: 'About Service',
+    lap_type: 'Lab-type Development',
+    web_system: 'Web System Development',
+    business_system: 'Business System Development',
+    blockchain: 'Blockchain Development',
+    smartphone_application: 'Smartphone application development',
+    case_studies: 'CASE STUDIES',
+    news: 'NEWS',
+    blog: 'BLOG',
+    contact: 'CONTACT'
+  },
+  footer: {
+    japan: '日本',
+    japan_address: '〒151-0063 東京都渋谷区富ヶ谷1-14-14スタンフォードアネックスビル3F',
+    vietnam: 'ベトナム',
+    corporate_information: '企業情報',
+    company_profile: '会社概要',
+    representative_message: '代表メッセージ',
+    introducing_core: 'コアメンバー紹介',
+    mission: 'ミッションとコア・バリュー',
+    business: '事業内容',
+    about_service: 'サービスについて',
+    lab_type: 'ラボ型開発',
+    web_system: 'Web・システム開発',
+    business_system: '業務系システム開発',
+    blockchain: 'ブロックチェーン開発',
+    smartphone_application: 'スマホアプリ開発',
+    development_results: '開発実績',
+    webSystem: 'Web system development',
+    resources: 'リソース',
+    news: 'ニュース ',
+    blog: 'ブログ',
+    inquiry: 'お問い合わせ ',
+    privacy_policy: 'プライバシーポリシー'
+  }
+}

@@ -2,7 +2,7 @@ import useTrans from '../../../../i18n/useTrans'
 
 const BlockOverview = () => {
   const trans = useTrans()
-  const language = trans.user.service.labTypeDevelopment
+  const language = trans.labtypeDevelopment.labTypeDevelopment
   return (
     <>
       <section className='section section-aos' data-aos='fade-up'>
@@ -98,16 +98,13 @@ const BlockOverview = () => {
                         <img src='/user-page/img/icons/task-square.svg' width='40' height='40' alt='...' />
                       </div>
                       <h3 className='card-title'>
-                        <a href='#'>About lab-type development</a>
+                        <a href='#'>{language.contract.title}</a>
                       </h3>
                       <div className='card-text'>
                         <ul>
-                          <li>
-                            Because it is a service that guarantees the amount of work by setting the period and
-                            personnel, please make a quasi-delegation contract.
-                          </li>
-                          <li>The contract period is 3 months or more.</li>
-                          <li>Closed at the end of the month Payment at the end of the following month</li>
+                          <li>{language.contract.contentFirst}</li>
+                          <li>{language.contract.contentSecond}</li>
+                          <li>{language.contract.contentThird}</li>
                         </ul>
                       </div>
                     </div>

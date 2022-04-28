@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 
-import en from './locales/en/language'
+import en from './locales/en'
 // import vi from './locales/vi/language'
-import japan from './locales/japan/language'
+import japan from './locales/japan'
 
 // the translations
 
