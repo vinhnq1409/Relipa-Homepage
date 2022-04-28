@@ -8,14 +8,14 @@ module.exports = withPlugins([[withImages]], {
     return config
   },
   images: {
-    disableStaticImages: true,
+    disableStaticImages: true
   },
   publicRuntimeConfig: {
-    apiUrl: process.env.API_URL,
+    apiUrl: process.env.API_URL
   },
   i18n: {
     locales: ['ja', 'en'],
     defaultLocale: 'en',
-    localeDetection: false,
-  },
+    localeDetection: false
+  }
 })

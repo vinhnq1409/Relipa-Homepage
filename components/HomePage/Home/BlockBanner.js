@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react'
+
 const BlockBanner = () => {
+  const [color, setColor] = useState('')
+  useEffect(() => setColor('/user-page/img/home/banner-sp.png'), [])
   return (
     <div id='main-banner'>
       <section className='section section-aos section-banner py-0' data-aos='fade-down'>
@@ -8,10 +12,12 @@ const BlockBanner = () => {
               <div className='swiper-slide'>
                 <div className='main-banner-item'>
                   <div className='main-banner-item-bg'>
-                    <picture>
-                      <source media='(min-width:768px)' srcSet='/user-page/img/home/banner.png' />
-                      <img src='/user-page/img/home/banner-sp.png' width='375' height='812' alt='' />
-                    </picture>
+                    {color && (
+                      <picture>
+                        <source media='(min-width:768px)' srcSet='/user-page/img/home/banner.png' />
+                        <img src={color} width='375' height='812' alt='' />
+                      </picture>
+                    )}
                   </div>
                   <div className='container'>
                     <div className='row align-items-center'>
@@ -19,8 +25,8 @@ const BlockBanner = () => {
                         <h1 className='banner-title'>Relipa supports your success</h1>
                         <div className='main-banner-content'>
                           <div className='banner-summary'>
-                            RELIPA's company name is "Trusted Partner" in English It comes from the acronym "RELIABLE
-                            PARTNER"
+                            RELIPA&apos;s company name is &quot;Trusted Partner&quot; in English It comes from the
+                            acronym &quot;RELIABLE PARTNER&quot;
                           </div>
                           <a className='btn btn-outline-light btn-lg' href='#'>
                             SEE MORE
@@ -45,8 +51,8 @@ const BlockBanner = () => {
                         <h1 className='banner-title'>Relipa supports your success</h1>
                         <div className='main-banner-content'>
                           <div className='banner-summary'>
-                            RELIPA's company name is "Trusted Partner" in English It comes from the acronym "RELIABLE
-                            PARTNER"
+                            RELIPA&apos;s company name is &quot;Trusted Partner&quot; in English It comes from the
+                            acronym &quot;RELIABLE PARTNER&quot;
                           </div>
                           <a className='btn btn-outline-light btn-lg' href='#'>
                             SEE MORE
@@ -71,8 +77,8 @@ const BlockBanner = () => {
                         <h1 className='banner-title'>Relipa supports your success</h1>
                         <div className='main-banner-content'>
                           <div className='banner-summary'>
-                            RELIPA's company name is "Trusted Partner" in English It comes from the acronym "RELIABLE
-                            PARTNER"
+                            RELIPA&apos;s company name is &quot;Trusted Partner&quot; in English It comes from the
+                            acronym &quot;RELIABLE PARTNER&quot;
                           </div>
                           <a className='btn btn-outline-light btn-lg' href='#'>
                             SEE MORE

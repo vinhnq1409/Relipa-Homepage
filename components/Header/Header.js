@@ -38,17 +38,26 @@ export default function Header(props) {
             <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
                 <Link href='/company'>
-                  <a className={`nav-link ${isCheckCurrentLink('/company') ? 'active' : ''}`}>{trans.user.header.company}</a>
+                  <a className={`nav-link ${isCheckCurrentLink('/company') ? 'active' : ''}`}>
+                    {trans.user.header.company}
+                  </a>
                 </Link>
               </li>
               <li className='nav-item'>
                 <Link href='/business'>
-                  <a className={`nav-link ${isCheckCurrentLink('/business') ? 'active' : ''}`}>{trans.user.header.business}</a>
+                  <a className={`nav-link ${isCheckCurrentLink('/business') ? 'active' : ''}`}>
+                    {trans.user.header.business}
+                  </a>
                 </Link>
               </li>
               <li className='nav-item dropdown'>
                 <Link href='/service'>
-                  <a className={`nav-link dropdown-toggle ${isCheckCurrentLink('/service') ? 'active' : ''}`} role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                  <a
+                    className={`nav-link dropdown-toggle ${isCheckCurrentLink('/service') ? 'active' : ''}`}
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
                     {trans.user.header.service}
                   </a>
                 </Link>
@@ -60,43 +69,33 @@ export default function Header(props) {
                   </li>
                   <li>
                     <Link href='/lab-type-development'>
-                      <a className='dropdown-item' >
-                        {trans.user.header.lap_type}
-                      </a>
+                      <a className='dropdown-item'>{trans.user.header.lap_type}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/web-system-development'>
-                      <a className='dropdown-item'>
-                        {trans.user.header.web_system}
-                      </a>
+                      <a className='dropdown-item'>{trans.user.header.web_system}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/business-system-development'>
-                      <a className='dropdown-item'>
-                        {trans.user.header.business_system}
-                      </a>
+                      <a className='dropdown-item'>{trans.user.header.business_system}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/blockchain-development'>
-                      <a className='dropdown-item'>
-                        {trans.user.header.blockchain}
-                      </a>
+                      <a className='dropdown-item'>{trans.user.header.blockchain}</a>
                     </Link>
                   </li>
                   <li>
                     <Link href='/smartphone-application-development'>
-                      <a className='dropdown-item'>
-                        {trans.user.header.smartphone_application}
-                      </a>
+                      <a className='dropdown-item'>{trans.user.header.smartphone_application}</a>
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className='nav-item dropdown'>
-                <Link  href='/case-student'>
+                <Link href='/case-student'>
                   <a className={`nav-link ${isCheckCurrentLink('/case-studies') ? 'active' : ''}`}>
                     {trans.user.header.case_studies}
                   </a>
@@ -104,20 +103,16 @@ export default function Header(props) {
               </li>
               <li className='nav-item'>
                 <Link href='/news'>
-                  <a className={`nav-link ${isCheckCurrentLink('/news') ? 'active' : ''}`}>
-                    {trans.user.header.news}
-                  </a>
+                  <a className={`nav-link ${isCheckCurrentLink('/news') ? 'active' : ''}`}>{trans.user.header.news}</a>
                 </Link>
               </li>
               <li className='nav-item'>
                 <Link href='/blog'>
-                  <a className={`nav-link ${isCheckCurrentLink('/blog') ? 'active' : ''}`}>
-                    {trans.user.header.blog}
-                  </a>
+                  <a className={`nav-link ${isCheckCurrentLink('/blog') ? 'active' : ''}`}>{trans.user.header.blog}</a>
                 </Link>
               </li>
               <li className='nav-item dropdown'>
-                <Link  href='/contact'>
+                <Link href='/contact'>
                   <a className={`nav-link ${isCheckCurrentLink('/contact') ? 'active' : ''}`}>
                     {trans.user.header.contact}
                   </a>
@@ -134,10 +129,12 @@ export default function Header(props) {
               </a>
             </div> */}
             <div className='language-block'>
-              <a className={`cursor ${(locale === 'ja') ? 'active' : ''}`} onClick={() => changeLang('ja')}>JP</a>
-              
+              <a className={`cursor ${locale === 'japan' ? 'active' : ''}`} onClick={() => changeLang('ja')}>
+                JP
+              </a>
+
               <span className='px-2'>/ </span>
-              <a className={`cursor ${(locale === 'en') ? 'active' : ''}`} onClick={() => changeLang('en')}>
+              <a className={`cursor ${locale === 'en' ? 'active' : ''}`} onClick={() => changeLang('en')}>
                 EN
               </a>
             </div>
