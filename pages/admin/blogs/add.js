@@ -1,7 +1,8 @@
 import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, TextField, Typography, Chip } from '@material-ui/core'
+import Autocomplete from '@material-ui/lab/Autocomplete'
 import { Controller, useForm } from 'react-hook-form'
 import { useQuery, useMutation } from 'react-query'
 import * as Yup from 'yup'
@@ -9,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import { tagsRelipa } from '../../../sampleData/tagsRelipa'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
@@ -18,6 +20,8 @@ export default function Add() {
   const router = useRouter()
   const { id } = router.query
   const [valueEditor, setValueEditor] = useState('')
+  const [valueTag, setValueTag] = useState([])
+  const [isErrorTag, setIsErrorTag] = useState(false)
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
@@ -34,15 +38,15 @@ export default function Add() {
     friendly_url: ''
   }
 
-  const getBlog = async() => {
+  const getBlog = async () => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async(data) => {
+  const postBlog = async (data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async(data) => {
+  const putBlog = async (data) => {
     return await put(`blogs/${id}`, data)
   }
 
@@ -104,6 +108,7 @@ export default function Add() {
     setValue('url_image_meta', dataBlog?.data.url_image_meta)
     setValue('tags', dataBlog?.data.tags)
     setValue('friendly_url', dataBlog?.data.friendly_url)
+    setValueTag(JSON.parse(dataBlog?.data.tags || '[]'))
     setValueEditor(dataBlog?.data.content)
   }, [dataBlog])
 
@@ -120,7 +125,6 @@ export default function Add() {
           return !result
         }
       }),
-    tags: Yup.string().required('Tags is required'),
     url_image_meta: Yup.string()
       .required('Url image meta is required')
       .matches(
@@ -139,26 +143,34 @@ export default function Add() {
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
-    if (editorRef.current) {
+    if (editorRef.current && valueTag.length) {
+      setIsErrorTag(false)
       const newData = {
         ...data,
+        tags: JSON.stringify(valueTag),
         content: editorRef.current.getContent()
       }
       postBlogAPI(newData)
+    } else {
+      setIsErrorTag(true)
     }
   }
 
   const onUpdate = (data) => {
-    if (editorRef.current) {
+    if (editorRef.current && valueTag.length) {
+      setIsErrorTag(false)
       const newData = {
         ...data,
+        tags: JSON.stringify(valueTag),
         content: editorRef.current.getContent()
       }
       putBlogAPI(newData)
+    } else {
+      setIsErrorTag(true)
     }
   }
 
-  const onPictureUpload = async(e) => {
+  const onPictureUpload = async (e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -173,6 +185,7 @@ export default function Add() {
 
   const onReset = () => {
     setValueEditor('')
+    setValueTag([])
     reset({
       ...defaultValues
     })
@@ -224,14 +237,22 @@ export default function Add() {
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
-            <Controller
-              name='tags'
-              control={control}
-              render={({ field }) => (
-                <TextField fullWidth multiline label='Tags' id='outlined-required' variant='outlined' {...field} />
-              )}
+            <Autocomplete
+              multiple
+              id='tags-filled'
+              options={tagsRelipa.map((option) => option.title)}
+              freeSolo
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => <Chip variant='outlined' label={option} {...getTagProps({ index })} />)
+              }
+              renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tag' />}
+              value={valueTag}
+              onChange={(event, value) => {
+                value.length ? setIsErrorTag(false) : setIsErrorTag(true)
+                setValueTag(value)
+              }}
             />
-            {errors.tags && <Typography className={styles.error}>{errors.tags.message}</Typography>}
+            {isErrorTag && <Typography className={styles.error}>Tags is required</Typography>}
           </Grid>
           <Grid item xs={10}>
             <Controller
