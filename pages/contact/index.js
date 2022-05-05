@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeadHome from '../../components/Head/Head'
-import Home from '../../layouts/Home'
+import BlockBanner from '../../components/HomePage/Contact/BlockBanner'
+import BlockBreadcrumb from '../../components/HomePage/Contact/BlockBreadcrumb'
+import BlockForm from '../../components/HomePage/Contact/BlockForm'
+import HomePage from '../../layouts/Home'
+import CustomizedSnackbars from '../../components/CustomSnackbar'
 
 export default function Contact() {
+  const [snackbar, setSnackbar] = useState({
+    message: '',
+    open: false,
+    severity: 'success'
+  })
+  const onNotification = (isNotification) => {
+    isNotification
+      ? setSnackbar({
+          ...snackbar,
+          open: true,
+          message: 'Send is successful'
+        })
+      : setSnackbar({
+          open: true,
+          severity: 'error',
+          message: 'Send is failed'
+        })
+  }
   return (
     <div>
       <HeadHome
@@ -13,9 +35,19 @@ export default function Contact() {
         contentKeywords={'this is Contact contents key word'}
         contentDescription={'this is Contact content description'}
       />
-      contact
+      <HomePage>
+        <BlockBanner />
+        <div id='main'>
+          <BlockBreadcrumb />
+          <BlockForm onNotification={onNotification} />
+        </div>
+      </HomePage>
+      <CustomizedSnackbars
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
     </div>
   )
 }
-
-Contact.layout = Home
