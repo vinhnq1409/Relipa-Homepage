@@ -1,5 +1,5 @@
 import React from 'react'
-import BlockFontBanner from '../../components/HomePage/Service/AboutService/BlockFontBanner'
+import BlockBreadcrumb from '../../components/HomePage/Service/AboutService/BlockBreadcrumb'
 import BlockBanner from '../../components/HomePage/Service/AboutService/BlockBanner'
 import BlockCompare from '../../components/HomePage/Service/AboutService/BlockCompare'
 import BlockService from '../../components/HomePage/Service/AboutService/BlockService'
@@ -11,9 +11,9 @@ import HomePage from '../../layouts/Home'
 export default function Index() {
   return (
     <HomePage>
-      <BlockFontBanner />
+      <BlockBanner />
       <div id='main'>
-        <BlockBanner />
+        <BlockBreadcrumb />
         <BlockService />
         <BlockWhy />
         <BlockCompare />
