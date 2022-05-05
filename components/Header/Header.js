@@ -92,10 +92,17 @@ export default function Header(props) {
                       <a className='dropdown-item'>{trans.headerFooter.header.smartphone_application}</a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href='/aws-migration'>
+                      <a class='dropdown-item' href='aws-migration.html'>
+                        AWS Migration
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li className='nav-item dropdown'>
-                <Link href='/case-student'>
+                <Link href='/case-studies'>
                   <a className={`nav-link ${isCheckCurrentLink('/case-studies') ? 'active' : ''}`}>
                     {trans.headerFooter.header.case_studies}
                   </a>
