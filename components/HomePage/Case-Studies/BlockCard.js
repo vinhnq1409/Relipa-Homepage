@@ -20,9 +20,7 @@ function BlockCard() {
                 WIDILAND: NFT game
               </a>
             </h3>
-            <div className='card-text'>
-              With blockchain technology, in-game digital items, lands, characters, etc ...
-            </div>
+            <div className='card-text'>With blockchain technology, in-game digital items, lands, characters, etc ...</div>
           </div>
         </div>
       </div>
@@ -97,9 +95,7 @@ function BlockCard() {
                 WIDILAND: NFT game
               </a>
             </h3>
-            <div className='card-text'>
-              With blockchain technology, in-game digital items, lands, characters, etc ...
-            </div>
+            <div className='card-text'>With blockchain technology, in-game digital items, lands, characters, etc ...</div>
           </div>
         </div>
       </div>
@@ -174,9 +170,7 @@ function BlockCard() {
                 WIDILAND: NFT game
               </a>
             </h3>
-            <div className='card-text'>
-              With blockchain technology, in-game digital items, lands, characters, etc ...
-            </div>
+            <div className='card-text'>With blockchain technology, in-game digital items, lands, characters, etc ...</div>
           </div>
         </div>
       </div>
@@ -251,9 +245,7 @@ function BlockCard() {
                 WIDILAND: NFT game
               </a>
             </h3>
-            <div className='card-text'>
-              With blockchain technology, in-game digital items, lands, characters, etc ...
-            </div>
+            <div className='card-text'>With blockchain technology, in-game digital items, lands, characters, etc ...</div>
           </div>
         </div>
       </div>

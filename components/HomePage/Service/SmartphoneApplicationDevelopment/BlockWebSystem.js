@@ -26,13 +26,7 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-1.png'
-                      width='411'
-                      height='406'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-1.png' width='411' height='406' alt='...' />
                     <div className='card-img'>
                       <img
                         className='img-fluid'
@@ -64,13 +58,7 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-2.png'
-                      width='420'
-                      height='290'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-2.png' width='420' height='290' alt='...' />
                     <div className='card-img'>
                       <img
                         className='img-fluid'

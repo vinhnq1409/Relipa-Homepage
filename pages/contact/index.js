@@ -15,15 +15,15 @@ export default function Contact() {
   const onNotification = (isNotification) => {
     isNotification
       ? setSnackbar({
-          ...snackbar,
-          open: true,
-          message: 'Send is successful'
-        })
+        ...snackbar,
+        open: true,
+        message: 'Send is successful'
+      })
       : setSnackbar({
-          open: true,
-          severity: 'error',
-          message: 'Send is failed'
-        })
+        open: true,
+        severity: 'error',
+        message: 'Send is failed'
+      })
   }
   return (
     <div>

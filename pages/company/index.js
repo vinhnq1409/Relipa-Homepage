@@ -1,5 +1,4 @@
 import React from 'react'
-import Home from '../../layouts/Home'
 import HeadHome from '../../components/Head/Head'
 import BlockBanner from '../../components/HomePage/Company/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'

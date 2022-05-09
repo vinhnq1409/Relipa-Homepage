@@ -6,8 +6,8 @@ import styled from '../../../styles/user/Error.module.css'
 import { post } from '../../../api/BaseRequest'
 import { useMutation } from 'react-query'
 
-const BlockForm = ({onNotification}) => {
-  const postContact = async (data) => {
+const BlockForm = ({ onNotification }) => {
+  const postContact = async(data) => {
     return await post('contact', data)
   }
 
@@ -111,7 +111,6 @@ const BlockForm = ({onNotification}) => {
                   <option value='6'>Request for company introduction materials</option>
                   <option value='7'>Inquiries about human resources and recruitment</option>
                   <option value='8'>others</option>
-                  <option value=''></option>
                 </select>
                 {errors.inquiry_type && <p className={styled.error}>{errors.inquiry_type.message}</p>}
               </div>
