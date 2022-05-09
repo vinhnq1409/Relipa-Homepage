@@ -26,21 +26,9 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-1.png'
-                      width='411'
-                      height='406'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-1.png' width='411' height='406' alt='...' />
                     <div className='card-img'>
-                      <img
-                        className='img-fluid'
-                        src='/user-page/img/web/img-2.png'
-                        width='334'
-                        height='236'
-                        alt='...'
-                      />
+                      <img className='img-fluid' src='/user-page/img/web/img-2.png' width='334' height='236' alt='...' />
                     </div>
                   </div>
                 </div>
@@ -59,21 +47,9 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-2.png'
-                      width='420'
-                      height='290'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-2.png' width='420' height='290' alt='...' />
                     <div className='card-img'>
-                      <img
-                        className='img-fluid'
-                        src='/user-page/img/web/img-3.png'
-                        width='334'
-                        height='236'
-                        alt='...'
-                      />
+                      <img className='img-fluid' src='/user-page/img/web/img-3.png' width='334' height='236' alt='...' />
                     </div>
                   </div>
                 </div>
@@ -92,21 +68,9 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-3.png'
-                      width='418'
-                      height='322'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-3.png' width='418' height='322' alt='...' />
                     <div className='card-img'>
-                      <img
-                        className='img-fluid'
-                        src='/user-page/img/web/img-4.png'
-                        width='334'
-                        height='236'
-                        alt='...'
-                      />
+                      <img className='img-fluid' src='/user-page/img/web/img-4.png' width='334' height='236' alt='...' />
                     </div>
                   </div>
                 </div>
@@ -125,21 +89,9 @@ function BlockWebSystem() {
                 </div>
                 <div className='card-thumb'>
                   <div className='card-frame'>
-                    <img
-                      className='img-fluid'
-                      src='/user-page/img/common/frame-4.png'
-                      width='414'
-                      height='317'
-                      alt='...'
-                    />
+                    <img className='img-fluid' src='/user-page/img/common/frame-4.png' width='414' height='317' alt='...' />
                     <div className='card-img'>
-                      <img
-                        className='img-fluid'
-                        src='/user-page/img/web/img-2.png'
-                        width='334'
-                        height='236'
-                        alt='...'
-                      />
+                      <img className='img-fluid' src='/user-page/img/web/img-2.png' width='334' height='236' alt='...' />
                     </div>
                   </div>
                 </div>

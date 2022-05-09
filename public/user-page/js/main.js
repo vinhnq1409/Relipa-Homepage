@@ -1,45 +1,5 @@
 export const MainJS = () => {
   'use strict';
-  var brandLoadingTime = 3000,
-      progressPercent = 0,
-      progressBar;
-  var $loadingWrap = document.getElementById('loading'),
-      $progressLoading = $loadingWrap.querySelector('.progressLoading'),
-      $messageLoading = $loadingWrap.querySelector('.loading-message');
-
-  var progressLoading = function () {
-    if (progressPercent >= 100) {
-      clearInterval(progressBar);
-    } else {
-      progressPercent++;
-      $progressLoading.style.width = progressPercent + '%';
-    }
-  };
-
-  var hideLoading = function () {
-    // console.log('hide');
-    progressPercent = 100;
-    $progressLoading.style.width = progressPercent + '%';
-    clearInterval(progressBar);
-    $loadingWrap.classList.remove('loading');
-    document.body.classList.remove('on-popup');
-  };
-
-  var showLoading = function (loadingText) {
-    //animation progress loading bar
-    document.body.classList.add('on-popup');
-    progressPercent = 0;
-    $progressLoading.style.width = progressPercent + '%'; // $messageLoading.innerHTML(loadingText);
-
-    $loadingWrap.classList.add('loading'); // clearInterval(progressBar);
-
-    setTimeout(function () {
-      progressBar = setInterval(progressLoading, 10);
-    }, 300);
-  };
-
-  showLoading(); //document ready
-
   // document.addEventListener('DOMContentLoaded', function () {
     var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -250,18 +210,5 @@ export const MainJS = () => {
     } else {
       document.body.classList.remove('scrolling');
     }
-  });
-  window.addEventListener('load', event => {
-    setTimeout(function () {
-      hideLoading(); // $('#loading').removeClass('loading');
-    }, 500); // var elem = document.querySelector('.masonry-grid');
-    // var iso = new Isotope( elem, {
-    //     // options
-    //     itemSelector: '.masonry-grid-item'
-    // });
-
-    document.querySelectorAll('.lazyload').forEach(function (obj, index) {
-      obj.classList.add('loaded');
-    });
   });
 };

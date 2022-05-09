@@ -38,15 +38,15 @@ export default function Add() {
     friendly_url: ''
   }
 
-  const getBlog = async () => {
+  const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async (data) => {
+  const postBlog = async(data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async (data) => {
+  const putBlog = async(data) => {
     return await put(`blogs/${id}`, data)
   }
 
@@ -108,8 +108,15 @@ export default function Add() {
     setValue('url_image_meta', dataBlog?.data.url_image_meta)
     setValue('tags', dataBlog?.data.tags)
     setValue('friendly_url', dataBlog?.data.friendly_url)
-    setValueTag(JSON.parse(dataBlog?.data.tags || '[]'))
+    setValueTag(dataBlog?.data.tags || [])
     setValueEditor(dataBlog?.data.content)
+    if (dataBlog) {
+      const tags = []
+      for (const tag of dataBlog?.data.tags) {
+        tags.push(tag.name)
+      }
+      setValueTag(tags)
+    }
   }, [dataBlog])
 
   const validationSchema = Yup.object().shape({
@@ -147,7 +154,7 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
-        tags: JSON.stringify(valueTag),
+        tags: valueTag,
         content: editorRef.current.getContent()
       }
       postBlogAPI(newData)
@@ -161,7 +168,7 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
-        tags: JSON.stringify(valueTag),
+        tags: valueTag,
         content: editorRef.current.getContent()
       }
       putBlogAPI(newData)
@@ -170,7 +177,7 @@ export default function Add() {
     }
   }
 
-  const onPictureUpload = async (e) => {
+  const onPictureUpload = async(e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -243,7 +250,7 @@ export default function Add() {
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant='outlined' label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => <Chip key={index} variant='outlined' label={option} {...getTagProps({ index })} />)
               }
               renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tag' />}
               value={valueTag}

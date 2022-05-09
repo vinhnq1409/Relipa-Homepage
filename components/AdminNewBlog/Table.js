@@ -54,7 +54,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.author}</TableCell>
                 <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell>{row.status}</TableCell>
-                <TableCell>{row.views}</TableCell>
+                <TableCell>{row.total_view}</TableCell>
                 <TableCell className={styles.flex2}>
                   <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
                     <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
