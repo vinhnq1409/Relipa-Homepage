@@ -65,7 +65,7 @@ export default function Admin({ children, ...rest }) {
       })
 
       if (!isUseRouter) {
-        router.push('/admin')
+        // router.push('/admin')
       }
     }
   }, [infoUser])
@@ -73,11 +73,11 @@ export default function Admin({ children, ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-  
+
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="/admin/css/nextjs-material-dashboard.css" />
+        <link rel='stylesheet' href='/admin/css/nextjs-material-dashboard.css' />
       </Head>
       <div className={classes.wrapper}>
         <Sidebar

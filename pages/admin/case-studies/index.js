@@ -6,9 +6,9 @@ import { useRouter } from 'next/router'
 import { get, del } from '../../../api/BaseRequest'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import TableList from '../../../components/AdminNewBlog/Table'
+import TableList from '../../../components/CaseStudies/Table'
 
-const tableHead = ['ID', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
+const tableHead = ['ID', 'Title', 'Content', 'Technology', 'Tags', 'Action']
 
 export default function News() {
   const queryClient = useQueryClient()
@@ -30,16 +30,16 @@ export default function News() {
   })
 
   const getDataNewList = async () => {
-    const response = await get('news', { ...filters, ...params })
+    const response = await get('works', { ...filters, ...params })
     return response
   }
 
   const deleteNewItem = async (id) => {
-    const response = await del(`news/${id}`)
+    const response = await del(`works/${id}`)
     return response.data
   }
 
-  const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
+  const { data: dataNewList } = useQuery(['getDataCaseStudies', params, isSearch], getDataNewList)
   const {
     mutate: mutateDeleteNew,
     isSuccess,
@@ -86,7 +86,7 @@ export default function News() {
 
   const handleUpdate = (id) => {
     router.push({
-      pathname: '/admin/news/add',
+      pathname: '/admin/case-studies/add',
       query: {
         slug: 'about',
         mode: 'edit',
@@ -100,13 +100,13 @@ export default function News() {
   }
 
   const onCreate = () => {
-    router.push('/admin/news/add')
+    router.push('/admin/case-studies/add')
   }
 
   return (
     <>
       <NewFilters
-        header={'NEW'}
+        header={'CASE STUDIES'}
         handleSearch={handleSearch}
         handleResetForm={handleResetForm}
         filters={filters}
@@ -114,7 +114,7 @@ export default function News() {
         setFilters={setFilters}
       />
       <TableList
-        namePage='/news'
+        namePage='/case-studies'
         tableHead={tableHead}
         data={dataNewList?.data || []}
         onUpdate={handleUpdate}

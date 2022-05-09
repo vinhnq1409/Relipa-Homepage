@@ -94,7 +94,7 @@ export default function Header(props) {
                   </li>
                   <li>
                     <Link href='/aws-migration'>
-                      <a class='dropdown-item' href='aws-migration.html'>
+                      <a className='dropdown-item' href='aws-migration.html'>
                         AWS Migration
                       </a>
                     </Link>

@@ -1,20 +1,20 @@
 function BlockDesire() {
   return (
-    <section class='section section-aos' data-aos='fade-up'>
-      <div class='container'>
-        <div class='row'>
-          <div class='col-md-6 col-xl-5'>
-            <div class='section-content mb-5 mb-md-0'>
-              <ul class='list-group check-list'>
+    <section className='section section-aos' data-aos='fade-up'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-6 col-xl-5'>
+            <div className='section-content mb-5 mb-md-0'>
+              <ul className='list-group check-list'>
                 <li>Warehouse management system</li>
                 <li>Sales management business</li>
                 <li>Reservation management system</li>
                 <li>Vehicle allocation management system</li>
               </ul>
-              <div class='section-content-header line-bottom text-primary mb-3'>
-                <h2 class='section-content-title'>Business System Development</h2>
+              <div className='section-content-header line-bottom text-primary mb-3'>
+                <h2 className='section-content-title'>Business System Development</h2>
               </div>
-              <div class='section-text text-grey-1'>
+              <div className='section-text text-grey-1'>
                 We have many achievements in developing large-scale business systems by ordering from listed companies
                 and major companies.
                 <br />
@@ -32,8 +32,8 @@ function BlockDesire() {
               </div>
             </div>
           </div>
-          <div class='col-md-6 offset-xl-1'>
-            <img class='img-fluid' src='/user-page/img/business/img-1.png' width='560' height='304' alt='' />
+          <div className='col-md-6 offset-xl-1'>
+            <img className='img-fluid' src='/user-page/img/business/img-1.png' width='560' height='304' alt='' />
           </div>
         </div>
       </div>

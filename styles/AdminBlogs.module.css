@@ -32,7 +32,7 @@
   border-spacing: 0;
   border-collapse: collapse;
 }
-.tableBody{
+.tableBody {
   min-height: 538.47px !important;
 }
 
@@ -42,15 +42,15 @@
   font-size: 1.3rem !important;
 }
 
-.hoverIcon:hover{
+.hoverIcon:hover {
   color: #1a35c9;
 }
 
-.tableHead{
-  background-color: #3F51B5;
+.tableHead {
+  background-color: #3f51b5;
 }
 
-.white{
+.white {
   color: white !important;
 }
 
@@ -58,7 +58,7 @@
   margin-top: 30px;
 }
 
-.flex2{
+.flex2 {
   /* display: flex !important; */
   width: 130px;
 }
@@ -88,10 +88,9 @@
 
 /* CSS ADD BLOGS */
 
-
 .root {
   display: flex;
-  align-items: center
+  align-items: center;
 }
 .wrapper {
   position: relative;

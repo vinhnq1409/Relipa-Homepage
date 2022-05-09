@@ -14,8 +14,8 @@ export default function Index() {
       <BlockBanner />
       <div id='main'>
         <BlockBreadcrumb />
-        <section class='section section-aos' data-aos='fade-up'>
-          <div class='container'>
+        <section className='section section-aos' data-aos='fade-up'>
+          <div className='container'>
             <div id='masonry-filter'>
               <BlockFilter />
               <BlockCard />

@@ -21,10 +21,7 @@ const FormChangePassword = ({ handleCancel }, ref) => {
     severity: ''
   })
 
-  const {
-    register,
-    handleSubmit
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
   const handleClose = () => {
     setOpenSnackbar(false)
@@ -34,10 +31,10 @@ const FormChangePassword = ({ handleCancel }, ref) => {
     const { old_password, new_password, password_confirm } = data
     new_password !== password_confirm
       ? setOpenSnackbar({
-        open: true,
-        message: 'Confirm password failed',
-        severity: 'error'
-      })
+          open: true,
+          message: 'Confirm password failed',
+          severity: 'error'
+        })
       : changePassword({ old_password, new_password })
   }
 

@@ -40,12 +40,19 @@ const dashboardRoutes = [
     role: ['Super Admin', 'Admin']
   },
   {
+    path: '/case-studies',
+    name: 'Case studies',
+    icon: PagesIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin']
+  },
+  {
     path: '/account',
     name: 'Account',
     icon: SupervisorAccountIcon,
     layout: '/admin',
     role: ['Super Admin']
-  },
+  }
   // {
   //   path: '/dev-info',
   //   name: 'DEV Info',

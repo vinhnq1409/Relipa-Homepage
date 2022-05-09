@@ -1,13 +1,13 @@
 const BlockBreadcrumb = () => {
   return (
-    <section class='section-aos section-breadcrumb' data-aos='fade-up'>
-      <div class='container'>
+    <section className='section-aos section-breadcrumb' data-aos='fade-up'>
+      <div className='container'>
         <nav aria-label='breadcrumb'>
-          <ol class='breadcrumb'>
-            <li class='breadcrumb-item'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
               <a href='#'>Home</a>
             </li>
-            <li class='breadcrumb-item active' aria-current='page'>
+            <li className='breadcrumb-item active' aria-current='page'>
               Business System Development
             </li>
           </ol>
