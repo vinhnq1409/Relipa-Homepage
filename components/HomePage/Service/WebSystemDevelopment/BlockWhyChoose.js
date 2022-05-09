@@ -1,24 +1,24 @@
 function BlockWhyChoose() {
   return (
-    <section class='section section-why section-aos' data-aos='fade-up'>
-      <div class='container'>
-        <div class='section-content'>
-          <div class='section-content-header line-bottom text-white'>
-            <h2 class='section-content-title'>Why Choose Our Lab-Type Development</h2>
+    <section className='section section-why section-aos' data-aos='fade-up'>
+      <div className='container'>
+        <div className='section-content'>
+          <div className='section-content-header line-bottom text-white'>
+            <h2 className='section-content-title'>Why Choose Our Lab-Type Development</h2>
           </div>
           <div
-            class='swiper-carousel why-choose-swiper-carousel swiper-carousel--arrow-length'
+            className='swiper-carousel why-choose-swiper-carousel swiper-carousel--arrow-length'
             id='why-choose-swiper-carousel'
           >
-            <div class='swiper-container'>
-              <div class='swiper-wrapper'>
-                <div class='swiper-slide'>
-                  <div class='card card-over'>
-                    <div class='card-body'>
-                      <div class='card-thumb'>
+            <div className='swiper-container'>
+              <div className='swiper-wrapper'>
+                <div className='swiper-slide'>
+                  <div className='card card-over'>
+                    <div className='card-body'>
+                      <div className='card-thumb'>
                         <a href='#'>
                           <img
-                            class='card-img-top'
+                            className='card-img-top'
                             src='/user-page/img/lab/img-5.png'
                             width='327'
                             height='183'
@@ -26,11 +26,11 @@ function BlockWhyChoose() {
                           />
                         </a>
                       </div>
-                      <div class='card-index'>01</div>
-                      <h3 class='card-title'>
+                      <div className='card-index'>01</div>
+                      <h3 className='card-title'>
                         <a href='#'>Lab-type development with a customer retention rate of 90%</a>
                       </h3>
-                      <div class='card-text'>
+                      <div className='card-text'>
                         There is no need to create a contract for each project, and payment is a fixed monthly fee. This
                         simplifies complicated procedures and allows you to focus on your business. Even if requirements
                         or specifications change according to the business during the development period, it is possible
@@ -39,13 +39,13 @@ function BlockWhyChoose() {
                     </div>
                   </div>
                 </div>
-                <div class='swiper-slide'>
-                  <div class='card card-over'>
-                    <div class='card-body'>
-                      <div class='card-thumb'>
+                <div className='swiper-slide'>
+                  <div className='card card-over'>
+                    <div className='card-body'>
+                      <div className='card-thumb'>
                         <a href='#'>
                           <img
-                            class='card-img-top'
+                            className='card-img-top'
                             src='/user-page/img/lab/img-6.png'
                             width='327'
                             height='183'
@@ -53,11 +53,11 @@ function BlockWhyChoose() {
                           />
                         </a>
                       </div>
-                      <div class='card-index'>02</div>
-                      <h3 class='card-title'>
+                      <div className='card-index'>02</div>
+                      <h3 className='card-title'>
                         <a href='#'>Lab-type development with a customer retention rate of 90%</a>
                       </h3>
-                      <div class='card-text'>
+                      <div className='card-text'>
                         There is no need to create a contract for each project, and payment is a fixed monthly fee. This
                         simplifies complicated procedures and allows you to focus on your business. Even if requirements
                         or specifications change according to the business during the development period, it is possible
@@ -68,10 +68,10 @@ function BlockWhyChoose() {
                 </div>
               </div>
             </div>
-            <div class='swiper-pagination'></div>
-            <div class='swiper-controls'>
-              <div class='swiper-button-prev'></div>
-              <div class='swiper-button-next'></div>
+            <div className='swiper-pagination'></div>
+            <div className='swiper-controls'>
+              <div className='swiper-button-prev'></div>
+              <div className='swiper-button-next'></div>
             </div>
           </div>
         </div>

@@ -1,32 +1,29 @@
+import useTrans from '../../../../i18n/useTrans'
+
 function BlockDesire() {
+  const trans = useTrans()
+  const language = trans.webSystem
   return (
-    <section class='section section-aos' data-aos='fade-up'>
-      <div class='container'>
-        <div class='row'>
-          <div class='col-md-6 col-xl-5'>
-            <div class='section-content mb-5 mb-md-0'>
-              <ul class='list-group check-list'>
-                <li>I want to develop a Web system with the launch of a Web service</li>
-                <li>The quality of the existing vendor's Web system is too low to handle</li>
-                <li>I want to develop the optimum Web system for each device</li>
-                <li>I want to improve business efficiency by using a Web system</li>
-                <li>
-                  I would like to request a company with abundant experience in Web system development to build it.
-                </li>
+    <section className='section section-aos' data-aos='fade-up'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-6 col-xl-5'>
+            <div className='section-content mb-5 mb-md-0'>
+              <ul className='list-group check-list'>
+                <li>{language.desire.one}</li>
+                <li>{language.desire.two}</li>
+                <li>{language.desire.three}</li>
+                <li>{language.desire.fource}</li>
+                <li>{language.desire.five}</li>
               </ul>
-              <div class='section-content-header line-bottom text-primary mb-3'>
-                <h2 class='section-content-title'>Web System Development</h2>
+              <div className='section-content-header line-bottom text-primary mb-3'>
+                <h2 className='section-content-title'>Web System Development</h2>
               </div>
-              <div class='section-text text-grey-1'>
-                Relipa is confident in the field of web system development and is proud to be selected by many
-                customers. In this field, we specialize in providing services such as EC sites, CMS systems, job
-                information sites, and reservation matching platforms, with a focus on Java / PHP development. We always
-                strive to create the most complete products based on your needs.
-              </div>
+              <div className='section-text text-grey-1'>{language.websystemcontent}</div>
             </div>
           </div>
-          <div class='col-md-6 offset-xl-1'>
-            <img class='img-fluid' src='/user-page/img/web/img-1.png' width='560' height='304' alt='' />
+          <div className='col-md-6 offset-xl-1'>
+            <img className='img-fluid' src='/user-page/img/web/img-1.png' width='560' height='304' alt='' />
           </div>
         </div>
       </div>

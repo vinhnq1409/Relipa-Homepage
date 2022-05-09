@@ -4,6 +4,8 @@ import company from './user/company'
 import headerFooter from './user/headerFooter'
 import aboutService from './user/service/aboutservice'
 import labtypeDevelopment from './user/service/labtypeDevelopment'
+import blockchainDevelopment from './user/service/blockchainDevelopment'
+import websystemdevelopment from './user/service/websystemdevelopment'
 
 export default {
   admin: admin,
@@ -11,5 +13,7 @@ export default {
   company: company,
   headerFooter: headerFooter,
   aboutService: aboutService,
-  labtypeDevelopment: labtypeDevelopment
+  labtypeDevelopment: labtypeDevelopment,
+  blockchain: blockchainDevelopment,
+  webSystem: websystemdevelopment
 }
