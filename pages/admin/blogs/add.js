@@ -250,7 +250,9 @@ export default function Add() {
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip key={index} variant='outlined' label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => (
+                  <Chip key={index} variant='outlined' label={option} {...getTagProps({ index })} />
+                ))
               }
               renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tag' />}
               value={valueTag}

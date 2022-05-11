@@ -119,7 +119,7 @@ const BlockForm = ({ onNotification }) => {
                 <select className='form-select' {...register('your_source')}>
                   <option value='0'>---Please select---</option>
                   <option value='1'>Google search</option>
-                  <option value='2'>Yahoo search'</option>
+                  <option value='2'>Yahoo search</option>
                   <option value='3'>Google ads</option>
                   <option value='4'>Yahoo ads</option>
                   <option value='5'>Press article</option>

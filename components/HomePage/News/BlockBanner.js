@@ -11,7 +11,7 @@ const BlockBanner = () => {
           </div>
           <div className='container'>
             <div className='section-heading section-heading-shadow'>
-              <h2 className='section-title' title='Blog'>
+              <h2 className='section-title' title='News'>
                 News
               </h2>
             </div>

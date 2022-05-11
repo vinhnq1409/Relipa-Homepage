@@ -12,7 +12,7 @@ const BlockPopular = ({ popularBlogs }) => {
           <li key={popularBlog.id}>
             <div className='card card-horizontal-news border-0'>
               <div className='card-thumb mb-0'>
-                <img className='card-img-top' src={popularBlog.url_image_meta} width='105' height='58' alt='...' />
+                <img className='card-img-top img-item-popular' src={popularBlog.url_image_meta} width='105' height='58' alt='...' />
               </div>
               <div className='card-body'>
                 <h4 className='card-title'>

@@ -1,35 +1,28 @@
-import React, { useState, useEffect } from 'react'
-import { useQuery } from 'react-query'
-
-import { get } from '../../api/BaseRequest'
+import React, { useEffect } from 'react'
 import HeadHome from '../../components/Head/Head'
+import { get, post } from '../../api/BaseRequest'
 import BlockBanner from '../../components/HomePage/News/BlockBanner'
-import BlockBreadcrumb from '../../components/HomePage/News/BlockBreadcrumb'
-import BlockMain from '../../components/HomePage/News/BlockMain'
+import BlockBreadcrumbDetail from '../../components/HomePage/News/BlockBreadcrumbDetail'
+import BlockMainDetail from '../../components/HomePage/News/BlockMainDetail'
 import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
 
-export default function News({ news, popularNews }) {
-  const [dataNews, setDataNews] = useState(news)
-
-  const [params, setParams] = useState({
-    per_page: 2,
-    page: 1
-  })
-
-  const getNews = () => {
-    return get('user/en/new', params)
-  }
-
-  const { data: dataByParams } = useQuery(['news', params.per_page, params.page], getNews)
+export default function NewDetail({ dataNews, dataNew, popularNews }) {
+  const { id, title, created_at, content, url_image_meta } = dataNew
 
   useEffect(() => {
-    dataByParams ? setDataNews(dataByParams.data) : null
-  }, [dataByParams])
+    const countView = setTimeout(async() => {
+      await post('statistic', {
+        name_page: 'news',
+        id_item: id
+      })
+    }, 10000)
+    return (() => clearTimeout(countView))
+  }, [])
 
   return (
-    <div>
+    <>
       <HeadHome
         title={'News | Relipa'}
         contentTitle={'this is News content title'}
@@ -41,15 +34,15 @@ export default function News({ news, popularNews }) {
       <HomePage>
         <BlockBanner />
         <div id='main'>
-          <BlockBreadcrumb />
+          <BlockBreadcrumbDetail />
           <section className='section section-aos' data-aos='fade-up'>
             <div className='container'>
               <div className='row'>
-                <BlockMain
-                  dataNews={dataNews}
-                  count={dataByParams?.total / params.per_page}
-                  params={params}
-                  setParams={setParams}
+                <BlockMainDetail
+                  title={title}
+                  created_at={created_at}
+                  url_image_meta={url_image_meta}
+                  content={content}
                 />
                 <div className='col-md-4 col-lg-3'>
                   <aside className='aside-right'>
@@ -62,20 +55,25 @@ export default function News({ news, popularNews }) {
           </section>
         </div>
       </HomePage>
-    </div>
+    </>
   )
 }
-export async function getStaticProps() {
+export async function getStaticPaths() {
+  const res = await get('user/en/new', {per_page: 100, page: 1})
+  return {
+    paths: res.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }})),
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const dataNew = await get(`user/en/news/${params.newURL}`)
+
   const resDataNews = await get('user/en/new')
-  const news = await resDataNews.data
+  const dataNews = await resDataNews.data
 
   const resPopularNews = await get('user/en/new-popular')
   const popularNews = resPopularNews.data
 
-  return {
-    props: {
-      news,
-      popularNews
-    }
-  }
+  return { props: { dataNews, dataNew, popularNews }}
 }

@@ -33,15 +33,15 @@ export default function AddNews() {
     friendly_url: ''
   }
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('news', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await put(`news/${id}`, data)
   }
 
@@ -152,7 +152,7 @@ export default function AddNews() {
     setValue('friendly_url', resetFriendlyUrl)
   }
 
-  const onFileUpload = async (e) => {
+  const onFileUpload = async(e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)

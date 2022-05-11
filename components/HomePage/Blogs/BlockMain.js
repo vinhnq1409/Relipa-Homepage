@@ -1,7 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import Pagination from '@material-ui/lab/Pagination'
 
-const BlockMain = ({ dataBlogs }) => {
+const BlockMain = ({ dataBlogs, count, params, setParams }) => {
+  const handlePaginationChange = (e, page) => {
+    setParams({ ...params, page: page })
+    window.scrollTo(0, 0)
+  }
   return (
     <div className='col-md-8 col-lg-9'>
       <div className='primary-box mb-5 mb-md-0'>
@@ -16,9 +21,7 @@ const BlockMain = ({ dataBlogs }) => {
                         <a>
                           <img
                             src={dataBlog.url_image_meta}
-                            width='362'
-                            height='200'
-                            className='card-img-top'
+                            className='card-img-top img-item-main'
                             alt='...'
                           />
                         </a>
@@ -30,7 +33,9 @@ const BlockMain = ({ dataBlogs }) => {
                       <div className='card-meta mb-1'>
                         {dataBlog.created_at.slice(0, 10)}{' '}
                         {dataBlog.tags.map((tag, index) => (
-                          <span key={index} className='badge bg-primary text-uppercase'>{tag.name}</span>
+                          <span key={index} className='badge bg-primary text-uppercase'>
+                            {tag.name}
+                          </span>
                         ))}
                       </div>
                       <h3 className='card-title'>
@@ -38,7 +43,7 @@ const BlockMain = ({ dataBlogs }) => {
                           <a>{dataBlog.title}</a>
                         </Link>
                       </h3>
-                      <div className='card-text'>{dataBlog.desc}</div>
+                      <div className='card-text text-hiden'>{dataBlog.desc}</div>
                     </div>
                   </div>
                 </div>
@@ -46,45 +51,17 @@ const BlockMain = ({ dataBlogs }) => {
             </li>
           ))}
         </ul>
-        <nav className='pagination-wrapper mt-3' aria-label='Page navigation example'>
-          <ul className='pagination justify-content-center'>
-            <li className='page-item'>
-              <a className='page-link' href='#' aria-label='Previous'>
-                <i className='las la-angle-left'></i>
-              </a>
-            </li>
-            <li className='page-item active'>
-              <a className='page-link' href='#'>
-                1
-              </a>
-            </li>
-            <li className='page-item'>
-              <a className='page-link' href='#'>
-                2
-              </a>
-            </li>
-            <li className='page-item'>
-              <a className='page-link' href='#'>
-                3
-              </a>
-            </li>
-            <li className='page-item'>
-              <a className='page-link' href='#'>
-                4
-              </a>
-            </li>
-            <li className='page-item'>
-              <a className='page-link' href='#'>
-                5
-              </a>
-            </li>
-            <li className='page-item'>
-              <a className='page-link' href='#' aria-label='Next'>
-                <i className='las la-angle-right'></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        {count > 1 && (
+          <Pagination
+            className='flex-center'
+            count={Math.ceil(count)}
+            onChange={handlePaginationChange}
+            page={params.page}
+            size='large'
+            shape='rounded'
+            color='primary'
+          />
+        )}
       </div>
     </div>
   )
