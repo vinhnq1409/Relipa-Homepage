@@ -65,7 +65,7 @@ export default function Admin({ children, ...rest }) {
       })
 
       if (!isUseRouter) {
-        // router.push('/admin')
+        router.push('/admin')
       }
     }
   }, [infoUser])
@@ -77,7 +77,7 @@ export default function Admin({ children, ...rest }) {
   return (
     <>
       <Head>
-        <link rel='stylesheet' href='/admin/css/nextjs-material-dashboard.css' />
+        <link rel="stylesheet" href="/admin/css/nextjs-material-dashboard.css" />
       </Head>
       <div className={classes.wrapper}>
         <Sidebar
@@ -87,14 +87,14 @@ export default function Admin({ children, ...rest }) {
           image={bgImage}
           handleDrawerToggle={handleDrawerToggle}
           open={mobileOpen}
-          color='white'
+          color="white"
           {...rest}
         />
         <div className={classes.mainPanel} ref={mainPanel}>
           <Navbar handleDrawerToggle={handleDrawerToggle} {...rest} />
           <div className={classes.body}>
             <Breadcrumb routes={routes} />
-            <Paper elevation={0} variant='outlined' className={classes.content}>
+            <Paper elevation={0} variant="outlined" className={classes.content}>
               <div className={classes.container}>{children}</div>
             </Paper>
           </div>
