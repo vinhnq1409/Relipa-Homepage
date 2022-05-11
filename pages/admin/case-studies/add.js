@@ -50,15 +50,15 @@ export default function Works() {
     content: ''
   }
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`works/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('works', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await post(`works/${id}`, data)
   }
 
@@ -138,7 +138,7 @@ export default function Works() {
     reset
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const onCreate = async (data) => {
+  const onCreate = async(data) => {
     if (technology.length && responContent.length && tags.length && images.length >= 3) {
       setIsErrTechnology(false)
       setIsErrRescontent(false)

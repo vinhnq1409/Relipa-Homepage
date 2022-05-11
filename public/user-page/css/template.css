@@ -15967,3 +15967,64 @@ a.avatar:hover:after {
   font-family: 'Line Awesome Free';
   font-weight: 900;
 }
+.responsiveImage{
+  max-width: 100%;
+  height: auto;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+.MuiPaginationItem-textPrimary.Mui-selected{
+  background-color: #0045c5 !important;
+}
+.text-hiden{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+@media (min-width: 992px) {
+  .img-item-main{
+    max-width: 362px !important;
+    max-height: 200px !important;
+    object-fit: cover;
+  }
+}
+.img-item-popular{
+  max-width: 105px !important;
+  max-height: 64px !important;
+  object-fit: cover;
+}
+
+@media (min-width: 1366px) {
+  .container {
+    max-width: 1140px;
+  }
+  .img-item-related{
+    max-width: 260px !important;
+    max-height: 150px !important;
+    object-fit: cover;
+  }
+}
+@media (min-width: 992px) {
+  .img-item-related{
+    max-width: 260px !important;
+    max-height: 120px !important;
+    object-fit: cover;
+  }
+}
+@media (min-width: 768px) {
+  .img-item-related{
+    max-width: 260px !important;
+    max-height: 86px !important;
+    object-fit: cover;
+  }
+}
+@media (min-width: 576px) {
+  .img-item-related{
+    max-width: 260px !important;
+    max-height: 140px !important;
+    object-fit: cover;
+  }
+}

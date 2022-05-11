@@ -52,14 +52,14 @@ const dashboardRoutes = [
     icon: SupervisorAccountIcon,
     layout: '/admin',
     role: ['Super Admin']
-  }
-  // {
-  //   path: '/dev-info',
-  //   name: 'DEV Info',
-  //   icon: CodeIcon,
-  //   layout: '/admin',
-  //   role: ['Super Admin', 'Admin']
-  // },
+  },
+  {
+    path: '/tags',
+    name: 'Tags',
+    icon: CodeIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin']
+  },
   // {
   //   path: '/partner',
   //   name: 'Partner',

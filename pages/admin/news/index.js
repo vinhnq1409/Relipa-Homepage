@@ -29,12 +29,12 @@ export default function News() {
     type: ''
   })
 
-  const getDataNewList = async () => {
+  const getDataNewList = async() => {
     const response = await get('news', { ...filters, ...params })
     return response
   }
 
-  const deleteNewItem = async (id) => {
+  const deleteNewItem = async(id) => {
     const response = await del(`news/${id}`)
     return response.data
   }

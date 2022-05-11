@@ -28,7 +28,7 @@ export default function Contact() {
   return (
     <div>
       <HeadHome
-        title={'this is Contact'}
+        title={'Contact | Relipa'}
         contentTitle={'this is Contact content title'}
         contentImg={'this is Contact link img'}
         contentOgUrl={'this is Contact content og url '}

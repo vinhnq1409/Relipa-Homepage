@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-const BlockNew = ({ dataBlogs }) => {
-  const top5NewBlogs = dataBlogs.slice(0, 5)
+const BlockNew = ({ Blogs }) => {
+  const top5NewBlogs = Blogs.slice(0, 5)
 
   return (
     <div className='aside-right-box'>
@@ -13,7 +13,7 @@ const BlockNew = ({ dataBlogs }) => {
           <li key={newBlog.id}>
             <div className='card card-horizontal-news border-0'>
               <div className='card-thumb mb-0'>
-                <img className='card-img-top' src={newBlog.url_image_meta} width='105' height='58' alt='...' />
+                <img className='card-img-top img-item-popular' src={newBlog.url_image_meta} width='105' height='58' alt='...' />
               </div>
               <div className='card-body'>
                 <h4 className='card-title'>

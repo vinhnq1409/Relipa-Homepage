@@ -43,13 +43,13 @@ export default function Header(props) {
                   </a>
                 </Link>
               </li>
-              <li className='nav-item'>
+              {/* <li className='nav-item'>
                 <Link href='/business'>
                   <a className={`nav-link ${isCheckCurrentLink('/business') ? 'active' : ''}`}>
                     {trans.headerFooter.header.business}
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li className='nav-item dropdown'>
                 <Link href='/service'>
                   <a

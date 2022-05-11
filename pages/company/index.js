@@ -13,7 +13,7 @@ export default function Company() {
   return (
     <div>
       <HeadHome
-        title={'this is company'}
+        title={'Company | Relipa'}
         contentTitle={'this is company content title'}
         contentImg={'this is company link img'}
         contentOgUrl={'this is company content og url '}

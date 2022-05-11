@@ -15,7 +15,7 @@ const BlockRelated = ({ dataBlog }) => {
                   <div className='card-thumb'>
                     <a href='#'>
                       <img
-                        className='card-img-top'
+                        className='card-img-top img-item-related'
                         src={blog.url_image_meta}
                         width='260'
                         height='192'
