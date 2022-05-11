@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 import HeadHome from '../../components/Head/Head'
 import { get, post } from '../../api/BaseRequest'
 import BlockBanner from '../../components/HomePage/News/BlockBanner'
@@ -8,8 +9,32 @@ import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
 
-export default function NewDetail({ dataNews, dataNew, popularNews }) {
+export default function NewDetail({ dataNew }) {
   const { id, title, created_at, content, url_image_meta } = dataNew
+  const [dataNews, setDataNews] = useState([])
+  const [popularNews, setPopularNews] = useState([])
+
+  const getNews = () => {
+    return get('user/en/new')
+  }  
+  const getPopularNews = () => {
+    return get('user/en/new-popular')
+  }
+
+  const { data: news } = useQuery('news', getNews)
+  const { data: popular } = useQuery('popularNews', getPopularNews)
+
+  useEffect(()=>{
+    if(news){
+      setDataNews(news.data)
+    }
+  },[news])
+  
+  useEffect(()=>{
+    if(popular){
+      setPopularNews(popular.data)
+    }
+  },[popular])
 
   useEffect(() => {
     const countView = setTimeout(async() => {
@@ -59,7 +84,7 @@ export default function NewDetail({ dataNews, dataNew, popularNews }) {
   )
 }
 export async function getStaticPaths() {
-  const res = await get('user/en/new', {per_page: 100, page: 1})
+  const res = await get('user/en/new')
   return {
     paths: res.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }})),
     fallback: false
@@ -68,12 +93,5 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const dataNew = await get(`user/en/news/${params.newURL}`)
-
-  const resDataNews = await get('user/en/new')
-  const dataNews = await resDataNews.data
-
-  const resPopularNews = await get('user/en/new-popular')
-  const popularNews = resPopularNews.data
-
-  return { props: { dataNews, dataNew, popularNews }}
+  return { props: { dataNew }}
 }
