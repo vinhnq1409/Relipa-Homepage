@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
-import { Autocomplete } from '@material-ui/lab'
+import Autocomplete from '@material-ui/lab/Autocomplete'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useQuery, useMutation } from 'react-query'
 import ImageUploading from 'react-images-uploading'
@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Controller, useForm } from 'react-hook-form'
 import React, { useEffect, useRef, useState } from 'react'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Button, Chip, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, Chip, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core'
 
 import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post, put } from '../../../api/BaseRequest'
@@ -31,12 +31,14 @@ export default function Works() {
   const [updateImg, setUpdateImg] = useState(false)
   const [tags, setTags] = useState([])
   const [isErrTags, setIsErrTags] = useState(false)
+  const [type, setType] = useState(0)
+  const [isErrType, setIsErrType] = useState(false)
   const maxNumber = 10
 
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
-    severity: 'success'
+    severity: 'success',
   })
 
   const defaultValues = {
@@ -47,25 +49,25 @@ export default function Works() {
     technology: [],
     responsible_content: [],
     tags: [],
-    content: ''
+    content: '',
   }
 
-  const getNews = async() => {
+  const getNews = async () => {
     return await get(`works/${id}`)
   }
 
-  const postNews = async(data) => {
+  const postNews = async (data) => {
     return await post('works', data)
   }
 
-  const putNews = async(data) => {
+  const putNews = async (data) => {
     return await post(`works/${id}`, data)
   }
 
   const {
     data: dataNews,
     remove: removeData,
-    isLoading: isGetingNewsAPI
+    isLoading: isGetingNewsAPI,
   } = useQuery('getCaseStudy', getNews, { enabled: !!id })
 
   const { mutate: postNewsAPI, isLoading: isPostingNewsAPI } = useMutation(postNews, {
@@ -80,7 +82,7 @@ export default function Works() {
       listError.forEach((element) => {
         setSnackbar({ message: element, open: true, severity: 'error' })
       })
-    }
+    },
   })
 
   const { mutate: putNewsAPI, isLoading: isPutingNewsAPI } = useMutation(putNews, {
@@ -95,7 +97,7 @@ export default function Works() {
       listError.forEach((element) => {
         setSnackbar({ message: element, open: true, severity: 'error' })
       })
-    }
+    },
   })
 
   useEffect(() => {
@@ -116,9 +118,10 @@ export default function Works() {
     setImages(
       dataNews?.works.map((item, index) => ({
         data_url: `http://${item}`,
-        file: dataNews?.media[index]
+        file: dataNews?.media[index],
       }))
     )
+    setType(dataNews?.type || 5)
   }, [dataNews])
 
   const validationSchema = Yup.object().shape({
@@ -126,7 +129,7 @@ export default function Works() {
     desc: Yup.string().required('Description is required'),
     type_of_contract: Yup.string().required('Type of contact is required'),
     team_structure: Yup.string().required('Team structure is required'),
-    content: Yup.string().required('Content i required')
+    content: Yup.string().required('Content i required'),
   })
 
   const {
@@ -135,11 +138,11 @@ export default function Works() {
     control,
     setValue,
     getValues,
-    reset
+    reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const onCreate = async(data) => {
-    if (technology.length && responContent.length && tags.length && images.length >= 3) {
+  const onCreate = async (data) => {
+    if (technology.length && responContent.length && tags.length && images?.length >= 3 && type) {
       setIsErrTechnology(false)
       setIsErrRescontent(false)
       setIsErrTags(false)
@@ -154,9 +157,13 @@ export default function Works() {
         ...data,
         technology: technology,
         tags: tags,
-        responsible_content: responContent
+        responsible_content: responContent,
+        type: type,
       }
 
+      if (type === 5) {
+        delete newData.type
+      }
       formData.append('title', newData.title)
       formData.append('desc', newData.desc)
       formData.append('content', newData.content)
@@ -165,6 +172,7 @@ export default function Works() {
       formData.append('responsible_content[]', newData.responsible_content)
       formData.append('team_structure', newData.team_structure)
       formData.append('tags[]', newData.tags)
+      formData.append('type', newData?.type)
       postNewsAPI(formData)
     } else {
       if (!technology.length) {
@@ -176,14 +184,17 @@ export default function Works() {
       if (!tags.length) {
         setIsErrTags(true)
       }
-      if (!(images.length >= 3)) {
+      if (!(images?.length >= 3)) {
         setIsErrImgs(true)
+      }
+      if (!type?.length) {
+        setIsErrType(true)
       }
     }
   }
 
   const onUpdate = (data) => {
-    if (technology.length && responContent.length && tags.length && images.length >= 3) {
+    if (technology.length && responContent.length && tags.length && images?.length >= 3) {
       setIsErrTechnology(false)
       setIsErrRescontent(false)
       setIsErrImgs(false)
@@ -201,7 +212,11 @@ export default function Works() {
         ...data,
         technology: technology,
         responsible_content: responContent,
-        tags: tags
+        tags: tags,
+      }
+
+      if (type === 5) {
+        delete newData.type
       }
 
       formData.append('title', newData.title)
@@ -212,6 +227,7 @@ export default function Works() {
       formData.append('responsible_content[]', newData.responsible_content)
       formData.append('team_structure', newData.team_structure)
       formData.append('tags[]', newData.tags)
+      formData.append('type', newData?.type)
       formData.append('_method', 'PUT')
       putNewsAPI(formData)
     } else {
@@ -224,7 +240,7 @@ export default function Works() {
       if (!tags.length) {
         setIsErrTags(true)
       }
-      if (!(images.length >= 3)) {
+      if (!(images?.length >= 3)) {
         setIsErrImgs(true)
       }
     }
@@ -235,7 +251,7 @@ export default function Works() {
     setResponContent([])
     setTags([])
     reset({
-      ...defaultValues
+      ...defaultValues,
     })
     btnRemoveImg.current.click()
   }
@@ -255,25 +271,25 @@ export default function Works() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Controller
-              name='title'
+              name="title"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Title' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="Title" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='desc'
+              name="desc"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='Description'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="Description"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -282,25 +298,25 @@ export default function Works() {
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='content'
+              name="content"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='content' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="content" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.content && <Typography className={styles.error}>{errors.content.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='type_of_contract'
+              name="type_of_contract"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='Type of contract'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="Type of contract"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -312,14 +328,14 @@ export default function Works() {
           <Grid item xs={12}>
             <Autocomplete
               multiple
-              id='technology-filled'
+              id="technology-filled"
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant='outlined' label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
               }
               renderInput={(params) => (
-                <TextField {...params} variant='outlined' label='Technology' placeholder='Add technology' />
+                <TextField {...params} variant="outlined" label="Technology" placeholder="Add technology" />
               )}
               value={technology}
               onChange={(event, value) => {
@@ -332,23 +348,23 @@ export default function Works() {
           <Grid item xs={12}>
             <Autocomplete
               multiple
-              id='responseContent-filled'
+              id="responseContent-filled"
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant='outlined' label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
               }
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant='outlined'
-                  label='Responsible Content'
-                  placeholder='Add responsible content'
+                  variant="outlined"
+                  label="Responsible Content"
+                  placeholder="Add responsible content"
                 />
               )}
               value={responContent}
               onChange={(event, value) => {
-                value.length ? setIsErrRescontent(false) : setIsErrRescontent(true)
+                value?.length ? setIsErrRescontent(false) : setIsErrRescontent(true)
                 setResponContent(value)
               }}
             />
@@ -356,15 +372,15 @@ export default function Works() {
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='team_structure'
+              name="team_structure"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='Team Structure'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="Team Structure"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -372,8 +388,8 @@ export default function Works() {
             {errors.team_structure && <Typography className={styles.error}>{errors.team_structure.message}</Typography>}
           </Grid>
 
-          <Grid item xs={12} container spacing={4} justifyContent='center'>
-            <ImageUploading multiple value={images} onChange={onChangeImg} maxNumber={maxNumber} dataURLKey='data_url'>
+          <Grid item xs={12} container spacing={4} justifyContent="center">
+            <ImageUploading multiple value={images} onChange={onChangeImg} maxNumber={maxNumber} dataURLKey="data_url">
               {({
                 imageList,
                 onImageUpload,
@@ -381,15 +397,15 @@ export default function Works() {
                 onImageUpdate,
                 onImageRemove,
                 isDragging,
-                dragProps
+                dragProps,
               }) => (
                 <>
                   <Grid item xs={2}>
                     <Button
                       className={styles.full}
-                      variant='contained'
-                      color='primary'
-                      component='span'
+                      variant="contained"
+                      color="primary"
+                      component="span"
                       onClick={updateImg ? () => onImageUpload() : () => (onImageRemoveAll(), onImageUpload())}
                       {...dragProps}
                       startIcon={<CloudUploadIcon />}
@@ -401,12 +417,12 @@ export default function Works() {
                     <Button
                       ref={btnRemoveImg}
                       className={styles.full}
-                      variant='contained'
-                      color='primary'
-                      component='span'
+                      variant="contained"
+                      color="primary"
+                      component="span"
                       onClick={onImageRemoveAll}
                       startIcon={<DeleteIcon />}
-                      id='contained-button-file'
+                      id="contained-button-file"
                     >
                       Remove all img
                     </Button>
@@ -417,23 +433,23 @@ export default function Works() {
                       style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
                     >
                       {imageList.map((image, index) => (
-                        <div key={index} className='image-item'>
-                          <img src={image['data_url']} alt='' width='200' height='200' style={{ margin: '0 10px' }} />
-                          <div className='image-item__btn-wrapper' style={{ margin: '0 10px 10px 10px' }}>
+                        <div key={index} className="image-item">
+                          <img src={image['data_url']} alt="" width="200" height="200" style={{ margin: '0 10px' }} />
+                          <div className="image-item__btn-wrapper" style={{ margin: '0 10px 10px 10px' }}>
                             <Button
                               onClick={id ? onImageRemoveAll : () => onImageUpdate(index)}
-                              variant='outlined'
-                              size='small'
-                              color='primary'
+                              variant="outlined"
+                              size="small"
+                              color="primary"
                               startIcon={<CloudUploadIcon />}
                             >
                               Update
                             </Button>
                             <Button
                               onClick={id ? onImageRemoveAll : () => onImageRemove(index)}
-                              variant='outlined'
-                              size='small'
-                              color='primary'
+                              variant="outlined"
+                              size="small"
+                              color="primary"
                               startIcon={<DeleteIcon />}
                             >
                               Remove
@@ -451,13 +467,13 @@ export default function Works() {
           <Grid item xs={12}>
             <Autocomplete
               multiple
-              id='tags-filled'
+              id="tags-filled"
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant='outlined' label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
               }
-              renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tag' />}
+              renderInput={(params) => <TextField {...params} variant="outlined" label="Tags" placeholder="Add tag" />}
               value={tags}
               onChange={(event, value) => {
                 value.length ? setIsErrTags(false) : setIsErrTags(true)
@@ -466,27 +482,61 @@ export default function Works() {
             />
             {isErrTags && <Typography className={styles.error}>Tags is required</Typography>}
           </Grid>
+          <Grid item xs={12}>
+            <FormControl className={styles.full}>
+              <InputLabel htmlFor="grouped-native-select" className={styles.full}>
+                Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="grouped-native-select"
+                value={type}
+                onChange={(e) => {
+                  e.target.value ? setIsErrType(false) : setIsErrType(true)
+                  setType(e.target.value)
+                }}
+                className={styles.full}
+              >
+                <MenuItem className={styles.full} value={5}>
+                  All
+                </MenuItem>
+                <MenuItem className={styles.full} value={1}>
+                  Web System
+                </MenuItem>
+                <MenuItem className={styles.full} value={2}>
+                  Bussiness System
+                </MenuItem>
+                <MenuItem className={styles.full} value={3}>
+                  Block Chain
+                </MenuItem>
+                <MenuItem className={styles.full} value={4}>
+                  Appilcation
+                </MenuItem>
+              </Select>
+            </FormControl>
+            {isErrType && <Typography className={styles.error}>Type is required</Typography>}
+          </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
             {!id && (
               <BtnLoading
                 loading={isGetingNewsAPI || isPostingNewsAPI}
                 onClick={handleSubmit(onCreate)}
-                btnName='Create'
-                color='primary'
+                btnName="Create"
+                color="primary"
               />
             )}
             {id && (
               <BtnLoading
                 loading={isGetingNewsAPI || isPutingNewsAPI}
                 onClick={handleSubmit(onUpdate)}
-                btnName='Update'
-                color='primary'
+                btnName="Update"
+                color="primary"
               />
             )}
-            <Button onClick={onReset} className={styles.button} variant='contained' color='secondary'>
+            <Button onClick={onReset} className={styles.button} variant="contained" color="secondary">
               Reset
             </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained'>
+            <Button onClick={onCancel} className={styles.button} variant="contained">
               Cancel
             </Button>
           </Grid>

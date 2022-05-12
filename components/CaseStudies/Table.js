@@ -52,7 +52,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.title}</TableCell>
                 <TableCell>
-                  {row.content.split(',').map((item) => (
+                  {row.type_of_contract.split(',').map((item) => (
                     <p>{item}</p>
                   ))}
                 </TableCell>
@@ -69,7 +69,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 </TableCell>
 
                 <TableCell className={styles.flex2}>
-                  <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
+                  <a target="_blank" href={`${namePage}/${row.friendly_url}`} rel="noreferrer">
                     <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
                   </a>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
@@ -82,13 +82,13 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
             ))}
           </TableBody>
         </Table>
-        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt="No Data ..." />}
       </div>
       <Dialogs
         open={openConfirmDelete}
         handleCancel={handleClose}
-        title='Delete'
-        content='Do you really want to delete this?'
+        title="Delete"
+        content="Do you really want to delete this?"
         onClick={handleDelete}
       />
       {count > 1 && (
