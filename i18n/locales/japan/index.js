@@ -6,7 +6,8 @@ import aboutService from './user/service/aboutservice'
 import labtypeDevelopment from './user/service/labtypeDevelopment'
 import blockchainDevelopment from './user/service/blockchainDevelopment'
 import websystemdevelopment from './user/service/websystemdevelopment'
-import bussinessSystemDevelopment from '../en/user/service/bussinessSystemDevelopment'
+import bussinessSystemDevelopment from './user/service/bussinessSystemDevelopment'
+import smartphoneDevelopment from './user/service/smartphoneDevelopment'
 
 export default {
   admin: admin,
@@ -18,4 +19,5 @@ export default {
   blockchain: blockchainDevelopment,
   webSystem: websystemdevelopment,
   businessSystem: bussinessSystemDevelopment,
+  smartPhone: smartphoneDevelopment
 }

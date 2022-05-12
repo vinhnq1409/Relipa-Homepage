@@ -23,24 +23,24 @@ export default function Home({ children, ...rest }) {
   return (
     <>
       <Head>
-        <link rel='stylesheet' href='/user-page/css/line-awesome.min.css' />
-        <link rel='stylesheet' href='/user-page/css/aos.css' />
-        <link rel='stylesheet' href='/user-page/css/swiper-bundle.min.css' />
-        <link rel='stylesheet' href='/user-page/css/template.css' />
+        <link rel="stylesheet" href="/user-page/css/line-awesome.min.css" />
+        <link rel="stylesheet" href="/user-page/css/aos.css" />
+        <link rel="stylesheet" href="/user-page/css/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/user-page/css/template.css" />
       </Head>
-      <LoadingPages />
-      <div id='wrapper'>
+      {/* <LoadingPages /> */}
+      <div id="wrapper">
         <Header />
         <div>{children}</div>
         <Footer />
-        <Script src='/user-page/js/popper.min.js' strategy="beforeInteractive"/>
-        <Script src='/user-page/js/bootstrap.js' strategy="beforeInteractive"/>
+        <Script src="/user-page/js/popper.min.js" strategy="beforeInteractive" />
+        <Script src="/user-page/js/bootstrap.js" strategy="beforeInteractive" />
 
-        <Script src='/user-page/js/isotope.pkgd.min.js' strategy="beforeInteractive"/>
-        <Script src='/user-page/js/swiper-bundle.min.js' strategy="beforeInteractive"/>
-        <Script src='/user-page/js/aos.js' strategy="beforeInteractive"/>
+        <Script src="/user-page/js/isotope.pkgd.min.js" strategy="beforeInteractive" />
+        <Script src="/user-page/js/swiper-bundle.min.js" strategy="beforeInteractive" />
+        <Script src="/user-page/js/aos.js" strategy="beforeInteractive" />
 
-        <Script src='/user-page/js/isotop-filter.js' strategy="beforeInteractive"/>
+        <Script src="/user-page/js/isotop-filter.js" strategy="beforeInteractive" />
       </div>
     </>
   )
