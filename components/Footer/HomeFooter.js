@@ -26,18 +26,26 @@ export default function HomeFooter(props) {
                 </a>
               </h2>
               <div className="socials">
-                <a className="social-circle" href="#" aria-label="facebook">
-                  <i className="lab la-facebook-f"></i>
-                </a>
-                <a className="social-circle" href="#" aria-label="instagram">
-                  <i className="lab la-instagram"></i>
-                </a>
-                <a className="social-circle" href="#" aria-label="youtube">
-                  <i className="lab la-youtube-square"></i>
-                </a>
-                <a className="social-circle" href="#" aria-label="twitter">
-                  <i className="lab la-twitter"></i>
-                </a>
+                <Link href="https://www.facebook.com/relipasoft">
+                  <a className="social-circle" aria-label="facebook" target="_blank">
+                    <i className="lab la-facebook-f"></i>
+                  </a>
+                </Link>
+                <Link href="https://www.instagram.com/relipasoft/">
+                  <a className="social-circle" target="_blank" aria-label="instagram">
+                    <i className="lab la-instagram"></i>
+                  </a>
+                </Link>
+                <Link href="https://www.youtube.com/channel/UCeNpaMMmiR0Aon3m-Gmhd7Q/featured">
+                  <a className="social-circle" target="_blank" aria-label="youtube">
+                    <i className="lab la-youtube-square"></i>
+                  </a>
+                </Link>
+                <Link href="https://twitter.com/relipasoft">
+                  <a className="social-circle" target="_blank" aria-label="twitter">
+                    <i className="lab la-twitter"></i>
+                  </a>
+                </Link>
               </div>
             </div>
             <div className="widget">
@@ -53,13 +61,18 @@ export default function HomeFooter(props) {
                   <span className="text-icon__icon">
                     <img src={require('/public/user-page/img/icons/mobile.svg')} width="24" height="24" alt="" />
                   </span>
-                  <span className="text-icon__content">(+81)3 6804 9294</span>
+                  <span className="text-icon__content">
+                    <a href="tel:+81368049294">(+81)3 6804 9294</a>
+                  </span>
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
                     <img src={require('/public/user-page/img/icons/sms.svg')} width="24" height="24" alt="" />
                   </span>
-                  <span className="text-icon__content">sales@relipasoft.com</span>
+                  <span className="text-icon__content">
+                    {' '}
+                    <a href="mailto:sales@relipasoft.com">sales@relipasoft.com</a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -78,13 +91,18 @@ export default function HomeFooter(props) {
                   <span className="text-icon__icon">
                     <img src={require('/public/user-page/img/icons/mobile.svg')} width="24" height="24" alt="" />
                   </span>
-                  <span className="text-icon__content">(+84)24 3200 4725</span>
+                  <span className="text-icon__content">
+                    <a href="tel:+842432004725">(+84)24 3200 4725</a>
+                  </span>
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
                     <img src={require('/public/user-page/img/icons/sms.svg')} width="24" height="24" alt="" />
                   </span>
-                  <span className="text-icon__content">sales@relipasoft.com</span>
+                  <span className="text-icon__content">
+                    {' '}
+                    <a href="mailto:sales@relipasoft.com">sales@relipasoft.com</a>
+                  </span>
                 </div>
               </div>
             </div>

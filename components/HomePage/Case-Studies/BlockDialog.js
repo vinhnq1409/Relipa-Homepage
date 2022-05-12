@@ -1,8 +1,9 @@
+import styles from '../../../styles/user/CaseStudy.module.css'
 function BlockDialog({ item }) {
   return (
     <>
       <div className="modal fade" id="studyModal" tabIndex="-1" aria-labelledby="studyModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-lg">
+        <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div className="modal-header align-items-start">
               <div className="modal-header-label">
@@ -28,7 +29,7 @@ function BlockDialog({ item }) {
                       <div className="swiper-wrapper">
                         {item?.works?.map((value) => (
                           <div className="swiper-slide">
-                            <img src={`http://${value}`} style={{ width: '400px', height: '400px' }} alt="..." />
+                            <img src={`http://${value}`} className={`${styles.cardImg} `} alt="..." />
                           </div>
                         ))}
                       </div>

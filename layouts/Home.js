@@ -5,7 +5,6 @@ import Script from 'next/script'
 import Footer from '../components/Footer/HomeFooter'
 import Header from '../components/Header/Header'
 import { MainJS } from '../public/user-page/js/main'
-import LoadingPages from '../components/HomePage/LoadingPage/LoadingPage'
 
 export default function Home({ children, ...rest }) {
   const { route } = useRouter()
@@ -28,7 +27,6 @@ export default function Home({ children, ...rest }) {
         <link rel="stylesheet" href="/user-page/css/swiper-bundle.min.css" />
         <link rel="stylesheet" href="/user-page/css/template.css" />
       </Head>
-      {/* <LoadingPages /> */}
       <div id="wrapper">
         <Header />
         <div>{children}</div>
@@ -40,7 +38,7 @@ export default function Home({ children, ...rest }) {
         <Script src="/user-page/js/swiper-bundle.min.js" strategy="beforeInteractive" />
         <Script src="/user-page/js/aos.js" strategy="beforeInteractive" />
 
-        <Script src="/user-page/js/isotop-filter.js" strategy="beforeInteractive" />
+        {/* <Script src="/user-page/js/isotop-filter.js" strategy="beforeInteractive" /> */}
       </div>
     </>
   )

@@ -53,7 +53,7 @@ export default function News() {
       })
     },
     onSuccess: () => {
-      queryClient.invalidateQueries('getDataNewList')
+      queryClient.invalidateQueries('getDataCaseStudies')
       setSnackbar({
         open: true,
         message: 'Delete Success!',

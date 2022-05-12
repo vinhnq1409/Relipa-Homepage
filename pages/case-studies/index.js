@@ -4,17 +4,43 @@ import BlockBreadcrumb from '../../components/HomePage/Case-Studies/BlockBreadcr
 import BlockCard from '../../components/HomePage/Case-Studies/BlockCard'
 import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import BlockFilter from '../../components/HomePage/Case-Studies/BlockFilter'
-import BlockPagination from '../../components/HomePage/Case-Studies/BlockPagination'
 import HeadHome from '../../components/Head/Head'
 import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
+import { useQuery } from 'react-query'
+import Pagination from '@material-ui/lab/Pagination'
 
 export default function Index({ dataCaseStudy }) {
   const [data, setData] = useState(dataCaseStudy)
+  const [params, setParams] = useState({
+    page: 1,
+    per_page: 10,
+    type: null,
+  })
   const [card, setCard] = useState({})
+
+  const getCaseStudy = async () => {
+    return await get(`user/en/works`, params)
+  }
+
+  const { data: dataCaseStudies } = useQuery(['getCaseStudy', params.page, params.per_page, params.type], getCaseStudy)
+
+  useEffect(() => {
+    setData(dataCaseStudies)
+  }, [dataCaseStudies])
+
   const itemCard = (value) => {
     setCard(value)
   }
+
+  const handlePaginationChange = (e, page) => {
+    setParams({
+      ...params,
+      page: page,
+    })
+  }
+
+  const countPagination = Math.ceil(data?.total / 10)
 
   return (
     <>
@@ -33,10 +59,22 @@ export default function Index({ dataCaseStudy }) {
           <section className="section section-aos" data-aos="fade-up">
             <div className="container">
               <div id="masonry-filter">
-                <BlockFilter />
+                <BlockFilter params={params} setParams={setParams} />
                 <BlockCard data={data} itemCard={itemCard} />
               </div>
-              <BlockPagination />
+              <nav className="pagination-wrapper mt-3" aria-label="Page navigation example">
+                {countPagination >= 2 && (
+                  <Pagination
+                    className="pagination justify-content-center"
+                    count={countPagination}
+                    shape="rounded"
+                    color="primary"
+                    size="large"
+                    onChange={handlePaginationChange}
+                    page={params.page}
+                  />
+                )}
+              </nav>
             </div>
           </section>
           <BlockDialog item={card} />
