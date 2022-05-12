@@ -121,7 +121,7 @@ export const MainJS = () => {
     spaceBetween: 0,
     effect: 'fade',
     autoplay: {
-      delay: 5000,
+      delay: 6000,
       disableOnInteraction: false,
     }, // speed: 1500,
     // If we need pagination
@@ -129,10 +129,10 @@ export const MainJS = () => {
     //   el: '.swiper-pagination',
     // },
     // Navigation arrows
-    // navigation: {
-    //   nextEl: '.swiper-carousel .swiper-button-next',
-    //   prevEl: '.swiper-carousel .swiper-button-prev',
-    // },
+    navigation: {
+      nextEl: '.swiper-carousel .swiper-button-next',
+      prevEl: '.swiper-carousel .swiper-button-prev',
+    },
     // breakpoints: {
     //     640: {
     //       slidesPerView: 1.5
