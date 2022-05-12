@@ -13,13 +13,13 @@ import BlockRelated from '../../components/HomePage/Blogs/BlockRelated'
 export default function BlogDetail({ dataBlog, dataBlogs, popularBlogs, tagsTrend }) {
   const { id, title, created_at, content, url_image_meta } = dataBlog
   useEffect(() => {
-    const countView = setTimeout(async() => {
+    const countView = setTimeout(async () => {
       await post('statistic', {
         name_page: 'blogs',
-        id_item: id
+        id_item: id,
       })
     }, 10000)
-    return (() => clearTimeout(countView))
+    return () => clearTimeout(countView)
   }, [])
   return (
     <>
@@ -33,22 +33,22 @@ export default function BlogDetail({ dataBlog, dataBlogs, popularBlogs, tagsTren
       />
       <HomePage>
         <BlockBanner />
-        <div id='main'>
+        <div id="main">
           <BlockBreadcrumbDetail title={title} />
-          <section className='section section-aos' data-aos='fade-up'>
-            <div className='container'>
-              <div className='row'>
+          <section className="section section-aos" data-aos="fade-up">
+            <div className="container">
+              <div className="row">
                 <BlockMainDetail
                   title={title}
                   created_at={created_at}
                   url_image_meta={url_image_meta}
                   content={content}
                 />
-                <div className='col-md-4 col-lg-3'>
-                  <aside className='aside-right'>
+                <div className="col-md-4 col-lg-3">
+                  <aside className="aside-right">
                     <BlockPopular popularBlogs={popularBlogs} />
                     <BlockNew Blogs={dataBlogs} />
-                    <BlockTrend tagsTrend={tagsTrend} isDetail={true}/>
+                    <BlockTrend tagsTrend={tagsTrend} isDetail={true} />
                   </aside>
                 </div>
               </div>
@@ -62,10 +62,10 @@ export default function BlogDetail({ dataBlog, dataBlogs, popularBlogs, tagsTren
 }
 
 export async function getStaticPaths() {
-  const res = await get('user/en/blog', {per_page: 100, page: 1})
+  const res = await get('user/en/blog')
   return {
-    paths: res.data.map((blog) => ({ params: { blogURL: blog.friendly_url }})),
-    fallback: false
+    paths: res.data.map((blog) => ({ params: { blogURL: blog.friendly_url } })),
+    fallback: 'blocking',
   }
 }
 
@@ -80,5 +80,5 @@ export async function getStaticProps({ params }) {
 
   const tagsTrend = await get('user/tags')
 
-  return { props: { dataBlogs, dataBlog, popularBlogs, tagsTrend }}
+  return { props: { dataBlogs, dataBlog, popularBlogs, tagsTrend }, revalidate: 10 }
 }

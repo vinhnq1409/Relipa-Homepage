@@ -12,7 +12,7 @@ export default {
     case_studies: 'CASE STUDIES',
     news: 'NEWS',
     blog: 'BLOG',
-    contact: 'CONTACT'
+    contact: 'CONTACT',
   },
   footer: {
     japan: 'Japan',
@@ -36,6 +36,6 @@ export default {
     news: 'News',
     blog: 'Blog',
     inquiry: 'Inquiry',
-    privacy_policy: 'Privacy Policy'
-  }
+    privacy_policy: 'Privacy Policy',
+  },
 }

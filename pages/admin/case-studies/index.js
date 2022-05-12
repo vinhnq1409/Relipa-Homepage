@@ -8,7 +8,7 @@ import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import TableList from '../../../components/CaseStudies/Table'
 
-const tableHead = ['ID', 'Title', 'Content', 'Technology', 'Tags', 'Action']
+const tableHead = ['ID', 'Title', 'Type of contract', 'Technology', 'Tags', 'Action']
 
 export default function News() {
   const queryClient = useQueryClient()
@@ -16,17 +16,17 @@ export default function News() {
 
   const [filters, setFilters] = useState({
     title: '',
-    sort: ''
+    sort: '',
   })
   const [params, setParams] = useState({
     per_page: 10,
-    page: 1
+    page: 1,
   })
   const [isSearch, setIsSearch] = useState(false)
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
-    type: ''
+    type: '',
   })
 
   const getDataNewList = async() => {
@@ -43,23 +43,23 @@ export default function News() {
   const {
     mutate: mutateDeleteNew,
     isSuccess,
-    isError: isErrorDelete
+    isError: isErrorDelete,
   } = useMutation(deleteNewItem, {
     onError: () => {
       setSnackbar({
         open: true,
         message: 'Delete Failed!',
-        type: 'error'
+        type: 'error',
       })
     },
     onSuccess: () => {
-      queryClient.invalidateQueries('getDataNewList')
+      queryClient.invalidateQueries('getDataCaseStudies')
       setSnackbar({
         open: true,
         message: 'Delete Success!',
-        type: 'success'
+        type: 'success',
       })
-    }
+    },
   })
 
   const handleCloseSnackBars = () => {
@@ -75,12 +75,12 @@ export default function News() {
       title: '',
       sort: '',
       start_date: null,
-      end_date: moment()
+      end_date: moment(),
     })
     setIsSearch(!isSearch)
     setParams({
       per_page: 10,
-      page: 1
+      page: 1,
     })
   }
 
@@ -90,8 +90,8 @@ export default function News() {
       query: {
         slug: 'about',
         mode: 'edit',
-        id: id
-      }
+        id: id,
+      },
     })
   }
 
@@ -114,7 +114,7 @@ export default function News() {
         setFilters={setFilters}
       />
       <TableList
-        namePage='/case-studies'
+        namePage="/case-studies"
         tableHead={tableHead}
         data={dataNewList?.data || []}
         onUpdate={handleUpdate}
