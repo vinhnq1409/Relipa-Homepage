@@ -14314,7 +14314,7 @@ a.avatar:hover:after {
   color: #fff;
 }
 .swiper-wrapper .main-banner-item .main-banner-item-bg {
-  opacity: 0;
+  /* opacity: 0; */
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: opacity 0ms linear 1500ms, -webkit-transform 0ms linear 1500ms;

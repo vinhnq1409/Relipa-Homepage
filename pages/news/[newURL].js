@@ -87,7 +87,7 @@ export async function getStaticPaths() {
   const res = await get('user/en/new')
   return {
     paths: res.data.map((newItem) => ({ params: { newURL: newItem.friendly_url } })),
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
