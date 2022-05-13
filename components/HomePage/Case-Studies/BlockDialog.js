@@ -7,8 +7,8 @@ function BlockDialog({ item }) {
           <div className="modal-content">
             <div className="modal-header align-items-start">
               <div className="modal-header-label">
-                <h4 className="modal-title">{item.title}</h4>
-                <span className="badge bg-light-opacity">{item.tags}</span>
+                <h4 className="modal-title">{item?.title}</h4>
+                <span className="badge bg-light-opacity">#{item?.tags}</span>
               </div>
               <button type="button" className="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
                 <i className="las la-times"></i>
@@ -27,8 +27,8 @@ function BlockDialog({ item }) {
                   >
                     <div className="swiper-container">
                       <div className="swiper-wrapper">
-                        {item?.works?.map((value) => (
-                          <div className="swiper-slide">
+                        {item?.works?.map((value, id) => (
+                          <div className="swiper-slide" key={id}>
                             <img src={`http://${value}`} className={`${styles.cardImg} `} alt="..." />
                           </div>
                         ))}
@@ -44,15 +44,15 @@ function BlockDialog({ item }) {
                 <div className="col-lg-6">
                   <div className="boxed">
                     <h4 className="boxed-title">Overview</h4>
-                    <div className="boxed-text">{item.content}</div>
+                    <div className="boxed-text">{item?.content}</div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Type of contract</h4>
-                    <div className="boxed-text">{item.type_of_contract}</div>
+                    <div className="boxed-text">{item?.type_of_contract}</div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Technology</h4>
-                    <div className="boxed-text">{item.technology}</div>
+                    <div className="boxed-text">{item?.technology}</div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Responsible content</h4>
@@ -68,7 +68,7 @@ function BlockDialog({ item }) {
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Team structure</h4>
-                    <div className="boxed-text">~ 20 million yen</div>
+                    <div className="boxed-text">~{item?.team_structure}</div>
                   </div>
                 </div>
               </div>

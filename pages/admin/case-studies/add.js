@@ -12,7 +12,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Button, Chip, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core'
 
 import styles from '../../../styles/AdminBlogs.module.css'
-import { get, post, put } from '../../../api/BaseRequest'
+import { get, post } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import { tagsRelipa } from '../../../sampleData/tagsRelipa'
@@ -25,14 +25,10 @@ export default function Works() {
   const [images, setImages] = useState([])
   const [isErrImg, setIsErrImgs] = useState(false)
   const [technology, setTechnology] = useState([])
-  const [isErrTechnology, setIsErrTechnology] = useState(false)
   const [responContent, setResponContent] = useState([])
-  const [isErrResponContent, setIsErrRescontent] = useState(false)
   const [updateImg, setUpdateImg] = useState(false)
   const [tags, setTags] = useState([])
-  const [isErrTags, setIsErrTags] = useState(false)
   const [type, setType] = useState(0)
-  const [isErrType, setIsErrType] = useState(false)
   const maxNumber = 10
 
   const [snackbar, setSnackbar] = useState({
@@ -127,8 +123,7 @@ export default function Works() {
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
     desc: Yup.string().required('Description is required'),
-    type_of_contract: Yup.string().required('Type of contact is required'),
-    team_structure: Yup.string().required('Team structure is required'),
+
     content: Yup.string().required('Content i required'),
   })
 
@@ -137,15 +132,11 @@ export default function Works() {
     formState: { errors },
     control,
     setValue,
-    getValues,
     reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = async (data) => {
-    if (technology.length && responContent.length && tags.length && images?.length >= 3 && type) {
-      setIsErrTechnology(false)
-      setIsErrRescontent(false)
-      setIsErrTags(false)
+    if (images?.length >= 3) {
       setIsErrImgs(false)
       const formData = new FormData()
       const lengthListImg = images.length
@@ -175,30 +166,15 @@ export default function Works() {
       formData.append('type', newData?.type)
       postNewsAPI(formData)
     } else {
-      if (!technology.length) {
-        setIsErrTechnology(true)
-      }
-      if (!responContent.length) {
-        setIsErrRescontent(true)
-      }
-      if (!tags.length) {
-        setIsErrTags(true)
-      }
       if (!(images?.length >= 3)) {
         setIsErrImgs(true)
-      }
-      if (!type?.length) {
-        setIsErrType(true)
       }
     }
   }
 
   const onUpdate = (data) => {
-    if (technology.length && responContent.length && tags.length && images?.length >= 3) {
-      setIsErrTechnology(false)
-      setIsErrRescontent(false)
+    if (images?.length >= 3) {
       setIsErrImgs(false)
-      setIsErrTags(false)
 
       const formData = new FormData()
       if (updateImg) {
@@ -231,15 +207,6 @@ export default function Works() {
       formData.append('_method', 'PUT')
       putNewsAPI(formData)
     } else {
-      if (!technology.length) {
-        setIsErrTechnology(true)
-      }
-      if (!responContent.length) {
-        setIsErrRescontent(true)
-      }
-      if (!tags.length) {
-        setIsErrTags(true)
-      }
       if (!(images?.length >= 3)) {
         setIsErrImgs(true)
       }
@@ -321,9 +288,6 @@ export default function Works() {
                 />
               )}
             />
-            {errors.type_of_contract && (
-              <Typography className={styles.error}>{errors.type_of_contract.message}</Typography>
-            )}
           </Grid>
           <Grid item xs={12}>
             <Autocomplete
@@ -332,18 +296,18 @@ export default function Works() {
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => (
+                  <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
+                ))
               }
               renderInput={(params) => (
                 <TextField {...params} variant="outlined" label="Technology" placeholder="Add technology" />
               )}
               value={technology}
               onChange={(event, value) => {
-                value.length ? setIsErrTechnology(false) : setIsErrTechnology(true)
                 setTechnology(value)
               }}
             />
-            {isErrTechnology && <Typography className={styles.error}>Technology is required</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Autocomplete
@@ -352,7 +316,9 @@ export default function Works() {
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => (
+                  <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
+                ))
               }
               renderInput={(params) => (
                 <TextField
@@ -364,11 +330,9 @@ export default function Works() {
               )}
               value={responContent}
               onChange={(event, value) => {
-                value?.length ? setIsErrRescontent(false) : setIsErrRescontent(true)
                 setResponContent(value)
               }}
             />
-            {isErrResponContent && <Typography className={styles.error}>Responsible content is required</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -385,7 +349,6 @@ export default function Works() {
                 />
               )}
             />
-            {errors.team_structure && <Typography className={styles.error}>{errors.team_structure.message}</Typography>}
           </Grid>
 
           <Grid item xs={12} container spacing={4} justifyContent="center">
@@ -396,7 +359,7 @@ export default function Works() {
                 onImageRemoveAll,
                 onImageUpdate,
                 onImageRemove,
-                isDragging,
+
                 dragProps,
               }) => (
                 <>
@@ -471,16 +434,16 @@ export default function Works() {
               options={tagsRelipa.map((option) => option.title)}
               freeSolo
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => <Chip variant="outlined" label={option} {...getTagProps({ index })} />)
+                value.map((option, index) => (
+                  <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
+                ))
               }
               renderInput={(params) => <TextField {...params} variant="outlined" label="Tags" placeholder="Add tag" />}
               value={tags}
               onChange={(event, value) => {
-                value.length ? setIsErrTags(false) : setIsErrTags(true)
                 setTags(value)
               }}
             />
-            {isErrTags && <Typography className={styles.error}>Tags is required</Typography>}
           </Grid>
           <Grid item xs={12}>
             <FormControl className={styles.full}>
@@ -492,7 +455,6 @@ export default function Works() {
                 id="grouped-native-select"
                 value={type}
                 onChange={(e) => {
-                  e.target.value ? setIsErrType(false) : setIsErrType(true)
                   setType(e.target.value)
                 }}
                 className={styles.full}
@@ -514,7 +476,6 @@ export default function Works() {
                 </MenuItem>
               </Select>
             </FormControl>
-            {isErrType && <Typography className={styles.error}>Type is required</Typography>}
           </Grid>
           <Grid item xs={12} className={styles.flexCenter}>
             {!id && (

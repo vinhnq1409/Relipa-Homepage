@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import styles from '../../../../styles/user/Service.module.css'
+import styles from '../../../styles/user/Service.module.css'
+
 function BlockCaseStudies({ dataCaseStudy, itemCard }) {
   return (
     <section className='section section-aos' data-aos='fade-up'>
@@ -36,7 +37,9 @@ function BlockCaseStudies({ dataCaseStudy, itemCard }) {
           </div>
           <div className='text-center pt-1'>
             <Link href='/case-studies'>
-              <a className='btn btn-outline-greyish btn-lg rounded-0 px-5'>SEE MORE</a>
+              <a className='btn btn-outline-greyish btn-lg rounded-0 px-5' href='#'>
+                SEE MORE
+              </a>
             </Link>
           </div>
         </div>

@@ -52,19 +52,15 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.title}</TableCell>
                 <TableCell>
-                  {row.type_of_contract.split(',').map((item) => (
-                    <p>{item}</p>
+                  {row.type_of_contract.split(',').map((item, id) => (
+                    <p key={id}>{item}</p>
                   ))}
                 </TableCell>
-                <TableCell>
-                  {row.technology.split(',').map((item) => (
-                    <p>{item}</p>
-                  ))}
-                </TableCell>
+                <TableCell>{row.technology}</TableCell>
 
                 <TableCell>
-                  {row.tags.split(',').map((item) => (
-                    <p>{item}</p>
+                  {row.tags.split(',').map((item, id) => (
+                    <p key={id}>{item}</p>
                   ))}
                 </TableCell>
 

@@ -1,14 +1,18 @@
-import React from 'react'
-import BlockBanner from '../../components/HomePage/Service/BlockchainDevelopment/BlockBanner'
-import BlockBreadcrumb from '../../components/HomePage/Service/BlockchainDevelopment/BlockBreadcrumb'
-import BlockCaseStudies from '../../components/HomePage/Service/BlockchainDevelopment/BlockCaseStudies'
-import BlockDesire from '../../components/HomePage/Service/BlockchainDevelopment/BlockDesire'
-import BlockWebSystem from '../../components/HomePage/Service/BlockchainDevelopment/BlockWebSystem'
-import BlockWhyChoose from '../../components/HomePage/Service/BlockchainDevelopment/BlockWhyChoose'
-
+import React, { useState } from 'react'
+import BlockBanner from '../../components/HomePage/Service/AwsMigration/BlockBanner'
+import BlockBreadcrumb from '../../components/HomePage/Service/AwsMigration/BlockBreadcrumb'
+import BlockDesire from '../../components/HomePage/Service/AwsMigration/BlockDesire'
+import BlockWebSystem from '../../components/HomePage/Service/AwsMigration/BlockWebSystem'
+import BlockWhyChoose from '../../components/HomePage/Service/AwsMigration/BlockWhyChoose'
+import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import HomePage from '../../layouts/Home'
+import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 
 export default function Index() {
+  const [card, setCard] = useState({})
+  const itemCard = (value) => {
+    setCard(value)
+  }
   return (
     <HomePage>
       <BlockBanner />
@@ -17,7 +21,8 @@ export default function Index() {
         <BlockDesire />
         <BlockWebSystem />
         <BlockWhyChoose />
-        <BlockCaseStudies />
+        <CaseStudy itemCard={itemCard} />
+        <BlockDialog item={card} />
       </div>
     </HomePage>
   )

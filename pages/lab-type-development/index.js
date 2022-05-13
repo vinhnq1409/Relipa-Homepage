@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
+import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 import BlockBanner from '../../components/HomePage/Service/LabtypeDevelopment/BlockBanner'
-import BlockCaseStudies from '../../components/HomePage/Service/LabtypeDevelopment/BlockCaseStudies'
 import BlockContent from '../../components/HomePage/Service/LabtypeDevelopment/BlockContent'
 import BlockOverview from '../../components/HomePage/Service/LabtypeDevelopment/BlockOverview'
 import BlockWhy from '../../components/HomePage/Service/LabtypeDevelopment/BlockWhy'
@@ -9,6 +11,10 @@ import BlockWhy from '../../components/HomePage/Service/LabtypeDevelopment/Block
 import HomePage from '../../layouts/Home'
 
 export default function Index() {
+  const [card, setCard] = useState({})
+  const itemCard = (value) => {
+    setCard(value)
+  }
   return (
     <HomePage>
       <BlockBanner />
@@ -17,7 +23,8 @@ export default function Index() {
         <BlockContent />
         <BlockOverview />
         <BlockWhy />
-        <BlockCaseStudies />
+        <CaseStudy itemCard={itemCard} />
+        <BlockDialog item={card} />
       </div>
     </HomePage>
   )
