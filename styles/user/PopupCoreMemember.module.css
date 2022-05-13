@@ -1,0 +1,78 @@
+.name {
+  height: 48px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  color: #0045c5;
+}
+.title {
+  width: 230px;
+  height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #888888;
+}
+.desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3b3b3b;
+  text-align: justify;
+}
+.imgContain {
+  position: relative;
+  width: 340px;
+  height: 463px;
+}
+.imgBgr1 {
+  left: 4px;
+  bottom: 0;
+  position: absolute;
+  background-image: url('/user-page/img/company/R.png');
+  background-repeat: no-repeat;
+  width: 253px;
+  height: 293px;
+}
+.imgBgr3 {
+  left: 3px;
+  bottom: 1px;
+  position: absolute;
+  background-image: url('/user-page/img/company/R1.png');
+  background-repeat: no-repeat;
+  width: 253px;
+  height: 293px;
+  z-index: 1;
+  opacity: 0.8;
+}
+.imgBgr2 {
+  left: 34px;
+  position: absolute;
+  /* background-image: url('/user-page/img/company/Layer-1.png'); */
+  background-repeat: no-repeat;
+  width: 340px;
+  height: 463px;
+}
+.bar {
+  width: 150px;
+  height: 0px;
+  border: 1px solid #888888;
+}
+.content {
+  padding-top: 60px;
+  padding-right: 10%;
+}
+.marginAuto {
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%) !important;
+}
+.btnClose{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
