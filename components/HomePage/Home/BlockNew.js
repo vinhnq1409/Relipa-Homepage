@@ -1,4 +1,5 @@
 import useTrans from '../../../i18n/useTrans'
+import Link from 'next/link'
 
 const BlockNew = () => {
   const trans = useTrans()
@@ -133,9 +134,9 @@ const BlockNew = () => {
                 </li>
               </ul>
               <div className='news-footer text-end pt-3'>
-                <a href='#' className='btn btn-outline-greyish btn-lg rounded-0'>
-                  {language.seemore}
-                </a>
+                <Link href='/news'>
+                  <a className='btn btn-outline-greyish btn-lg rounded-0'>{language.seemore}</a>
+                </Link>
               </div>
             </div>
           </div>

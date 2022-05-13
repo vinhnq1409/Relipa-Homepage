@@ -7,33 +7,34 @@ const BlockFilter = ({ params, setParams }) => {
     }
     setParams({
       ...params,
-      type: value,
+      page: 1,
+      type: value
     })
   }
   return (
-    <div className="masonry-filter-buttons">
-      <div className="filter-button">
-        <a class="masonry-filter-item" href="#" data-filter="All" onClick={() => onFilter(0)}>
+    <div className='masonry-filter-buttons'>
+      <div className='filter-button'>
+        <a className='masonry-filter-item' href='#' data-filter='All' onClick={() => onFilter(0)}>
           All
         </a>
       </div>
-      <div className="filter-button">
-        <a className="masonry-filter-item" href="#" data-filter="websystem" onClick={() => onFilter(1)}>
+      <div className='filter-button'>
+        <a className='masonry-filter-item' href='#' data-filter='websystem' onClick={() => onFilter(1)}>
           Web System
         </a>
       </div>
-      <div className="filter-button">
-        <a className="masonry-filter-item" href="#" data-filter="bussinessSystem" onClick={() => onFilter(2)}>
+      <div className='filter-button'>
+        <a className='masonry-filter-item' href='#' data-filter='bussinessSystem' onClick={() => onFilter(2)}>
           Business System
         </a>
       </div>
-      <div className="filter-button">
-        <a className="masonry-filter-item" href="#" data-filter="blockchain" onClick={() => onFilter(3)}>
+      <div className='filter-button'>
+        <a className='masonry-filter-item' href='#' data-filter='blockchain' onClick={() => onFilter(3)}>
           Blockchain
         </a>
       </div>
-      <div className="filter-button">
-        <a className="masonry-filter-item" href="#" data-filter="application" onClick={() => onFilter(4)}>
+      <div className='filter-button'>
+        <a className='masonry-filter-item' href='#' data-filter='application' onClick={() => onFilter(4)}>
           Application
         </a>
       </div>

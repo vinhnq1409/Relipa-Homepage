@@ -65,7 +65,7 @@ export default function Admin({ children, ...rest }) {
       })
 
       if (!isUseRouter) {
-        router.push('/admin')
+        router.push(router.pathname)
       }
     }
   }, [infoUser])

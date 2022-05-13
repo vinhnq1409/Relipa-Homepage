@@ -8,10 +8,10 @@ const BlockBanner = () => {
               <div className='swiper-slide'>
                 <div className='main-banner-item'>
                   <div className='main-banner-item-bg'>
-                      <picture>
-                        <source media='(min-width:768px)' srcSet='/user-page/img/home/banner.png' />
-                        <img src='/user-page/img/home/banner.png' width='375' height='812' alt='' />
-                      </picture>
+                    <picture>
+                      <source media='(min-width:768px)' srcSet='/user-page/img/home/banner.png' />
+                      <img src='/user-page/img/home/banner.png' width='375' height='812' alt='' />
+                    </picture>
                   </div>
                   <div className='container'>
                     <div className='row align-items-center'>
