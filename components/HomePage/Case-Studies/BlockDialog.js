@@ -1,4 +1,8 @@
 import styles from '../../../styles/user/CaseStudy.module.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Navigation } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
 function BlockDialog({ item }) {
   return (
     <>
@@ -17,7 +21,25 @@ function BlockDialog({ item }) {
             <div className="modal-body">
               <div className="row">
                 <div className="col-lg-6">
-                  <div
+                  <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    loop={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                  >
+                    {item?.works?.map((value, id) => (
+                      <div className="swiper-slide" key={id}>
+                        <SwiperSlide>
+                          <img src={`http://${value}`} className={`${styles.imgDialog} `} alt="..." />
+                        </SwiperSlide>
+                      </div>
+                    ))}
+                  </Swiper>
+                  {/* <div
                     className="swiper-stydies swiper-carousel swiper-carousel--arrow-length"
                     data-aos="zoom-in"
                     data-aos-delay="400"
@@ -39,7 +61,7 @@ function BlockDialog({ item }) {
                       <div className="swiper-button-prev"></div>
                       <div className="swiper-button-next"></div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-lg-6">
                   <div className="boxed">

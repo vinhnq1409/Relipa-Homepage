@@ -16,7 +16,7 @@ export default function Index() {
   return (
     <HomePage>
       <BlockBanner />
-      <div id='main'>
+      <div id="main">
         <BlockBreadcrumb />
         <BlockDesire />
         <BlockWebSystem />

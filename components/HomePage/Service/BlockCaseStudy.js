@@ -3,7 +3,7 @@ import { get } from '../../../api/BaseRequest'
 import BlockCaseStudies from './BlockCaseStudies'
 
 function CaseStudy({ itemCard }) {
-  const getCaseStudy = async() => {
+  const getCaseStudy = async () => {
     return await get(`user/en/works`)
   }
   const { data: dataCaseStudy } = useQuery('getBlog', getCaseStudy)
