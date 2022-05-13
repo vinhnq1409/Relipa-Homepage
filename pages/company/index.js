@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeadHome from '../../components/Head/Head'
 import BlockBanner from '../../components/HomePage/Company/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
@@ -8,8 +8,15 @@ import BlockMissionValues from '../../components/HomePage/Company/BlockMissionVa
 import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers'
 import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
+import BlockPopup from '../../components/HomePage/Company/BlockPopup'
 
 export default function Company() {
+  const [infoCoreMember, setInfoCoreMember] = useState({
+    name: '',
+    title: '',
+    desc: '',
+    img: '',
+  })
   return (
     <div>
       <HeadHome
@@ -22,22 +29,22 @@ export default function Company() {
       />
       <HomePage>
         <BlockBanner />
-        <div id='main'>
+        <div id="main">
           <BlockBreadcrumb />
-          <div className='container'>
-            <div className='row'>
-              <div className='col-lg-10'>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-10">
                 <BlockCompanyProfile />
                 <BlockCEOMessage />
                 <BlockMissionValues />
-                <BlockCoreMembers />
+                <BlockCoreMembers infoCoreMember={infoCoreMember} setInfoCoreMember={setInfoCoreMember}/>
               </div>
               <BlockSideBar />
             </div>
           </div>
         </div>
+        <BlockPopup infoCoreMember={infoCoreMember} />
       </HomePage>
     </div>
   )
 }
-

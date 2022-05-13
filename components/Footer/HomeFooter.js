@@ -53,13 +53,13 @@ export default function HomeFooter(props) {
               <div className="widget-content">
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/location.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/location.svg' width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">{trans.headerFooter.footer.japan_address}</span>
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/mobile.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/mobile.svg' width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     <a href="tel:+81368049294">(+81)3 6804 9294</a>
@@ -67,7 +67,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/sms.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/sms.svg'width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     {' '}
@@ -81,7 +81,7 @@ export default function HomeFooter(props) {
               <div className="widget-content">
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/location.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/location.svg' width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam
@@ -89,7 +89,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/mobile.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/mobile.svg' width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     <a href="tel:+842432004725">(+84)24 3200 4725</a>
@@ -97,7 +97,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src={require('/public/user-page/img/icons/sms.svg')} width="24" height="24" alt="" />
+                    <img src='/user-page/img/icons/sms.svg' width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     {' '}
@@ -213,7 +213,7 @@ export default function HomeFooter(props) {
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/blog">
+                        <Link href="/blogs">
                           <a>{trans.headerFooter.footer.blog}</a>
                         </Link>
                       </li>
@@ -230,7 +230,7 @@ export default function HomeFooter(props) {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/blog">
+                        <Link href="/privacy">
                           <a>{trans.headerFooter.footer.privacy_policy}</a>
                         </Link>
                       </li>
