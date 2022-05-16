@@ -141,6 +141,7 @@ export default function AddNews() {
     if (editorRef.current) {
       const newData = {
         ...data,
+        lang: dataNews.data.lang,
         content: editorRef.current.getContent()
       }
       putNewsAPI(newData)

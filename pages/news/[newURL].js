@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import HeadHome from '../../components/Head/Head'
 import { get, post } from '../../api/BaseRequest'
@@ -10,15 +11,17 @@ import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
 
 export default function NewDetail({ dataNew }) {
+  const router = useRouter()
+  const {locale} = router
   const { id, title, created_at, content, url_image_meta } = dataNew
   const [dataNews, setDataNews] = useState([])
   const [popularNews, setPopularNews] = useState([])
 
   const getNews = () => {
-    return get('user/en/new')
+    return get(`user/${locale}/new`)
   }
   const getPopularNews = () => {
-    return get('user/en/new-popular')
+    return get(`user/${locale}/new-popular`)
   }
 
   const { data: news } = useQuery('news', getNews)
@@ -83,15 +86,19 @@ export default function NewDetail({ dataNew }) {
     </>
   )
 }
-export async function getStaticPaths() {
-  const res = await get('user/en/new')
+export async function getStaticPaths({ locales }) {
+  const resEN = await get('user/en/new')
+  const resJA = await get('user/ja/new')
+  const pathsEN = resEN.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }, locale: 'en' }))
+  const pathsJA = resJA.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }, locale: 'ja' }))
+  const paths = [...pathsEN, ...pathsJA]
   return {
-    paths: res.data.map((newItem) => ({ params: { newURL: newItem.friendly_url } })),
+    paths: paths,
     fallback: 'blocking',
   }
 }
 
-export async function getStaticProps({ params }) {
-  const dataNew = await get(`user/en/news/${params.newURL}`)
+export async function getStaticProps({ params, locale }) {
+  const dataNew = await get(`user/${locale}/news/${params.newURL}`)
   return { props: { dataNew } }
 }

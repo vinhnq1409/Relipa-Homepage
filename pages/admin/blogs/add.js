@@ -169,6 +169,7 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
+        lang: dataBlog.data.lang,
         tags: valueTag,
         content: editorRef.current.getContent()
       }
