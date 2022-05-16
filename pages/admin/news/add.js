@@ -130,6 +130,7 @@ export default function AddNews() {
     if (editorRef.current) {
       const newData = {
         ...data,
+        lang: router.locale,
         content: editorRef.current.getContent()
       }
       postNewsAPI(newData)

@@ -154,6 +154,7 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
+        lang: router.locale,
         tags: valueTag,
         content: editorRef.current.getContent()
       }
