@@ -140,7 +140,7 @@ export default function Header(props) {
                 EN
               </a>
             </div> */}
-            {/* <div className="language-block">
+            <div className="language-block">
               <a
                 className={`cursor ${locale === 'ja' ? 'active' : ''}  ${styles.pointer}`}
                 onClick={() => changeLang('ja')}
@@ -155,7 +155,7 @@ export default function Header(props) {
               >
                 EN
               </a>
-            </div> */}
+            </div>
             <button
               className="navbar-toggler collapsed"
               type="button"
