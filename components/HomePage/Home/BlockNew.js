@@ -1,9 +1,31 @@
 import useTrans from '../../../i18n/useTrans'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-const BlockNew = () => {
+const BlockNew = ({ dataNews, dataBlogs }) => {
   const trans = useTrans()
   const language = trans.home.home
+  const [appreciate, setAppreciate] = useState(true)
+  const [appreciateAPI, setAppreciateAPI] = useState([])
+  const [currentAPI, setCurrentAPI] = useState('news')
+
+  const onChangeAppreciate = (e) => {
+    if (e.target.outerText === 'Blog') {
+      setAppreciate(false)
+      setAppreciateAPI(dataBlogs.data)
+      setCurrentAPI('blogs')
+    } else {
+      setAppreciate(true)
+      setAppreciateAPI(dataNews.data)
+      setCurrentAPI('news')
+    }
+  }
+
+  useEffect(() => {
+    if (dataNews) {
+      setAppreciateAPI(dataNews.data)
+    }
+  }, [dataNews])
 
   return (
     <>
@@ -12,129 +34,121 @@ const BlockNew = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="section-heading">
-                <div className="row align-content-center">
-                  <div className="col-4 col-md-12">
-                    <h2 className="section-title" title="News">
-                      News
-                    </h2>
+                {appreciate ? (
+                  <div className="row align-content-center">
+                    <div className="col-4 col-md-12">
+                      <h2 className="section-title" title="News">
+                        News
+                      </h2>
+                    </div>
+                    <div className="col-6 col-md-12">
+                      <h3 className="section-sub-title pointer" title="Blog" onClick={(e) => onChangeAppreciate(e)}>
+                        Blog
+                      </h3>
+                    </div>
                   </div>
-                  <div className="col-6 col-md-12">
-                    <h3 className="section-sub-title" title="Blog">
-                      Blog
-                    </h3>
+                ) : (
+                  <div className="row align-content-center">
+                    <div className="col-4 col-md-12">
+                      <h2 className="section-title" title="News">
+                        Blog
+                      </h2>
+                    </div>
+                    <div className="col-6 col-md-12">
+                      <h3 className="section-sub-title pointer" title="News" onClick={(e) => onChangeAppreciate(e)}>
+                        News
+                      </h3>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="col-md-8">
               <ul className="news-list list-unstyled border-top">
-                <li className="border-bottom">
-                  <div className="card card-horizontal-sm border-0">
-                    <div className="card-thumb lazyload">
-                      <a className="card-thumb-overlay" href="#">
-                        <img
-                          className="card-img-top"
-                          src="user-page/img/home/sr-03.png"
-                          width="130"
-                          height="80"
-                          alt="..."
-                        />
-                      </a>
-                    </div>
-                    <div className="card-body">
-                      <div className="card-meta">2022.03.29</div>
-                      <div className="card-text">
-                        <a href="#">{language.news.contentFirst}</a>
-                      </div>
-                      <a href="#" className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                        <svg width="37" height="8" viewBox="0 0 37 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="border-bottom">
-                  <div className="card card-horizontal-sm border-0">
-                    <div className="card-thumb lazyload">
-                      <a className="card-thumb-overlay" href="#">
-                        <img
-                          className="card-img-top"
-                          src="user-page/img/home/sr-03.png"
-                          width="130"
-                          height="80"
-                          alt="..."
-                        />
-                      </a>
-                    </div>
-                    <div className="card-body">
-                      <div className="card-meta">2022.01.26</div>
-                      <div className="card-text">
-                        <a href="#">{language.news.contentSecond}</a>
-                      </div>
-                      <a href="#" className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                        <svg width="37" height="8" viewBox="0 0 37 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="border-bottom">
-                  <div className="card card-horizontal-sm border-0">
-                    <div className="card-thumb lazyload">
-                      <a className="card-thumb-overlay" href="#">
-                        <img
-                          className="card-img-top"
-                          src="user-page/img/home/sr-03.png"
-                          width="130"
-                          height="80"
-                          alt="..."
-                        />
-                      </a>
-                    </div>
-                    <div className="card-body">
-                      <div className="card-meta">2022.01.21</div>
-                      <div className="card-text">
-                        <a href="#">{language.news.contentThird}</a>
-                      </div>
-                      <a href="#" className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                        <svg width="37" height="8" viewBox="0 0 37 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="border-bottom">
-                  <div className="card card-horizontal-sm border-0">
-                    <div className="card-thumb lazyload">
-                      <a className="card-thumb-overlay" href="#">
-                        <img
-                          className="card-img-top"
-                          src="user-page/img/home/sr-03.png"
-                          width="130"
-                          height="80"
-                          alt="..."
-                        />
-                      </a>
-                    </div>
-                    <div className="card-body">
-                      <div className="card-meta">2022.01.13</div>
-                      <div className="card-text">
-                        <a href="#">{language.news.contentFoufth}</a>
-                      </div>
-                      <a href="#" className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                        <svg width="37" height="8" viewBox="0 0 37 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </li>
+                {appreciateAPI.length > 5
+                  ? appreciateAPI.slice(0, 5).map((item) => (
+                      <li className="border-bottom">
+                        <div className="card card-horizontal-sm border-0">
+                          <div className="card-thumb lazyload">
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="card-thumb-overlay">
+                                <img
+                                  className="card-img-top"
+                                  src={item.url_image_meta}
+                                  width="130"
+                                  height="80"
+                                  alt="..."
+                                />
+                              </a>
+                            </Link>
+                          </div>
+                          <div className="card-body">
+                            <div className="card-meta">{item.created_at}</div>
+                            <div className="card-text">
+                              <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                                <a className="text-hiden">{item.title}</a>
+                              </Link>
+                            </div>
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
+                                <svg
+                                  width="37"
+                                  height="8"
+                                  viewBox="0 0 37 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
+                                </svg>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </li>
+                    ))
+                  : appreciateAPI.map((item) => (
+                      <li className="border-bottom">
+                        <div className="card card-horizontal-sm border-0">
+                          <div className="card-thumb lazyload">
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="card-thumb-overlay">
+                                <img
+                                  className="card-img-top"
+                                  src={item.url_image_meta}
+                                  width="130"
+                                  height="80"
+                                  alt="..."
+                                />
+                              </a>
+                            </Link>
+                          </div>
+                          <div className="card-body">
+                            <div className="card-meta">{item.created_at}</div>
+                            <div className="card-text">
+                              <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                                <a className="text-hiden">{item.title}</a>
+                              </Link>
+                            </div>
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
+                                <svg
+                                  width="37"
+                                  height="8"
+                                  viewBox="0 0 37 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
+                                </svg>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
               </ul>
               <div className="news-footer text-end pt-3">
-                <Link href="/news">
+                <Link href={`/${currentAPI}`}>
                   <a className="btn btn-outline-greyish btn-lg rounded-0">{language.seemore}</a>
                 </Link>
               </div>

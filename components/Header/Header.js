@@ -15,7 +15,7 @@ export default function Header(props) {
   }
 
   const changeLang = (lang) => {
-    router.push(`${router.pathname}`, `${router.pathname}`, { locale: lang })
+    router.push(`${router.asPath}`, `${router.asPath}`, { locale: lang })
   }
 
   return (

@@ -62,7 +62,7 @@ export default function NewDetail({ dataNew }) {
       <HomePage>
         <BlockBanner />
         <div id="main">
-          <BlockBreadcrumbDetail />
+          <BlockBreadcrumbDetail title={title}/>
           <section className="section section-aos" data-aos="fade-up">
             <div className="container">
               <div className="row">
