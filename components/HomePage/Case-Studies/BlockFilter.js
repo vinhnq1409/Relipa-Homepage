@@ -12,9 +12,9 @@ const BlockFilter = ({ params, setParams }) => {
     })
   }
   return (
-    <div className="masonry-filter-buttons">
+    <div className="masonry-filter-buttons " id="btn-filter">
       <div className="filter-button">
-        <a className="masonry-filter-item" href="#" data-filter="All" onClick={() => onFilter(0)}>
+        <a className="masonry-filter-item active-filter" href="#" data-filter="All" onClick={() => onFilter(0)}>
           All
         </a>
       </div>

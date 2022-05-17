@@ -8,8 +8,8 @@ const BlockMain = ({ dataBlogs, count, params, setParams }) => {
     window.scrollTo(0, 0)
   }
   const handleChooseTag = (tag) => {
-    console.log(tag)
     setParams({ ...params, page: 1, tag_id: tag.id })
+    window.scrollTo(0, 0)
   }
   return (
     <div className="col-md-8 col-lg-9">
@@ -57,7 +57,6 @@ const BlockMain = ({ dataBlogs, count, params, setParams }) => {
                                 {tag.name}
                               </span>
                             ))}
-                        {}
                       </div>
                       <h3 className="card-title">
                         <Link href={`/blogs/${dataBlog.friendly_url}`}>

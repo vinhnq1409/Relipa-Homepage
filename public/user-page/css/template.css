@@ -16013,6 +16013,11 @@ a.avatar:hover:after {
     max-height: 150px !important;
     object-fit: cover;
   }
+  .img-item-related-medium {
+    max-width: 346px !important;
+    max-height: 150px !important;
+    object-fit: cover;
+  }
 }
 @media (min-width: 992px) {
   .img-item-related {
@@ -16020,18 +16025,38 @@ a.avatar:hover:after {
     max-height: 120px !important;
     object-fit: cover;
   }
+  .img-item-related-medium {
+    max-width: 346px !important;
+    max-height: 150px !important;
+    object-fit: cover;
+  }
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .img-item-related {
     max-width: 260px !important;
     max-height: 86px !important;
     object-fit: cover;
   }
+  .img-item-related-medium {
+    max-width: 346px !important;
+    max-height: 160px !important;
+    object-fit: cover;
+  }
 }
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .img-item-related {
     max-width: 260px !important;
     max-height: 140px !important;
     object-fit: cover;
   }
+  .img-item-related-medium {
+    max-width: 346px !important;
+    max-height: 120px !important;
+    object-fit: cover;
+  }
+}
+
+.masonry-filter-item.active-filter {
+  background-color: #003cac !important;
+  color: white;
 }

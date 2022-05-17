@@ -16,49 +16,49 @@ const dashboardRoutes = [
     name: 'Dashboard',
     icon: Dashboard,
     layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
+    role: ['Super Admin', 'Admin', 'Editor'],
   },
   {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
     layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
+    role: ['Super Admin', 'Admin', 'Editor'],
   },
   {
     path: '/news',
     name: 'News',
     icon: AssignmentIcon,
     layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
+    role: ['Super Admin', 'Admin', 'Editor'],
   },
-  {
-    path: '/static_page',
-    name: 'Static page',
-    icon: PagesIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
-  },
+  // {
+  //   path: '/static_page',
+  //   name: 'Static page',
+  //   icon: PagesIcon,
+  //   layout: '/admin',
+  //   role: ['Super Admin', 'Admin']
+  // },
   {
     path: '/case-studies',
     name: 'Case studies',
     icon: PagesIcon,
     layout: '/admin',
-    role: ['Super Admin', 'Admin']
+    role: ['Super Admin', 'Admin'],
   },
   {
     path: '/account',
     name: 'Account',
     icon: SupervisorAccountIcon,
     layout: '/admin',
-    role: ['Super Admin']
+    role: ['Super Admin'],
   },
   {
     path: '/tags',
     name: 'Tags',
     icon: CodeIcon,
     layout: '/admin',
-    role: ['Super Admin', 'Admin']
+    role: ['Super Admin', 'Admin'],
   },
   // {
   //   path: '/partner',

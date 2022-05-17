@@ -65,9 +65,6 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 </TableCell>
 
                 <TableCell className={styles.flex2}>
-                  <a target="_blank" href={`${namePage}/${row.friendly_url}`} rel="noreferrer">
-                    <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
-                  </a>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
                   <DeleteIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}

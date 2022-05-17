@@ -1,4 +1,5 @@
 export default {
+  title: 'Business System Development',
   bussiness: {
     one: 'We have many achievements in developing large-scale business systems by ordering from listed companies and major companies.',
     two: 'We would like to continue to accept many projects for developing various types of business systems while making use of our abundant experience and know-how.',

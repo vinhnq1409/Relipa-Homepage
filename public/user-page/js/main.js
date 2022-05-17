@@ -269,4 +269,30 @@ export const MainJS = () => {
   //     obj.classList.add('loaded')
   //   })
   // })
+
+  const [tallestTitle] = [...document?.querySelectorAll('.text-equal-2')].sort(
+    (a, b) => b.clientHeight - a.clientHeight
+  )
+  const [tallestContent] = [...document?.querySelectorAll('.text-equal')].sort(
+    (a, b) => b.clientHeight - a.clientHeight
+  )
+  const element = document?.getElementById('text-equal')
+  let nodesTitle = element?.getElementsByClassName('text-equal-2')
+  for (let i = 0; i < nodesTitle?.length; i++) {
+    nodesTitle[i].style.height = `${tallestTitle.clientHeight}px`
+  }
+  let nodesContent = element?.getElementsByClassName('text-equal')
+  for (let i = 0; i < nodesContent?.length; i++) {
+    nodesContent[i].style.height = `${tallestContent.clientHeight}px`
+  }
+
+  var header = document?.getElementById('btn-filter')
+  var btns = header?.getElementsByClassName('masonry-filter-item')
+  for (var i = 0; i < btns?.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var current = document?.getElementsByClassName('active-filter')
+      current[0].className = current[0].className.replace('active-filter', '')
+      this.className += ' active-filter'
+    })
+  }
 }

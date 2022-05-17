@@ -2,6 +2,7 @@ export default {
   aboutService: {
     seemore: 'もっと見る',
     service: {
+      title: 'サービス',
       LabType: 'Lab-type Development',
       LabTypeContent:
         'ラボ型開発とはプロジェクトごとにお客様の専用開発チームを弊社内に構築し、お客様のチームの一員として、プロジェクトの目標にコミットします。',
