@@ -39,7 +39,7 @@ export default function Blogs({ blogs }) {
   }
 
   const getTags = () => {
-    return get('user/tags')
+    return get(`user/${locale}/tags`)
   }
 
   const { data: dataByParams } = useQuery(['blogs', params.per_page, params.page, params.tag_id], getBlogs)

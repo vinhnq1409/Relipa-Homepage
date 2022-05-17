@@ -27,7 +27,7 @@ const BlockRelated = ({ dataBlog }) => {
                   </div>
                   <div className='card-body'>
                     <div className='card-meta mb-1'>
-                      {blog.created_at.slice(0, 10)}
+                      {blog.created_at.slice(0, 10)} {' '}
                       {blog.tags.map((tag, index) => (
                         <span key={index} className='badge bg-primary text-uppercase'>
                           {tag.name}

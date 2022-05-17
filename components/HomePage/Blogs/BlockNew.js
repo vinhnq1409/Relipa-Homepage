@@ -25,7 +25,7 @@ const BlockNew = ({ blogs }) => {
               <div className="card-body">
                 <h4 className="card-title">
                   <Link href={`/blogs/${newBlog.friendly_url}`}>
-                    <a>{newBlog.title}</a>
+                    <a className='text-hiden-3'>{newBlog.title}</a>
                   </Link>
                 </h4>
               </div>

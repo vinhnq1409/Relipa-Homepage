@@ -30,7 +30,7 @@ export default function BlogDetail({ dataBlog }) {
   }
 
   const getTags = () => {
-    return get('user/tags')
+    return get(`user/${locale}/tags`)
   }
   const { data: blogs } = useQuery('blogs', getBlogs)
   const { data: popular } = useQuery('popularNews', getPopularBlogs)
@@ -104,13 +104,18 @@ export default function BlogDetail({ dataBlog }) {
   )
 }
 
-export async function getStaticPaths() {
-  const res = await get('user/en/blog')
+export async function getStaticPaths({ locales }) {
+  const resEN = await get('user/en/blog')
+  const resJA = await get('user/ja/blog')
+  const pathsEN = resEN.data.map((blog) => ({ params: { blogURL: blog.friendly_url }, locale: 'en' }))
+  const pathsJA = resJA.data.map((blog) => ({ params: { blogURL: blog.friendly_url }, locale: 'ja' }))
+  const paths = [...pathsEN, ...pathsJA]
   return {
-    paths: res.data.map((blog) => ({ params: { blogURL: blog.friendly_url } })),
+    paths: paths,
     fallback: 'blocking',
   }
 }
+
 
 export async function getStaticProps({ params, locale }) {
   const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)
