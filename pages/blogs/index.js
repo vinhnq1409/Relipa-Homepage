@@ -51,7 +51,7 @@ export default function Blogs({ blogs }) {
   }, [dataByParams])
 
   useEffect(() => {
-    tag ? setParams({ ...params, page: 1, tag_id: tag }) : null
+    tag ? setParams({ ...params, page: 1, tag_id: tag.id }) : null
     return () => dispatch(resetTag())
   }, [tag])
 
