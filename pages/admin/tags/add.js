@@ -107,6 +107,7 @@ export default function Add() {
   const onCreate = (data) => {
     const newData = {
       ...data,
+      lang: router.locale,
       is_trend: +data.is_trend
     }
     postTagAPI(newData)

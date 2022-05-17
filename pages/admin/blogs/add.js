@@ -47,7 +47,7 @@ export default function Add() {
   }
 
   const putBlog = async(data) => {
-    return await put(`blogs/${id}`, data)
+    return await post(`blogs/${id}`, data)
   }
 
   const {
@@ -171,7 +171,8 @@ export default function Add() {
         ...data,
         lang: dataBlog.data.lang,
         tags: valueTag,
-        content: editorRef.current.getContent()
+        content: editorRef.current.getContent(),
+        _method: 'PUT'
       }
       putBlogAPI(newData)
     } else {

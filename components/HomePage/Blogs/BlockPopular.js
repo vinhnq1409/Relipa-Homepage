@@ -17,7 +17,7 @@ const BlockPopular = ({ popularBlogs }) => {
               <div className='card-body'>
                 <h4 className='card-title'>
                   <Link href={`/blogs/${popularBlog.friendly_url}`}>
-                    <a>{popularBlog.title}</a>
+                    <a className='text-hiden-3'>{popularBlog.title}</a>
                   </Link>
                 </h4>
               </div>

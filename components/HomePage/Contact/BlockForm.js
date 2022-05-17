@@ -12,15 +12,6 @@ const BlockForm = ({ onNotification }) => {
     return await post('contact', data)
   }
 
-  const { mutate: postInfoContactAPI, isLoading: isPostingInfoContactAPI } = useMutation(postContact, {
-    onSuccess: () => {
-      onNotification(true)
-    },
-    onError: () => {
-      onNotification(false)
-    },
-  })
-
   const defaultValues = {
     name: '',
     company_name: '',
@@ -31,6 +22,18 @@ const BlockForm = ({ onNotification }) => {
     your_source: '0',
     is_agree: true,
   }
+
+  const { mutate: postInfoContactAPI, isLoading: isPostingInfoContactAPI } = useMutation(postContact, {
+    onSuccess: () => {
+      onNotification(true)
+      reset({
+        ...defaultValues,
+      })
+    },
+    onError: () => {
+      onNotification(false)
+    },
+  })
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Please fill in the required fields'),
@@ -56,6 +59,7 @@ const BlockForm = ({ onNotification }) => {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onSend = (data) => {
@@ -175,6 +179,9 @@ const BlockForm = ({ onNotification }) => {
                   className="btn btn-outline-greyish btn-lg rounded-0 px-5"
                   disabled={isPostingInfoContactAPI}
                 >
+                  {isPostingInfoContactAPI && (
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  )}{' '}
                   SEND WITH THIS CONTENT
                 </button>
               </div>

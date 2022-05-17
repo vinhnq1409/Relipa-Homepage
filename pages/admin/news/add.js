@@ -42,7 +42,7 @@ export default function AddNews() {
   }
 
   const putNews = async(data) => {
-    return await put(`news/${id}`, data)
+    return await post(`news/${id}`, data)
   }
 
   const {
@@ -142,7 +142,8 @@ export default function AddNews() {
       const newData = {
         ...data,
         lang: dataNews.data.lang,
-        content: editorRef.current.getContent()
+        content: editorRef.current.getContent(),
+        _method: 'PUT'
       }
       putNewsAPI(newData)
     }
