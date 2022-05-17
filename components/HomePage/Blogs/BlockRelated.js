@@ -8,7 +8,7 @@ const BlockRelated = ({ dataBlog }) => {
   const router = useRouter()
 
   const handleChooseTag = (tag) => {
-    dispatch(addTag(tag.id))
+    dispatch(addTag(tag))
     router.push('/blogs')
   }
   return (
@@ -38,6 +38,11 @@ const BlockRelated = ({ dataBlog }) => {
                   <div className="card-body">
                     <div className="card-meta mb-1">
                       {blog.created_at.slice(0, 10)}{' '}
+                      <h3 className="card-title">
+                        <Link href={`/blogs/${blog.friendly_url}`}>
+                          <a className="text-hiden">{blog.title}</a>
+                        </Link>
+                      </h3>
                       {blog.tags.length > 2
                         ? blog.tags.slice(0, 2).map((tag, index) => (
                             <span
@@ -65,11 +70,6 @@ const BlockRelated = ({ dataBlog }) => {
                           ))}
                       <span className="badge bg-primary text-uppercase"></span>
                     </div>
-                    <h3 className="card-title">
-                      <Link href={`/blogs/${blog.friendly_url}`}>
-                        <a className="text-hiden">{blog.title}</a>
-                      </Link>
-                    </h3>
                   </div>
                 </div>
               </div>

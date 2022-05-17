@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Pagination from '@material-ui/lab/Pagination'
+import { useSelector, useDispatch } from 'react-redux'
+import { addTag } from '../../../redux/slices/tagSlice'
 
 const BlockMain = ({ dataBlogs, count, params, setParams }) => {
+  const [viewTag, setViewTag] = useState(null)
+  const { tag } = useSelector((state) => state.tag)
+
+  const dispatch = useDispatch()
+
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
     window.scrollTo(0, 0)
   }
   const handleChooseTag = (tag) => {
+    dispatch(addTag(tag))
     setParams({ ...params, page: 1, tag_id: tag.id })
     window.scrollTo(0, 0)
   }
+
+  useEffect(() => {
+    if (tag) {
+      setViewTag(tag.name)
+    }
+  }, [tag])
+
   return (
     <div className="col-md-8 col-lg-9">
+      {viewTag && (
+        <div className="section-content-header line-bottom text-primary mb-3">
+          <h5 className="section-content-title">{`Tag for "${viewTag}"`}</h5>
+        </div>
+      )}
       <div className="primary-box mb-5 mb-md-0">
         <ul className="list-flexiable list-unstyled">
           {dataBlogs?.map((dataBlog) => (
@@ -57,6 +77,7 @@ const BlockMain = ({ dataBlogs, count, params, setParams }) => {
                                 {tag.name}
                               </span>
                             ))}
+                        {}
                       </div>
                       <h3 className="card-title">
                         <Link href={`/blogs/${dataBlog.friendly_url}`}>

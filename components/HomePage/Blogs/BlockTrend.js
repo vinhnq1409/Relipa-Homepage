@@ -6,14 +6,14 @@ const BlockTrend = ({ tagsTrend, params, setParams, isDetail = false }) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const setParamsByTag = (idTrend) => {
-    dispatch(addTag(idTrend))
+  const setParamsByTag = (tagTrend) => {
+    dispatch(addTag(tagTrend))
     if (isDetail) {
       router.push('/blogs')
     } else {
       setParams({
         ...params,
-        tag_id: idTrend
+        tag_id: tagTrend.id
       })
     }
   }
@@ -25,7 +25,7 @@ const BlockTrend = ({ tagsTrend, params, setParams, isDetail = false }) => {
       <ul className='list-group-text-link list-group list-unstyled'>
         {tagsTrend.map((tagTrend) => (
           <li key={tagTrend.id} className='border-bottom py-3'>
-            <a className='text-link-icon' onClick={() => setParamsByTag(tagTrend.id)} href='#'>
+            <a className='text-link-icon' onClick={() => setParamsByTag(tagTrend)} href='#'>
               <span className='text-link-icon-text'>{tagTrend.name}</span>
               <span className='text-link-icon-icon'>
                 <svg width='25' height='6' viewBox='0 0 25 6' fill='none' xmlns='http://www.w3.org/2000/svg'>

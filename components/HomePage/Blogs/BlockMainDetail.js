@@ -24,15 +24,6 @@ const BlockMainDetail = ({ title, created_at, url_image_meta, content }) => {
             </div>
           </div>
         </article>
-        <div className='pagination-buttons'>
-          <a className='pagination-button pagination-button-prev' href='#'>
-            <span className='pagination-button-icon'></span>
-            <span className='pagination-button-text length'>
-              Software & App Development Exhibition [Spring] (SODEC 2022) | Notice of Exhibit at
-            </span>
-            <span className='pagination-button-text short'>Preview</span>
-          </a>
-        </div>
       </div>
     </div>
   )
