@@ -1,4 +1,5 @@
 import useTrans from '../../../i18n/useTrans'
+import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
 
 const BlockVoice = () => {
   const trans = useTrans()
@@ -51,7 +52,9 @@ const BlockVoice = () => {
                         </div>
                         <div className="card-body">
                           <h3 className="card-title border-bottom">
-                            <a href="#">{language.TeruHosono.name}</a>
+                            <a href="#" onClick={onPreventDefault}>
+                              {language.TeruHosono.name}
+                            </a>
                           </h3>
                           <div className="card-meta mb-4 pb-1">Công ty TNHH LEEWAYS</div>
                           <div className="card-text bg-quote">{language.TeruHosono.content}</div>
@@ -73,7 +76,9 @@ const BlockVoice = () => {
                         </div>
                         <div className="card-body">
                           <h3 className="card-title border-bottom">
-                            <a href="#">{language.RyoheiKamiya.name}</a>
+                            <a href="#" onClick={onPreventDefault}>
+                              {language.RyoheiKamiya.name}
+                            </a>
                           </h3>
                           <div className="card-meta mb-4 pb-1">Công ty TNHH LEEWAYS</div>
                           <div className="card-text bg-quote">{language.RyoheiKamiya.content}</div>
@@ -95,7 +100,9 @@ const BlockVoice = () => {
                         </div>
                         <div className="card-body">
                           <h3 className="card-title border-bottom">
-                            <a href="#">{language.KensaguTakasi.name}</a>
+                            <a href="#" onClick={onPreventDefault}>
+                              {language.KensaguTakasi.name}
+                            </a>
                           </h3>
                           <div className="card-meta mb-4 pb-1">Công ty TNHH LEEWAYS</div>
                           <div className="card-text bg-quote">{language.KensaguTakasi.content}</div>

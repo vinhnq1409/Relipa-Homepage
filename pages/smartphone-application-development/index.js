@@ -3,7 +3,8 @@ import BlockBanner from '../../components/HomePage/Service/SmartphoneApplication
 import BlockBreadcrumb from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockBreadcrumb'
 import BlockDesire from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockDesire'
 import BlockWebSystem from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockWebSystem'
-import BlockWhyChoose from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockWhyChoose'
+import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
+
 import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 
 import HomePage from '../../layouts/Home'

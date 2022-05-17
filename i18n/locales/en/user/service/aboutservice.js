@@ -2,6 +2,7 @@ export default {
   aboutService: {
     seemore: 'See more',
     service: {
+      title: 'service',
       LabType: 'Lab-type Development',
       LabTypeContent:
         "What is lab-type development? We build a dedicated development team for each project within our company, and as a member of the customer's team, we commit to the goals of the project.",

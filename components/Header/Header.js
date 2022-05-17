@@ -96,7 +96,7 @@ export default function Header(props) {
                   <li>
                     <Link href="/aws-migration">
                       <a className="dropdown-item" href="aws-migration.html">
-                        AWS Migration
+                        {trans.headerFooter.header.AWSMigration}
                       </a>
                     </Link>
                   </li>
@@ -133,10 +133,10 @@ export default function Header(props) {
             </ul>
           </div>
           <div className="top-right">
-            {/* <div className='language-block'>
-              <a href='#'>JP</a>
-              <span className='px-2'>/ </span>
-              <a className='active' href='#'>
+            {/* <div className="language-block">
+              <a href="#">JP</a>
+              <span className="px-2">/ </span>
+              <a className="active" href="#">
                 EN
               </a>
             </div> */}

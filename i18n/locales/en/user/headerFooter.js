@@ -1,7 +1,7 @@
 export default {
   header: {
+    home: 'HOME',
     company: 'COMPANY',
-    business: 'BUSINESS',
     service: 'SERVICE',
     about_service: 'About Service',
     lap_type: 'Lab-type Development',
@@ -13,6 +13,8 @@ export default {
     news: 'NEWS',
     blog: 'BLOG',
     contact: 'CONTACT',
+    PrivacyPolicy: 'Privacy Policy',
+    AWSMigration: 'AWS Migration',
   },
   footer: {
     japan: 'Japan',
