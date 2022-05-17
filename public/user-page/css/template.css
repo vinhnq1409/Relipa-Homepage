@@ -16060,3 +16060,6 @@ a.avatar:hover:after {
   background-color: #003cac !important;
   color: white;
 }
+.pointer{
+  cursor: pointer;
+}

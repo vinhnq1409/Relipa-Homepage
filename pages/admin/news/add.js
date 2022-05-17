@@ -151,7 +151,7 @@ export default function AddNews() {
 
   const onResetURL = () => {
     const valueTitle = getValues('title')
-    const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-')
+    const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-').toLowerCase()
     setValue('friendly_url', resetFriendlyUrl)
   }
 
