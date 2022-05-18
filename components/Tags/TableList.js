@@ -51,6 +51,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{`${!!row.is_trend}`}</TableCell>
+                <TableCell>{row.lang}</TableCell>
                 <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell className={styles.flex2}>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
