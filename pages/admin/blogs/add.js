@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
-import { tagsRelipa } from '../../../sampleData/tagsRelipa'
+// import { tagsRelipa } from '../../../sampleData/tagsRelipa'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
@@ -22,10 +22,16 @@ export default function Add() {
   const [valueEditor, setValueEditor] = useState('')
   const [valueTag, setValueTag] = useState([])
   const [isErrorTag, setIsErrorTag] = useState(false)
+  const [tagsRelipa, setTagsRelipa] = useState([])
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
     severity: 'success'
+  })
+  const [paramsTags, setParamsTags] = useState({
+    per_page: 20,
+    page: 1,
+    lang: router.locale,
   })
 
   const defaultValues = {
@@ -50,11 +56,17 @@ export default function Add() {
     return await post(`blogs/${id}`, data)
   }
 
+  const getTags = () => {
+    return get('tags', paramsTags)
+  }
+
   const {
     data: dataBlog,
     remove: removeBlogs,
     isLoading: isGetBlogAPI
   } = useQuery('getBlog', getBlog, { enabled: !!id })
+
+  const { data: dataTags } = useQuery(['admin/tags', paramsTags.page, paramsTags.per_page, paramsTags.lang], getTags)
 
   const { mutate: postBlogAPI, isLoading: isPostingBlogAPI } = useMutation(postBlog, {
     onSuccess: () => {
@@ -116,8 +128,14 @@ export default function Add() {
         tags.push(tag.name)
       }
       setValueTag(tags)
+      setParamsTags({...paramsTags, lang: dataBlog.data.lang })
     }
+    return () => setParamsTags({...paramsTags, lang: router.locale })
   }, [dataBlog])
+
+  useEffect(() => {
+    dataTags ? setTagsRelipa(dataTags.data) : null
+  }, [dataTags, dataBlog])
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
@@ -250,7 +268,7 @@ export default function Add() {
             <Autocomplete
               multiple
               id='tags-filled'
-              options={tagsRelipa.map((option) => option.title)}
+              options={tagsRelipa.map((option) => option.name)}
               freeSolo
               renderTags={(value, getTagProps) =>
                 value.map((option, index) => (

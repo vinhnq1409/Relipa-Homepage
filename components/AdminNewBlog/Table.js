@@ -51,7 +51,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.title}</TableCell>
-                <TableCell>{row.author}</TableCell>
+                <TableCell>{row.lang}</TableCell>
                 <TableCell>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.total_view}</TableCell>

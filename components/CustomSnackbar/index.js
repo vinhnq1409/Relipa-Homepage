@@ -12,9 +12,9 @@ export default function CustomizedSnackbars({ message, open, onClose, severity }
     <div className={styles.fw}>
       <Snackbar
         open={open}
-        autoHideDuration={3000}
+        autoHideDuration={3500}
         onClose={onClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <Alert onClose={onClose} severity={severity}>
           {message}

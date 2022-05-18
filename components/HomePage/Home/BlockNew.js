@@ -1,6 +1,7 @@
 import useTrans from '../../../i18n/useTrans'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { useTransition, animated } from 'react-spring'
 
 const BlockNew = ({ dataNews, dataBlogs }) => {
   const trans = useTrans()
@@ -8,6 +9,12 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
   const [appreciate, setAppreciate] = useState(true)
   const [appreciateAPI, setAppreciateAPI] = useState([])
   const [currentAPI, setCurrentAPI] = useState('news')
+
+  const transition = useTransition(appreciate, {
+    from: { x: 0, y: 12, opacity: 0 },
+    enter: { x: 0, y: 0, opacity: 1 },
+    delay: 100
+  })
 
   const onChangeAppreciate = (e) => {
     if (e.target.outerText === 'Blog') {
@@ -34,32 +41,34 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
           <div className="row">
             <div className="col-md-4">
               <div className="section-heading">
-                {appreciate ? (
-                  <div className="row align-content-center">
-                    <div className="col-4 col-md-12">
-                      <h2 className="section-title" title="News">
-                        News
-                      </h2>
-                    </div>
-                    <div className="col-6 col-md-12">
-                      <h3 className="section-sub-title pointer" title="Blog" onClick={(e) => onChangeAppreciate(e)}>
-                        Blog
-                      </h3>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="row align-content-center">
-                    <div className="col-4 col-md-12">
-                      <h2 className="section-title" title="News">
-                        Blog
-                      </h2>
-                    </div>
-                    <div className="col-6 col-md-12">
-                      <h3 className="section-sub-title pointer" title="News" onClick={(e) => onChangeAppreciate(e)}>
-                        News
-                      </h3>
-                    </div>
-                  </div>
+                {transition((style, item) =>
+                  item ? (
+                    <animated.div className="row align-content-center" style={style}>
+                      <div className="col-4 col-md-12">
+                        <h2 className="section-title" title="News">
+                          News
+                        </h2>
+                      </div>
+                      <div className="col-6 col-md-12">
+                        <h3 className="section-sub-title pointer" title="Blog" onClick={(e) => onChangeAppreciate(e)}>
+                          Blog
+                        </h3>
+                      </div>
+                    </animated.div>
+                  ) : (
+                    <animated.div className="row align-content-center" style={style}>
+                      <div className="col-4 col-md-12">
+                        <h2 className="section-title" title="News">
+                          Blog
+                        </h2>
+                      </div>
+                      <div className="col-6 col-md-12">
+                        <h3 className="section-sub-title pointer" title="News" onClick={(e) => onChangeAppreciate(e)}>
+                          News
+                        </h3>
+                      </div>
+                    </animated.div>
+                  )
                 )}
               </div>
             </div>

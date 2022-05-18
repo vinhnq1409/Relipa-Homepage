@@ -8,7 +8,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-const tableHead = ['Id', 'Subject', 'Author', 'Date', 'Status', 'Views', 'Action']
+const tableHead = ['Id', 'Subject', 'API', 'Date', 'Status', 'Views', 'Action']
 
 export default function Blogs() {
   const router = useRouter()

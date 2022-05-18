@@ -8,7 +8,7 @@ import { del, get } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import TableList from '../../../components/Tags/TableList'
 
-const tableHead = ['Id', 'Name', 'is Trend', 'Date', 'Action']
+const tableHead = ['Id', 'Name', 'is Trend', 'API','Date', 'Action']
 
 export default function Tags() {
   const router = useRouter()
@@ -32,8 +32,8 @@ export default function Tags() {
     return get('tags', params)
   }
 
-  const deleteTag = (blogId) => {
-    return del(`tags/${blogId}`)
+  const deleteTag = (tagId) => {
+    return del(`tags/${tagId}`)
   }
 
   const { data, refetch } = useQuery(['admin/tags', params.per_page, params.page], getTags)
