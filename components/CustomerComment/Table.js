@@ -51,18 +51,10 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.title}</TableCell>
-                <TableCell>
-                  {row.type_of_contract?.split(',').map((item, id) => (
-                    <p key={id}>{item}</p>
-                  ))}
-                </TableCell>
-                <TableCell>{row.technology}</TableCell>
+                <TableCell>{row.company}</TableCell>
+                <TableCell>{row.desc}</TableCell>
 
-                <TableCell>
-                  {row.tags?.split(',').map((item, id) => (
-                    <p key={id}>{item}</p>
-                  ))}
-                </TableCell>
+                <TableCell>{`http://${row.voice || ''}`}</TableCell>
 
                 <TableCell className={styles.flex2}>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />

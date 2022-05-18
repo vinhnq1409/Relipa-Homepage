@@ -60,6 +60,13 @@ const dashboardRoutes = [
     layout: '/admin',
     role: ['Super Admin', 'Admin'],
   },
+  {
+    path: '/customercomment',
+    name: 'Customer Comment',
+    icon: ChromeReaderModeIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin', 'Editor'],
+  },
   // {
   //   path: '/partner',
   //   name: 'Partner',
