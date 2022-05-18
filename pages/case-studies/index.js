@@ -9,18 +9,21 @@ import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
 import { useQuery } from 'react-query'
 import Pagination from '@material-ui/lab/Pagination'
+import { useRouter } from 'next/router'
 
 export default function Index({ dataCaseStudy }) {
   const [data, setData] = useState(dataCaseStudy)
   const [params, setParams] = useState({
     page: 1,
     per_page: 10,
-    type: null
+    type: null,
   })
   const [card, setCard] = useState({})
+  const router = useRouter()
+  const { locale } = router
 
-  const getCaseStudy = async() => {
-    return await get(`user/en/works`, params)
+  const getCaseStudy = async () => {
+    return await get(`user/${locale}/works`, params)
   }
 
   const { data: dataCaseStudies } = useQuery(['getCaseStudy', params.page, params.per_page, params.type], getCaseStudy)
@@ -36,7 +39,7 @@ export default function Index({ dataCaseStudy }) {
   const handlePaginationChange = (e, page) => {
     setParams({
       ...params,
-      page: page
+      page: page,
     })
   }
 
@@ -54,22 +57,22 @@ export default function Index({ dataCaseStudy }) {
       />
       <HomePage>
         <BlockBanner />
-        <div id='main'>
+        <div id="main">
           <BlockBreadcrumb />
-          <section className='section section-aos' data-aos='fade-up'>
-            <div className='container'>
-              <div id='masonry-filter'>
+          <section className="section section-aos" data-aos="fade-up">
+            <div className="container">
+              <div id="masonry-filter">
                 <BlockFilter params={params} setParams={setParams} />
                 <BlockCard data={data} itemCard={itemCard} />
               </div>
-              <nav className='pagination-wrapper mt-3' aria-label='Page navigation example'>
+              <nav className="pagination-wrapper mt-3" aria-label="Page navigation example">
                 {countPagination >= 2 && (
                   <Pagination
-                    className='pagination justify-content-center'
+                    className="pagination justify-content-center"
                     count={countPagination}
-                    shape='rounded'
-                    color='primary'
-                    size='large'
+                    shape="rounded"
+                    color="primary"
+                    size="large"
                     onChange={handlePaginationChange}
                     page={params.page}
                   />
@@ -84,8 +87,8 @@ export default function Index({ dataCaseStudy }) {
   )
 }
 
-export async function getStaticProps() {
-  const dataCaseStudy = await get(`user/en/works`)
+export async function getStaticProps({ locale }) {
+  const dataCaseStudy = await get(`user/${locale}/works`)
 
-  return { props: { dataCaseStudy }}
+  return { props: { dataCaseStudy } }
 }

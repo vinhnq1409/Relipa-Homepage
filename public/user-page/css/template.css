@@ -16018,8 +16018,12 @@ a.avatar:hover:after {
     max-height: 150px !important;
     object-fit: cover;
   }
+  .card-img-voice {
+    max-width: 306px !important;
+    min-height: 510px !important;
+  }
 }
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1365px) {
   .img-item-related {
     max-width: 260px !important;
     max-height: 120px !important;
@@ -16029,6 +16033,10 @@ a.avatar:hover:after {
     max-width: 346px !important;
     max-height: 150px !important;
     object-fit: cover;
+  }
+  .card-img-voice {
+    max-width: 306px !important;
+    min-height: 510px !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -16042,6 +16050,10 @@ a.avatar:hover:after {
     max-height: 160px !important;
     object-fit: cover;
   }
+  .card-img-voice {
+    max-width: 306px !important;
+    min-height: 510px !important;
+  }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .img-item-related {
@@ -16054,12 +16066,24 @@ a.avatar:hover:after {
     max-height: 120px !important;
     object-fit: cover;
   }
+  .card-img-voice {
+    max-width: 428px !important;
+    min-height: 720px !important;
+  }
 }
 
 .masonry-filter-item.active-filter {
   background-color: #003cac !important;
   color: white;
 }
-.pointer{
+.pointer {
   cursor: pointer;
+}
+
+.swiper-service-why .swiper-controls .swiper-button-prev {
+  left: -30px !important;
+}
+
+.swiper-service-why .swiper-controls .swiper-button-next {
+  right: -30px !important;
 }

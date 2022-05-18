@@ -1,7 +1,7 @@
 import useTrans from '../../../i18n/useTrans'
 import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
 
-const BlockVoice = () => {
+const BlockVoice = ({ voice }) => {
   const trans = useTrans()
   const language = trans.home.home.voice
   return (
@@ -37,6 +37,32 @@ const BlockVoice = () => {
               >
                 <div className="swiper-container">
                   <div className="swiper-wrapper">
+                    {voice?.map((item) => (
+                      <div className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5">
+                        <div className="card card-horizontal border-0 card-padding card-shadow-bottom">
+                          <div className="card-thumb lazyload">
+                            <a className="card-thumb-overlay" href="#">
+                              <img
+                                className="card-img-top card-img-voice"
+                                src={`http://${item.voice}`}
+                                width="306"
+                                height="306"
+                                alt="..."
+                              />
+                            </a>
+                          </div>
+                          <div className="card-body">
+                            <h3 className="card-title border-bottom">
+                              <a href="#" onClick={onPreventDefault}>
+                                {item.title}
+                              </a>
+                            </h3>
+                            <div className="card-meta mb-4 pb-1">{item.company}</div>
+                            <div className="card-text bg-quote">{item.desc}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                     <div className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5">
                       <div className="card card-horizontal border-0 card-padding card-shadow-bottom">
                         <div className="card-thumb lazyload">

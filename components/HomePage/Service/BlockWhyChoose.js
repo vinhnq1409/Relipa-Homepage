@@ -12,18 +12,20 @@ const BlockWhyChoose = () => {
               <h2 className="section-content-title">{language.why.title}</h2>
             </div>
             <div
-              className="swiper-carousel swiper-carousel--arrow-length swiper-carousel--highlight-active"
+              className="swiper-carousel swiper-carousel--vertical"
               data-aos="zoom-in"
               data-aos-delay="400"
               data-carousel="swiper"
               slide-autoplay="false"
+              slide-centeredslides="true"
               slide-speed="800"
-              slide-item="2"
+              slide-item="1"
+              slide-direction=""
               slide-loop="true"
             >
               <div className="swiper-container">
                 <div className="swiper-wrapper" id="text-equal">
-                  <div className="swiper-slide ">
+                  <div className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5 ">
                     <div className="card card-over text-equal">
                       <div className="card-body">
                         <div className="card-thumb">
@@ -48,7 +50,7 @@ const BlockWhyChoose = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="swiper-slide ">
+                  <div className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5 ">
                     <div className="card card-over text-equal">
                       <div className="card-body">
                         <div className="card-thumb">

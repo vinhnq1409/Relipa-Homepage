@@ -10,7 +10,18 @@ const BlockWhy = () => {
           <div className="section-content-header line-bottom text-white">
             <h2 className="section-content-title">Why Relipa</h2>
           </div>
-          <div className="swiper-carousel why-swiper-carousel">
+          <div
+            className="swiper-carousel swiper-carousel--vertical swiper-service-why"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            data-carousel="swiper"
+            slide-autoplay="false"
+            slide-centeredslides="true"
+            slide-speed="800"
+            slide-item="5"
+            slide-direction=""
+            slide-loop="true"
+          >
             <div className="swiper-container">
               <div className="swiper-wrapper" id="text-equal">
                 <div className="swiper-slide">
@@ -116,6 +127,11 @@ const BlockWhy = () => {
                   </div>
                 </div>
               </div>
+              <div className="swiper-pagination"></div>
+            </div>
+            <div className="swiper-controls">
+              <div className="swiper-button-prev"></div>
+              <div className="swiper-button-next"></div>
             </div>
           </div>
         </div>
