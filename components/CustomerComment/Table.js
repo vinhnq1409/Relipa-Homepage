@@ -53,9 +53,6 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.title}</TableCell>
                 <TableCell>{row.company}</TableCell>
                 <TableCell>{row.desc}</TableCell>
-
-                <TableCell>{`http://${row.voice || ''}`}</TableCell>
-
                 <TableCell className={styles.flex2}>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
                   <DeleteIcon

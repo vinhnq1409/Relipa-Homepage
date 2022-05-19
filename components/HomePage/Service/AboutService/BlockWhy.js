@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 const BlockWhy = () => {
   const trans = useTrans()
@@ -27,14 +28,16 @@ const BlockWhy = () => {
                 <div className="swiper-slide">
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
-                      <a href="#">
+                      <a href="#" onClick={onPreventDefault}>
                         <img src="/user-page/img/icons/idea.svg" alt="Consuling ability width more than 6" />
                       </a>
                     </div>
                     <div className="card-body p-0 text-center">
                       <div className="card-header">
                         <h5 className="card-title">
-                          <a href="#">{language.First.title}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.First.title}
+                          </a>
                         </h5>
                       </div>
                       <div className="card-text text-equal">
@@ -47,14 +50,16 @@ const BlockWhy = () => {
                 <div className="swiper-slide">
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
-                      <a href="#">
+                      <a href="#" onClick={onPreventDefault}>
                         <img src="/user-page/img/icons/money-bag.svg" alt="Security" />
                       </a>
                     </div>
                     <div className="card-body p-0 text-center">
                       <div className="card-header">
                         <h5 className="card-title">
-                          <a href="#">{language.Second.title}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.Second.title}
+                          </a>
                         </h5>
                       </div>
                       <div className="card-text text-equal">
@@ -68,14 +73,16 @@ const BlockWhy = () => {
                 <div className="swiper-slide">
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
-                      <a href="#">
+                      <a href="#" onClick={onPreventDefault}>
                         <img src="/user-page/img/icons/internet.svg" alt="Leading the way in cutting-edge " />
                       </a>
                     </div>
                     <div className="card-body p-0 text-center">
                       <div className="card-header">
                         <h5 className="card-title">
-                          <a href="#">{language.Third.title}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.Third.title}
+                          </a>
                         </h5>
                       </div>
                       <div className="card-text text-equal">
@@ -88,14 +95,16 @@ const BlockWhy = () => {
                 <div className="swiper-slide">
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
-                      <a href="#">
+                      <a href="#" onClick={onPreventDefault}>
                         <img src="/user-page/img/icons/rocket.svg" alt="High quality and peace of mind" />
                       </a>
                     </div>
                     <div className="card-body p-0 text-center">
                       <div className="card-header">
                         <h5 className="card-title">
-                          <a href="#">{language.Four.title}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.Four.title}
+                          </a>
                         </h5>
                       </div>
                       <div className="card-text text-equal">
@@ -108,14 +117,16 @@ const BlockWhy = () => {
                 <div className="swiper-slide">
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
-                      <a href="#">
+                      <a href="#" onClick={onPreventDefault}>
                         <img src="/user-page/img/icons/handshake.svg" alt="Low price " />
                       </a>
                     </div>
                     <div className="card-body p-0 text-center">
                       <div className="card-header">
                         <h5 className="card-title">
-                          <a href="#">{language.Fifth.title}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.Fifth.title}
+                          </a>
                         </h5>
                       </div>
                       <div className="card-text text-equal">
