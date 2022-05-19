@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 function BlockWebSystem() {
   const trans = useTrans()
@@ -24,7 +25,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.provider.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.provider.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>
@@ -69,7 +72,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.converterNFT.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.converterNFT.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>
@@ -110,7 +115,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/empty-wallet.svg" width="40" height="40" alt="Wallet service" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.Walletservice.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.Walletservice.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>
@@ -155,7 +162,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.Officialchain.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.Officialchain.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>
@@ -200,7 +209,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.NFTitems.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.NFTitems.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>
@@ -239,7 +250,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/discover.svg" width="40" height="40" alt="Other services" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.OtherServices.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.OtherServices.title}
+                      </a>
                     </h3>
                     <div className="card-text">
                       <ul>

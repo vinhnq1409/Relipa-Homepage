@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 function BlockWebSystem() {
   const trans = useTrans()
@@ -19,7 +20,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/diagram.svg" width="40" height="40" alt="EC Site" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.ECSite.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.ECSite.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.ECSite.content}</div>
                   </div>
@@ -52,7 +55,10 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/chart.svg" width="40" height="40" alt="CMS system" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#"> {language.CMSsystem.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {' '}
+                        {language.CMSsystem.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.CMSsystem.content}</div>
                   </div>
@@ -90,7 +96,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.JobInformation.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.JobInformation.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.JobInformation.content}</div>
                   </div>
@@ -123,7 +131,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/status.svg" width="40" height="40" alt="Matching Site" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.MatchingSite.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.MatchingSite.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.MatchingSite.content}</div>
                   </div>

@@ -1,3 +1,5 @@
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
+
 function BlockWebSystem() {
   return (
     <section className="section section-aos" data-aos="fade-up">
@@ -15,7 +17,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/simcard.svg" width="40" height="40" alt="Web system development" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">Web system development</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        Web system development
+                      </a>
                     </h3>
                     <div className="card-text">
                       Relipa is confident in the field of web system development and is proud to be entrusted by many
@@ -53,7 +57,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/simcard.svg" width="40" height="40" alt="..." />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">Web system development</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        Web system development
+                      </a>
                     </h3>
                     <div className="card-text">
                       Relipa is confident in the field of web system development and is proud to be entrusted by many

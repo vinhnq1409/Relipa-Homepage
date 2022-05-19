@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 function BlockWebSystem() {
   const trans = useTrans()
@@ -24,7 +25,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.warehouse.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.warehouse.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.warehouse.content}</div>
                   </div>
@@ -57,7 +60,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/box.svg" width="40" height="40" alt="Sales Management System" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.sale.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.sale.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.sale.content}</div>
                   </div>
@@ -95,7 +100,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.reservation.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.reservation.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.reservation.content}</div>
                   </div>
@@ -133,7 +140,9 @@ function BlockWebSystem() {
                       />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.vehicle.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.vehicle.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.vehicle.content}</div>
                   </div>

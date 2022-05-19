@@ -35,10 +35,10 @@ const BlockMain = ({ dataNews, count, params, setParams }) => {
                       <div className="card-meta mb-1">{dataNew.created_at.slice(0, 10)}</div>
                       <h3 className="card-title">
                         <Link href={`/news/${dataNew.friendly_url}`}>
-                          <a>{dataNew.title}</a>
+                          <a className="text-hiden">{dataNew.title}</a>
                         </Link>
                       </h3>
-                      <div className="card-text">{dataNew.desc}</div>
+                      <div className="card-text text-hiden-3">{dataNew.desc}</div>
                     </div>
                   </div>
                 </div>

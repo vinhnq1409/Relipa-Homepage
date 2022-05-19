@@ -8,7 +8,7 @@ import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import TableList from '../../../components/CustomerComment/Table'
 
-const tableHead = ['ID', 'Title', 'Company', 'Description', 'Image', 'Action']
+const tableHead = ['ID', 'Title', 'Company', 'Description', 'Action']
 
 export default function News() {
   const queryClient = useQueryClient()

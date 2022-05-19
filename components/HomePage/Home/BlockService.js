@@ -41,7 +41,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">01.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/lab-type-development">
                         <a>{language.service.LabType}</a>
                       </Link>
@@ -74,7 +74,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">02.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/web-system-development">
                         <a>{language.service.websystem}</a>
                       </Link>
@@ -107,7 +107,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">03.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/business-system-development">
                         <a>{language.service.Business}</a>
                       </Link>
@@ -140,7 +140,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">04.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/blockchain-development">
                         <a> {language.service.Blockchain} </a>
                       </Link>
@@ -173,7 +173,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">05.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/smartphone-application-development">
                         <a>{language.service.Smartphone}</a>
                       </Link>
@@ -206,7 +206,7 @@ const BlockService = () => {
                   </div>
                   <div className="card-body">
                     <div className="card-index">06.</div>
-                    <h3 className="card-title">
+                    <h3 className="card-title card-item-home-service">
                       <Link href="/aws-migration">
                         <a> {language.service.AWS}</a>
                       </Link>

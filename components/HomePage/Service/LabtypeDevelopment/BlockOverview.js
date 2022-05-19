@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 const BlockOverview = () => {
   const trans = useTrans()
@@ -25,7 +26,9 @@ const BlockOverview = () => {
                         />
                       </div>
                       <h3 className="card-title">
-                        <a href="#">{language.about.title}</a>
+                        <a href="#" onClick={onPreventDefault}>
+                          {language.about.title}
+                        </a>
                       </h3>
                       <div className="card-text">
                         <ul>
@@ -68,7 +71,9 @@ const BlockOverview = () => {
                         />
                       </div>
                       <h3 className="card-title">
-                        <a href="#">{language.working.title}</a>
+                        <a href="#" onClick={onPreventDefault}>
+                          {language.working.title}
+                        </a>
                       </h3>
                       <div className="card-text">
                         <ul>
@@ -108,7 +113,9 @@ const BlockOverview = () => {
                         <img src="/user-page/img/icons/task-square.svg" width="40" height="40" alt="Type of contract" />
                       </div>
                       <h3 className="card-title">
-                        <a href="#">{language.contract.title}</a>
+                        <a href="#" onClick={onPreventDefault}>
+                          {language.contract.title}
+                        </a>
                       </h3>
                       <div className="card-text">
                         <ul>

@@ -13327,7 +13327,7 @@ fieldset:disabled .btn {
 }
 body.on-popup {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 body.header-over-content:not(.scrolling) #header {
   background-color: transparent;
@@ -16022,6 +16022,12 @@ a.avatar:hover:after {
     max-width: 306px !important;
     min-height: 510px !important;
   }
+  .card-item-about-service{
+    height: 54px;
+  }
+  .card-item-home-service{
+    height: 54px;
+  }
 }
 @media (min-width: 992px) and (max-width: 1365px) {
   .img-item-related {
@@ -16037,6 +16043,12 @@ a.avatar:hover:after {
   .card-img-voice {
     max-width: 306px !important;
     min-height: 510px !important;
+  }
+  .card-item-about-service{
+    height: 82px;
+  }
+  .card-item-home-service{
+    height: 54px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -16054,6 +16066,12 @@ a.avatar:hover:after {
     max-width: 306px !important;
     min-height: 510px !important;
   }
+  .card-item-about-service{
+    height: 82px;
+  }
+  .card-item-home-service{
+    height: 54px;
+  }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .img-item-related {
@@ -16069,6 +16087,14 @@ a.avatar:hover:after {
   .card-img-voice {
     max-width: 428px !important;
     min-height: 720px !important;
+  }
+  .card-item-about-service{
+    height: 54px;
+  }
+}
+@media (max-width: 575px){
+  .card-img-voice {
+    min-height: 360px !important;
   }
 }
 

@@ -1,4 +1,5 @@
 import useTrans from '../../../../i18n/useTrans'
+import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 
 function BlockWebSystem() {
   const trans = useTrans()
@@ -19,7 +20,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/status.svg" width="40" height="40" alt="Matching app" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.matching.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.matching.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.matching.content}</div>
                   </div>
@@ -52,7 +55,9 @@ function BlockWebSystem() {
                       <img src="/user-page/img/icons/mobile.svg" width="40" height="40" alt="Livestreaming app" />
                     </div>
                     <h3 className="card-title">
-                      <a href="#">{language.livestream.title}</a>
+                      <a href="#" onClick={onPreventDefault}>
+                        {language.livestream.title}
+                      </a>
                     </h3>
                     <div className="card-text">{language.livestream.content}</div>
                   </div>

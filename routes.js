@@ -1,6 +1,7 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
 import Notifications from '@material-ui/icons/Notifications'
+import MessageIcon from '@material-ui/icons/Message'
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import PagesIcon from '@material-ui/icons/Pages'
@@ -63,16 +64,16 @@ const dashboardRoutes = [
   {
     path: '/customercomment',
     name: 'Customer Comment',
-    icon: ChromeReaderModeIcon,
+    icon: MessageIcon,
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],
   },
-    {
+  {
     path: '/contact',
     name: 'Contact',
     icon: Person,
     layout: '/admin',
-    role: ['Super Admin', 'Admin', 'Editor']
+    role: ['Super Admin', 'Admin', 'Editor'],
   },
   // {
   //   path: '/partner',

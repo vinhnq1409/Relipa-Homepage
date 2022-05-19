@@ -1,5 +1,6 @@
 import useTrans from '../../../i18n/useTrans'
 import Link from 'next/link'
+import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
 const BlockWhyChoose = () => {
   const trans = useTrans()
   const language = trans.labtypeDevelopment.labTypeDevelopment
@@ -29,7 +30,7 @@ const BlockWhyChoose = () => {
                     <div className="card card-over text-equal">
                       <div className="card-body">
                         <div className="card-thumb">
-                          <a href="#">
+                          <a href="#" onClick={onPreventDefault}>
                             <img
                               className="card-img-top"
                               src="/user-page/img/lab/img-5.png"
@@ -41,7 +42,9 @@ const BlockWhyChoose = () => {
                         </div>
                         <div className="card-index">01</div>
                         <h3 className="card-title text-equal-2">
-                          <a href="#">{language.why.contentFirst}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.why.contentFirst}
+                          </a>
                         </h3>
                         <div className="card-text ">
                           There is no need to create a contract for each project, and payment is a fixed monthly fee.
@@ -54,7 +57,7 @@ const BlockWhyChoose = () => {
                     <div className="card card-over text-equal">
                       <div className="card-body">
                         <div className="card-thumb">
-                          <a href="#">
+                          <a href="#" onClick={onPreventDefault}>
                             <img
                               className="card-img-top"
                               src="/user-page/img/lab/img-6.png"
@@ -66,7 +69,9 @@ const BlockWhyChoose = () => {
                         </div>
                         <div className="card-index">02</div>
                         <h3 className="card-title text-equal-2">
-                          <a href="#">{language.why.contentSecond}</a>
+                          <a href="#" onClick={onPreventDefault}>
+                            {language.why.contentSecond}
+                          </a>
                         </h3>
                         <div className="card-text ">
                           There is no need to create a contract for each project, and payment is a fixed monthly fee.

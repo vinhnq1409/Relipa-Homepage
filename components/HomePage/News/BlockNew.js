@@ -25,7 +25,7 @@ const BlockNew = ({ dataNews }) => {
               <div className="card-body">
                 <h4 className="card-title">
                   <Link href={`/news/${newItem.friendly_url}`}>
-                    <a>{newItem.title}</a>
+                    <a className="text-hiden-3">{newItem.title}</a>
                   </Link>
                 </h4>
               </div>

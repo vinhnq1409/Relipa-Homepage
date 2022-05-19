@@ -17,15 +17,17 @@ export default function HomeFooter(props) {
           <div className="col-lg-6">
             <div className="widget text-center text-lg-start">
               <h2>
-                <a className="footer-logo mb-2" href="#">
-                  <img
-                    className="fluid"
-                    src={require('/public/user-page/img/logo.png')}
-                    width="118"
-                    height="54"
-                    alt="Relipa supports your success"
-                  />
-                </a>
+                <Link href="/">
+                  <a className="footer-logo mb-2" href="#">
+                    <img
+                      className="fluid"
+                      src={require('/public/user-page/img/logo.png')}
+                      width="118"
+                      height="54"
+                      alt="Relipa supports your success"
+                    />
+                  </a>
+                </Link>
               </h2>
               <div className="socials">
                 <Link href="https://www.facebook.com/relipasoft">
@@ -55,13 +57,13 @@ export default function HomeFooter(props) {
               <div className="widget-content">
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/location.svg' width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/location.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">{trans.headerFooter.footer.japan_address}</span>
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/mobile.svg' width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/mobile.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     <a href="tel:+81368049294">(+81)3 6804 9294</a>
@@ -69,7 +71,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/sms.svg'width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/sms.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     {' '}
@@ -83,7 +85,7 @@ export default function HomeFooter(props) {
               <div className="widget-content">
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/location.svg' width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/location.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam
@@ -91,7 +93,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/mobile.svg' width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/mobile.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     <a href="tel:+842432004725">(+84)24 3200 4725</a>
@@ -99,7 +101,7 @@ export default function HomeFooter(props) {
                 </div>
                 <div className="text-icon">
                   <span className="text-icon__icon">
-                    <img src='/user-page/img/icons/sms.svg' width="24" height="24" alt="" />
+                    <img src="/user-page/img/icons/sms.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
                     {' '}
@@ -257,8 +259,8 @@ export default function HomeFooter(props) {
               <BsTelephoneFill className="icon-phone" />
             </span>
           </div>
-          <div class="circle1"></div>
-          <div class="circle2"></div>
+          <div className="circle1"></div>
+          <div className="circle2"></div>
         </div>
       </a>
     </footer>

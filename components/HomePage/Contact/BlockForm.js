@@ -180,7 +180,7 @@ const BlockForm = ({ onNotification }) => {
                   disabled={isPostingInfoContactAPI}
                 >
                   {isPostingInfoContactAPI && (
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   )}{' '}
                   SEND WITH THIS CONTENT
                 </button>
