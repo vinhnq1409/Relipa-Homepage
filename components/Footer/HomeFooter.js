@@ -3,6 +3,8 @@ import React from 'react'
 import useTrans from '../../i18n/useTrans'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { BsTelephoneFill } from 'react-icons/bs'
+import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 export default function HomeFooter(props) {
   const trans = useTrans()
@@ -247,6 +249,18 @@ export default function HomeFooter(props) {
           <div>Copyright © 2021 RELIPA CO., LTD. All Rights Reserved.</div>
         </div>
       </div>
+      {typeof window !== 'undefiend' && <MessengerCustomerChat pageId="113665534678787" appId="1360396551039660" />}
+      <a href="tel:+842432004725">
+        <div className="phone-main">
+          <div className="phone">
+            <span>
+              <BsTelephoneFill className="icon-phone" />
+            </span>
+          </div>
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+        </div>
+      </a>
     </footer>
   )
 }

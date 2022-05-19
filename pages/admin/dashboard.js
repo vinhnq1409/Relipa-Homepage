@@ -24,6 +24,9 @@ import CardHeader from 'components/Card/CardHeader.js'
 import CardIcon from 'components/Card/CardIcon.js'
 import CardFooter from 'components/Card/CardFooter.js'
 import Link from 'next/link'
+import { get } from '../../api/BaseRequest'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
+
 
 import { bugs, website, server } from 'sampleData/general.js'
 
@@ -32,6 +35,11 @@ import styles from 'assets/jss/nextjs-material-dashboard/views/dashboardStyle.js
 function Dashboard() {
   const useStyles = makeStyles(styles)
   const classes = useStyles()
+  const getViews = () => {
+    return get('statistic-page')
+  }
+  const { data } = useQuery('views', getViews)
+
 
   return (
     <div>
@@ -44,7 +52,7 @@ function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Blogs</p>
               <h3 className={classes.cardTitle}>
-                <div>500</div>
+                <div>{data?.view.blogs}</div>
                 <small>views/week</small>
               </h3>
             </CardHeader>
@@ -68,7 +76,7 @@ function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>News</p>
               <h3 className={classes.cardTitle}>
-                <div>34,245</div>
+                <div>{data?.view.news}</div>
                 <small>views/week</small>
               </h3>
             </CardHeader>
@@ -88,9 +96,9 @@ function Dashboard() {
               <CardIcon color='danger'>
                 <Icon>info_outline</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Partner</p>
+              <p className={classes.cardCategory}>Total blogs</p>
               <h3 className={classes.cardTitle}>
-                <div>75</div>
+                <div>{data?.total.blogs}</div>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -107,8 +115,8 @@ function Dashboard() {
               <CardIcon color='info'>
                 <Accessibility />
               </CardIcon>
-              <p className={classes.cardCategory}>Followers</p>
-              <h3 className={classes.cardTitle}>+245</h3>
+              <p className={classes.cardCategory}>Total news</p>
+              <h3 className={classes.cardTitle}>{data?.total.news}</h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
