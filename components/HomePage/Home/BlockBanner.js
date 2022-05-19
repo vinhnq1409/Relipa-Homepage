@@ -14,7 +14,7 @@ const BlockBanner = () => {
                   <div className="main-banner-item-bg">
                     <picture>
                       <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
-                      <img src="/user-page/img/home/banner.png" width="375" height="812" alt="" />
+                      <img src="/user-page/img/home/banner.png" width="375" height="812" alt="banner home" />
                     </picture>
                   </div>
                   <div className="container">
@@ -37,7 +37,7 @@ const BlockBanner = () => {
                   <div className="main-banner-item-bg">
                     <picture>
                       <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
-                      <img src="/user-page/img/home/banner.png" alt="" />
+                      <img src="/user-page/img/home/banner.png" alt="banner home" />
                     </picture>
                   </div>
                   <div className="container">
@@ -61,7 +61,7 @@ const BlockBanner = () => {
                   <div className="main-banner-item-bg">
                     <picture>
                       <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
-                      <img src="/user-page/img/home/banner.png" alt="" />
+                      <img src="/user-page/img/home/banner.png" alt="banner home" />
                     </picture>
                   </div>
                   <div className="container">

@@ -48,7 +48,7 @@ export default function Index({ dataCaseStudy }) {
   return (
     <>
       <HeadHome
-        title={'Case Studies|Relipa'}
+        title={'Case Studies | Relipa'}
         contentTitle={'this is company content title'}
         contentImg={'this is company link img'}
         contentOgUrl={'this is company content og url '}

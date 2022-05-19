@@ -34,7 +34,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-01.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="lab-type development"
                         />
                       </a>
                     </Link>
@@ -67,7 +67,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-02.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="web system development"
                         />
                       </a>
                     </Link>
@@ -100,7 +100,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-03.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="business system development"
                         />
                       </a>
                     </Link>
@@ -133,7 +133,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-01.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="blockchain development"
                         />
                       </a>
                     </Link>
@@ -150,7 +150,7 @@ const BlockService = () => {
                       <div className="d-grid">
                         <Link href="/blockchain-development">
                           <a className="btn btn-primary btn-block btn-lg rounded-0">{language.seemore}</a>
-                        </Link>{' '}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-02.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="smartphone application development"
                         />
                       </a>
                     </Link>
@@ -199,7 +199,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-03.png"
                           width="278"
                           height="469"
-                          alt="..."
+                          alt="aws migration"
                         />
                       </a>
                     </Link>

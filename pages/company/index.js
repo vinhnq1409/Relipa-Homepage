@@ -20,7 +20,7 @@ export default function Company() {
   return (
     <div>
       <HeadHome
-        title={'Company | Relipa'}
+        title={'Relipa | Blockchain and Software Development'}
         contentTitle={'this is company content title'}
         contentImg={'this is company link img'}
         contentOgUrl={'this is company content og url '}
@@ -37,7 +37,7 @@ export default function Company() {
                 <BlockCompanyProfile />
                 <BlockCEOMessage />
                 <BlockMissionValues />
-                <BlockCoreMembers infoCoreMember={infoCoreMember} setInfoCoreMember={setInfoCoreMember}/>
+                <BlockCoreMembers infoCoreMember={infoCoreMember} setInfoCoreMember={setInfoCoreMember} />
               </div>
               <BlockSideBar />
             </div>

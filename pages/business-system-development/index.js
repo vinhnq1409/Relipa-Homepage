@@ -9,6 +9,7 @@ import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
+import HeadHome from '../../components/Head/Head'
 
 export default function Index() {
   const [card, setCard] = useState({})
@@ -17,6 +18,14 @@ export default function Index() {
   }
   return (
     <HomePage>
+      <HeadHome
+        title={'Business Development | Relipa'}
+        contentTitle={'this is Business content title'}
+        contentImg={'this is Business link img'}
+        contentOgUrl={'this is Business content og url '}
+        contentKeywords={'this is Business contents key word'}
+        contentDescription={'this is Business content description'}
+      />
       <BlockBanner />
       <div id="main">
         <BlockBreadcrumb />

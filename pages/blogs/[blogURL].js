@@ -20,7 +20,6 @@ export default function BlogDetail({ dataBlog }) {
   const [popularBlogs, setPopularBlogs] = useState([])
   const [tagsTrend, setTagsTrend] = useState([])
 
-  
   const getBlogs = () => {
     return get(`user/${locale}/blog`)
   }
@@ -35,19 +34,19 @@ export default function BlogDetail({ dataBlog }) {
   const { data: blogs } = useQuery('blogs', getBlogs)
   const { data: popular } = useQuery('popularNews', getPopularBlogs)
   const { data: tags } = useQuery('tags', getTags)
-  
+
   useEffect(() => {
-    if(tags){
+    if (tags) {
       setTagsTrend(tags)
     }
   }, [tags])
-  
+
   useEffect(() => {
     if (blogs) {
       setDataBlogs(blogs.data)
     }
   }, [blogs])
-  
+
   useEffect(() => {
     if (popular) {
       setPopularBlogs(popular.data)
@@ -67,7 +66,7 @@ export default function BlogDetail({ dataBlog }) {
   return (
     <>
       <HeadHome
-        title={'Blog | Relipa'}
+        title={'Tech Insights & Tech Blogs | Relipa'}
         contentTitle={'this is Blog content title'}
         contentImg={'this is Blog link img'}
         contentOgUrl={'this is Blog content og url '}
@@ -115,7 +114,6 @@ export async function getStaticPaths({ locales }) {
     fallback: 'blocking',
   }
 }
-
 
 export async function getStaticProps({ params, locale }) {
   const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)

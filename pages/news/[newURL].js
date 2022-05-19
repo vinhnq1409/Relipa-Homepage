@@ -12,7 +12,7 @@ import HomePage from '../../layouts/Home'
 
 export default function NewDetail({ dataNew }) {
   const router = useRouter()
-  const {locale} = router
+  const { locale } = router
   const { id, title, created_at, content, url_image_meta } = dataNew
   const [dataNews, setDataNews] = useState([])
   const [popularNews, setPopularNews] = useState([])
@@ -52,7 +52,7 @@ export default function NewDetail({ dataNew }) {
   return (
     <>
       <HeadHome
-        title={'News | Relipa'}
+        title={'Company News & Announcement | Relipa'}
         contentTitle={'this is News content title'}
         contentImg={'this is News link img'}
         contentOgUrl={'this is News content og url '}
@@ -62,7 +62,7 @@ export default function NewDetail({ dataNew }) {
       <HomePage>
         <BlockBanner />
         <div id="main">
-          <BlockBreadcrumbDetail title={title}/>
+          <BlockBreadcrumbDetail title={title} />
           <section className="section section-aos" data-aos="fade-up">
             <div className="container">
               <div className="row">
