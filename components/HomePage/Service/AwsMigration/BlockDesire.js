@@ -23,7 +23,13 @@ function BlockDesire() {
             </div>
           </div>
           <div className="col-md-6 offset-xl-1">
-            <img className="img-fluid" src="/user-page/img/aws/img-1.png" width="560" height="304" alt="" />
+            <img
+              className="img-fluid"
+              src="/user-page/img/aws/img-1.png"
+              width="560"
+              height="304"
+              alt="AWS Migration"
+            />
           </div>
         </div>
       </div>

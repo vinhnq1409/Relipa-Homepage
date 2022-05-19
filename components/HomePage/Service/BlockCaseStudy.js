@@ -26,7 +26,11 @@ function CaseStudy({ itemCard }) {
                     <div className="card-thumb">
                       <div className="img-thumb">
                         <a href="#" onClick={() => itemCard(item)} data-bs-toggle="modal" data-bs-target="#studyModal">
-                          <img src={`http://${item?.works[0]}`} className="card-img-top img-item-related" alt="..." />
+                          <img
+                            src={`http://${item?.works[0]}`}
+                            className="card-img-top img-item-related"
+                            alt={`${item?.title}`}
+                          />
                         </a>
                       </div>
                     </div>

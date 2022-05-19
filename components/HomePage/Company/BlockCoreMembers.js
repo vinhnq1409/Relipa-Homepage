@@ -33,7 +33,7 @@ const BlockCoreMembers = ({ infoCoreMember, setInfoCoreMember }) => {
                       src="/user-page/img/company/img-2.png"
                       width="210"
                       height="350"
-                      alt="..."
+                      alt="Tran Xuan Duc"
                     />
                   </a>
                 </div>
@@ -80,7 +80,7 @@ const BlockCoreMembers = ({ infoCoreMember, setInfoCoreMember }) => {
                       src="/user-page/img/company/img-3.png"
                       width="210"
                       height="350"
-                      alt="..."
+                      alt="Phung Quang Huy"
                     />
                   </a>
                 </div>
@@ -131,7 +131,7 @@ const BlockCoreMembers = ({ infoCoreMember, setInfoCoreMember }) => {
                       src="/user-page/img/company/img-4.png"
                       width="210"
                       height="350"
-                      alt="..."
+                      alt="Nguyen Quang Tuyen"
                     />
                   </a>
                 </div>
@@ -178,7 +178,7 @@ const BlockCoreMembers = ({ infoCoreMember, setInfoCoreMember }) => {
                       src="/user-page/img/company/img-5.png"
                       width="210"
                       height="350"
-                      alt="..."
+                      alt="Nguyen Kim Giang"
                     />
                   </a>
                 </div>

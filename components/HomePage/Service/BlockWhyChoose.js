@@ -35,7 +35,7 @@ const BlockWhyChoose = () => {
                               src="/user-page/img/lab/img-5.png"
                               width="327"
                               height="183"
-                              alt="..."
+                              alt="Lab-type development with a customer retention rate of 90%"
                             />
                           </a>
                         </div>
@@ -60,7 +60,7 @@ const BlockWhyChoose = () => {
                               src="/user-page/img/lab/img-6.png"
                               width="327"
                               height="183"
-                              alt="..."
+                              alt="Provides a complete lab-type development that is flexible and can accumulate know-how as well as cost."
                             />
                           </a>
                         </div>

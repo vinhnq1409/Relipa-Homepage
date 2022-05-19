@@ -34,34 +34,11 @@ function BlockDialog({ item }) {
                     {item?.works?.map((value, id) => (
                       <div className="swiper-slide" key={id}>
                         <SwiperSlide>
-                          <img src={`http://${value}`} className={`${styles.imgDialog} `} alt="..." />
+                          <img src={`http://${value}`} className={`${styles.imgDialog} `} alt={`${item?.title}`} />
                         </SwiperSlide>
                       </div>
                     ))}
                   </Swiper>
-                  {/* <div
-                    className="swiper-stydies swiper-carousel swiper-carousel--arrow-length"
-                    data-aos="zoom-in"
-                    data-aos-delay="400"
-                    data-carousel="swiper"
-                    data
-                    slide-item="1"
-                  >
-                    <div className="swiper-container">
-                      <div className="swiper-wrapper">
-                        {item?.works?.map((value, id) => (
-                          <div className="swiper-slide" key={id}>
-                            <img src={`http://${value}`} className={`${styles.cardImg} `} alt="..." />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="swiper-pagination"></div>
-                    </div>
-                    <div className="swiper-controls">
-                      <div className="swiper-button-prev"></div>
-                      <div className="swiper-button-next"></div>
-                    </div>
-                  </div> */}
                 </div>
                 <div className="col-lg-6">
                   <div className="boxed">

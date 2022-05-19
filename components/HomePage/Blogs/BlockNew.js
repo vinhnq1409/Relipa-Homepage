@@ -19,13 +19,13 @@ const BlockNew = ({ blogs }) => {
                   src={newBlog.url_image_meta}
                   width="105"
                   height="58"
-                  alt="..."
+                  alt={newBlog.title}
                 />
               </div>
               <div className="card-body">
                 <h4 className="card-title">
                   <Link href={`/blogs/${newBlog.friendly_url}`}>
-                    <a className='text-hiden-3'>{newBlog.title}</a>
+                    <a className="text-hiden-3">{newBlog.title}</a>
                   </Link>
                 </h4>
               </div>

@@ -4,14 +4,14 @@ const BlockCompare = () => {
   const trans = useTrans()
   const language = trans.aboutService.aboutService
   return (
-    <section className='section section-compare pb-0 section-aos' data-aos='fade-up'>
-      <div className='container'>
-        <div className='section-content'>
-          <div className='section-content-header line-bottom text-primary'>
-            <h2 className='section-content-title'>Compare</h2>
+    <section className="section section-compare pb-0 section-aos" data-aos="fade-up">
+      <div className="container">
+        <div className="section-content">
+          <div className="section-content-header line-bottom text-primary">
+            <h2 className="section-content-title">Compare</h2>
           </div>
-          <div className='compare-table table-responsive'>
-            <table className='table mb-0'>
+          <div className="compare-table table-responsive">
+            <table className="table mb-0">
               <thead>
                 <th>{language.item}</th>
                 <th>RELIPA</th>
@@ -35,16 +35,16 @@ const BlockCompare = () => {
                   </td>
 
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-4.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-4.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -52,16 +52,16 @@ const BlockCompare = () => {
                     <strong>{language.development}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-4.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-4.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -69,16 +69,16 @@ const BlockCompare = () => {
                     <strong> {language.Supports}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -86,16 +86,16 @@ const BlockCompare = () => {
                     <strong>{language.Introducing}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-4.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-4.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -103,16 +103,16 @@ const BlockCompare = () => {
                     <strong>{language.Offering}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -120,16 +120,16 @@ const BlockCompare = () => {
                     <strong>{language.Thoroughly}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -137,16 +137,16 @@ const BlockCompare = () => {
                     <strong>{language.regularcustomer}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-4.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-4.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-3.svg' width='32' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-3.svg" width="32" height="30" alt="icon" />
                   </td>
                 </tr>
                 <tr>
@@ -154,16 +154,16 @@ const BlockCompare = () => {
                     <strong>{language.maintenance}</strong>
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-1.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-1.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-4.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-4.svg" width="30" height="30" alt="icon" />
                   </td>
                   <td>
-                    <img src='/user-page/img/icons/status-2.svg' width='30' height='30' alt='...' />
+                    <img src="/user-page/img/icons/status-2.svg" width="30" height="30" alt="icon" />
                   </td>
                 </tr>
               </tbody>

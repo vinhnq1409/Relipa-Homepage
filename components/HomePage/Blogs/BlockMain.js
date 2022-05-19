@@ -43,7 +43,11 @@ const BlockMain = ({ dataBlogs, count, params, setParams }) => {
                     <div className="card-thumb mb-3 mb-md-0">
                       <Link href={`/blogs/${dataBlog.friendly_url}`}>
                         <a>
-                          <img src={dataBlog.url_image_meta} className="card-img-top img-item-main" alt="..." />
+                          <img
+                            src={dataBlog.url_image_meta}
+                            className="card-img-top img-item-main"
+                            alt={dataBlog.title}
+                          />
                         </a>
                       </Link>
                     </div>
