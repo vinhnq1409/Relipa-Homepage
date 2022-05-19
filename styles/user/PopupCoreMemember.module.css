@@ -1,13 +1,10 @@
 .name {
-  height: 48px;
   font-weight: 700;
   font-size: 32px;
   line-height: 48px;
   color: #0045c5;
 }
 .title {
-  width: 230px;
-  height: 24px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -65,11 +62,6 @@
 .content {
   padding-top: 60px;
   padding-right: 10%;
-}
-.marginAuto {
-  margin: auto;
-  top: 50%;
-  transform: translateY(-50%) !important;
 }
 .btnClose{
   position: absolute;

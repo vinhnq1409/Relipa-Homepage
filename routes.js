@@ -67,6 +67,13 @@ const dashboardRoutes = [
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],
   },
+    {
+    path: '/contact',
+    name: 'Contact',
+    icon: Person,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin', 'Editor']
+  },
   // {
   //   path: '/partner',
   //   name: 'Partner',
