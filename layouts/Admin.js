@@ -20,6 +20,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import dashboardRoutes from '../routes'
 import { fiterRoleUser } from '../utils/roles'
 import Head from 'next/head'
+import HeadHome from '../components/Head/Head'
 
 export default function Admin({ children, ...rest }) {
   // used for checking current route
@@ -76,6 +77,14 @@ export default function Admin({ children, ...rest }) {
 
   return (
     <>
+      <HeadHome
+        title={'Relipa Homepage | Content Management'}
+        contentTitle={'this is  Content Management content title'}
+        contentImg={'this is  Content Management link img'}
+        contentOgUrl={'this is  Content Management content og url '}
+        contentKeywords={'this is  Content Management contents key word'}
+        contentDescription={'this is  Content Management content description'}
+      />
       <Head>
         <link rel="stylesheet" href="/admin/css/nextjs-material-dashboard.css" />
       </Head>

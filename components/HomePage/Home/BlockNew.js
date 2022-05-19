@@ -13,7 +13,7 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
   const transition = useTransition(appreciate, {
     from: { x: 0, y: 12, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
-    delay: 100
+    delay: 100,
   })
 
   const onChangeAppreciate = (e) => {
@@ -86,7 +86,7 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                                   src={item.url_image_meta}
                                   width="130"
                                   height="80"
-                                  alt="..."
+                                  alt={`${item.friendly_url}`}
                                 />
                               </a>
                             </Link>
@@ -126,7 +126,7 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                                   src={item.url_image_meta}
                                   width="130"
                                   height="80"
-                                  alt="..."
+                                  alt={`${item.friendly_url}`}
                                 />
                               </a>
                             </Link>

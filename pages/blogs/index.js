@@ -69,7 +69,7 @@ export default function Blogs({ blogs }) {
   return (
     <div>
       <HeadHome
-        title={'Blog | Relipa'}
+        title={'Tech Insights & Tech Blogs | Relipa'}
         contentTitle={'this is Blog content title'}
         contentImg={'this is Blog link img'}
         contentOgUrl={'this is Blog content og url '}
@@ -105,7 +105,6 @@ export default function Blogs({ blogs }) {
   )
 }
 export async function getStaticProps({ locale }) {
-  
   const resDataBlogs = await get(`user/${locale}/blog`)
   const blogs = await resDataBlogs.data
 

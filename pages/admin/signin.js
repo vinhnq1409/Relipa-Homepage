@@ -15,6 +15,7 @@ import { post } from '../../api/BaseRequest'
 import styles from '../../styles/admin/signin.module.css'
 import { useMutation } from 'react-query'
 import CustomizedSnackbars from '../../components/CustomSnackbar'
+import HeadHome from '../../components/Head/Head'
 
 export default function SignIn() {
   const router = useRouter()
@@ -22,10 +23,10 @@ export default function SignIn() {
   const [snackbar, setSnackbar] = useState({
     messageSnackbar: '',
     open: false,
-    severity: ''
+    severity: '',
   })
 
-  const signInApi = async(data) => {
+  const signInApi = async (data) => {
     return await post('login', data)
   }
 
@@ -38,9 +39,9 @@ export default function SignIn() {
       setSnackbar({
         open: true,
         severity: 'error',
-        messageSnackbar: 'Email or Password incorrect'
+        messageSnackbar: 'Email or Password incorrect',
       })
-    }
+    },
   })
 
   const { register, handleSubmit } = useForm()
@@ -50,66 +51,76 @@ export default function SignIn() {
   }
 
   return (
-    <Container className={styles.wrapper} component='main' maxWidth='xs'>
-      <CssBaseline />
-      <div className={styles.paper}>
-        <Typography className={styles.title} component='h1' color='primary' variant='h2'>
-          Relipa
-        </Typography>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            id='email'
-            label='Email Address'
-            name='email'
-            {...register('email', {
-              required: true,
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'Please enter a valid email'
-              }
-            })}
-            type='email'
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            name='password'
-            {...register('password', { required: true })}
-            label='Password'
-            type='password'
-            id='password'
-          />
-          <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
-          <Button type='submit' fullWidth variant='contained' color='primary' className={styles.submit}>
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2'>
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href='#' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <CustomizedSnackbars
-        open={snackbar.open}
-        message={snackbar.messageSnackbar}
-        severity={snackbar.severity}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
+    <>
+      <HeadHome
+        title={'Relipa Homepage | Content Management'}
+        contentTitle={'this is Content Management content title'}
+        contentImg={'this is Content Management link img'}
+        contentOgUrl={'this is Content Management content og url '}
+        contentKeywords={'this is Content Management contents key word'}
+        contentDescription={'this is Content Management content description'}
       />
-    </Container>
+      <Container className={styles.wrapper} component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={styles.paper}>
+          <Typography className={styles.title} component="h1" color="primary" variant="h2">
+            Relipa
+          </Typography>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              {...register('email', {
+                required: true,
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Please enter a valid email',
+                },
+              })}
+              type="email"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              {...register('password', { required: true })}
+              label="Password"
+              type="password"
+              id="password"
+            />
+            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+            <Button type="submit" fullWidth variant="contained" color="primary" className={styles.submit}>
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <CustomizedSnackbars
+          open={snackbar.open}
+          message={snackbar.messageSnackbar}
+          severity={snackbar.severity}
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+        />
+      </Container>
+    </>
   )
 }

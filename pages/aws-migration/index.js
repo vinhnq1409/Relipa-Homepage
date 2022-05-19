@@ -8,6 +8,7 @@ import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
 import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
+import HeadHome from '../../components/Head/Head'
 
 export default function Index() {
   const [card, setCard] = useState({})
@@ -16,6 +17,14 @@ export default function Index() {
   }
   return (
     <HomePage>
+      <HeadHome
+        title={'Aws migration | Relipa'}
+        contentTitle={'this is Aws content title'}
+        contentImg={'this is Aws link img'}
+        contentOgUrl={'this is Aws content og url '}
+        contentKeywords={'this is Aws contents key word'}
+        contentDescription={'this is Aws content description'}
+      />
       <BlockBanner />
       <div id="main">
         <BlockBreadcrumb />

@@ -10,20 +10,20 @@ export default function Contact() {
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
-    severity: 'success'
+    severity: 'success',
   })
   const onNotification = (isNotification) => {
     isNotification
       ? setSnackbar({
-        ...snackbar,
-        open: true,
-        message: 'Send is successful'
-      })
+          ...snackbar,
+          open: true,
+          message: 'Send is successful',
+        })
       : setSnackbar({
-        open: true,
-        severity: 'error',
-        message: 'Send is failed'
-      })
+          open: true,
+          severity: 'error',
+          message: 'Send is failed',
+        })
   }
   return (
     <div>
@@ -37,7 +37,7 @@ export default function Contact() {
       />
       <HomePage>
         <BlockBanner />
-        <div id='main'>
+        <div id="main">
           <BlockBreadcrumb />
           <BlockForm onNotification={onNotification} />
         </div>

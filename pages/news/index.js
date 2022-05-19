@@ -43,7 +43,7 @@ export default function News({ news }) {
   return (
     <div>
       <HeadHome
-        title={'News | Relipa'}
+        title={'Company News & Announcement | Relipa'}
         contentTitle={'this is News content title'}
         contentImg={'this is News link img'}
         contentOgUrl={'this is News content og url '}
@@ -78,7 +78,6 @@ export default function News({ news }) {
   )
 }
 export async function getStaticProps({ locale }) {
-
   const resDataNews = await get(`user/${locale}/new`)
   const news = await resDataNews.data
 
