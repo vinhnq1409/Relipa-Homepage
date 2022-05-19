@@ -23,6 +23,7 @@ const BlockPopup = ({ infoCoreMember }) => {
                   <div
                     className={styled.imgBgr2}
                     style={{ backgroundImage: `url('/user-page/img/company/${img}')` }}
+                    title={title}
                   ></div>
                 </div>
               </div>

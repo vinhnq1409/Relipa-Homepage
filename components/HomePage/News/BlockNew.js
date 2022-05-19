@@ -19,7 +19,7 @@ const BlockNew = ({ dataNews }) => {
                   src={newItem.url_image_meta}
                   width="105"
                   height="58"
-                  alt="..."
+                  alt={newItem.title}
                 />
               </div>
               <div className="card-body">

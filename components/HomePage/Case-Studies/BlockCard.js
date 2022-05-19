@@ -9,7 +9,11 @@ function BlockCard({ data, itemCard }) {
             <div className="card card-news card-padding-sm bg-lighter">
               <div className="card-thumb ">
                 <a href="#" onClick={() => itemCard(item)} data-bs-toggle="modal" data-bs-target="#studyModal">
-                  <img src={`http://${item?.works[0]}`} className="card-img-top img-item-related-medium" alt="..." />
+                  <img
+                    src={`http://${item?.works[0]}`}
+                    className="card-img-top img-item-related-medium"
+                    alt={`${item.title}`}
+                  />
                 </a>
               </div>
               <div className="card-body">

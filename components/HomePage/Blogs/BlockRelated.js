@@ -30,7 +30,7 @@ const BlockRelated = ({ dataBlog }) => {
                           src={blog.url_image_meta}
                           width="260"
                           height="192"
-                          alt="..."
+                          alt={blog.title}
                         />
                       </a>
                     </Link>

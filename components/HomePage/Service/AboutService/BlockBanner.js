@@ -11,7 +11,7 @@ const BlockFontBanner = () => {
             <div className="main-banner-item-bg">
               <picture>
                 <source media="(min-width:768px)" srcSet="/user-page/img/service/banner.png" />
-                <img src="/user-page/img/service/banner-sp.png" width="345" height="188" alt="" />
+                <img src="/user-page/img/service/banner-sp.png" width="345" height="188" alt="Banner Service" />
               </picture>
             </div>
             <div className="container">

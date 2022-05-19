@@ -61,7 +61,7 @@ const BlockBanner = () => {
                   <div className="main-banner-item-bg">
                     <picture>
                       <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
-                      <img src="/user-page/img/home/banner.png" alt="banner home" />
+                      <img src="/user-page/img/home/banner.png" alt="Banner Home" />
                     </picture>
                   </div>
                   <div className="container">

@@ -34,7 +34,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-01.png"
                           width="278"
                           height="469"
-                          alt="lab-type development"
+                          alt="Lab-type Development"
                         />
                       </a>
                     </Link>
@@ -67,7 +67,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-02.png"
                           width="278"
                           height="469"
-                          alt="web system development"
+                          alt="Web System Development"
                         />
                       </a>
                     </Link>
@@ -100,7 +100,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-03.png"
                           width="278"
                           height="469"
-                          alt="business system development"
+                          alt="Business System Development"
                         />
                       </a>
                     </Link>
@@ -133,7 +133,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-01.png"
                           width="278"
                           height="469"
-                          alt="blockchain development"
+                          alt="Blockchain Development"
                         />
                       </a>
                     </Link>
@@ -166,7 +166,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-02.png"
                           width="278"
                           height="469"
-                          alt="smartphone application development"
+                          alt="Smartphone Application Development"
                         />
                       </a>
                     </Link>
@@ -199,7 +199,7 @@ const BlockService = () => {
                           src="user-page/img/home/sr-03.png"
                           width="278"
                           height="469"
-                          alt="aws migration"
+                          alt="Aws Migration"
                         />
                       </a>
                     </Link>
