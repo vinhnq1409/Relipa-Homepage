@@ -16004,6 +16004,14 @@ a.avatar:hover:after {
   object-fit: cover;
 }
 
+.swiper-service-why .swiper-controls .swiper-button-prev {
+  left: -30px !important;
+}
+
+.swiper-service-why .swiper-controls .swiper-button-next {
+  right: -30px !important;
+}
+
 @media (min-width: 1366px) {
   .container {
     max-width: 1140px;
@@ -16091,10 +16099,24 @@ a.avatar:hover:after {
   .card-item-about-service{
     height: 54px;
   }
+  .swiper-service-why .swiper-controls .swiper-button-prev {
+    left: 0px !important;
+  }
+  
+  .swiper-service-why .swiper-controls .swiper-button-next {
+    right: 0px !important;
+  }
 }
 @media (max-width: 575px){
   .card-img-voice {
     min-height: 360px !important;
+  }
+  .swiper-service-why .swiper-controls .swiper-button-prev {
+    left: 0px !important;
+  }
+  
+  .swiper-service-why .swiper-controls .swiper-button-next {
+    right: 0px !important;
   }
 }
 
@@ -16106,13 +16128,6 @@ a.avatar:hover:after {
   cursor: pointer;
 }
 
-.swiper-service-why .swiper-controls .swiper-button-prev {
-  left: -30px !important;
-}
-
-.swiper-service-why .swiper-controls .swiper-button-next {
-  right: -30px !important;
-}
 .phone-main{
   position: fixed;
   right: 56px;  
@@ -16184,3 +16199,6 @@ a.avatar:hover:after {
   }
 }
 
+.padding-right-language{
+  padding-right: 10px;
+}
