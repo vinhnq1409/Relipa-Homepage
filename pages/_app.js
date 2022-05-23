@@ -7,6 +7,7 @@ import store from '../redux/store'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import PageChange from 'components/PageChange/PageChange.js'
 import { Provider } from 'react-redux'
+import Script from 'next/script'
 
 const queryClient = new QueryClient()
 
@@ -39,19 +40,29 @@ export default class MyApp extends App {
     const Layout = Component.layout || (({ children }) => <>{children}</>)
 
     return (
-      <React.Fragment>
-        <QueryClientProvider client={queryClient}>
-          <Provider store={store}>
-            <Head>
-              <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-              <title>Relipa</title>
-            </Head>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </Provider>
-        </QueryClientProvider>
-      </React.Fragment>
+      <>
+        <React.Fragment>
+          <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
+              <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <title>Relipa</title>
+              </Head>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </Provider>
+          </QueryClientProvider>
+        </React.Fragment>
+        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`} />
+        <Script strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', ${process.env.GOOGLE_ANALYTICS_ID});`}
+        </Script>
+      </>
     )
   }
 }
