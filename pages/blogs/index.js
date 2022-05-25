@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import { useSelector, useDispatch } from 'react-redux'
 import { resetTag } from '../../redux/slices/tagSlice'
 import { get } from '../../api/BaseRequest'
-import HeadHome from '../../components/Head/Head'
 import BlockBanner from '../../components/HomePage/Blogs/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Blogs/BlockBreadcrumb'
 import BlockMain from '../../components/HomePage/Blogs/BlockMain'
@@ -67,14 +67,35 @@ export default function Blogs({ blogs }) {
     }
   }, [popular])
   return (
-    <div>
-      <HeadHome
-        title={'Tech Insights & Tech Blogs | Relipa'}
-        contentTitle={'this is Blog content title'}
-        contentImg={'this is Blog link img'}
-        contentOgUrl={'this is Blog content og url '}
-        contentKeywords={'this is Blog contents key word'}
-        contentDescription={'this is Blog content description'}
+    <>
+      <NextSeo
+        title="Tech Insights & Tech Blogs | Relipa"
+        description="This example uses more of the available config options."
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+              type: 'image/jpeg',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+          site_name: 'SiteName',
+        }}
       />
       <HomePage>
         <BlockBanner />
@@ -101,7 +122,7 @@ export default function Blogs({ blogs }) {
           </section>
         </div>
       </HomePage>
-    </div>
+    </>
   )
 }
 export async function getStaticProps({ locale }) {

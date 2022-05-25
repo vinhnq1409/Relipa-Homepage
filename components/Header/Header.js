@@ -64,7 +64,7 @@ export default function Header(props) {
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link href="/service">
+                    <Link href="/about-service">
                       <a className="dropdown-item">{trans.headerFooter.header.about_service}</a>
                     </Link>
                   </li>
