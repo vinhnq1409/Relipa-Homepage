@@ -16202,3 +16202,16 @@ a.avatar:hover:after {
 .padding-right-language{
   padding-right: 10px;
 }
+
+.enable-hover:hover{
+  background-color: white;
+}
+
+.enable-hover:hover i {
+  color: #1a1311;
+}
+
+.logo-enable-hover:hover , .logo-enable-hover:focus {
+  color: #fff;
+  background-color: #fff;
+}
