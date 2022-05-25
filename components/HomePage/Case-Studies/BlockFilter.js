@@ -1,4 +1,8 @@
+import useTrans from '../../../i18n/useTrans'
+
 const BlockFilter = ({ params, setParams }) => {
+  const trans = useTrans()
+  const language = trans.caseStudies
   const onFilter = (value) => {
     if (value === 0) {
       const filterAll = { ...params }
@@ -15,27 +19,27 @@ const BlockFilter = ({ params, setParams }) => {
     <div className="masonry-filter-buttons " id="btn-filter">
       <div className="filter-button">
         <a className="masonry-filter-item active-filter" href="#" data-filter="All" onClick={() => onFilter(0)}>
-          All
+          {language.all}
         </a>
       </div>
       <div className="filter-button">
         <a className="masonry-filter-item" href="#" data-filter="websystem" onClick={() => onFilter(1)}>
-          Web System
+          {language.websystem}
         </a>
       </div>
       <div className="filter-button">
         <a className="masonry-filter-item" href="#" data-filter="bussinessSystem" onClick={() => onFilter(2)}>
-          Business System
+          {language.businessSystem}
         </a>
       </div>
       <div className="filter-button">
         <a className="masonry-filter-item" href="#" data-filter="blockchain" onClick={() => onFilter(3)}>
-          Blockchain
+          {language.blockchain}
         </a>
       </div>
       <div className="filter-button">
         <a className="masonry-filter-item" href="#" data-filter="application" onClick={() => onFilter(4)}>
-          Application
+          {language.application}
         </a>
       </div>
     </div>

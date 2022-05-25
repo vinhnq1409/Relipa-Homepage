@@ -8,6 +8,8 @@ import blockchainDevelopment from './user/service/blockchainDevelopment'
 import websystemdevelopment from './user/service/websystemdevelopment'
 import bussinessSystemDevelopment from './user/service/bussinessSystemDevelopment'
 import smartphoneDevelopment from './user/service/smartphoneDevelopment'
+import casestudies from './user/casestudies'
+import contact from './user/contact'
 
 export default {
   admin: admin,
@@ -19,5 +21,7 @@ export default {
   blockchain: blockchainDevelopment,
   webSystem: websystemdevelopment,
   businessSystem: bussinessSystemDevelopment,
-  smartPhone: smartphoneDevelopment
+  smartPhone: smartphoneDevelopment,
+  caseStudies: casestudies,
+  contact: contact,
 }

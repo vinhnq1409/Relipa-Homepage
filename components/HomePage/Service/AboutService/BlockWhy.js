@@ -9,7 +9,7 @@ const BlockWhy = () => {
       <div className="container">
         <div className="section-content">
           <div className="section-content-header line-bottom text-white">
-            <h2 className="section-content-title">Why Relipa</h2>
+            <h2 className="section-content-title">{language.title}</h2>
           </div>
           <div
             className="swiper-carousel swiper-carousel--vertical swiper-service-why"

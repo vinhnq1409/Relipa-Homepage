@@ -3,26 +3,27 @@ export default {
     seemore: 'もっと見る',
     service: {
       title: 'サービス',
-      LabType: 'Lab-type Development',
+      LabType: 'ラボ型開発',
       LabTypeContent:
         'ラボ型開発とはプロジェクトごとにお客様の専用開発チームを弊社内に構築し、お客様のチームの一員として、プロジェクトの目標にコミットします。',
-      websystem: 'Web System Development Web',
+      websystem: 'Webシステム開発',
       websystemContent:
         'レリパはWebシステム開発の分野に自信があり、多くのお客様から委託されて選ばれたことを誇りに思っています。',
-      Business: 'Business System Development',
+      Business: '業務系システム開発',
       BusinesContent:
         '当社では、上場企業様や大手企業様からのご発注で、大規模な業務系システム開発を行った実績が多数あります。',
-      Blockchain: 'Blockchain Development',
+      Blockchain: 'ブロックチェーン開発',
       BlockchainContent:
         'レリパには高い技術力を持つブロックチェーン開発者と専門家が揃っています。「ブロックチェーンを導入したいけれど方法がわからない」「資産をNFT化したい」「ブロックチェーンを構築できるエンジニアがいない」のお客様を対象としてサービスを提供しています。',
-      Smartphone: 'Smartphone Application Development',
+      Smartphone: 'スマホアプリ開発',
       SmartphoneContent:
         '物流系のアプリ以外にも、SNS系アプリ、教育系アプリ、チャットアプリなど、幅広い目的のアプリ開発実績があり、技術のノウハウも豊富です。',
-      AWS: 'AWS Migration',
+      AWS: 'クラウド移行',
       AWSContent:
         'レリパは、コンサルティングから設計、アーキテクチャ構築、インストール、デプロイに至るまで、AWS又はAzure、GoogleCloudなどのクラウド統合サービスを提供しています。',
     },
     why: {
+      title: 'なぜRelipa?',
       First: {
         title: '最先端技術をリードする',
         contentFirst: 'Blockchain, VR・AR, AIなどの最先端技術をリードします。',
@@ -52,6 +53,7 @@ export default {
         contentSecond: '専用の研究室がございます',
       },
     },
+    compare: '他社との違い',
     item: '他社との違い 項目',
     CertainA: '某企業Ａ',
     CertainB: '某企業B',
@@ -68,6 +70,7 @@ export default {
     regularcustomer: 'お客様のフィードバックを定期的に頂き、サービスを改善',
     maintenance: '保守パッケージがある',
     steps: {
+      title: '導入の流れ',
       contact: 'お問い合わせ',
       contactcontent:
         'まずはお気軽にお問い合わせください。オフショア開発の成功事例や企業選定のポイント等のご説明からでも承ります。',

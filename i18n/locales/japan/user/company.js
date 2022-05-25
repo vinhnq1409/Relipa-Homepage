@@ -2,7 +2,7 @@ export default {
   company: {
     banner: {
       company: '企業情報',
-      top_corporate_information: '企業情報'
+      top_corporate_information: '企業情報',
     },
     profile: {
       Company: '企業情報',
@@ -26,7 +26,7 @@ export default {
       vn2016: '2016年',
       Address_HaNoi: '22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam',
       Business_description: '日本企業向けオフショア開発',
-      Phone_number_84: '(+84) 24 3200 4725'
+      Phone_number_84: '(+84) 24 3200 4725',
     },
     CEOMessage: {
       CEO_Message: '代表メッセージ',
@@ -44,10 +44,10 @@ export default {
         '2020年2月以降、コロナウィルスは世界中へ感染が広がっており、私たちの日常生活に大きな影響を与えております。 新しい日常生活に慣れ、デジタルトランスフォーメーションウェーブ（DX）の世界的なトレンドの中で、Relipaはお客様の信頼できるパートナーになるためにより一層努力して参ります。',
       content7: '今後とも、レリパへの変わらぬご支援とご指導を賜りますよう、よろしくお願い申し上げます。',
       President_CEO: '代表取締役社長',
-      TRAN_XUAN_DUC: 'TRAN XUAN DUC'
+      TRAN_XUAN_DUC: 'TRAN XUAN DUC',
     },
     MissionValues: {
-      MissionValues: 'Mission & Values',
+      MissionValues: 'ミッション',
       MISSION: 'ミッション',
       mission1: 'ベトナムにおけるIT技術を高め、発展させます',
       mission2: 'お客様に信頼できるサービスを提供します',
@@ -61,24 +61,24 @@ export default {
       core_values3: '柔軟',
       core_values4: 'コミットメント',
       core_values5: 'チームワーク',
-      core_values6: '尊重'
+      core_values6: '尊重',
     },
     CoreMember: {
       Core_Members: 'コアメンバー紹介',
       PresidentCEO: '代表取締役社長',
       DevelopmentDepartment: '取締役兼第2開発部長',
       Representative: '代表取締役副社長',
-      DevelopmentManager: '第1開発部長'
+      DevelopmentManager: '第1開発部長',
     },
     SideBar: {
       Company_Profile: '会社概要',
       CEO_Message: '代表メッセージ',
-      MissionValues: 'Mission & Values',
-      Core_Members: 'コアメンバー紹介'
+      MissionValues: 'ミッション',
+      Core_Members: 'コアメンバー紹介',
     },
     Breadcrumb: {
       Home: 'Home',
-      Company: '企業情報'
-    }
-  }
+      Company: '企業情報',
+    },
+  },
 }

@@ -6,22 +6,23 @@ export default {
     },
     scroll: 'スクロール',
     service: {
-      LabType: 'Lab-type Development',
+      title: '事業内容',
+      LabType: 'ラボ型開発',
       LabTypeContent:
         'ラボ型開発とはプロジェクトごとにお客様の専用開発チームを弊社内に構築し、お客様のチームの一員として、プロジェクトの目標にコミットします。',
-      websystem: 'Web System Development Web',
+      websystem: 'Webシステム開発',
       websystemContent:
         'レリパはWebシステム開発の分野に自信があり、多くのお客様から委託されて選ばれたことを誇りに思っています。',
-      Business: 'Business System Development',
+      Business: '業務系システム開発',
       BusinesContent:
         '当社では、上場企業様や大手企業様からのご発注で、大規模な業務系システム開発を行った実績が多数あります。',
-      Blockchain: 'Blockchain Development',
+      Blockchain: 'ブロックチェーン開発',
       BlockchainContent:
         'レリパには高い技術力を持つブロックチェーン開発者と専門家が揃っています。「ブロックチェーンを導入したいけれど方法がわからない」「資産をNFT化したい」「ブロックチェーンを構築できるエンジニアがいない」のお客様を対象としてサービスを提供しています。',
-      Smartphone: 'Smartphone Application Development',
+      Smartphone: 'スマホアプリ開発',
       SmartphoneContent:
         '物流系のアプリ以外にも、SNS系アプリ、教育系アプリ、チャットアプリなど、幅広い目的のアプリ開発実績があり、技術のノウハウも豊富です。',
-      AWS: 'AWS Migration',
+      AWS: 'クラウド移行',
       AWSContent:
         'レリパは、コンサルティングから設計、アーキテクチャ構築、インストール、デプロイに至るまで、AWS又はAzure、GoogleCloudなどのクラウド統合サービスを提供しています。',
     },
@@ -44,12 +45,14 @@ export default {
     },
     seemore: 'もっと見る',
     news: {
+      title: 'ニュース',
       contentFirst: 'ソフトウェア＆アプリ開発 展【春】(SODEC 2022）|第31回Japan IT Weekへ出展のお知らせ',
       contentSecond: 'セミナー０６：ブロックチェーンのチャンス・チャレンジ＆Widilandの実話',
       contentThird: '2022年旧正月休業のお知らせ',
       contentFoufth: 'オフショア開発3度目で初めて満足！レリパはスピードと提案力が抜群！もっと見る',
     },
     blog: {
+      title: 'ブログ',
       titleFirst: '2022.04.01 ブロックチェーン開発',
       contentFirst: 'DEX(分散型取引所）とは？メリットとデメリット、CEX（中央集権型取引所）との違いも詳しく解説！',
       titleSecond: '2022.03.24 クラウド移行',
