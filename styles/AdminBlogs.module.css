@@ -104,3 +104,22 @@
 .fullwidth {
   width: 100%;
 }
+
+.texthiden{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.minWidth68{
+  min-width: 68px;
+}
+.minWidth72{
+  min-width: 72px;
+}
+.width68{
+  width: 68px;
+  height: 68px;
+  background-position: center;
+  background-size: cover;
+}

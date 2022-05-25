@@ -31,22 +31,22 @@ export default function HomeFooter(props) {
               </h2>
               <div className="socials">
                 <Link href="https://www.facebook.com/relipasoft">
-                  <a className="social-circle" aria-label="facebook" target="_blank">
-                    <i className="lab la-facebook-f"></i>
+                  <a className="social-circle enable-hover" aria-label="facebook" target="_blank">
+                    <i className="lab la-facebook-f color-black "></i>
                   </a>
                 </Link>
                 <Link href="https://www.instagram.com/relipasoft/">
-                  <a className="social-circle" target="_blank" aria-label="instagram">
+                  <a className="social-circle enable-hover" target="_blank" aria-label="instagram">
                     <i className="lab la-instagram"></i>
                   </a>
                 </Link>
                 <Link href="https://www.youtube.com/channel/UCeNpaMMmiR0Aon3m-Gmhd7Q/featured">
-                  <a className="social-circle" target="_blank" aria-label="youtube">
+                  <a className="social-circle enable-hover" target="_blank" aria-label="youtube">
                     <i className="lab la-youtube-square"></i>
                   </a>
                 </Link>
                 <Link href="https://twitter.com/relipasoft">
-                  <a className="social-circle" target="_blank" aria-label="twitter">
+                  <a className="social-circle enable-hover" target="_blank" aria-label="twitter">
                     <i className="lab la-twitter"></i>
                   </a>
                 </Link>

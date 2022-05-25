@@ -68,7 +68,7 @@ export default function Sidebar(props) {
   )
   const brand = (
     <div className={classes.logo}>
-      <Link href='/admin'>
+      <Link href='/admin/dashboard'>
         <a className={classNames(classes.logoLink)}>
           <div className={classes.logoImage}>
             <img src={logo} alt='logo' className={classes.img} />

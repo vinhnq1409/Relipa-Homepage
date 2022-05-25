@@ -4,7 +4,7 @@ import TableList from '../../../components/Contact/Table'
 import { useQuery } from 'react-query'
 import {  get } from '../../../api/BaseRequest'
 
-const tableHead = ['Id', 'Name', 'Company', 'Email', 'Phone', 'Inquiry Type','How to know', 'Content', 'Created At']
+const tableHead = ['Id', 'Infomation', 'Inquiry Type','How to know', 'Content', 'Created At']
 
 export default function Blogs() {
   const [params, setParams] = useState({

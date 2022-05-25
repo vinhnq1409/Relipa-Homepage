@@ -75,13 +75,13 @@ const dashboardRoutes = [
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],
   },
-  // {
-  //   path: '/partner',
-  //   name: 'Partner',
-  //   icon: GroupWorkIcon,
-  //   layout: '/admin',
-  //   role: ['Super Admin', 'Admin']
-  // },
+  {
+    path: '/banner',
+    name: 'Banner',
+    icon: GroupWorkIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin']
+  },
   // {
   //   path: '/project',
   //   name: 'Project',
