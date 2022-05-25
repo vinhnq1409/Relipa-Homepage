@@ -1,5 +1,6 @@
 export default {
   title: 'Web System Development',
+  webSystemService: 'Web System Development Service',
   websystemcontent:
     'Relipa is confident in the field of web system development and is proud to have been entrusted by many customers. In this field, we specialize in providing services such as EC sites, CMS systems, job information sites, and reservation matching platforms, with a focus on Java / PHP development. We always strive to create the most complete products based on your needs.',
   desire: {

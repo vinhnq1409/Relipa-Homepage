@@ -8,7 +8,7 @@ const BlockStepToUse = () => {
       <div className="container">
         <div className="section-content">
           <div className="section-content-header line-bottom text-primary">
-            <h2 className="section-content-title">Steps To Use</h2>
+            <h2 className="section-content-title">{language.title}</h2>
           </div>
           <div className="steps">
             <div className="step-item">

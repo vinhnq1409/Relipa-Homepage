@@ -111,12 +111,15 @@ export default function Works() {
     setTechnology(dataNews?.technology || [])
     setResponContent(dataNews?.responsible_content || [])
     setTags(dataNews?.tags || [])
-    setImages(
-      dataNews?.works.map((item, index) => ({
-        data_url: `http://${item}`,
-        file: dataNews?.media[index],
-      }))
-    )
+    if (dataNews?.works) {
+      setImages(
+        dataNews?.works.map((item, index) => ({
+          data_url: `http://${item}`,
+          file: dataNews?.media[index],
+        }))
+      )
+    }
+    console.log(dataNews?.works)
     setType(dataNews?.type || 5)
   }, [dataNews])
 
@@ -404,7 +407,11 @@ export default function Works() {
                           <img src={image['data_url']} alt="" width="200" height="200" style={{ margin: '0 10px' }} />
                           <div className="image-item__btn-wrapper" style={{ margin: '0 10px 10px 10px' }}>
                             <Button
-                              onClick={id ? onImageRemoveAll : () => onImageUpdate(index)}
+                              onClick={
+                                id && updateImg === false
+                                  ? () => (onImageRemoveAll(), onImageUpload())
+                                  : () => onImageUpdate(index)
+                              }
                               variant="outlined"
                               size="small"
                               color="primary"
@@ -413,7 +420,11 @@ export default function Works() {
                               Update
                             </Button>
                             <Button
-                              onClick={id ? onImageRemoveAll : () => onImageRemove(index)}
+                              onClick={
+                                id && updateImg === false
+                                  ? () => (onImageRemoveAll(), onImageUpload())
+                                  : () => onImageRemove(index)
+                              }
                               variant="outlined"
                               size="small"
                               color="primary"

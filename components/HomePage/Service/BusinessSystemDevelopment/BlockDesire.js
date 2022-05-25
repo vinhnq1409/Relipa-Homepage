@@ -16,7 +16,7 @@ function BlockDesire() {
                 <li>{language.desire.fource}</li>
               </ul>
               <div className="section-content-header line-bottom text-primary mb-3">
-                <h2 className="section-content-title">Business System Development</h2>
+                <h2 className="section-content-title">{language.title}</h2>
               </div>
               <div className="section-text text-grey-1">
                 {language.bussiness.one}

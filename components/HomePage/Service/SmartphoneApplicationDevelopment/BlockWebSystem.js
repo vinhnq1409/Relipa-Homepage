@@ -9,7 +9,7 @@ function BlockWebSystem() {
       <div className="container">
         <div className="section-content">
           <div className="section-content-header line-bottom text-primary">
-            <h2 className="section-content-title">Smartphone Application Development Service</h2>
+            <h2 className="section-content-title">{language.smartphoneApplicationService}</h2>
           </div>
           <div className="overview">
             <div className="overview-inner">

@@ -45,26 +45,34 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                   item ? (
                     <animated.div className="row align-content-center" style={style}>
                       <div className="col-4 col-md-12">
-                        <h2 className="section-title" title="News">
-                          News
+                        <h2 className="section-title" title={language.news.title}>
+                          {language.news.title}
                         </h2>
                       </div>
                       <div className="col-6 col-md-12">
-                        <h3 className="section-sub-title pointer" title="Blog" onClick={(e) => onChangeAppreciate(e)}>
-                          Blog
+                        <h3
+                          className="section-sub-title pointer"
+                          title={language.blog.title}
+                          onClick={(e) => onChangeAppreciate(e)}
+                        >
+                          {language.blog.title}
                         </h3>
                       </div>
                     </animated.div>
                   ) : (
                     <animated.div className="row align-content-center" style={style}>
                       <div className="col-4 col-md-12">
-                        <h2 className="section-title" title="News">
-                          Blog
+                        <h2 className="section-title" title={language.news.title}>
+                          {language.blog.title}
                         </h2>
                       </div>
                       <div className="col-6 col-md-12">
-                        <h3 className="section-sub-title pointer" title="News" onClick={(e) => onChangeAppreciate(e)}>
-                          News
+                        <h3
+                          className="section-sub-title pointer"
+                          title={language.news.title}
+                          onClick={(e) => onChangeAppreciate(e)}
+                        >
+                          {language.news.title}
                         </h3>
                       </div>
                     </animated.div>

@@ -8,7 +8,7 @@ const BlockCompare = () => {
       <div className="container">
         <div className="section-content">
           <div className="section-content-header line-bottom text-primary">
-            <h2 className="section-content-title">Compare</h2>
+            <h2 className="section-content-title">{language.compare}</h2>
           </div>
           <div className="compare-table table-responsive">
             <table className="table mb-0">

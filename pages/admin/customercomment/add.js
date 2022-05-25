@@ -1,7 +1,6 @@
 import * as Yup from 'yup'
 import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
-import Autocomplete from '@material-ui/lab/Autocomplete'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useQuery, useMutation } from 'react-query'
 import ImageUploading from 'react-images-uploading'
@@ -9,13 +8,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Controller, useForm } from 'react-hook-form'
 import React, { useEffect, useRef, useState } from 'react'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Button, Chip, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, TextField, Typography } from '@material-ui/core'
 
 import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import { tagsRelipa } from '../../../sampleData/tagsRelipa'
 
 export default function Works() {
   const btnRemoveImg = useRef(null)
@@ -24,11 +22,7 @@ export default function Works() {
 
   const [images, setImages] = useState([])
   const [isErrImg, setIsErrImgs] = useState(false)
-  const [technology, setTechnology] = useState([])
-  const [responContent, setResponContent] = useState([])
   const [updateImg, setUpdateImg] = useState(false)
-  const [tags, setTags] = useState([])
-  const [type, setType] = useState(0)
   const maxNumber = 1
 
   const [snackbar, setSnackbar] = useState({
@@ -106,12 +100,14 @@ export default function Works() {
     setValue('title', dataNews?.title)
     setValue('desc', dataNews?.desc)
     setValue('company', dataNews?.company)
-    setImages(
-      dataNews?.voice.map((item, index) => ({
-        data_url: `http://${item}`,
-        file: dataNews?.media[index],
-      }))
-    )
+    if (dataNews?.voice) {
+      setImages(
+        dataNews?.voice.map((item, index) => ({
+          data_url: `http://${item}`,
+          file: dataNews?.media[index],
+        }))
+      )
+    }
   }, [dataNews])
 
   const validationSchema = Yup.object().shape({
@@ -175,9 +171,6 @@ export default function Works() {
   }
 
   const onReset = () => {
-    setTechnology([])
-    setResponContent([])
-    setTags([])
     reset({
       ...defaultValues,
     })

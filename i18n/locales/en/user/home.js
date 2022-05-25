@@ -7,6 +7,7 @@ export default {
     },
     scroll: 'SCROLL',
     service: {
+      title: 'Service',
       LabType: 'Lab-type Development',
       LabTypeContent:
         "What is lab-type development? We build a dedicated development team for each project within our company, and as a member of the customer's team, we commit to the goals of the project.",
@@ -45,6 +46,7 @@ export default {
     },
     seemore: 'See more',
     news: {
+      title: 'News',
       contentFirst:
         'Software & App Development Exhibition [Spring] (SODEC 2022) | Notice of Exhibit at 31st Japan IT Week',
       contentSecond: 'Seminar 06: Blockchain Opportunity Challenge & Widiland True Story',
@@ -53,6 +55,7 @@ export default {
         'Satisfied for the first time in offshore development for the third time! Relipa has outstanding speed and proposal power!',
     },
     blog: {
+      title: 'Blog',
       titleFirst: '2022.04.01 Blockchain development',
       contentFirst:
         '2022.04.01 Blockchain development What is DEX (Decentralized Exchange)? Explain in detail the advantages and disadvantages, and the differences from CEX (Centralized Exchange)!',
