@@ -87,7 +87,7 @@ export default function AdminNavbarLinks() {
   return (
     <div className={classes.appbar}>
       <div className={classes.searchWrapper}>
-        <CustomInput
+        {/* <CustomInput
           formControlProps={{
             className: classes.margin + ' ' + classes.search
           }}
@@ -100,7 +100,7 @@ export default function AdminNavbarLinks() {
         />
         <Button color='white' aria-label='edit' justIcon round>
           <Search />
-        </Button>
+        </Button> */}
       </div>
       <div>
         <div className={classes.manager}>
@@ -151,7 +151,7 @@ export default function AdminNavbarLinks() {
           </Poppers>
         </div>
 
-        <div className={classes.manager}>
+        {/* <div className={classes.manager}>
           <Button
             color={size.width > 959 ? 'transparent' : 'white'}
             justIcon={size.width > 959}
@@ -208,7 +208,7 @@ export default function AdminNavbarLinks() {
               </Grow>
             )}
           </Poppers>
-        </div>
+        </div> */}
         <div className={classes.manager}>
           <Button
             color={size.width > 959 ? 'transparent' : 'white'}

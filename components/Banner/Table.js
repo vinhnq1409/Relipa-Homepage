@@ -6,8 +6,6 @@ import TableCell from '@material-ui/core/TableCell'
 import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
 import { Dialogs } from '../Progress/Dialog'
@@ -50,16 +48,13 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
             {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
-                <TableCell>{row.title}</TableCell>
+                <TableCell className={styles.max68}>
+                  <div style={{backgroundImage: `url(http://${row.banner[0]})`}} className={styles.width68}></div>
+                </TableCell>
                 <TableCell>{row.lang}</TableCell>
                 <TableCell className={styles.minWidth72}>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell>{row.status ? 'Public' : 'Private'}</TableCell>
-                <TableCell>{row.total_view}</TableCell>
                 <TableCell className={styles.flex2}>
-                  <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
-                    <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
-                  </a>
-                  <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
                   <DeleteIcon
                     className={`${styles.tableLink} ${styles.hoverIcon}`}
                     onClick={() => handleOpen(row.id)}
@@ -69,9 +64,15 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
             ))}
           </TableBody>
         </Table>
-        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt="No Data ..." />}
       </div>
-      <Dialogs open={openConfirmDelete} handleCancel={handleClose} title='Delete' content='Do you really want to delete this?' onClick={handleDelete} />
+      <Dialogs
+        open={openConfirmDelete}
+        handleCancel={handleClose}
+        title="Delete"
+        content="Do you really want to delete this?"
+        onClick={handleDelete}
+      />
       {count > 1 && (
         <Pagination
           className={styles.center}

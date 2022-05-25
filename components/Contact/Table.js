@@ -7,9 +7,7 @@ import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody'
 import noData from '../../assets/img/no-data-found.png'
 
-
-const TableList = ({  tableHead, data, params, setParams, count }) => {
-
+const TableList = ({ tableHead, data, params, setParams, count }) => {
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
@@ -31,19 +29,21 @@ const TableList = ({  tableHead, data, params, setParams, count }) => {
             {data?.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.company_name}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.phone}</TableCell>
+                <TableCell>
+                  Name: {row.name} <br />
+                  Company: {row.company_name} <br />
+                  Email: <a href={`mailto:${row.email}`}>{row.email}</a><br />
+                  Phone: <a href={`tel:${row.phone}`}>{row.phone}</a>
+                </TableCell>
                 <TableCell>{row.inquiry_type}</TableCell>
                 <TableCell>{row.your_source}</TableCell>
                 <TableCell>{row.content}</TableCell>
-                <TableCell>{row.created_at}</TableCell>
+                <TableCell className={styles.minWidth68}>{row.created_at}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt="No Data ..." />}
       </div>
       {count > 1 && (
         <Pagination

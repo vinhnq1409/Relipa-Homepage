@@ -10,7 +10,7 @@ import BlockVoice from '../components/HomePage/Home/BlockVoice'
 import HomePage from '../layouts/Home'
 import HeadHome from '../components/Head/Head'
 
-export default function Index({ voice }) {
+export default function Index({ voice, banner }) {
   const router = useRouter()
   const { locale } = router
 
@@ -26,7 +26,7 @@ export default function Index({ voice }) {
 
   return (
     <HomePage>
-      <BlockBanner />
+      <BlockBanner banner={banner}/>
       <div id="main">
         <BlockService />
         <BlockOutClient />
@@ -41,7 +41,10 @@ export async function getStaticProps({ locale }) {
   const resDataBlogs = await get(`user/${locale}/voice`)
   const voice = await resDataBlogs.data
 
+  const resDataBanner = await get(`user/${locale}/banner`)
+  const banner = await resDataBanner.map((item)=> ({banner: item.banner[0]}))
+
   return {
-    props: { voice },
+    props: { voice, banner },
   }
 }
