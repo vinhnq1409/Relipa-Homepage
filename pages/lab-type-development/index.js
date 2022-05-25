@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import HeadHome from '../../components/Head/Head'
-
+import { NextSeo } from 'next-seo'
 import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
@@ -17,24 +16,47 @@ export default function Index() {
     setCard(value)
   }
   return (
-    <HomePage>
-      <HeadHome
-        title={'Labtype Development | Relipa'}
-        contentTitle={'this is Labtype content title'}
-        contentImg={'this is Labtype link img'}
-        contentOgUrl={'this is Labtype content og url '}
-        contentKeywords={'this is Labtype contents key word'}
-        contentDescription={'this is Labtype content description'}
+    <>
+      <NextSeo
+        title="Labtype Development | Relipa"
+        description="This example uses more of the available config options."
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+              type: 'image/jpeg',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+          site_name: 'SiteName',
+        }}
       />
-      <BlockBanner />
-      <div id="main">
-        <BlockBreadcrumb />
-        <BlockContent />
-        <BlockOverview />
-        <BlockWhyChoose />
-        <CaseStudy itemCard={itemCard} />
-        <BlockDialog item={card} />
-      </div>
-    </HomePage>
+      <HomePage>
+        <BlockBanner />
+        <div id="main">
+          <BlockBreadcrumb />
+          <BlockContent />
+          <BlockOverview />
+          <BlockWhyChoose />
+          <CaseStudy itemCard={itemCard} />
+          <BlockDialog item={card} />
+        </div>
+      </HomePage>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import HeadHome from '../../components/Head/Head'
+import { NextSeo } from 'next-seo'
 import BlockBanner from '../../components/HomePage/Contact/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Contact/BlockBreadcrumb'
 import BlockForm from '../../components/HomePage/Contact/BlockForm'
@@ -26,14 +26,35 @@ export default function Contact() {
         })
   }
   return (
-    <div>
-      <HeadHome
-        title={'Contact | Relipa'}
-        contentTitle={'this is Contact content title'}
-        contentImg={'this is Contact link img'}
-        contentOgUrl={'this is Contact content og url '}
-        contentKeywords={'this is Contact contents key word'}
-        contentDescription={'this is Contact content description'}
+    <>
+      <NextSeo
+        title="Contact | Relipa"
+        description="This example uses more of the available config options."
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+              type: 'image/jpeg',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+          site_name: 'SiteName',
+        }}
       />
       <HomePage>
         <BlockBanner />
@@ -48,6 +69,6 @@ export default function Contact() {
         severity={snackbar.severity}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
       />
-    </div>
+    </>
   )
 }

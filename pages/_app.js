@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import PageChange from 'components/PageChange/PageChange.js'
 import { Provider } from 'react-redux'
 import Script from 'next/script'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../next-seo.config';
 
 const queryClient = new QueryClient()
 
@@ -25,6 +27,7 @@ Router.events.on('routeChangeError', () => {
 })
 
 export default class MyApp extends App {
+
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
 
@@ -41,13 +44,10 @@ export default class MyApp extends App {
 
     return (
       <>
+      <DefaultSeo {...SEO}/>
         <React.Fragment>
           <QueryClientProvider client={queryClient}>
             <Provider store={store}>
-              <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <title>Relipa</title>
-              </Head>
               <Layout>
                 <Component {...pageProps} />
               </Layout>

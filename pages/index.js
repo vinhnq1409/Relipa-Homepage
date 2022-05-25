@@ -26,14 +26,6 @@ export default function Index({ voice }) {
 
   return (
     <HomePage>
-      <HeadHome
-        title={'Blockchain and Software Development | Relipa'}
-        contentTitle={'this is home content title'}
-        contentImg={'this is home link img'}
-        contentOgUrl={'this is home content og url '}
-        contentKeywords={'this is home contents key word'}
-        contentDescription={'this is home content description'}
-      />
       <BlockBanner />
       <div id="main">
         <BlockService />

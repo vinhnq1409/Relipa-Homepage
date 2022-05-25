@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import HeadHome from '../../components/Head/Head'
 import BlockBanner from '../../components/HomePage/Company/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
 import BlockCompanyProfile from '../../components/HomePage/Company/BlockCompanyProfile'
@@ -9,6 +8,7 @@ import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers
 import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
+import { NextSeo } from 'next-seo'
 
 export default function Company() {
   const [infoCoreMember, setInfoCoreMember] = useState({
@@ -18,14 +18,35 @@ export default function Company() {
     img: '',
   })
   return (
-    <div>
-      <HeadHome
-        title={'Relipa | Blockchain and Software Development'}
-        contentTitle={'this is company content title'}
-        contentImg={'this is company link img'}
-        contentOgUrl={'this is company content og url '}
-        contentKeywords={'this is company contents key word'}
-        contentDescription={'this is company content description'}
+    <>
+      <NextSeo
+        title="Relipa | Blockchain and Software Development"
+        description="This example uses more of the available config options."
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+              type: 'image/jpeg',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+          site_name: 'SiteName',
+        }}
       />
       <HomePage>
         <BlockBanner />
@@ -45,6 +66,6 @@ export default function Company() {
         </div>
         <BlockPopup infoCoreMember={infoCoreMember} />
       </HomePage>
-    </div>
+    </>
   )
 }
