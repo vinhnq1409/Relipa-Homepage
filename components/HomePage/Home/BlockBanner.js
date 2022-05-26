@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import useTrans from '../../../i18n/useTrans'
-const BlockBanner = ({banner}) => {
+const BlockBanner = ({ banner }) => {
   const trans = useTrans()
   const language = trans.home.home
   return (
@@ -8,15 +8,44 @@ const BlockBanner = ({banner}) => {
       <section className="section section-aos section-banner py-0" data-aos="fade-down">
         <div className="swiper-carousel banner-swiper-carousel">
           <div className="swiper-container">
-            <div className="swiper-wrapper">
-              {
-                banner.map((item) => (
+            {banner ? (
+              <div className="swiper-wrapper">
+                {banner.map((item) => (
                   <div className="swiper-slide">
+                    <div className="main-banner-item">
+                      <div className="main-banner-item-bg">
+                        <picture>
+                          <source media="(min-width:768px)" srcSet={`http://${item.banner}`} />
+                          <img src={`http://${item.banner}`} alt="Banner Home" />
+                        </picture>
+                      </div>
+                      <div className="container">
+                        <div className="row align-items-center">
+                          <div className="col-md-6">
+                            <h1 className="banner-title">{item.title}</h1>
+                            <div className="main-banner-content">
+                              <div className="banner-summary">{item.desc}</div>
+                              {item.link && (
+                                <Link href={`${item.link}`}>
+                                  <a className="btn btn-outline-light btn-lg">{language.seemore}</a>
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="swiper-wrapper">
+                <div className="swiper-slide">
                   <div className="main-banner-item">
                     <div className="main-banner-item-bg">
                       <picture>
-                        <source media="(min-width:768px)" srcSet={`http://${item.banner}`} />
-                        <img src={`http://${item.banner}`} alt="Banner Home" />
+                        <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
+                        <img src="/user-page/img/home/banner.png" width="375" height="812" alt="" />
                       </picture>
                     </div>
                     <div className="container">
@@ -34,9 +63,55 @@ const BlockBanner = ({banner}) => {
                     </div>
                   </div>
                 </div>
-                ))
-              }
-            </div>
+                <div className="swiper-slide">
+                  <div className="main-banner-item">
+                    <div className="main-banner-item-bg">
+                      <picture>
+                        <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
+                        <img src="/user-page/img/home/banner.png" alt="" />
+                      </picture>
+                    </div>
+                    <div className="container">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                          <h1 className="banner-title">{language.banner.title}</h1>
+
+                          <div className="main-banner-content">
+                            <div className="banner-summary">{language.banner.content}</div>
+                            <Link href="/company">
+                              <a className="btn btn-outline-light btn-lg">{language.seemore}</a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="swiper-slide">
+                  <div className="main-banner-item">
+                    <div className="main-banner-item-bg">
+                      <picture>
+                        <source media="(min-width:768px)" srcSet="/user-page/img/home/banner.png" />
+                        <img src="/user-page/img/home/banner.png" alt="" />
+                      </picture>
+                    </div>
+                    <div className="container">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                          <h1 className="banner-title">{language.banner.title}</h1>
+                          <div className="main-banner-content">
+                            <div className="banner-summary">{language.banner.content}</div>
+                            <Link href="/company">
+                              <a className="btn btn-outline-light btn-lg">{language.seemore}</a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="swiper-controls">
             <div className="swiper-button-prev"></div>

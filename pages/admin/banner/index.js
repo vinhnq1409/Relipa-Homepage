@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
 import Admin from 'layouts/Admin.js'
 import TableList from '../../../components/Banner/Table'
-import Button from '@material-ui/core/Button'
+import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get, post } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import styles from '../../../styles/AdminBlogs.module.css'
 
+const tableHead = ['Id', 'Banner', 'API', 'Created_at', 'Status','Numerical_Order', 'Action']
 
-const tableHead = ['Id', 'Banner', 'API', 'Created_at', 'Status', 'Action']
-
-export default function Banner() {
+export default function Blogs() {
   const router = useRouter()
   const queryClient = useQueryClient()
   const [params, setParams] = useState({
@@ -21,28 +19,29 @@ export default function Banner() {
     start: null,
     end: moment().format('YYYY-MM-DD'),
     per_page: 10,
-    page: 1,
+    page: 1
   })
 
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
-    type: '',
+    type: ''
   })
 
   const getBanner = () => {
     return get('banner', params)
   }
 
-  const postBanner = async(data) => {
-    return await post('banner', data)
-  }
-
   const deleteBanner = (bannerId) => {
     return del(`banner/${bannerId}`)
   }
 
+  const postNumericalOrder = async (data) => {
+    return await post('update-banner-numerical-order', data)
+  }
+
   const { data, refetch } = useQuery(['admin/banner', params.per_page, params.page], getBanner)
+
   const { mutate } = useMutation(deleteBanner, {
     onError: () => {
       setSnackbar({
@@ -61,35 +60,36 @@ export default function Banner() {
     },
   })
 
-  const { mutate: postBannerAPI } = useMutation(postBanner, {
+  console.log('re-render')
+
+  const { mutate: NumericalOrder } = useMutation(postNumericalOrder, {
+    onError: () => {
+      setSnackbar({
+        open: true,
+        message: 'Order failed!',
+        type: 'error',
+      })
+    },
     onSuccess: () => {
       queryClient.invalidateQueries('admin/banner')
       setSnackbar({
-        type: 'success',
         open: true,
-        message: 'Post is successful'
+        message: 'Order success!',
+        type: 'success',
       })
     },
-    onError: (error) => {
-      const { errors } = error.response.data
-      setSnackbar({
-        open: true,
-        type: 'error',
-        message: `Post is failed: ${Object.values(errors)[0][0]}` || 'POST is failed'
-      })
-    }
   })
 
   const handleClose = () => {
     setSnackbar({ ...snackbar, open: false })
   }
 
-  const onPictureUpload = async(e) => {
-    const formData = new FormData()
-    formData.append('image', e.target.files[0], e.target.files[0].name)
-    formData.append('lang', router.locale)
-    formData.append('status', 1)
-    postBannerAPI(formData)
+  const handleSearch = () => {
+    refetch()
+  }
+
+  const handleCreate = () => {
+    router.push('/admin/banner/add')
   }
 
   const handleUpdate = (id) => {
@@ -103,27 +103,26 @@ export default function Banner() {
     mutate(id)
   }
 
+  const handleNumericalOrder = (data) =>{
+    NumericalOrder(data)
+  }
+
   return (
     <>
-      <input
-        accept="image/*"
-        className={styles.buttonNone}
-        id="contained-button-file"
-        multiple
-        type="file"
-        onChange={onPictureUpload}
+      <NewFilters
+        header={'BLOG'}
+        handleSearch={handleSearch}
+        filters={params}
+        setFilters={setParams}
+        onCreate={handleCreate}
       />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" color="primary" component="span">
-          Upload
-        </Button>
-      </label>
       <TableList
-        namePage="/blogs"
+        namePage='/blogs'
         tableHead={tableHead}
         data={data?.data}
         onUpdate={handleUpdate}
         onDelete={handleDelete}
+        handleNumericalOrder={handleNumericalOrder}
         params={params}
         setParams={setParams}
         count={data?.total / params.per_page}
@@ -138,4 +137,4 @@ export default function Banner() {
   )
 }
 
-Banner.layout = Admin
+Blogs.layout = Admin

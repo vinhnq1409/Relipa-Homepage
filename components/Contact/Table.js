@@ -7,7 +7,14 @@ import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody'
 import noData from '../../assets/img/no-data-found.png'
 
-const TableList = ({ tableHead, data, params, setParams, count }) => {
+const TableList = (props) => {
+  const { 
+    tableHead, 
+    data, 
+    params, 
+    setParams, 
+    count, 
+  } = props
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }
