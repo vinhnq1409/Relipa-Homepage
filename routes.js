@@ -20,6 +20,13 @@ const dashboardRoutes = [
     role: ['Super Admin', 'Admin', 'Editor'],
   },
   {
+    path: '/banner',
+    name: 'Banner',
+    icon: GroupWorkIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin']
+  },
+  {
     path: '/blogs',
     name: 'Blogs',
     icon: ChromeReaderModeIcon,
@@ -74,13 +81,6 @@ const dashboardRoutes = [
     icon: Person,
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],
-  },
-  {
-    path: '/banner',
-    name: 'Banner',
-    icon: GroupWorkIcon,
-    layout: '/admin',
-    role: ['Super Admin', 'Admin']
   },
   // {
   //   path: '/project',

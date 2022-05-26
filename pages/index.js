@@ -42,7 +42,12 @@ export async function getStaticProps({ locale }) {
   const voice = await resDataBlogs.data
 
   const resDataBanner = await get(`user/${locale}/banner`)
-  const banner = await resDataBanner.map((item)=> ({banner: item.banner[0]}))
+  const banner = await resDataBanner.map((item)=> ({
+    title: item.title,
+    desc: item.desc,
+    link: item.link,
+    banner: item.banner[0]
+  }))
 
   return {
     props: { voice, banner },

@@ -7,7 +7,17 @@ import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
 
-const TableList = ({ tableHead, data, onView, onUpdate, onDelete, params, setParams, count }) => {
+const TableList = (props) => {
+  const { 
+    tableHead, 
+    data, 
+    onView, 
+    onUpdate, 
+    onDelete, 
+    params, 
+    setParams, 
+    count, 
+  } = props
   const handlePaginationChange = (e, page) => {
     setParams({ ...params, page: page })
   }

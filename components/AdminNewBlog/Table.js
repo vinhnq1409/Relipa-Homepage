@@ -12,7 +12,17 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
 import { Dialogs } from '../Progress/Dialog'
 
-const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setParams, count }) => {
+const TableList = (props) => {
+  const { 
+    namePage, 
+    tableHead, 
+    data, 
+    onUpdate, 
+    onDelete, 
+    params, 
+    setParams, 
+    count, 
+  } = props
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
 
@@ -56,7 +66,7 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
                 <TableCell>{row.status ? 'Public' : 'Private'}</TableCell>
                 <TableCell>{row.total_view}</TableCell>
                 <TableCell className={styles.flex2}>
-                  <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
+                  <a target="_blank" href={`${namePage}/${row.friendly_url}`} rel="noreferrer">
                     <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
                   </a>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
@@ -69,9 +79,15 @@ const TableList = ({ namePage, tableHead, data, onUpdate, onDelete, params, setP
             ))}
           </TableBody>
         </Table>
-        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt="No Data ..." />}
       </div>
-      <Dialogs open={openConfirmDelete} handleCancel={handleClose} title='Delete' content='Do you really want to delete this?' onClick={handleDelete} />
+      <Dialogs
+        open={openConfirmDelete}
+        handleCancel={handleClose}
+        title="Delete"
+        content="Do you really want to delete this?"
+        onClick={handleDelete}
+      />
       {count > 1 && (
         <Pagination
           className={styles.center}
