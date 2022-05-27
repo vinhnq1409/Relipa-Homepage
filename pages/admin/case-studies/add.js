@@ -46,6 +46,7 @@ export default function Works() {
     responsible_content: [],
     tags: [],
     content: '',
+    lang: 'en',
   }
 
   const getNews = async () => {
@@ -61,7 +62,7 @@ export default function Works() {
   }
 
   const {
-    data: dataNews,
+    data: dataWork,
     remove: removeData,
     isLoading: isGetingNewsAPI,
   } = useQuery('getCaseStudy', getNews, { enabled: !!id })
@@ -103,25 +104,25 @@ export default function Works() {
   }, [])
 
   useEffect(() => {
-    setValue('title', dataNews?.title)
-    setValue('desc', dataNews?.desc)
-    setValue('type_of_contract', dataNews?.type_of_contract)
-    setValue('team_structure', dataNews?.team_structure)
-    setValue('content', dataNews?.content)
-    setTechnology(dataNews?.technology || [])
-    setResponContent(dataNews?.responsible_content || [])
-    setTags(dataNews?.tags || [])
-    if (dataNews?.works) {
+    setValue('title', dataWork?.title)
+    setValue('desc', dataWork?.desc)
+    setValue('type_of_contract', dataWork?.type_of_contract)
+    setValue('team_structure', dataWork?.team_structure)
+    setValue('content', dataWork?.content)
+    setValue('lang', dataWork?.lang)
+    setTechnology(dataWork?.technology || [])
+    setResponContent(dataWork?.responsible_content || [])
+    setTags(dataWork?.tags || [])
+    if (dataWork?.works) {
       setImages(
-        dataNews?.works.map((item, index) => ({
+        dataWork?.works.map((item, index) => ({
           data_url: `http://${item}`,
-          file: dataNews?.media[index],
+          file: dataWork?.media[index],
         }))
       )
     }
-    console.log(dataNews?.works)
-    setType(dataNews?.type || 5)
-  }, [dataNews])
+    setType(dataWork?.type || 5)
+  }, [dataWork])
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
@@ -152,7 +153,7 @@ export default function Works() {
         technology: technology,
         tags: tags,
         responsible_content: responContent,
-        lang: router.locale,
+        lang: data.lang,
         type: type,
       }
 
@@ -194,7 +195,7 @@ export default function Works() {
         technology: technology,
         responsible_content: responContent,
         tags: tags,
-        lang: router.locale,
+        lang: data.lang,
       }
 
       if (type === 5) {
@@ -357,7 +358,28 @@ export default function Works() {
               )}
             />
           </Grid>
-
+          <Grid item xs={12}>
+            <Controller
+              name="lang"
+              control={control}
+              render={({ field }) => (
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">Lang</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    {...field}
+                    label="Lang"
+                    style={{ minWidth: 168 }}
+                  >
+                    <MenuItem value="en">English</MenuItem>
+                    <MenuItem value="vi">VietNam</MenuItem>
+                    <MenuItem value="ja">Japan</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </Grid>
           <Grid item xs={12} container spacing={4} justifyContent="center">
             <ImageUploading multiple value={images} onChange={onChangeImg} maxNumber={maxNumber} dataURLKey="data_url">
               {({

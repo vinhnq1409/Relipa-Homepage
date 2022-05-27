@@ -51,8 +51,8 @@ const BlockForm = ({ onNotification }) => {
         }
       }),
     content: Yup.string().required(language.error),
-    inquiry_type: Yup.string().test('Inquiry type', language.error, (value) => +value),
-    your_source: Yup.string().test('Yoursource', language.error, (value) => +value),
+    // inquiry_type: Yup.string().test('Inquiry type', language.error, (value) => +value),
+    // your_source: Yup.string().test('Yoursource', language.error, (value) => +value),
     is_agree: Yup.boolean().oneOf([true], 'You must agree to the privacy policy'),
   })
 
@@ -64,8 +64,10 @@ const BlockForm = ({ onNotification }) => {
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onSend = (data) => {
+    const newInquiryType = data.inquiry_type !== '0' ? data.inquiry_type : '8'
+    const newYourSource = data.your_source !== '0' ? data.your_source : '13'
     const { is_agree, ...newData } = data
-    postInfoContactAPI(newData)
+    postInfoContactAPI({ ...newData, inquiry_type: newInquiryType, your_source: newYourSource })
   }
 
   return (
