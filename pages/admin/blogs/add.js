@@ -1,16 +1,27 @@
-import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography, Chip } from '@material-ui/core'
-import Autocomplete from '@material-ui/lab/Autocomplete'
 import { Controller, useForm } from 'react-hook-form'
 import { useQuery, useMutation } from 'react-query'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  Chip,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+} from '@material-ui/core'
+import Autocomplete from '@material-ui/lab/Autocomplete'
+import Admin from 'layouts/Admin.js'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
-// import { tagsRelipa } from '../../../sampleData/tagsRelipa'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
@@ -26,7 +37,7 @@ export default function Add() {
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
-    severity: 'success'
+    severity: 'success',
   })
   const [paramsTags, setParamsTags] = useState({
     per_page: 20,
@@ -41,18 +52,20 @@ export default function Add() {
     url_image_meta: '',
     content: '',
     tags: '',
-    friendly_url: ''
+    friendly_url: '',
+    lang: 'en',
+    status: true,
   }
 
-  const getBlog = async() => {
+  const getBlog = async () => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async(data) => {
+  const postBlog = async (data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async(data) => {
+  const putBlog = async (data) => {
     return await post(`blogs/${id}`, data)
   }
 
@@ -63,7 +76,7 @@ export default function Add() {
   const {
     data: dataBlog,
     remove: removeBlogs,
-    isLoading: isGetBlogAPI
+    isLoading: isGetBlogAPI,
   } = useQuery('getBlog', getBlog, { enabled: !!id })
 
   const { data: dataTags } = useQuery(['admin/tags', paramsTags.page, paramsTags.per_page, paramsTags.lang], getTags)
@@ -73,7 +86,7 @@ export default function Add() {
       setSnackbar({
         ...snackbar,
         open: true,
-        message: 'Post is successful'
+        message: 'Post is successful',
       })
       setTimeout(() => {
         router.push('/admin/blogs')
@@ -84,9 +97,9 @@ export default function Add() {
       setSnackbar({
         open: true,
         severity: 'error',
-        message: `Post is failed: ${Object.values(errors)[0][0]}` || 'POST is failed'
+        message: `Post is failed: ${Object.values(errors)[0][0]}` || 'POST is failed',
       })
-    }
+    },
   })
 
   const { mutate: putBlogAPI, isLoading: isPutingBlogAPI } = useMutation(putBlog, {
@@ -94,7 +107,7 @@ export default function Add() {
       setSnackbar({
         ...snackbar,
         open: true,
-        message: 'Update is successful'
+        message: 'Update is successful',
       })
       setTimeout(() => {
         router.push('/admin/blogs')
@@ -105,9 +118,9 @@ export default function Add() {
       setSnackbar({
         open: true,
         severity: 'error',
-        message: `Put is failed: ${Object.values(errors)[0][0]}` || 'Put is failed'
+        message: `Put is failed: ${Object.values(errors)[0][0]}` || 'Put is failed',
       })
-    }
+    },
   })
 
   useEffect(() => {
@@ -120,6 +133,8 @@ export default function Add() {
     setValue('url_image_meta', dataBlog?.data.url_image_meta)
     setValue('tags', dataBlog?.data.tags)
     setValue('friendly_url', dataBlog?.data.friendly_url)
+    setValue('lang', dataBlog?.data.lang)
+    setValue('status', dataBlog?.data.status)
     setValueTag(dataBlog?.data.tags || [])
     setValueEditor(dataBlog?.data.content)
     if (dataBlog) {
@@ -128,9 +143,9 @@ export default function Add() {
         tags.push(tag.name)
       }
       setValueTag(tags)
-      setParamsTags({...paramsTags, lang: dataBlog.data.lang })
+      setParamsTags({ ...paramsTags, lang: dataBlog.data.lang })
     }
-    return () => setParamsTags({...paramsTags, lang: router.locale })
+    return () => setParamsTags({ ...paramsTags, lang: router.locale })
   }, [dataBlog])
 
   useEffect(() => {
@@ -155,7 +170,7 @@ export default function Add() {
       .matches(
         /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
         'Enter correct url!'
-      )
+      ),
   })
 
   const {
@@ -164,7 +179,7 @@ export default function Add() {
     control,
     setValue,
     getValues,
-    reset
+    reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -172,9 +187,10 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
-        lang: router.locale,
+        lang: data.lang,
+        status: +data.status,
         tags: valueTag,
-        content: editorRef.current.getContent()
+        content: editorRef.current.getContent(),
       }
       postBlogAPI(newData)
     } else {
@@ -187,10 +203,11 @@ export default function Add() {
       setIsErrorTag(false)
       const newData = {
         ...data,
-        lang: dataBlog.data.lang,
+        lang: data.lang,
+        status: +data.status,
         tags: valueTag,
         content: editorRef.current.getContent(),
-        _method: 'PUT'
+        _method: 'PUT',
       }
       putBlogAPI(newData)
     } else {
@@ -198,7 +215,7 @@ export default function Add() {
     }
   }
 
-  const onPictureUpload = async(e) => {
+  const onPictureUpload = async (e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -215,7 +232,7 @@ export default function Add() {
     setValueEditor('')
     setValueTag([])
     reset({
-      ...defaultValues
+      ...defaultValues,
     })
   }
 
@@ -229,25 +246,25 @@ export default function Add() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Controller
-              name='title'
+              name="title"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Title' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="Title" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='desc'
+              name="desc"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='Description'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="Description"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -256,10 +273,10 @@ export default function Add() {
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='meta'
+              name="meta"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Meta' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="Meta" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
@@ -267,15 +284,15 @@ export default function Add() {
           <Grid item xs={12}>
             <Autocomplete
               multiple
-              id='tags-filled'
+              id="tags-filled"
               options={tagsRelipa.map((option) => option.name)}
               freeSolo
               renderTags={(value, getTagProps) =>
                 value.map((option, index) => (
-                  <Chip key={index} variant='outlined' label={option} {...getTagProps({ index })} />
+                  <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
                 ))
               }
-              renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tag' />}
+              renderInput={(params) => <TextField {...params} variant="outlined" label="Tags" placeholder="Add tag" />}
               value={valueTag}
               onChange={(event, value) => {
                 value.length ? setIsErrorTag(false) : setIsErrorTag(true)
@@ -286,15 +303,15 @@ export default function Add() {
           </Grid>
           <Grid item xs={10}>
             <Controller
-              name='url_image_meta'
+              name="url_image_meta"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='URL meta image'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="URL meta image"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -303,30 +320,30 @@ export default function Add() {
           </Grid>
           <Grid item xs={2}>
             <input
-              accept='image/*'
+              accept="image/*"
               className={styles.buttonNone}
-              id='contained-button-file'
+              id="contained-button-file"
               multiple
-              type='file'
+              type="file"
               onChange={onPictureUpload}
             />
-            <label htmlFor='contained-button-file'>
-              <Button className={styles.full} variant='contained' color='primary' component='span'>
+            <label htmlFor="contained-button-file">
+              <Button className={styles.full} variant="contained" color="primary" component="span">
                 Upload
               </Button>
             </label>
           </Grid>
           <Grid item xs={10}>
             <Controller
-              name='friendly_url'
+              name="friendly_url"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='URL friendly'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="URL friendly"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -334,19 +351,55 @@ export default function Add() {
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant="contained" color="primary">
               Reset URL
             </Button>
           </Grid>
           <Grid item xs={12}>
+            <Controller
+              name="lang"
+              control={control}
+              render={({ field }) => (
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">Lang</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    {...field}
+                    label="Lang"
+                    style={{ minWidth: 168 }}
+                  >
+                    <MenuItem value="en">English</MenuItem>
+                    <MenuItem value="vi">VietNam</MenuItem>
+                    <MenuItem value="ja">Japan</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <FormControlLabel
+                  control={
+                    <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />
+                  }
+                  label="Public"
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Editor
-              id='editor'
+              id="editor"
               value={valueEditor}
               apiKey={apiKey}
               onInit={(evt, editor) => (editorRef.current = editor)}
               onEditorChange={(newValueEditor) => setValueEditor(newValueEditor)}
               init={{
-                ...initFullProps
+                ...initFullProps,
               }}
             />
           </Grid>
@@ -355,22 +408,22 @@ export default function Add() {
               <BtnLoading
                 loading={isGetBlogAPI || isPostingBlogAPI}
                 onClick={handleSubmit(onCreate)}
-                btnName='Create'
-                color='primary'
+                btnName="Create"
+                color="primary"
               />
             )}
             {id && (
               <BtnLoading
                 loading={isGetBlogAPI || isPutingBlogAPI}
                 onClick={handleSubmit(onUpdate)}
-                btnName='Update'
-                color='primary'
+                btnName="Update"
+                color="primary"
               />
             )}
-            <Button onClick={onReset} className={styles.button} variant='contained' color='secondary'>
+            <Button onClick={onReset} className={styles.button} variant="contained" color="secondary">
               Reset
             </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained'>
+            <Button onClick={onCancel} className={styles.button} variant="contained">
               Cancel
             </Button>
           </Grid>

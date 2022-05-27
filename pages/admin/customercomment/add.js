@@ -1,15 +1,25 @@
+import React, { useEffect, useRef, useState } from 'react'
 import * as Yup from 'yup'
-import Admin from 'layouts/Admin.js'
 import { useRouter } from 'next/router'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useQuery, useMutation } from 'react-query'
 import ImageUploading from 'react-images-uploading'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Controller, useForm } from 'react-hook-form'
-import React, { useEffect, useRef, useState } from 'react'
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+} from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
-
+import Admin from 'layouts/Admin.js'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
@@ -40,6 +50,8 @@ export default function Works() {
     responsible_content: [],
     tags: [],
     company: '',
+    lang: 'en',
+    status: true,
   }
 
   const getNews = async () => {
@@ -55,7 +67,7 @@ export default function Works() {
   }
 
   const {
-    data: dataNews,
+    data: dataVoice,
     remove: removeData,
     isLoading: isGetingNewsAPI,
   } = useQuery('getCaseStudy', getNews, { enabled: !!id })
@@ -97,18 +109,20 @@ export default function Works() {
   }, [])
 
   useEffect(() => {
-    setValue('title', dataNews?.title)
-    setValue('desc', dataNews?.desc)
-    setValue('company', dataNews?.company)
-    if (dataNews?.voice) {
+    setValue('title', dataVoice?.title)
+    setValue('desc', dataVoice?.desc)
+    setValue('company', dataVoice?.company)
+    setValue('lang', dataVoice?.lang)
+    setValue('status', dataVoice?.status)
+    if (dataVoice?.voice) {
       setImages(
-        dataNews?.voice.map((item, index) => ({
+        dataVoice?.voice.map((item, index) => ({
           data_url: `http://${item}`,
-          file: dataNews?.media[index],
+          file: dataVoice?.media[index],
         }))
       )
     }
-  }, [dataNews])
+  }, [dataVoice])
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -131,15 +145,11 @@ export default function Works() {
       if (updateImg) {
         formData.append('image', images[0].file, images[0].file.name)
       }
-      const newData = {
-        ...data,
-        lang: router.locale,
-      }
-      formData.append('title', newData.title)
-      formData.append('company', newData.company)
-      formData.append('desc', newData.desc)
-      formData.append('status', 1)
-      formData.append('lang', newData.lang)
+      formData.append('title', data.title)
+      formData.append('company', data.company)
+      formData.append('desc', data.desc)
+      formData.append('status', +data.status)
+      formData.append('lang', data.lang)
       postNewsAPI(formData)
     } else {
       setIsErrImgs(true)
@@ -153,16 +163,11 @@ export default function Works() {
       if (updateImg) {
         formData.append('image', images[0].file, images[0].file.name)
       }
-
-      const newData = {
-        ...data,
-        lang: router.locale,
-      }
-      formData.append('title', newData.title)
-      formData.append('company', newData.company)
-      formData.append('desc', newData.desc)
-      formData.append('status', 1)
-      formData.append('lang', newData.lang)
+      formData.append('title', data.title)
+      formData.append('company', data.company)
+      formData.append('desc', data.desc)
+      formData.append('status', +data.status)
+      formData.append('lang', data.lang)
       formData.append('_method', 'PUT')
       putNewsAPI(formData)
     } else {
@@ -226,6 +231,42 @@ export default function Works() {
               )}
             />
             {errors.company && <Typography className={styles.error}>{errors.company.message}</Typography>}
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="lang"
+              control={control}
+              render={({ field }) => (
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">Lang</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    {...field}
+                    label="Lang"
+                    style={{ minWidth: 168 }}
+                  >
+                    <MenuItem value="en">English</MenuItem>
+                    <MenuItem value="vi">VietNam</MenuItem>
+                    <MenuItem value="ja">Japan</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <FormControlLabel
+                  control={
+                    <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />
+                  }
+                  label="Public"
+                />
+              )}
+            />
           </Grid>
           <Grid item xs={12} container spacing={4} justifyContent="center">
             <ImageUploading multiple value={images} onChange={onChangeImg} maxNumber={maxNumber} dataURLKey="data_url">

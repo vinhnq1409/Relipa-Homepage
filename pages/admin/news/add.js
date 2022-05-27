@@ -1,17 +1,29 @@
-import Admin from 'layouts/Admin.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
-import { Controller, useForm } from 'react-hook-form'
-import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
+import { useQuery, useMutation } from 'react-query'
+import * as Yup from 'yup'
+import { Controller, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+} from '@material-ui/core'
+import Admin from 'layouts/Admin.js'
+import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post, put } from '../../../api/BaseRequest'
-import { useQuery, useMutation } from 'react-query'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
+
 
 export default function AddNews() {
   const editorRef = useRef(null)
@@ -21,7 +33,7 @@ export default function AddNews() {
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
-    severity: 'success'
+    severity: 'success',
   })
 
   const defaultValues = {
@@ -30,25 +42,27 @@ export default function AddNews() {
     meta: '',
     url_image_meta: '',
     content: '',
-    friendly_url: ''
+    friendly_url: '',
+    lang: 'en',
+    status: true,
   }
 
-  const getNews = async() => {
+  const getNews = async () => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async(data) => {
+  const postNews = async (data) => {
     return await post('news', data)
   }
 
-  const putNews = async(data) => {
+  const putNews = async (data) => {
     return await post(`news/${id}`, data)
   }
 
   const {
     data: dataNews,
     remove: removeData,
-    isLoading: isGetingNewsAPI
+    isLoading: isGetingNewsAPI,
   } = useQuery('getNews', getNews, { enabled: !!id })
 
   const { mutate: postNewsAPI, isLoading: isPostingNewsAPI } = useMutation(postNews, {
@@ -63,7 +77,7 @@ export default function AddNews() {
       listError.forEach((element) => {
         setSnackbar({ message: element, open: true, severity: 'error' })
       })
-    }
+    },
   })
 
   const { mutate: putNewsAPI, isLoading: isPutingNewsAPI } = useMutation(putNews, {
@@ -78,7 +92,7 @@ export default function AddNews() {
       listError.forEach((element) => {
         setSnackbar({ message: element, open: true, severity: 'error' })
       })
-    }
+    },
   })
 
   useEffect(() => {
@@ -93,6 +107,8 @@ export default function AddNews() {
     setValue('meta', dataNews?.data.meta)
     setValue('url_image_meta', dataNews?.data.url_image_meta)
     setValue('friendly_url', dataNews?.data.friendly_url)
+    setValue('lang', dataNews?.data.lang)
+    setValue('status', dataNews?.data.status)
     setValueEditor(dataNews?.data.content)
   }, [dataNews])
 
@@ -114,7 +130,7 @@ export default function AddNews() {
       .matches(
         /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
         'Enter correct url!'
-      )
+      ),
   })
 
   const {
@@ -123,15 +139,16 @@ export default function AddNews() {
     control,
     setValue,
     getValues,
-    reset
+    reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
     if (editorRef.current) {
       const newData = {
         ...data,
-        lang: router.locale,
-        content: editorRef.current.getContent()
+        lang: data.lang,
+        status: +data.status,
+        content: editorRef.current.getContent(),
       }
       postNewsAPI(newData)
     }
@@ -141,9 +158,10 @@ export default function AddNews() {
     if (editorRef.current) {
       const newData = {
         ...data,
-        lang: dataNews.data.lang,
+        lang: data.lang,
+        status: +data.status,
         content: editorRef.current.getContent(),
-        _method: 'PUT'
+        _method: 'PUT',
       }
       putNewsAPI(newData)
     }
@@ -155,7 +173,7 @@ export default function AddNews() {
     setValue('friendly_url', resetFriendlyUrl)
   }
 
-  const onFileUpload = async(e) => {
+  const onFileUpload = async (e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -165,7 +183,7 @@ export default function AddNews() {
   const onReset = () => {
     setValueEditor('')
     reset({
-      ...defaultValues
+      ...defaultValues,
     })
   }
 
@@ -179,25 +197,25 @@ export default function AddNews() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Controller
-              name='title'
+              name="title"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Title' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="Title" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.title && <Typography className={styles.error}>{errors.title.message}</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='desc'
+              name="desc"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='Description'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="Description"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -206,25 +224,25 @@ export default function AddNews() {
           </Grid>
           <Grid item xs={12}>
             <Controller
-              name='meta'
+              name="meta"
               control={control}
               render={({ field }) => (
-                <TextField fullWidth multiline label='Meta' id='outlined-required' variant='outlined' {...field} />
+                <TextField fullWidth multiline label="Meta" id="outlined-required" variant="outlined" {...field} />
               )}
             />
             {errors.meta && <Typography className={styles.error}>{errors.meta.message}</Typography>}
           </Grid>
           <Grid item xs={10}>
             <Controller
-              name='url_image_meta'
+              name="url_image_meta"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='URL meta image'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="URL meta image"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -233,29 +251,29 @@ export default function AddNews() {
           </Grid>
           <Grid item xs={2}>
             <input
-              type='file'
-              accept='image/*'
+              type="file"
+              accept="image/*"
               onChange={onFileUpload}
               style={{ display: 'none' }}
-              id='contained-button-file'
+              id="contained-button-file"
             />
-            <label htmlFor='contained-button-file'>
-              <Button className={styles.full} variant='contained' color='primary' component='span'>
+            <label htmlFor="contained-button-file">
+              <Button className={styles.full} variant="contained" color="primary" component="span">
                 Upload
               </Button>
             </label>
           </Grid>
           <Grid item xs={10}>
             <Controller
-              name='friendly_url'
+              name="friendly_url"
               control={control}
               render={({ field }) => (
                 <TextField
                   fullWidth
                   multiline
-                  label='URL friendly'
-                  id='outlined-required'
-                  variant='outlined'
+                  label="URL friendly"
+                  id="outlined-required"
+                  variant="outlined"
                   {...field}
                 />
               )}
@@ -263,19 +281,55 @@ export default function AddNews() {
             {errors.friendly_url && <Typography className={styles.error}>{errors.friendly_url.message}</Typography>}
           </Grid>
           <Grid item xs={2}>
-            <Button className={styles.full} onClick={onResetURL} variant='contained' color='primary'>
+            <Button className={styles.full} onClick={onResetURL} variant="contained" color="primary">
               Reset URL
             </Button>
           </Grid>
           <Grid item xs={12}>
+            <Controller
+              name="lang"
+              control={control}
+              render={({ field }) => (
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">Lang</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    {...field}
+                    label="Lang"
+                    style={{ minWidth: 168 }}
+                  >
+                    <MenuItem value="en">English</MenuItem>
+                    <MenuItem value="vi">VietNam</MenuItem>
+                    <MenuItem value="ja">Japan</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <FormControlLabel
+                  control={
+                    <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />
+                  }
+                  label="Public"
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Editor
-              id='editor'
+              id="editor"
               value={valueEditor}
               apiKey={apiKey}
               onInit={(evt, editor) => (editorRef.current = editor)}
               onEditorChange={(newValueEditor) => setValueEditor(newValueEditor)}
               init={{
-                ...initFullProps
+                ...initFullProps,
               }}
             />
           </Grid>
@@ -284,22 +338,22 @@ export default function AddNews() {
               <BtnLoading
                 loading={isGetingNewsAPI || isPostingNewsAPI}
                 onClick={handleSubmit(onCreate)}
-                btnName='Create'
-                color='primary'
+                btnName="Create"
+                color="primary"
               />
             )}
             {id && (
               <BtnLoading
                 loading={isGetingNewsAPI || isPutingNewsAPI}
                 onClick={handleSubmit(onUpdate)}
-                btnName='Update'
-                color='primary'
+                btnName="Update"
+                color="primary"
               />
             )}
-            <Button onClick={onReset} className={styles.button} variant='contained' color='secondary'>
+            <Button onClick={onReset} className={styles.button} variant="contained" color="secondary">
               Reset
             </Button>
-            <Button onClick={onCancel} className={styles.button} variant='contained'>
+            <Button onClick={onCancel} className={styles.button} variant="contained">
               Cancel
             </Button>
           </Grid>
