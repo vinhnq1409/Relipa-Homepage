@@ -109,19 +109,22 @@ export default function Works() {
   }, [])
 
   useEffect(() => {
-    setValue('title', dataVoice?.title)
-    setValue('desc', dataVoice?.desc)
-    setValue('company', dataVoice?.company)
-    setValue('lang', dataVoice?.lang)
-    setValue('status', dataVoice?.status)
-    if (dataVoice?.voice) {
-      setImages(
-        dataVoice?.voice.map((item, index) => ({
-          data_url: `http://${item}`,
-          file: dataVoice?.media[index],
-        }))
-      )
+    if(dataVoice){
+      setValue('title', dataVoice?.title)
+      setValue('desc', dataVoice?.desc)
+      setValue('company', dataVoice?.company)
+      setValue('lang', dataVoice?.lang)
+      setValue('status', dataVoice?.status)
+      if (dataVoice?.voice) {
+        setImages(
+          dataVoice?.voice.map((item, index) => ({
+            data_url: `http://${item}`,
+            file: dataVoice?.media[index],
+          }))
+        )
+      }
     }
+    return () => onReset()
   }, [dataVoice])
 
   const validationSchema = Yup.object().shape({
@@ -179,7 +182,7 @@ export default function Works() {
     reset({
       ...defaultValues,
     })
-    btnRemoveImg.current.click()
+    setImages([])
   }
 
   const onChangeImg = (imageList) => {

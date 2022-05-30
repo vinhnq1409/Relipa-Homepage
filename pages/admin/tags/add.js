@@ -22,7 +22,6 @@ import styles from '../../../styles/AdminBlogs.module.css'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-
 export default function Add() {
   const router = useRouter()
   const { id } = router.query
@@ -98,9 +97,15 @@ export default function Add() {
     if (!id) {
       removeTags()
     }
-    setValue('name', dataTag?.data.name)
-    setValue('is_trend', !!dataTag?.data.is_trend)
-    setValue('lang', dataTag?.data.lang)
+    if (dataTag) {
+      setValue('name', dataTag?.data.name)
+      setValue('is_trend', !!dataTag?.data.is_trend)
+      setValue('lang', dataTag?.data.lang)
+    }
+    return () =>
+      reset({
+        ...defaultValues,
+      })
   }, [dataTag])
 
   const validationSchema = Yup.object().shape({
@@ -112,6 +117,7 @@ export default function Add() {
     formState: { errors },
     control,
     setValue,
+    reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = (data) => {
@@ -131,6 +137,10 @@ export default function Add() {
       _method: 'PUT',
     }
     putTagAPI(newData)
+  }
+
+  const onReset = () => {
+    router.push('/admin/blogs')
   }
 
   const onCancel = () => {

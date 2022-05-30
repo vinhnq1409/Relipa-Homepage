@@ -8,7 +8,6 @@ import BlockOutClient from '../components/HomePage/Home/BlockOutClient'
 import BlockService from '../components/HomePage/Home/BlockService'
 import BlockVoice from '../components/HomePage/Home/BlockVoice'
 import HomePage from '../layouts/Home'
-import HeadHome from '../components/Head/Head'
 
 export default function Index({ voice, banner }) {
   const router = useRouter()
@@ -37,7 +36,7 @@ export default function Index({ voice, banner }) {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const resDataBlogs = await get(`user/${locale}/voice`)
   const voice = await resDataBlogs.data
 
@@ -50,6 +49,6 @@ export async function getStaticProps({ locale }) {
   }))
 
   return {
-    props: { voice, banner },
+    props: { voice, banner }
   }
 }
