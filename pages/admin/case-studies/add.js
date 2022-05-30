@@ -104,24 +104,27 @@ export default function Works() {
   }, [])
 
   useEffect(() => {
-    setValue('title', dataWork?.title)
-    setValue('desc', dataWork?.desc)
-    setValue('type_of_contract', dataWork?.type_of_contract)
-    setValue('team_structure', dataWork?.team_structure)
-    setValue('content', dataWork?.content)
-    setValue('lang', dataWork?.lang)
-    setTechnology(dataWork?.technology || [])
-    setResponContent(dataWork?.responsible_content || [])
-    setTags(dataWork?.tags || [])
-    if (dataWork?.works) {
-      setImages(
-        dataWork?.works.map((item, index) => ({
-          data_url: `http://${item}`,
-          file: dataWork?.media[index],
-        }))
-      )
+    if (dataWork) {
+      setValue('title', dataWork?.title)
+      setValue('desc', dataWork?.desc)
+      setValue('type_of_contract', dataWork?.type_of_contract)
+      setValue('team_structure', dataWork?.team_structure)
+      setValue('content', dataWork?.content)
+      setValue('lang', dataWork?.lang)
+      setTechnology(dataWork?.technology || [])
+      setResponContent(dataWork?.responsible_content || [])
+      setTags(dataWork?.tags || [])
+      if (dataWork?.works) {
+        setImages(
+          dataWork?.works.map((item, index) => ({
+            data_url: `http://${item}`,
+            file: dataWork?.media[index],
+          }))
+        )
+      }
+      setType(dataWork?.type || 5)
     }
-    setType(dataWork?.type || 5)
+    return () => onReset()
   }, [dataWork])
 
   const validationSchema = Yup.object().shape({
@@ -228,7 +231,7 @@ export default function Works() {
     reset({
       ...defaultValues,
     })
-    btnRemoveImg.current.click()
+    setImages([])
   }
 
   const onChangeImg = (imageList) => {

@@ -21,5 +21,14 @@ module.exports = withPlugins([[withImages]], {
   },
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        // API return file sitemap.xml
+        destination: process.env.SITEMAP_URL  || 'http://10.1.4.246/storage/368/sitemap-0.xml',
+      },
+    ]
+  },
 })

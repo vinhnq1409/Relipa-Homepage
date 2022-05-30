@@ -127,25 +127,27 @@ export default function Add() {
     if (!id) {
       removeBlogs()
     }
-    setValue('title', dataBlog?.data.title)
-    setValue('desc', dataBlog?.data.desc)
-    setValue('meta', dataBlog?.data.meta)
-    setValue('url_image_meta', dataBlog?.data.url_image_meta)
-    setValue('tags', dataBlog?.data.tags)
-    setValue('friendly_url', dataBlog?.data.friendly_url)
-    setValue('lang', dataBlog?.data.lang)
-    setValue('status', dataBlog?.data.status)
-    setValueTag(dataBlog?.data.tags || [])
-    setValueEditor(dataBlog?.data.content)
     if (dataBlog) {
       const tags = []
       for (const tag of dataBlog?.data.tags) {
         tags.push(tag.name)
       }
       setValueTag(tags)
+      setValue('title', dataBlog?.data.title)
+      setValue('desc', dataBlog?.data.desc)
+      setValue('meta', dataBlog?.data.meta)
+      setValue('url_image_meta', dataBlog?.data.url_image_meta)
+      setValue('tags', dataBlog?.data.tags)
+      setValue('friendly_url', dataBlog?.data.friendly_url)
+      setValue('lang', dataBlog?.data.lang)
+      setValue('status', dataBlog?.data.status)
+      setValueEditor(dataBlog?.data.content)
       setParamsTags({ ...paramsTags, lang: dataBlog.data.lang })
     }
-    return () => setParamsTags({ ...paramsTags, lang: router.locale })
+    return () => {
+      setParamsTags({ ...paramsTags, lang: router.locale })
+      onReset()
+    }
   }, [dataBlog])
 
   useEffect(() => {

@@ -102,14 +102,17 @@ export default function AddNews() {
   }, [])
 
   useEffect(() => {
-    setValue('title', dataNews?.data.title)
-    setValue('desc', dataNews?.data.desc)
-    setValue('meta', dataNews?.data.meta)
-    setValue('url_image_meta', dataNews?.data.url_image_meta)
-    setValue('friendly_url', dataNews?.data.friendly_url)
-    setValue('lang', dataNews?.data.lang)
-    setValue('status', dataNews?.data.status)
-    setValueEditor(dataNews?.data.content)
+    if(dataNews){
+      setValue('title', dataNews?.data.title)
+      setValue('desc', dataNews?.data.desc)
+      setValue('meta', dataNews?.data.meta)
+      setValue('url_image_meta', dataNews?.data.url_image_meta)
+      setValue('friendly_url', dataNews?.data.friendly_url)
+      setValue('lang', dataNews?.data.lang)
+      setValue('status', dataNews?.data.status)
+      setValueEditor(dataNews?.data.content)
+    }
+    return () => onReset()
   }, [dataNews])
 
   const validationSchema = Yup.object().shape({

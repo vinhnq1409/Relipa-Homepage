@@ -21,16 +21,12 @@ import { get, post } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-export default function Works() {
+export default function Banner() {
   const btnRemoveImg = useRef(null)
   const router = useRouter()
   const { id } = router.query
 
-  const [age, setAge] = React.useState('')
 
-  const handleChange = (event) => {
-    setAge(event.target.value)
-  }
 
   const [images, setImages] = useState([])
   const [isErrImg, setIsErrImgs] = useState(false)
@@ -117,6 +113,7 @@ export default function Works() {
           file: dataBanner.data.media[0],
         }])
     }
+    return () => onReset()
   }, [dataBanner])
 
   const validationSchema = Yup.object().shape({
@@ -174,7 +171,7 @@ export default function Works() {
     reset({
       ...defaultValues,
     })
-    btnRemoveImg.current.click()
+    setImages([])
   }
 
   const onChangeImg = (imageList) => {
@@ -359,4 +356,4 @@ export default function Works() {
     </>
   )
 }
-Works.layout = Admin
+Banner.layout = Admin
