@@ -141,11 +141,20 @@ export default function Header(props) {
               </a>
             </div> */}
             <div className="language-block padding-right-language">
-              <a
+              {/* <a
                 className={`cursor ${locale === 'ja' ? 'active' : ''}  ${styles.pointer}`}
                 onClick={() => changeLang('ja')}
               >
                 JP
+              </a> 
+              <span className="px-2">/ </span>
+              */}
+
+              <a
+                className={`cursor ${locale === 'vi' ? 'active' : ''}  ${styles.pointer}`}
+                onClick={() => changeLang('vi')}
+              >
+                VI
               </a>
 
               <span className="px-2">/ </span>
