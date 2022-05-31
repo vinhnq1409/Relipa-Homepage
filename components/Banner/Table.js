@@ -79,7 +79,7 @@ const TableList = (props) => {
                       labelId="demo-simple-select-outlined-label"
                       id="demo-simple-select-outlined"
                       onChange={(e) =>
-                        handleNumericalOrder({ id: row.id, numerical_order: e.target.value, lang: row.lang })
+                        handleNumericalOrder({ id: row.id, numerical_order: e.target.value !== 0 ? e.target.value : '' , lang: row.lang })
                       }
                       label="Lang"
                       style={{ minWidth: 168 }}

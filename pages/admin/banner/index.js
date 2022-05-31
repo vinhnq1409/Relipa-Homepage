@@ -60,8 +60,6 @@ export default function Blogs() {
     },
   })
 
-  console.log('re-render')
-
   const { mutate: NumericalOrder } = useMutation(postNumericalOrder, {
     onError: () => {
       setSnackbar({
