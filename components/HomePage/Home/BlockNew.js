@@ -83,8 +83,8 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
             <div className="col-md-8">
               <ul className="news-list list-unstyled border-top">
                 {appreciateAPI.length > 5
-                  ? appreciateAPI.slice(0, 5).map((item) => (
-                      <li className="border-bottom">
+                  ? appreciateAPI.slice(0, 5).map((item, index) => (
+                      <li key={index} className="border-bottom">
                         <div className="card card-horizontal-sm border-0">
                           <div className="card-thumb lazyload">
                             <Link href={`/${currentAPI}/${item.friendly_url}`}>
@@ -123,8 +123,8 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                         </div>
                       </li>
                     ))
-                  : appreciateAPI.map((item) => (
-                      <li className="border-bottom">
+                  : appreciateAPI.map((item, index) => (
+                      <li key={index} className="border-bottom">
                         <div className="card card-horizontal-sm border-0">
                           <div className="card-thumb lazyload">
                             <Link href={`/${currentAPI}/${item.friendly_url}`}>

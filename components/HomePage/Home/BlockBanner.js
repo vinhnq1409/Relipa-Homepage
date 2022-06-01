@@ -10,8 +10,8 @@ const BlockBanner = ({ banner }) => {
           <div className="swiper-container">
             {banner ? (
               <div className="swiper-wrapper">
-                {banner.map((item) => (
-                  <div className="swiper-slide">
+                {banner.map((item, index) => (
+                  <div key={index} className="swiper-slide">
                     <div className="main-banner-item">
                       <div className="main-banner-item-bg">
                         <picture>

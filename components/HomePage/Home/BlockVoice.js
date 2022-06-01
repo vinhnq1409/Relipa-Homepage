@@ -34,8 +34,8 @@ const BlockVoice = ({ voice }) => {
               >
                 <div className="swiper-container">
                   <div className="swiper-wrapper">
-                    {voice?.map((item) => (
-                      <div className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5">
+                    {voice?.map((item, index) => (
+                      <div key={index} className="swiper-slide ps-4 pe-4 ps-md-5 pe-md-5">
                         <div className="card card-horizontal border-0 card-padding card-shadow-bottom">
                           <div className="card-thumb lazyload">
                             <a className="card-thumb-overlay" href="#" onClick={onPreventDefault}>
