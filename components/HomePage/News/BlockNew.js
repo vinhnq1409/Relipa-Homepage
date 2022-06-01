@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const BlockNew = ({ dataNews }) => {
   let top5News
-  dataNews.length > 5 ? (top5News = blogs.slice(0, 5)) : (top5News = dataNews)
+  dataNews.length > 5 ? (top5News = dataNews.slice(0, 5)) : (top5News = dataNews)
 
   return (
     <div className="aside-right-box">

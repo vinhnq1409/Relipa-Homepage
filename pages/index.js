@@ -1,6 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import { useQuery } from 'react-query'
 import { get } from '../api/BaseRequest'
 import BlockBanner from '../components/HomePage/Home/BlockBanner'
 import BlockNew from '../components/HomePage/Home/BlockNew'
@@ -9,20 +7,7 @@ import BlockService from '../components/HomePage/Home/BlockService'
 import BlockVoice from '../components/HomePage/Home/BlockVoice'
 import HomePage from '../layouts/Home'
 
-export default function Index({ voice, banner }) {
-  const router = useRouter()
-  const { locale } = router
-
-  const getBlogs = () => {
-    return get(`user/${locale}/blog`)
-  }
-  const getNews = () => {
-    return get(`user/${locale}/new`)
-  }
-
-  const { data: dataBlogs } = useQuery('blogs', getBlogs)
-  const { data: dataNews } = useQuery('news', getNews)
-
+export default function Index({ voice, banner, dataBlogs, dataNews }) {
   return (
     <HomePage>
       <BlockBanner banner={banner}/>
@@ -48,7 +33,10 @@ export async function getServerSideProps({ locale }) {
     banner: item.banner[0]
   }))
 
+  const dataBlogs = await get(`user/${locale}/blog`)
+  const dataNews = await get(`user/${locale}/new`)
+
   return {
-    props: { voice, banner }
+    props: { voice, banner, dataBlogs, dataNews }
   }
 }
