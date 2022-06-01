@@ -42,5 +42,5 @@ export default {
   pleasefill: 'Please fill in the required fields',
   clickhere: 'Click here for our privacy policy',
   sendwidth: 'SEND WITH THIS CONTENT',
-  error: 'Please fill in the required fields',
+  error: 'hihihi',
 }

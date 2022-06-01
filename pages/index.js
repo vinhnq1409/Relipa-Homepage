@@ -10,7 +10,7 @@ import HomePage from '../layouts/Home'
 export default function Index({ voice, banner, dataBlogs, dataNews }) {
   return (
     <HomePage>
-      <BlockBanner banner={banner}/>
+      <BlockBanner banner={banner} />
       <div id="main">
         <BlockService />
         <BlockOutClient />
@@ -21,22 +21,47 @@ export default function Index({ voice, banner, dataBlogs, dataNews }) {
   )
 }
 
-export async function getServerSideProps({ locale }) {
-  const resDataBlogs = await get(`user/${locale}/voice`)
+export async function getServerSideProps(context) {
+  const { locale: originalLocale, defaultLocale, req } = context
+
+  const cookies = req.headers.cookie?.slice(-2) || 'en'
+  const closestLocale = cookies === 'en' ? 'en' : 'vi'
+
+  const resDataBlogs = await get(`user/${closestLocale}/voice`)
   const voice = await resDataBlogs.data
 
-  const resDataBanner = await get(`user/${locale}/banner`)
-  const banner = await resDataBanner.map((item)=> ({
+  const resDataBanner = await get(`user/${closestLocale}/banner`)
+  const banner = await resDataBanner.map((item) => ({
     title: item.title,
     desc: item.desc,
     link: item.link,
-    banner: item.banner[0]
+    banner: item.banner[0],
   }))
 
-  const dataBlogs = await get(`user/${locale}/blog`)
-  const dataNews = await get(`user/${locale}/new`)
+  const dataBlogs = await get(`user/${closestLocale}/blog`)
+  const dataNews = await get(`user/${closestLocale}/new`)
+
+  if ((originalLocale !== defaultLocale || closestLocale !== defaultLocale) && originalLocale !== closestLocale) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/${closestLocale}`,
+      },
+      props: {
+        voice,
+        banner,
+        dataBlogs,
+        dataNews,
+      },
+    }
+  }
 
   return {
-    props: { voice, banner, dataBlogs, dataNews }
+    props: {
+      voice,
+      banner,
+      dataBlogs,
+      dataNews,
+    },
   }
 }
