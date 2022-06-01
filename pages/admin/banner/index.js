@@ -8,7 +8,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { del, get, post } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-const tableHead = ['Id', 'Banner', 'API', 'Created_at', 'Status','Numerical_Order', 'Action']
+const tableHead = ['Id', 'Banner', 'API', 'Created_at', 'Status', 'Numerical_Order', 'Action']
 
 export default function Blogs() {
   const router = useRouter()
@@ -19,13 +19,13 @@ export default function Blogs() {
     start: null,
     end: moment().format('YYYY-MM-DD'),
     per_page: 10,
-    page: 1
+    page: 1,
   })
 
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
-    type: ''
+    type: '',
   })
 
   const getBanner = () => {
@@ -101,7 +101,7 @@ export default function Blogs() {
     mutate(id)
   }
 
-  const handleNumericalOrder = (data) =>{
+  const handleNumericalOrder = (data) => {
     NumericalOrder(data)
   }
 
@@ -115,7 +115,7 @@ export default function Blogs() {
         onCreate={handleCreate}
       />
       <TableList
-        namePage='/blogs'
+        namePage="/blogs"
         tableHead={tableHead}
         data={data?.data}
         onUpdate={handleUpdate}

@@ -9,12 +9,20 @@ export default function Header(props) {
   const trans = useTrans()
   const router = useRouter()
   const { locale } = useRouter()
+  // console.log(trans)
+
+  // changeLang(trans)
 
   const isCheckCurrentLink = (url) => {
     return router.pathname === url
   }
 
+  const setCookie = (locale) => {
+    document.cookie = `NEXT_LOCALE=${locale};`
+  }
+
   const changeLang = (lang) => {
+    setCookie(lang)
     router.push(`${router.asPath}`, `${router.asPath}`, { locale: lang })
   }
 

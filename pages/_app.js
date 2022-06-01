@@ -9,7 +9,7 @@ import PageChange from 'components/PageChange/PageChange.js'
 import { Provider } from 'react-redux'
 import Script from 'next/script'
 import { DefaultSeo } from 'next-seo'
-import SEO from '../next-seo.config';
+import SEO from '../next-seo.config'
 
 const queryClient = new QueryClient()
 
@@ -27,7 +27,6 @@ Router.events.on('routeChangeError', () => {
 })
 
 export default class MyApp extends App {
-
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
 
@@ -44,7 +43,7 @@ export default class MyApp extends App {
 
     return (
       <>
-      <DefaultSeo {...SEO}/>
+        <DefaultSeo {...SEO} />
         <React.Fragment>
           <QueryClientProvider client={queryClient}>
             <Provider store={store}>
@@ -54,7 +53,10 @@ export default class MyApp extends App {
             </Provider>
           </QueryClientProvider>
         </React.Fragment>
-        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`} />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+        />
         <Script strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

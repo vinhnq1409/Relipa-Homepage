@@ -3,11 +3,6 @@ const withImages = require('next-images')
 const webpack = require('webpack')
 const path = require('path')
 
-const timezone = Intl.DateTimeFormat().resolvedOptions()
-const dataTzVn = ['Asia/Bangkok', 'Asia/Jakarta', 'Asia/Hanoi']
-
-const languageDefault = dataTzVn.includes(timezone.timeZone) ? 'vi' : 'en'
-
 module.exports = withPlugins([[withImages]], {
   webpack(config, options) {
     config.resolve.modules.push(path.resolve('./'))
@@ -21,10 +16,10 @@ module.exports = withPlugins([[withImages]], {
   },
   i18n: {
     locales: ['ja', 'en', 'vi'],
-    defaultLocale: languageDefault,
-    localeDetection: true,
+    defaultLocale: 'en',
+    localeDetection: false,
   },
   eslint: {
-    ignoreDuringBuilds: true
-  }
+    ignoreDuringBuilds: true,
+  },
 })
