@@ -98,7 +98,7 @@ export default function News({ news }) {
     </>
   )
 }
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const resDataNews = await get(`user/${locale}/new`)
   const news = await resDataNews.data
 

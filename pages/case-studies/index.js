@@ -108,7 +108,7 @@ export default function Index({ dataCaseStudy }) {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const dataCaseStudy = await get(`user/${locale}/works`)
 
   return { props: { dataCaseStudy } }
