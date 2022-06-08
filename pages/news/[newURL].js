@@ -107,19 +107,12 @@ export default function NewDetail({ dataNew }) {
     </>
   )
 }
-export async function getStaticPaths({ locales }) {
-  const resEN = await get('user/en/new')
-  const resJA = await get('user/ja/new')
-  const pathsEN = resEN.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }, locale: 'en' }))
-  const pathsJA = resJA.data.map((newItem) => ({ params: { newURL: newItem.friendly_url }, locale: 'ja' }))
-  const paths = [...pathsEN, ...pathsJA]
-  return {
-    paths: paths,
-    fallback: 'blocking',
-  }
-}
 
-export async function getStaticProps({ params, locale }) {
-  const dataNew = await get(`user/${locale}/news/${params.newURL}`)
-  return { props: { dataNew } }
+export async function getServerSideProps({ locale, params }) {
+  const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)
+  return {
+    props: {
+      dataBlog,
+    },
+  }
 }

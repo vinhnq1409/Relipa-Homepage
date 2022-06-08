@@ -124,19 +124,11 @@ export default function BlogDetail({ dataBlog }) {
   )
 }
 
-export async function getStaticPaths({ locales }) {
-  const resEN = await get('user/en/blog')
-  const resJA = await get('user/ja/blog')
-  const pathsEN = resEN.data.map((blog) => ({ params: { blogURL: blog.friendly_url }, locale: 'en' }))
-  const pathsJA = resJA.data.map((blog) => ({ params: { blogURL: blog.friendly_url }, locale: 'ja' }))
-  const paths = [...pathsEN, ...pathsJA]
-  return {
-    paths: paths,
-    fallback: 'blocking',
-  }
-}
-
-export async function getStaticProps({ params, locale }) {
+export async function getServerSideProps({ locale, params }) {
   const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)
-  return { props: { dataBlog }, revalidate: 10 }
+  return {
+    props: {
+      dataBlog,
+    },
+  }
 }

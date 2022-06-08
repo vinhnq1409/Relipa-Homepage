@@ -125,7 +125,7 @@ export default function Blogs({ blogs }) {
     </>
   )
 }
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const resDataBlogs = await get(`user/${locale}/blog`)
   const blogs = await resDataBlogs.data
 
