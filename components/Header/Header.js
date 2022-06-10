@@ -148,16 +148,7 @@ export default function Header(props) {
                 EN
               </a>
             </div> */}
-            <div className="language-block padding-right-language">
-              {/* <a
-                className={`cursor ${locale === 'ja' ? 'active' : ''}  ${styles.pointer}`}
-                onClick={() => changeLang('ja')}
-              >
-                JP
-              </a> 
-              <span className="px-2">/ </span>
-              */}
-
+            {/* <div className="language-block padding-right-language">
               <a
                 className={`cursor ${locale === 'vi' ? 'active' : ''}  ${styles.pointer}`}
                 onClick={() => changeLang('vi')}
@@ -172,7 +163,7 @@ export default function Header(props) {
               >
                 EN
               </a>
-            </div>
+            </div> */}
             <button
               className="navbar-toggler collapsed"
               type="button"
