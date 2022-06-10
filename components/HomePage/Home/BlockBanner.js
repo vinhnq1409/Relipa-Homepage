@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import useTrans from '../../../i18n/useTrans'
-const BlockBanner = ({ banner }) => {
+const BlockBanner = ({banner}) => {
   const trans = useTrans()
   const language = trans.home.home
   return (
@@ -8,7 +8,7 @@ const BlockBanner = ({ banner }) => {
       <section className="section section-aos section-banner py-0" data-aos="fade-down">
         <div className="swiper-carousel banner-swiper-carousel">
           <div className="swiper-container">
-            {banner ? (
+            {banner && banner.length ? (
               <div className="swiper-wrapper">
                 {banner.map((item, index) => (
                   <div key={index} className="swiper-slide">
