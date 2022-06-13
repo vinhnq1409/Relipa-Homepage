@@ -1,22 +1,24 @@
 import styled from '../../../styles/user/PopupCoreMemember.module.css'
+
 const BlockPopup = ({ infoCoreMember }) => {
   const { name, title, desc, img } = infoCoreMember
+
   return (
-    <div className="modal fade" id="studyModal" tabindex="-1" aria-labelledby="studyModalLabel" aria-hidden="true">
+    <div className='modal fade' id='studyModal' tabIndex='-1' aria-labelledby='studyModalLabel' aria-hidden='true'>
       <div className={`modal-dialog modal-xl ${styled.marginAuto}`}>
-        <div className="modal-content">
-          <div className="modal-body">
+        <div className='modal-content'>
+          <div className='modal-body'>
             <button
-              type="button"
+              type='button'
               className={`btn-close btn-close-modal ${styled.btnClose}`}
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              data-bs-dismiss='modal'
+              aria-label='Close'
               style={{ color: '#3B3B3B' }}
             >
-              <i className="las la-times"></i>
+              <i className='las la-times'></i>
             </button>
-            <div className="row">
-              <div className="col-lg-6">
+            <div className='row'>
+              <div className='col-lg-6'>
                 <div className={styled.imgContain}>
                   <div className={styled.imgBgr1}></div>
                   <div className={styled.imgBgr3}></div>
@@ -27,10 +29,10 @@ const BlockPopup = ({ infoCoreMember }) => {
                   ></div>
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className='col-lg-6'>
                 <div className={styled.content}>
-                  <h4 className={styled.name}>{name}</h4>
                   <p className={styled.title}>{title}</p>
+                  <h4 className={styled.name}>{name}</h4>
                   <p className={styled.bar}></p>
                   <p className={styled.desc}>{desc}</p>
                 </div>

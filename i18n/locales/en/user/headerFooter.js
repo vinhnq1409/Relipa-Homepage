@@ -25,7 +25,7 @@ export default {
     representative_message: 'Representative message',
     introducing_core: 'Introducing core members',
     mission: 'Mission and core values',
-    business: 'Business content',
+    business: 'Business description',
     about_service: 'About service',
     lab_type: 'Lab-type development',
     web_system: 'Web / system development',

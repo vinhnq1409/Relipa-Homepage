@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NextSeo } from 'next-seo'
 import BlockBanner from '../../components/HomePage/Company/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
 import BlockCompanyProfile from '../../components/HomePage/Company/BlockCompanyProfile'
@@ -8,7 +9,6 @@ import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers
 import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
-import { NextSeo } from 'next-seo'
 
 export default function Company() {
   const [infoCoreMember, setInfoCoreMember] = useState({
@@ -17,12 +17,13 @@ export default function Company() {
     desc: '',
     img: '',
   })
+
   return (
     <>
       <NextSeo
-        title="Relipa | Blockchain and Software Development"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
+        title='Relipa | Blockchain and Software Development'
+        description='This example uses more of the available config options.'
+        canonical='https://www.canonical.ie/'
         openGraph={{
           url: 'https://www.url.ie/a',
           title: 'Open Graph Title',
@@ -50,11 +51,11 @@ export default function Company() {
       />
       <HomePage>
         <BlockBanner />
-        <div id="main">
+        <div id='main'>
           <BlockBreadcrumb />
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-10">
+          <div className='container'>
+            <div className='row'>
+              <div className='col-lg-10'>
                 <BlockCompanyProfile />
                 <BlockCEOMessage />
                 <BlockMissionValues />

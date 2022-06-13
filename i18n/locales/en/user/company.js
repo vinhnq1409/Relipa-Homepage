@@ -12,11 +12,11 @@ export default {
       Established: 'Established',
       jp2018: '2018',
       CEO: 'CEO',
-      Chang_Suan_Duc: 'Chang Suan Duc',
+      Chang_Suan_Duc: 'Tran Xuan Duc',
       AddressJP: 'Address',
       AddressVN: 'Address',
-      Address_Tokyo: '1-14-14 Tomigaya, Shibuya-ku, Tokyo Stanford Annex Building 3F',
-      Business_content: 'Business content',
+      Address_Tokyo: 'Japapan, Tokyo, 1-14-14 Tomigaya, Shibuya-ku, Tokyo Stanford Annex Building 3F',
+      Business_content: 'Business description',
       Email: 'Email',
       Email_Relipasoft: 'sales@relipasoft.com',
       Phone_number: 'Phone number',
@@ -30,37 +30,32 @@ export default {
     },
     CEOMessage: {
       CEO_Message: 'CEO Message',
-      content1:
-        "Relipa Co., Ltd. is a system development company headquartered in Hanoi, Vietnam, and was established by three Vietnamese who graduated from Ritsumeikan University in 2016. In 2018, we also launched a Japanese corporation and have consistently provided offshore development specialized for 'Japanese companies' since its establishment.",
-      content2:
-        'I had the opportunity to study abroad in Japan when I was 21 years old. As a young student who lived in a developing country like Vietnam and had the opportunity to set foot in a developed country for the first time, I was able to create delicate and perfect public buildings such as Japanese railways that I had never seen in Vietnam. I was really impressed.',
-      content3:
-        'After graduating, I often go back and forth between the two countries for work, and as I interacted with the people of both countries, I had more opportunities to compare the two countries. While I felt a big gap with my home country, I felt that the gap between Vietnam and Japan was small compared to industrial technology for IT I was studying, so I challenged new technologies in this field, Vietnam in my home country, and I have come to think that I can contribute to Japan as well.',
-      content4:
-        'After that, I made use of the know-how accumulated in Japanese universities and companies to establish a company with my colleagues. Currently, we are actively conducting research and development on cutting-edge technologies such as AR / VR / AI as well as offshore development.',
-      content5:
-        "We do not have communication issues of concern in offshore development. There are many engineers who can understand the 'Japanese mind' by living in Japan for a certain period of time, such as studying at a Japanese university and working at a Japanese company, and there are engineers who are fluent in Japanese who can respond to face-to-face requirement definitions. In addition, many of our  engineers are from Vietnam's premier IT universities such as Hanoi University of Science and Technology, and we provide high-quality systems and detailed services with high development technology and sense.",
-      content6:
-        'Since February 2020, the coronavirus has spread all over the world and has greatly impacted our daily lives. As you become accustomed to your new daily life and in the global trend of digital transformation waves (DX), Relipa will strive to become your trusted partner.',
-      content7: 'We look forward to your continued support and guidance for Relipa.',
+      contents: [
+        `Our company, Relipa Co., Ltd. is a system development company headquartered in Hanoi, Vietnam, and was established in 2016 by me as founder and 2 co-founders, all are Vietnamese graduated from the University of Science and Technology in Vietnam and Ritsumeikan University in Japan. After 2 years from establishment in 2016, we officially launched a Japanese branch and have consistently provided offshore development services specialized for  Japanese market.`,
+        `As a young student in a developing country like Vietnam, when I had the opportunity to study abroad in Japan at the age of 21, I was really impressed by the state-of-the-art technologies and modern facilities in such a developed country which I had never seen in my home country. `,
+        `All the very first steps in Japan had made me personally aware of the big gap between 2 countries. On the other hand, throughout my studies in Ritsumeikan University, I surprizingly found that the gap in terms of IT related industrial technologies between Vietnam and Japan was considerably small. This was the reason why I decided to challenge myself in introducing new technologies in this field, so that I can contribute my own knowledge and skills to the development of my home countries Vietnam, Japan and the relationship between 2 countries.`,
+        `After graduating, I made use of the know-how accumulated during the course of universities and working experiences from companies to build a company with my colleagues.`,
+        `I am really proud of the quality of human resources in Relipa. We have many engineers with a deep understanding of the "Japanese mind", who had been by living in Japan for a certain period of time for studying or working. Besides, our engineers with the ability to use Japanese fluently are confident in responding face-to-face requirement definitions. In addition, as we have many engineers from Vietnam's top-ranked IT universities such as Hanoi University of Science and Technology, we provide high-quality  services with up-to-date technology and continuously updated skills.`,
+        `Since February 2020, the Corona virus has spread all over the world and had a great impact on our daily lives. As you become accustomed to the "New normal", in the global trend of digital transformation waves (DX), Relipa will try our best to become your reliable partner.`,
+      ],
       President_CEO: 'President and CEO',
       TRAN_XUAN_DUC: 'TRAN XUAN DUC'
     },
     MissionValues: {
       MissionValues: 'Mission & Values',
       MISSION: 'Mission',
-      mission1: 'Improve and develop IT technology in Vietnam',
-      mission2: 'We will provide reliable services to our customers.',
-      mission3: 'Create an environment for employees to challenge themselves, share knowledge and grow together',
+      mission1: 'Improve and develop IT technology in Vietnam.',
+      mission2: 'Provide reliable services to customers.',
+      mission3: 'Create an challenging, knowledge-sharing and positive environment for employees.',
       VISION: 'Vision',
-      vision1: 'Relipa aims to be a trusted partner and long-term business partner in the implementation of technology',
+      vision1: 'Relipa aims at trustworthy and long-term partnerships in the era of technology implementation.',
       CORE_VALUES: 'Core Values',
       core_values1: 'Proactive',
-      core_values2: 'Creation',
-      core_values3: 'Flexibility',
-      core_values4: 'Commitment',
-      core_values5: 'Teamwork',
-      core_values6: 'Respect'
+      core_values2: 'Creative',
+      core_values3: 'Flexible',
+      core_values4: 'Highly Commited',
+      core_values5: 'Teamwork/ collaborative',
+      core_values6: 'Respectful'
     },
     CoreMember: {
       Core_Members: 'Core Members',
@@ -68,6 +63,28 @@ export default {
       DevelopmentDepartment: 'Director and General Manager of 2nd Development Department',
       Representative: 'Representative Director and Vice President',
       DevelopmentManager: '1st Development Manager'
+    },
+    CoreMemberPopup: {
+      ceo: {
+        name: 'Tran Xuan Duc',
+        title: 'President and CEO',
+        desc: `After graduating from Hanoi University of Science and Technology and Ritsumeikan University, I decided to start the business. I had been working in the IT industry for over ten years and playing a important role as a founder, president and salesman in the company of over 70 employees. I know customers’ needs and assist them in our developing solutions that work well after implementation.`,
+      },
+      vicePresident: {
+        name: 'Nguyen Quang Tuyen',
+        title: 'Representative Director and Vice President',
+        desc: `I graduated from Hanoi University of Technology and Ritsumeikan University and was certified as Scrum PSM web developer. I had been working for Viettel, a Vietnamese leading telecommunication company then continued to develop many products with multitude of customers and showed my sales skills.`,
+      },
+      div1: {
+        name: 'Phung Quang Huy',
+        title: '1st Development Manager',
+        desc: `Graduated from Japan Post Telegraph Crafts Academy, I have 10 years of experiences in webite and app development, as well as expertised in code languages of C #, PHP, and COBOL. Besides more than 3 years of working experiences in Japan, I have been working in a major Japanese company as PM / BrSE development manager.`,
+      },
+      div2: {
+        name: 'Nguyen Kim Giang',
+        title: 'Director and General Manager of 2nd Development Department',
+        desc: `Graduated from Hanoi University of Science and Technology and Ritsumeikan University, as well as experienced working with Japanese people, I have enough skills in communication and working style as have obtained the highest level of the Japanese Language Proficiency Test, so I'm confident in handling even the most complicated cases. I was the team leader of 20 members and was responsible for various significant projects.`,
+      },
     },
     SideBar: {
       Company_Profile: 'Company Profile',
