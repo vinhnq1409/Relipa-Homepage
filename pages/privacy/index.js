@@ -1,12 +1,11 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
-import HeadHome from '../../components/Head/Head'
 import HomePage from '../../layouts/Home'
 import BlockBanner from '../../components/HomePage/Privacy/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Privacy/BlockBreadcrumb'
 import BlockContent from '../../components/HomePage/Privacy/BlockContent'
 
-export default function Contact() {
+const Privacy = () => {
   return (
     <>
       <NextSeo
@@ -48,3 +47,5 @@ export default function Contact() {
     </>
   )
 }
+
+export default Privacy

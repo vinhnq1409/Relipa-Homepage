@@ -10,7 +10,7 @@ import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
 
-export default function NewDetail({ dataNew }) {
+const NewDetail = ({ dataNew }) => {
   const router = useRouter()
   const { locale } = router
   const { id, title, created_at, content, url_image_meta } = dataNew
@@ -40,7 +40,7 @@ export default function NewDetail({ dataNew }) {
   }, [popular])
 
   useEffect(() => {
-    const countView = setTimeout(async () => {
+    const countView = setTimeout(async() => {
       await post('statistic', {
         name_page: 'news',
         id_item: id,
@@ -108,7 +108,9 @@ export default function NewDetail({ dataNew }) {
   )
 }
 
-export async function getServerSideProps({ locale, params }) {
+export default NewDetail
+
+export const getServerSideProps = async({ locale, params }) => {
   const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)
   return {
     props: {

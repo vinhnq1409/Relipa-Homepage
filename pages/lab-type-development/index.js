@@ -7,14 +7,14 @@ import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
 import BlockBanner from '../../components/HomePage/Service/LabtypeDevelopment/BlockBanner'
 import BlockContent from '../../components/HomePage/Service/LabtypeDevelopment/BlockContent'
 import BlockOverview from '../../components/HomePage/Service/LabtypeDevelopment/BlockOverview'
-
 import HomePage from '../../layouts/Home'
 
-export default function Index() {
+const LabtypeDevelopment = () => {
   const [card, setCard] = useState({})
   const itemCard = (value) => {
     setCard(value)
   }
+
   return (
     <>
       <NextSeo
@@ -60,3 +60,5 @@ export default function Index() {
     </>
   )
 }
+
+export default LabtypeDevelopment

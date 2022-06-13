@@ -1,15 +1,14 @@
 import React from 'react'
+import { NextSeo } from 'next-seo'
+import HomePage from '../../layouts/Home'
 import BlockCompare from '../../components/HomePage/Service/AboutService/BlockCompare'
 import BlockBanner from '../../components/HomePage/Service/AboutService/BlockBanner'
 import BlockService from '../../components/HomePage/Service/AboutService/BlockService'
 import BlockStepToUse from '../../components/HomePage/Service/AboutService/BlockStepsToUse'
 import BlockWhy from '../../components/HomePage/Service/AboutService/BlockWhy'
-import HomePage from '../../layouts/Home'
 import BlockBreadcrumb from '../../components/HomePage/Service/AboutService/BlockBreadcrumb'
-import { NextSeo } from 'next-seo'
 
-
-export default function Index() {
+const AboutService = () => {
   return (
     <>
       <NextSeo
@@ -54,3 +53,5 @@ export default function Index() {
     </>
   )
 }
+
+export default AboutService

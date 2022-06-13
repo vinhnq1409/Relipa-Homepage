@@ -10,7 +10,7 @@ import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
 
-export default function Company() {
+const Company = () => {
   const [infoCoreMember, setInfoCoreMember] = useState({
     name: '',
     title: '',
@@ -70,3 +70,5 @@ export default function Company() {
     </>
   )
 }
+
+export default Company

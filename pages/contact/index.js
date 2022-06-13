@@ -6,7 +6,7 @@ import BlockForm from '../../components/HomePage/Contact/BlockForm'
 import HomePage from '../../layouts/Home'
 import CustomizedSnackbars from '../../components/CustomSnackbar'
 
-export default function Contact() {
+const Contact = () => {
   const [snackbar, setSnackbar] = useState({
     message: '',
     open: false,
@@ -15,16 +15,17 @@ export default function Contact() {
   const onNotification = (isNotification) => {
     isNotification
       ? setSnackbar({
-          ...snackbar,
-          open: true,
-          message: 'Send is successful',
-        })
+        ...snackbar,
+        open: true,
+        message: 'Send is successful',
+      })
       : setSnackbar({
-          open: true,
-          severity: 'error',
-          message: 'Send is failed',
-        })
+        open: true,
+        severity: 'error',
+        message: 'Send is failed',
+      })
   }
+
   return (
     <>
       <NextSeo
@@ -72,3 +73,5 @@ export default function Contact() {
     </>
   )
 }
+
+export default Contact

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
 import Home from '../layouts/Home'
 
 const useStyles = makeStyles({
@@ -17,6 +16,7 @@ const useStyles = makeStyles({
 
 const PageNotFound = () => {
   const classes = useStyles()
+
   return (
     <Box className={classes.root}>
       <Typography variant='h5' component='h6'>
@@ -32,6 +32,6 @@ const PageNotFound = () => {
     </Box>
   )
 }
-export default PageNotFound
 
+export default PageNotFound
 PageNotFound.layout = Home

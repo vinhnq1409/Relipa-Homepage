@@ -84,85 +84,85 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
               <ul className="news-list list-unstyled border-top">
                 {appreciateAPI.length > 5
                   ? appreciateAPI.slice(0, 5).map((item, index) => (
-                      <li className="border-bottom" key={index}>
-                        <div className="card card-horizontal-sm border-0">
-                          <div className="card-thumb lazyload">
-                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                              <a className="card-thumb-overlay">
-                                <img
-                                  className="card-img-top"
-                                  src={item.url_image_meta}
-                                  width="130"
-                                  height="80"
-                                  alt={`${item.friendly_url}`}
-                                />
-                              </a>
-                            </Link>
-                          </div>
-                          <div className="card-body">
-                            <div className="card-meta">{item.created_at}</div>
-                            <div className="card-text">
-                              <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                                <a className="text-hiden">{item.title}</a>
-                              </Link>
-                            </div>
-                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                              <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                                <svg
-                                  width="37"
-                                  height="8"
-                                  viewBox="0 0 37 8"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                                </svg>
-                              </a>
-                            </Link>
-                          </div>
+                    <li className="border-bottom" key={index}>
+                      <div className="card card-horizontal-sm border-0">
+                        <div className="card-thumb lazyload">
+                          <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                            <a className="card-thumb-overlay">
+                              <img
+                                className="card-img-top"
+                                src={item.url_image_meta}
+                                width="130"
+                                height="80"
+                                alt={`${item.friendly_url}`}
+                              />
+                            </a>
+                          </Link>
                         </div>
-                      </li>
-                    ))
+                        <div className="card-body">
+                          <div className="card-meta">{item.created_at}</div>
+                          <div className="card-text">
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="text-hiden">{item.title}</a>
+                            </Link>
+                          </div>
+                          <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                            <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
+                              <svg
+                                width="37"
+                                height="8"
+                                viewBox="0 0 37 8"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
+                              </svg>
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+                    </li>
+                  ))
                   : appreciateAPI.map((item, index) => (
-                      <li className="border-bottom" key={index}>
-                        <div className="card card-horizontal-sm border-0">
-                          <div className="card-thumb lazyload">
-                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                              <a className="card-thumb-overlay">
-                                <img
-                                  className="card-img-top"
-                                  src={item.url_image_meta}
-                                  width="130"
-                                  height="80"
-                                  alt={`${item.friendly_url}`}
-                                />
-                              </a>
-                            </Link>
-                          </div>
-                          <div className="card-body">
-                            <div className="card-meta">{item.created_at}</div>
-                            <div className="card-text">
-                              <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                                <a className="text-hiden">{item.title}</a>
-                              </Link>
-                            </div>
-                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
-                              <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
-                                <svg
-                                  width="37"
-                                  height="8"
-                                  viewBox="0 0 37 8"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
-                                </svg>
-                              </a>
-                            </Link>
-                          </div>
+                    <li className="border-bottom" key={index}>
+                      <div className="card card-horizontal-sm border-0">
+                        <div className="card-thumb lazyload">
+                          <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                            <a className="card-thumb-overlay">
+                              <img
+                                className="card-img-top"
+                                src={item.url_image_meta}
+                                width="130"
+                                height="80"
+                                alt={`${item.friendly_url}`}
+                              />
+                            </a>
+                          </Link>
                         </div>
-                      </li>
-                    ))}
+                        <div className="card-body">
+                          <div className="card-meta">{item.created_at}</div>
+                          <div className="card-text">
+                            <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                              <a className="text-hiden">{item.title}</a>
+                            </Link>
+                          </div>
+                          <Link href={`/${currentAPI}/${item.friendly_url}`}>
+                            <a className="btn-link-icon" aria-label="第31回Japan IT Week 春へ出展のお知らせ ">
+                              <svg
+                                width="37"
+                                height="8"
+                                viewBox="0 0 37 8"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M29 1L35.5 7.5H1" stroke="#0045C5" strokeLinecap="round" />
+                              </svg>
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
               </ul>
               <div className="news-footer text-end pt-3">
                 <Link href={`/${currentAPI}`}>

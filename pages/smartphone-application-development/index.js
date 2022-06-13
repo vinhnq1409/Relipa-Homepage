@@ -9,11 +9,12 @@ import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 
-export default function Index() {
+const SmartphoneApplicationDevelopment = () => {
   const [card, setCard] = useState({})
   const itemCard = (value) => {
     setCard(value)
   }
+
   return (
     <>
       <NextSeo
@@ -59,3 +60,5 @@ export default function Index() {
     </>
   )
 }
+
+export default SmartphoneApplicationDevelopment

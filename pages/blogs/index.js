@@ -66,6 +66,7 @@ export default function Blogs({ blogs }) {
       setPopularBlogs(popular.data)
     }
   }, [popular])
+
   return (
     <>
       <NextSeo
@@ -125,7 +126,8 @@ export default function Blogs({ blogs }) {
     </>
   )
 }
-export async function getServerSideProps({ locale }) {
+
+export const getServerSideProps = async({ locale }) => {
   const resDataBlogs = await get(`user/${locale}/blog`)
   const blogs = await resDataBlogs.data
 

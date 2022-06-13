@@ -14,6 +14,7 @@ export default function Index() {
   const itemCard = (value) => {
     setCard(value)
   }
+
   return (
     <>
       <NextSeo

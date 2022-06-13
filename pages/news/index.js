@@ -10,7 +10,7 @@ import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
 
-export default function News({ news }) {
+const News = ({ news }) => {
   const [dataNews, setDataNews] = useState(news)
   const [popularNews, setPopularNews] = useState([])
 
@@ -98,7 +98,10 @@ export default function News({ news }) {
     </>
   )
 }
-export async function getServerSideProps({ locale }) {
+
+export default News
+
+export const getServerSideProps = async({ locale }) => {
   const resDataNews = await get(`user/${locale}/new`)
   const news = await resDataNews.data
 

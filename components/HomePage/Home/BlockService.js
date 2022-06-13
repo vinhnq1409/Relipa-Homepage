@@ -1,9 +1,10 @@
-import useTrans from '../../../i18n/useTrans'
 import Link from 'next/link'
+import useTrans from '../../../i18n/useTrans'
 
 const BlockService = () => {
   const trans = useTrans()
   const language = trans.home.home
+
   return (
     <section className="section section-aos section-service py-0" data-aos="fade-up">
       <div className="container">

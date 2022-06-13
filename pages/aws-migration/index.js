@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
+import { NextSeo } from 'next-seo'
 import BlockBanner from '../../components/HomePage/Service/AwsMigration/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Service/AwsMigration/BlockBreadcrumb'
 import BlockDesire from '../../components/HomePage/Service/AwsMigration/BlockDesire'
 import BlockWebSystem from '../../components/HomePage/Service/AwsMigration/BlockWebSystem'
 import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
-
 import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
-import { NextSeo } from 'next-seo'
 
-export default function Index() {
+const AwsMigration = () => {
   const [card, setCard] = useState({})
   const itemCard = (value) => {
     setCard(value)
   }
+
   return (
     <HomePage>
       <NextSeo
@@ -58,3 +58,5 @@ export default function Index() {
     </HomePage>
   )
 }
+
+export default AwsMigration

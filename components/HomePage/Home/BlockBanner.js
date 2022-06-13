@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import useTrans from '../../../i18n/useTrans'
-const BlockBanner = ({banner}) => {
+
+const BlockBanner = ({ banner }) => {
   const trans = useTrans()
   const language = trans.home.home
+
   return (
     <div id="main-banner">
       <section className="section section-aos section-banner py-0" data-aos="fade-down">
