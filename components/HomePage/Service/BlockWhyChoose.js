@@ -47,10 +47,10 @@ const BlockWhyChoose = () => {
                             {language.why.contentFirst}
                           </a>
                         </h3>
-                        <div className="card-text ">
+                        {/* <div className="card-text">
                           There is no need to create a contract for each project, and payment is a fixed monthly fee.
                           justing the contract details.
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -74,12 +74,12 @@ const BlockWhyChoose = () => {
                             {language.why.contentSecond}
                           </a>
                         </h3>
-                        <div className="card-text ">
+                        {/* <div className="card-text ">
                           There is no need to create a contract for each project, and payment is a fixed monthly fee.
                           This simplifies complicated procedures and allows you to focus on your business. Even if
                           requirements or specifications change according to the business during the development period,
                           it is possible to flexibly respond without adjusting the contract details.
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
