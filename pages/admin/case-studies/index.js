@@ -86,7 +86,7 @@ export default function News() {
 
   const handleUpdate = (id) => {
     router.push({
-      pathname: '/admin/case-studies/add',
+      pathname: '/admin/products/add',
       query: {
         slug: 'about',
         mode: 'edit',
@@ -100,7 +100,7 @@ export default function News() {
   }
 
   const onCreate = () => {
-    router.push('/admin/case-studies/add')
+    router.push('/admin/products/add')
   }
 
   return (
@@ -114,7 +114,7 @@ export default function News() {
         setFilters={setFilters}
       />
       <TableList
-        namePage='/case-studies'
+        namePage='/products'
         tableHead={tableHead}
         data={dataNewList?.data || []}
         onUpdate={handleUpdate}

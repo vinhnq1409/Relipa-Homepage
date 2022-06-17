@@ -48,7 +48,7 @@ const dashboardRoutes = [
   //   role: ['Super Admin', 'Admin']
   // },
   {
-    path: '/case-studies',
+    path: '/products',
     name: 'Case studies',
     icon: PagesIcon,
     layout: '/admin',

@@ -183,22 +183,22 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/case-studies">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.resources}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/case-studies">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.webSystem}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/case-studies">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.blockchain}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/case-studies">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.smartphone_application}</a>
                         </Link>
                       </li>

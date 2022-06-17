@@ -9,7 +9,7 @@ export default {
     business_system: 'Business System Development',
     blockchain: 'Blockchain Development',
     smartphone_application: 'Smartphone application development',
-    case_studies: 'CASE STUDIES',
+    products: 'PRODUCTS',
     news: 'NEWS',
     blog: 'BLOG',
     contact: 'CONTACT',

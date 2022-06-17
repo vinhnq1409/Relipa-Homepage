@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
-import BlockBanner from '../../components/HomePage/Case-Studies/BlockBanner'
-import BlockBreadcrumb from '../../components/HomePage/Case-Studies/BlockBreadcrumb'
-import BlockCard from '../../components/HomePage/Case-Studies/BlockCard'
-import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
-import BlockFilter from '../../components/HomePage/Case-Studies/BlockFilter'
+import BlockBanner from '../../components/HomePage/Products/BlockBanner'
+import BlockBreadcrumb from '../../components/HomePage/Products/BlockBreadcrumb'
+import BlockCard from '../../components/HomePage/Products/BlockCard'
+import BlockDialog from '../../components/HomePage/Products/BlockDialog'
+import BlockFilter from '../../components/HomePage/Products/BlockFilter'
 import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
 import { useQuery } from 'react-query'
@@ -22,7 +22,7 @@ export default function Index({ dataCaseStudy }) {
   const router = useRouter()
   const { locale } = router
 
-  const getCaseStudy = async () => {
+  const getCaseStudy = async() => {
     return await get(`user/${locale}/works`, params)
   }
 
@@ -111,5 +111,5 @@ export default function Index({ dataCaseStudy }) {
 export async function getServerSideProps({ locale }) {
   const dataCaseStudy = await get(`user/${locale}/works`)
 
-  return { props: { dataCaseStudy } }
+  return { props: { dataCaseStudy }}
 }

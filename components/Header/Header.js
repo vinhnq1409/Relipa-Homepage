@@ -9,9 +9,6 @@ export default function Header(props) {
   const trans = useTrans()
   const router = useRouter()
   const { locale } = useRouter()
-  // console.log(trans)
-
-  // changeLang(trans)
 
   const isCheckCurrentLink = (url) => {
     return router.pathname === url
@@ -111,9 +108,9 @@ export default function Header(props) {
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                <Link href="/case-studies">
-                  <a className={`nav-link ${isCheckCurrentLink('/case-studies') ? 'active' : ''}`}>
-                    {trans.headerFooter.header.case_studies}
+                <Link href="/products">
+                  <a className={`nav-link ${isCheckCurrentLink('/products') ? 'active' : ''}`}>
+                    {trans.headerFooter.header.products}
                   </a>
                 </Link>
               </li>

@@ -1,28 +1,27 @@
 export default {
   aboutService: {
     seemore: 'See more',
+    ourProducts: 'Our Products',
     service: {
-      title: 'service',
+      title: 'Service',
       LabType: 'Lab-type Development',
-      LabTypeContent:
-        "A dedicated development team by our company is built for the customers' project, and we commit to the final goals as a member of the project.",
+      LabTypeContent: `We build a development team dedicating to each project and commit to the project’s goal.`,
       websystem: 'Web System Development',
-      websystemContent: 'We have confidence in web system development and pride to be trusted by many customers.',
+      websystemContent: `We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.`,
       Business: 'Business System Development',
-      BusinesContent:
-        'We have many achievements in developing large-scale enterprise systems by ordering from listed companies and major companies in Japan.',
+      BusinesContent: `We have many achievements in developing management systems for large-scale businesses as we have the rich experiences and know-how in the field of business system development.
+        Besides the profound skills in various development languages, our engineers are good at using cloud services such as AWS and Azure.
+        Furthermore, we support several activities from building an internet environment to manufacturing, testing, maintenance and more than meeting customers' requirements, we listen to understand the situation and propose the best optimum design.`,
       Blockchain: 'Blockchain Development',
-      BlockchainContent:
-        `Relipa has highly skilled blockchain developers and experts. We provide services for customers who
-        "Want to implement blockchain but have limited resources"
-        "Want to convert assets to NFT"
-        "Limited human resources to sucessfully build a blockchain system".`,
-      Smartphone: 'Smartphone Application Development',
-      SmartphoneContent:
-        'Besides logistics and warehouses management apps, we have a track record in application development for a wide range of purposes, including SNS, education, or chatting, along with a wealth of technical expertise.',
-      AWS: 'AWS Migration',
-      AWSContent:
-        'Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture and construction, installation, and deployment.',
+      BlockchainContent: `Relipa has highly skilled blockchain developers and experts. We provide services for customers who want to implement blockchain but have limited resources, want to convert assets to NFT, and have limited human resources to sucessfully build a blockchain system. We provide a wide range of services such as smart contract development, ICO, IEO, IDO development, and games NFT conversion.`,
+      Smartphone: 'Application Development',
+      SmartphoneContent: `"We are confident in developing apps that connect with business and web systems.
+        When you request a business management system or web system development, we can also provide an application that can be operated by linking with the in-house system from the outside on a device such as a tablet or smartphone. Through this service, we hope to distribute our best and support to the success of customers' business. 
+        
+        We have a track record of developing apps for a wide range of purposes, from logistics app to SNS apps, educational apps, and chat apps as we have the know-how, experiences, and expertise."`,
+      AWS: 'Cloud Migration',
+      AWSContent: `Cloud migration assistant is a service that helps customers reduce costs for technology, increase productivity and business agility, and improve operational resilience.
+        Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.`,
     },
     why: {
       title: 'Why Relipa ?',
@@ -77,10 +76,10 @@ export default {
       contact: 'Contact us',
       contactcontent:
         'Please feel free to contact us.We accept descriptions such as successful cases of offshore development and points for selecting a company.',
-      Thorough: 'Listen and understand',
+      Thorough: 'We listen',
       Thoroughcontent:
         'In order to turn your ideas into products, it is important to accurately understand your needs. Please, tell us what you want to do. ',
-      Suggestions: 'Suggestions / Quotations',
+      Suggestions: 'We suggest/ propose',
       Suggestionscontent:
         'Once you understand the site configuration, functional requirements, page content, etc., we will present the development, man-hours, estimates, schedule, future expansion, etc.',
       Contract: 'Contract / Order',
@@ -94,7 +93,7 @@ export default {
         'We will perform integration testing, debugging, customer verification and feedback, and capture for the final brush-up.',
       Delivery: 'Delivery',
       Deliverycontent: 'We will deliver on time upon request according to the specifications.',
-      Publishing: 'Public work site release',
+      Publishing: 'Release',
       Publishingcontent:
         'We will accelerate the migration of search engines by performing various settings such as actual release work on the day of release, verification, and Google after release.',
     },

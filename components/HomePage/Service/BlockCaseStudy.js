@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query'
-import { get } from '../../../api/BaseRequest'
 import Link from 'next/link'
+import { get } from '../../../api/BaseRequest'
 import useTrans from '../../../i18n/useTrans'
 
-function CaseStudy({ itemCard }) {
+const OurProduct = ({ itemCard }) => {
   const trans = useTrans()
   const language = trans.aboutService.aboutService
-  const getCaseStudy = async () => {
+  const getCaseStudy = async() => {
     return await get(`user/en/works`)
   }
   const { data: dataCaseStudy } = useQuery('getBlog', getCaseStudy)
@@ -17,7 +17,7 @@ function CaseStudy({ itemCard }) {
         <div className="container">
           <div className="section-content">
             <div className="section-content-header line-bottom text-primary">
-              <h2 className="section-content-title">Case Studies</h2>
+              <h2 className="section-content-title">{language.ourProducts}</h2>
             </div>
             <div className="row justify-content-center">
               {dataCaseStudy?.data?.slice(0, 4).map((item, id) => (
@@ -46,7 +46,7 @@ function CaseStudy({ itemCard }) {
               ))}
             </div>
             <div className="text-center pt-1">
-              <Link href="/case-studies">
+              <Link href="/products">
                 <a className="btn btn-outline-greyish btn-lg rounded-0 px-5" href="#">
                   {language.seemore}
                 </a>
@@ -59,4 +59,4 @@ function CaseStudy({ itemCard }) {
   )
 }
 
-export default CaseStudy
+export default OurProduct

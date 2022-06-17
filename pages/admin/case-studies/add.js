@@ -71,7 +71,7 @@ export default function Works() {
     onSuccess: () => {
       setSnackbar({ message: 'Create success !!', open: true, severity: 'success' })
       setTimeout(() => {
-        router.push('/admin/case-studies/')
+        router.push('/admin/products/')
       }, 2000)
     },
     onError: (error) => {
@@ -86,7 +86,7 @@ export default function Works() {
     onSuccess: () => {
       setSnackbar({ message: 'Edit success !!', open: true, severity: 'success' })
       setTimeout(() => {
-        router.push('/admin/case-studies/')
+        router.push('/admin/products/')
       }, 2000)
     },
     onError: (error) => {
@@ -240,7 +240,7 @@ export default function Works() {
   }
 
   const onCancel = () => {
-    router.push('/admin/case-studies')
+    router.push('/admin/products')
   }
 
   return (

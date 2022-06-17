@@ -1,45 +1,46 @@
 export default {
   labTypeDevelopment: {
     title: 'Lab-type development',
-    what: 'What is lab-type development?',
+    slogan: `We build a development team dedicating to each project and commit to the project’s goal.`,
     whatContent:
       "What is lab-type development? We build a dedicated development team for each project within our company, and as a member of the customer's team, we commit to the goals of the project.",
     desire: {
-      contentFirst: "I want to reduce development costs, but I don't want to reduce quality or speed",
-      contentSecond: 'I want to develop it, but the specifications have not been decided',
-      contentThird: "I'm worried about communication",
+      contentFirst: 'Fast and exceptional.',
+      contentSecond: 'Qualified design specifications in development process.',
+      contentThird: 'Reliable and competent.',
     },
-    benefits: {
-      contentFirst: 'Development costs can be reduced',
-      contentSecond: 'Flexible contract form',
+    advantages: {
+      title: 'Advantages',
+      contentFirst: 'Less development costs.',
+      contentSecond: 'Flexible contract types.',
     },
-    overview: 'Overview of lab-type development',
+    overview: 'About Lab-type Development',
     about: {
-      title: 'About lab-type development',
+      title: 'About',
       contentFirst: 'We will provide you with a dedicated development team.',
       contentSecond:
-        'You can secure resources for a long period of time, so you can leave the work to us with confidence',
+        'Your resources will be under long-term high security, so let the project be developed by us!',
     },
     working: {
-      title: 'Working hours and holidays',
-      contentFirst: 'Working hours are 40 hours per week (Monday-Friday) and 8 hours per day.',
-      contentSecond: 'RELIPA developers run from 140 to 180 hours / month.',
+      title: 'Work hours and breaks',
+      contentFirst: 'Working hours are 40 hours per week with the daily period of 8 hours (Monday-Friday). ',
+      contentSecond: 'RELIPA developers work from 140 to 180 hours per month.',
       contentThird:
-        'The start and end times and break times are as follows: start time: 10:00, end time: 19:00, break time: 14:00 to 15:00 (Japan time)',
-      contentFourth: 'Holidays are Vietnamese holidays. Other than that, there is one paid leave per month.',
+        'The times are as follows: start time: 10:00, end time: 19:00, break time: 14:00 to 15:00 (Japan time)',
+      contentFourth: 'Holidays are Vietnamese national holidays with one paid leave per month.​',
     },
     contract: {
-      title: 'Type of contract',
+      title: 'Contract Type',
       contentFirst:
-        'A quasi-delegation contract will be a service that guarantees the amount of work by setting the period and personnel.',
-      contentSecond: 'The contract period is 3 months or more.',
-      contentThird: 'Closing at the end of the month, payment will be at the end of the following month.',
+        'Delegation contract.',
+      contentSecond: '3 months or more contract period.',
+      contentThird: 'Closing at month-end, payment will be the following month-end.',
     },
     why: {
       title: 'Why Choose Our Lab-Type Development',
-      contentFirst: 'Lab-type development with a customer retention rate of 90%',
+      contentFirst: '90% retention rate from Our Lab-type development using customer.',
       contentSecond:
-        'Provides a complete lab-type development that is flexible and can accumulate know-how as well as cost.',
+        'Provides a complete lab-type development that is flexible to accumulate know-how and reduce cost.',
     },
     development: 'Development Results',
     AI: 'Research and development of image processing system using AI',

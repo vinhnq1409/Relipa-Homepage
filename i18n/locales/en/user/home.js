@@ -9,23 +9,20 @@ export default {
     service: {
       title: 'Service',
       LabType: 'Lab-type Development',
-      LabTypeContent:
-        "What is lab-type development? We build a dedicated development team for each project within our company, and as a member of the customer's team, we commit to the goals of the project.",
+      LabTypeContent: `A dedicated development team by our company is built for the customers' project, and we commit to the final goals as a member of the project.`,
       websystem: 'Web System Development',
-      websystemContent:
-        'Relipa is confident in the field of web system development and is proud to be selected by many customers.',
+      websystemContent: `We have confidence in web system development and pride to be trusted by many customers.`,
       Business: 'Business System Development',
-      BusinesContent:
-        'We have many achievements in developing large-scale business systems by ordering from listed companies and major companies.',
+      BusinesContent: `We have many achievements in developing large-scale enterprise systems by ordering from listed companies and major companies in Japan.`,
       Blockchain: 'Blockchain Development',
-      BlockchainContent:
-        'Relipa has highly skilled blockchain developers and experts. We provide services for customers who "want to introduce a blockchain but do not know how to do it", "want to convert assets to NFT", and "there is no engineer who can build a blockchain"',
+      BlockchainContent: `Relipa has highly skilled blockchain developers and experts. We provide services for customers who
+        "Want to implement blockchain but have limited resources"
+        "Want to convert assets to NFT"
+        "Limited human resources to sucessfully build a blockchain system".`,
       Smartphone: 'Smartphone Application Development',
-      SmartphoneContent:
-        'In addition to logistics apps, we have a track record of developing apps for a wide range of purposes, such as SNS apps, educational apps, and chat apps, and we have a wealth of technical expertise.',
-      AWS: 'AWS Migration',
-      AWSContent:
-        'Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.',
+      SmartphoneContent: `Besides logistics and warehouses management apps, we have a track record in application development for a wide range of purposes, including SNS, education, or chatting, along with a wealth of technical expertise.`,
+      AWS: 'Cloud Migration',
+      AWSContent: `Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture and construction, installation, and deployment.`,
     },
     voice: {
       TeruHosono: {

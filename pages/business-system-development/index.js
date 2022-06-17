@@ -5,7 +5,7 @@ import BlockBreadcrumb from '../../components/HomePage/Service/BusinessSystemDev
 import BlockDesire from '../../components/HomePage/Service/BusinessSystemDevelopment/BlockDesire'
 import BlockWebSystem from '../../components/HomePage/Service/BusinessSystemDevelopment/BlockWebSystem'
 import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
-import BlockDialog from '../../components/HomePage/Case-Studies/BlockDialog'
+import BlockDialog from '../../components/HomePage/Products/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 
