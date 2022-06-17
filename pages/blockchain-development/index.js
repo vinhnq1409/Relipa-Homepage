@@ -52,7 +52,6 @@ const BlockchainDevelopment = () => {
           <BlockBreadcrumb />
           <BlockDesire />
           <BlockWebSystem />
-          <BlockWhyChoose />
           <CaseStudy itemCard={itemCard} />
           <BlockDialog item={card} />
         </div>

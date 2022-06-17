@@ -15,10 +15,9 @@ export default {
       Blockchain: 'Blockchain Development',
       BlockchainContent: `Relipa has highly skilled blockchain developers and experts. We provide services for customers who want to implement blockchain but have limited resources, want to convert assets to NFT, and have limited human resources to sucessfully build a blockchain system. We provide a wide range of services such as smart contract development, ICO, IEO, IDO development, and games NFT conversion.`,
       Smartphone: 'Application Development',
-      SmartphoneContent: `"We are confident in developing apps that connect with business and web systems.
+      SmartphoneContent: `We are confident in developing apps that connect with business and web systems.
         When you request a business management system or web system development, we can also provide an application that can be operated by linking with the in-house system from the outside on a device such as a tablet or smartphone. Through this service, we hope to distribute our best and support to the success of customers' business. 
-        
-        We have a track record of developing apps for a wide range of purposes, from logistics app to SNS apps, educational apps, and chat apps as we have the know-how, experiences, and expertise."`,
+        We have a track record of developing apps for a wide range of purposes, from logistics app to SNS apps, educational apps, and chat apps as we have the know-how, experiences, and expertise.`,
       AWS: 'Cloud Migration',
       AWSContent: `Cloud migration assistant is a service that helps customers reduce costs for technology, increase productivity and business agility, and improve operational resilience.
         Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.`,

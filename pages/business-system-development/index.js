@@ -52,7 +52,6 @@ export default function Index() {
           <BlockBreadcrumb />
           <BlockDesire />
           <BlockWebSystem />
-          <BlockWhyChoose />
           <CaseStudy itemCard={itemCard} />
           <BlockDialog item={card} />
         </div>
