@@ -98,13 +98,13 @@ export default function Header(props) {
                       <a className="dropdown-item">{trans.headerFooter.header.smartphone_application}</a>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href="/aws-migration">
                       <a className="dropdown-item" href="aws-migration.html">
                         {trans.headerFooter.header.AWSMigration}
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
               <li className="nav-item dropdown">

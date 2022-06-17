@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
   const { locale: originalLocale, defaultLocale, req } = context
 
   const cookies = req.headers.cookie?.slice(-2) || 'en'
-  const closestLocale = cookies === 'en' ? 'en' : 'vi'
+  const closestLocale = cookies === 'vi' ? 'vi' : 'en'
 
   const resDataBlogs = await get(`user/${closestLocale}/voice`)
   const voice = await resDataBlogs.data
