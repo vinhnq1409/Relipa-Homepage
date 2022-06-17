@@ -3,6 +3,7 @@ import useTrans from '../../../../i18n/useTrans'
 const BlockBanner = () => {
   const trans = useTrans()
   const language = trans.businessSystem
+
   return (
     <div className="container">
       <section className="section section-aos section-banner section-sub-banner py-0" data-aos="fade-down">

@@ -29,7 +29,12 @@ function BlockWebSystem() {
                         {language.warehouse.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.warehouse.content}</div>
+                    <div
+                      className="card-text"
+                      dangerouslySetInnerHTML={{
+                        __html: language.warehouse.content
+                      }}
+                    ></div>
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -64,7 +69,12 @@ function BlockWebSystem() {
                         {language.sale.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.sale.content}</div>
+                    <div
+                      className="card-text"
+                      dangerouslySetInnerHTML={{
+                        __html: language.sale.content
+                      }}
+                    ></div>
                   </div>
                 </div>
                 <div className="card-thumb">

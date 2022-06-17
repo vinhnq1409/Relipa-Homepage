@@ -1,8 +1,9 @@
 import useTrans from '../../../../i18n/useTrans'
 
-function BlockDesire() {
+const BlockDesire = () => {
   const trans = useTrans()
   const language = trans.blockchain
+
   return (
     <section className="section section-aos" data-aos="fade-up">
       <div className="container">
@@ -16,9 +17,14 @@ function BlockDesire() {
                 <li>{language.desire.fource}</li>
               </ul>
               <div className="section-content-header line-bottom text-primary mb-3">
-                <h2 className="section-content-title">{language.title}</h2>
+                <h2 className="section-content-title">{language.solveit.title}</h2>
               </div>
-              <div className="section-text text-grey-1">{language.targetContent}</div>
+              <div
+                className="section-text text-grey-1"
+                dangerouslySetInnerHTML={{
+                  __html: language.solveit.content
+                }}
+              ></div>
             </div>
           </div>
           <div className="col-md-6 offset-xl-1">

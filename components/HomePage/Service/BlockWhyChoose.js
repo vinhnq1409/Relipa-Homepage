@@ -1,9 +1,10 @@
 import useTrans from '../../../i18n/useTrans'
-import Link from 'next/link'
 import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
+
 const BlockWhyChoose = () => {
   const trans = useTrans()
   const language = trans.labtypeDevelopment.labTypeDevelopment
+
   return (
     <>
       <section className="section section-why section-aos" data-aos="fade-up">

@@ -1,8 +1,9 @@
 import useTrans from '../../../../i18n/useTrans'
 
-function BlockDesire() {
+const BlockDesire = () => {
   const trans = useTrans()
   const language = trans.businessSystem
+
   return (
     <section className="section section-aos" data-aos="fade-up">
       <div className="container">
@@ -16,7 +17,7 @@ function BlockDesire() {
                 <li>{language.desire.fource}</li>
               </ul>
               <div className="section-content-header line-bottom text-primary mb-3">
-                <h2 className="section-content-title">{language.title}</h2>
+                <h2 className="section-content-title">{language.slogan}</h2>
               </div>
               <div className="section-text text-grey-1">
                 {language.bussiness.one}
@@ -26,8 +27,6 @@ function BlockDesire() {
                 {language.bussiness.three}
                 <br />
                 {language.bussiness.four}
-                <br />
-                {language.bussiness.five}
               </div>
             </div>
           </div>

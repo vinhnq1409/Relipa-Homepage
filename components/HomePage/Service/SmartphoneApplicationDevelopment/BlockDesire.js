@@ -1,8 +1,9 @@
 import useTrans from '../../../../i18n/useTrans'
 
-function BlockDesire() {
+const BlockDesire = () => {
   const trans = useTrans()
   const language = trans.smartPhone
+
   return (
     <section className="section section-aos" data-aos="fade-up">
       <div className="container">

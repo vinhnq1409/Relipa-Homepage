@@ -1,41 +1,50 @@
 export default {
   title: 'Business System Development',
+  slogan: `If your firm needs Business System Development Service, choose Relipa!`,
   businessSystemService: 'Business System Development Service',
-
   bussiness: {
-    one: 'We have many achievements in developing large-scale business systems by ordering from listed companies and major companies.',
-    two: 'We would like to continue to accept many projects for developing various types of business systems while making use of our abundant experience and know-how.',
-    three:
-      'Our engineers are also good at using cloud services such as AWS and Azure, as well as freely manipulating various development languages.',
-    four: 'Furthermore, we support a wide range of activities from environment construction to manufacturing, testing, and maintenance.',
-    five: 'We not only surely reflect the instructions and requests from our customers in the system, but also grasp the current situation of our customers and propose the optimum design.',
+    one: `We have many achievements in developing large-scale enterprise systems by ordering from listed companies and major companies in Japan.`,
+    two: `With our experiences and know-how, we accept even the most challenging business system development project.`,
+    three: `Besides the profound skills in various development languages, our engineers are good at using cloud services such as AWS and Azure.`,
+    four: `Furthermore, we support several activities from building an internet environment to manufacturing, testing, maintenance and more than meeting customers' requirements, we listen to understand the situation and propose the best optimum design.`,
   },
   desire: {
-    one: 'Warehouse management system',
-    two: 'Sales management business',
-    three: 'Reservation management system',
-    fource: 'Vehicle allocation management system',
+    one: 'Warehouse/Inventory management system.',
+    two: 'Sales management system.',
+    three: 'Reservation management system.',
+    fource: 'Transportation management system.',
     note: 'For business system development, choose Relipa',
   },
   warehouse: {
-    title: 'Warehouse Management System',
-    content:
-      'The inventory management system has the following main functions: warehousing / delivery management, inspection, inventory list, return management, inventory, inventory analysis, data extraction, master management.',
+    title: 'Inventory management System',
+    content: `
+    Main funtions of the inventory management system:<br />
+    - Warehouse/delivery management<br />
+    - Good inspection<br />
+    - Inventory list<br />
+    - Returns management<br />
+    - Stock-taking/ Inventory checking<br />
+    - Inventory Classification<br />
+    - Information/Data extraction<br />
+    - Master data management (MDM)<br />
+    `,
   },
   sale: {
-    title: 'Sales Management System',
-    content:
-      'Sales management refers to the management of a series of flows such as quotation, ordering, shipping, sales, inventory, and purchasing management related to the business up to the sale of a product. The basic functions of the sales management system can be classified into three functions: sales management, inventory management, and purchasing management.',
+    title: 'Sales management system',
+    content: `
+      Sales management refers to managing the selling process from ordering, shipping, sales, inventory, and purchasing. <br />
+      Sales management, inventory management, and purchasing management are 3 essential functions of the system. 
+    `,
   },
   reservation: {
-    title: 'Reservation Management System',
+    title: 'Order Management System',
     content:
-      'The reservation management system is a system that centrally manages reservation information from customers. It increases the efficiency of reservation work and leads to the improvement of the services.',
+      'The system manages reservation information from customers then leads to service efficiency and improvement.',
   },
   vehicle: {
-    title: 'Vehicle Allocation Management System',
+    title: 'Transport management System',
     content:
-      'It is a system for supporting dispatchers who can incorporate optimal vehicle allocation using map software and charts, from multiple vehicle allocation plans to operation plans.',
+      'Using map software and charts, the system supports dispatchers to incorporate optimal vehicle allocation.',
   },
   caseStudy: 'CASE STUDY',
   function: {

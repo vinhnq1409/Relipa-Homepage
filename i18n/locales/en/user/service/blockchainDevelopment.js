@@ -1,67 +1,64 @@
 export default {
   title: 'Blockchain Development',
   blockChainService: 'Blockchain Development Service',
-
   target: 'Launch Blockchain Ideas Now!',
-  targetContent:
-    'Relipa has highly skilled blockchain developers and experts. We provide services for customers who "want to introduce a blockchain but do not know how to do it", "want to convert assets to NFT", and "there is no engineer who can build a blockchain". We support a wide range of services such as smart contract development, ICO, IEO, IDO development, and NFT conversion of games.',
   desire: {
-    one: 'I want to introduce blockchain technology',
-    two: 'I want to convert intellectual property to NFT',
-    three: 'There is no engineer who can do blockchain technology',
-    fource: 'I want to find a company with development experience',
+    one: 'I want to implement blockchain but have limited resources.',
+    two: 'I want to convert intellectual property to NFT.',
+    three: 'Our company have limited human resources to sucessfully build a blockchain system.',
+    fource: 'I want to find a company with valuable experience.',
   },
   solveit: {
     title: "Relipa's blockchain development can solve it!",
-    content:
-      ' Relipa has already started the blockchain service from January 2021. The significance of using blockchain technology as a solution to many advanced problems such as finance, medical care, and logistics is immeasurable. Since its founding, Relipa has been focusing on the future potential of blockchain, and has been focusing on training excellent blockchain engineers to stay ahead of the times.',
+    content: `Relipa started providing blockchain service in January 2021.<br />
+    Since the immeasurable potential of blockchain in solving advanced problems such as finance, medical care, and logistics, Relipa has been focusing on training excellent engineers to stay ahead of the times.`,
   },
   provider: {
-    title: 'Providing ICO services',
+    title: 'ICO Service',
     content: {
-      One: 'Consulting & White Paper',
+      One: 'Consulting & WhitePaper',
       Two: 'Development',
       Three: 'UI / UX design',
       Fource: 'Customer support',
     },
   },
   converterNFT: {
-    title: 'Converting existing games to NFT',
+    title: 'NTF-ize existing games (Converting existing games to NFT)',
     content: {
       one: 'Consulting',
       two: 'Pre-sales & Whitelist',
       three: 'IDO support',
       fource: 'Bot measures',
-      five: 'Create marketplace',
+      five: 'Marketplace Development',
     },
   },
   Walletservice: {
-    title: 'Wallet service',
+    title: 'Crypto Wallet Service',
     content: {
       one: 'Multiple cryptocurrencies',
       two: 'Multiple platforms',
-      three: 'Storage of private keys on the client side',
+      three: 'Client side private key storage',
       fource: 'Push Notification',
     },
   },
   Officialchain: {
-    title: 'Official chain development',
+    title: 'Public Chain Development',
     content: {
-      one: 'Development of concept proof',
-      two: 'Custom consensus algorithm',
+      one: 'Proof of concept (POC)',
+      two: 'Custom blockchain consensus algorithm',
       three: 'Smart contract engine',
-      fource: 'Side chain support',
+      fource: 'Sidechains support',
     },
   },
   NFTitems: {
-    title: 'NFT items Sales support',
+    title: 'NFT items',
     content: {
       one: 'Consulting',
       two: 'Development',
     },
   },
   OtherServices: {
-    title: 'Other services',
+    title: 'Others',
     content: {
       one: 'Consulting',
       two: 'DAPPS',
@@ -71,10 +68,9 @@ export default {
   why: {
     title: '',
     content: {
-      one: ' Extensive development experience',
-      two: ' Peace of mind in terms of security',
+      one: ' Extensive experience',
+      two: ' Highly secure',
       three: ' Prompt response',
     },
   },
-  CASESTUDY: 'CASE STUDY',
 }

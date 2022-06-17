@@ -1,7 +1,6 @@
 export default {
   title: 'Business System Development',
   businessSystemService: 'Business System Development Service',
-
   bussiness: {
     one: 'We have many achievements in developing large-scale business systems by ordering from listed companies and major companies.',
     two: 'We would like to continue to accept many projects for developing various types of business systems while making use of our abundant experience and know-how.',
@@ -11,10 +10,10 @@ export default {
     five: 'We not only surely reflect the instructions and requests from our customers in the system, but also grasp the current situation of our customers and propose the optimum design.',
   },
   desire: {
-    one: 'Warehouse management system',
-    two: 'Sales management business',
-    three: 'Reservation management system',
-    fource: 'Vehicle allocation management system',
+    one: 'Warehouse/Inventory management system.',
+    two: 'Sales management system.',
+    three: 'Reservation management system.',
+    fource: 'Transportation management system.',
     note: 'For business system development, choose Relipa',
   },
   warehouse: {
