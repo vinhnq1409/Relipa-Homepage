@@ -4,6 +4,7 @@ import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 const BlockWhy = () => {
   const trans = useTrans()
   const language = trans.aboutService.aboutService.why
+
   return (
     <section className="section section-why section-aos" data-aos="fade-up">
       <div className="container">
@@ -32,8 +33,8 @@ const BlockWhy = () => {
                         <img src="/user-page/img/icons/idea.svg" alt="Consuling ability width more than 6" />
                       </a>
                     </div>
-                    <div className="card-body p-0 text-center">
-                      <div className="card-header">
+                    <div className="card-body p-0">
+                      <div className="card-header text-center">
                         <h5 className="card-title">
                           <a href="#" onClick={onPreventDefault}>
                             {language.First.title}
@@ -54,8 +55,8 @@ const BlockWhy = () => {
                         <img src="/user-page/img/icons/money-bag.svg" alt="Security" />
                       </a>
                     </div>
-                    <div className="card-body p-0 text-center">
-                      <div className="card-header">
+                    <div className="card-body p-0">
+                      <div className="card-header text-center">
                         <h5 className="card-title">
                           <a href="#" onClick={onPreventDefault}>
                             {language.Second.title}
@@ -77,8 +78,8 @@ const BlockWhy = () => {
                         <img src="/user-page/img/icons/internet.svg" alt="Leading the way in cutting-edge " />
                       </a>
                     </div>
-                    <div className="card-body p-0 text-center">
-                      <div className="card-header">
+                    <div className="card-body p-0">
+                      <div className="card-header text-center">
                         <h5 className="card-title">
                           <a href="#" onClick={onPreventDefault}>
                             {language.Third.title}
@@ -99,8 +100,8 @@ const BlockWhy = () => {
                         <img src="/user-page/img/icons/rocket.svg" alt="High quality and peace of mind" />
                       </a>
                     </div>
-                    <div className="card-body p-0 text-center">
-                      <div className="card-header">
+                    <div className="card-body p-0">
+                      <div className="card-header text-center">
                         <h5 className="card-title">
                           <a href="#" onClick={onPreventDefault}>
                             {language.Four.title}
@@ -118,11 +119,11 @@ const BlockWhy = () => {
                   <div className="card card-iwt border-0">
                     <div className="card-thumb text-center">
                       <a href="#" onClick={onPreventDefault}>
-                        <img src="/user-page/img/icons/handshake.svg" alt="Low price " />
+                        <img src="/user-page/img/icons/handshake.svg" alt="Low price" />
                       </a>
                     </div>
-                    <div className="card-body p-0 text-center">
-                      <div className="card-header">
+                    <div className="card-body p-0">
+                      <div className="card-header text-center">
                         <h5 className="card-title">
                           <a href="#" onClick={onPreventDefault}>
                             {language.Fifth.title}
@@ -133,6 +134,8 @@ const BlockWhy = () => {
                         {language.Fifth.contentFirst}
                         <br />
                         {language.Fifth.contentSecond}
+                        <br />
+                        {language.Fifth.contentThird}
                       </div>
                     </div>
                   </div>
