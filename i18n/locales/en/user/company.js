@@ -54,7 +54,7 @@ export default {
       core_values2: 'Creative',
       core_values3: 'Flexible',
       core_values4: 'Highly Commited',
-      core_values5: 'Teamwork/ collaborative',
+      core_values5: 'Collaborative',
       core_values6: 'Respectful'
     },
     CoreMember: {
