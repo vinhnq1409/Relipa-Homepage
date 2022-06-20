@@ -251,7 +251,7 @@ export default function HomeFooter(props) {
           <div>Copyright © 2021 RELIPA CO., LTD. All Rights Reserved.</div>
         </div>
       </div>
-      {typeof window !== 'undefiend' && <MessengerCustomerChat pageId={process.env.FANPAGE_ID} appId={process.env.APPFB_ID} />}
+      {(typeof window != undefined && process.env == 'production') && <MessengerCustomerChat pageId={process.env.FANPAGE_ID} appId={process.env.APPFB_ID} />}
       <a href="tel:+842432004725">
         <div className="phone-main">
           <div className="phone">

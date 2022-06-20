@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
+import { useQuery } from 'react-query'
+import Pagination from '@material-ui/lab/Pagination'
+import { useRouter } from 'next/router'
 import BlockBanner from '../../components/HomePage/Products/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Products/BlockBreadcrumb'
 import BlockCard from '../../components/HomePage/Products/BlockCard'
@@ -7,9 +10,6 @@ import BlockDialog from '../../components/HomePage/Products/BlockDialog'
 import BlockFilter from '../../components/HomePage/Products/BlockFilter'
 import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
-import { useQuery } from 'react-query'
-import Pagination from '@material-ui/lab/Pagination'
-import { useRouter } from 'next/router'
 
 export default function Index({ dataCaseStudy }) {
   const [data, setData] = useState(dataCaseStudy)
@@ -48,7 +48,7 @@ export default function Index({ dataCaseStudy }) {
   return (
     <>
       <NextSeo
-        title="Case Studies | Relipa"
+        title="Products | Relipa"
         description="This example uses more of the available config options."
         canonical="https://www.canonical.ie/"
         openGraph={{
