@@ -1,6 +1,5 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
-import Notifications from '@material-ui/icons/Notifications'
 import MessageIcon from '@material-ui/icons/Message'
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 import AssignmentIcon from '@material-ui/icons/Assignment'
@@ -8,8 +7,6 @@ import PagesIcon from '@material-ui/icons/Pages'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import CodeIcon from '@material-ui/icons/Code'
 import GroupWorkIcon from '@material-ui/icons/GroupWork'
-import WorkIcon from '@material-ui/icons/Work'
-import HomeIcon from '@material-ui/icons/Home'
 
 const dashboardRoutes = [
   {
@@ -40,19 +37,19 @@ const dashboardRoutes = [
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],
   },
-  // {
-  //   path: '/static_page',
-  //   name: 'Static page',
-  //   icon: PagesIcon,
-  //   layout: '/admin',
-  //   role: ['Super Admin', 'Admin']
-  // },
   {
     path: '/products',
-    name: 'Case studies',
+    name: 'Products',
     icon: PagesIcon,
     layout: '/admin',
     role: ['Super Admin', 'Admin'],
+  },
+  {
+    path: '/static-page',
+    name: 'Static pages',
+    icon: PagesIcon,
+    layout: '/admin',
+    role: ['Super Admin', 'Admin']
   },
   {
     path: '/account',
@@ -111,4 +108,5 @@ const dashboardRoutes = [
   //   role: ['Super Admin', 'Admin']
   // }
 ]
+
 export default dashboardRoutes
