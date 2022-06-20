@@ -130,14 +130,6 @@ const BlockForm = ({ onNotification }) => {
                   <option value="3">{language.howdid.select.three}</option>
                   <option value="4">{language.howdid.select.fource}</option>
                   <option value="5">{language.howdid.select.five}</option>
-                  <option value="6">{language.howdid.select.six}</option>
-                  <option value="7">{language.howdid.select.seven}</option>
-                  <option value="8">{language.howdid.select.eight}</option>
-                  <option value="9">{language.howdid.select.nine}</option>
-                  <option value="10">{language.howdid.select.ten}</option>
-                  <option value="11">{language.howdid.select.eleven}</option>
-                  <option value="12">{language.howdid.select.twelve}</option>
-                  <option value="13">{language.howdid.select.thirthteen}</option>
                 </select>
                 {errors.your_source && <p className={styled.error}>{errors.your_source.message}</p>}
               </div>
