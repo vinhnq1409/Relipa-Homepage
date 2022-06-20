@@ -27,18 +27,19 @@ export default {
     voice: {
       TeruHosono: {
         name: 'Teru Hosono / General Manager, Himax Co., Ltd.',
-        content:
-          'Since this development was done as a pilot, we started the development with the requirements from our company ambiguously.In particular, I almost entrusted you with the design of the architecture, but I asked you to propose the optimum architecture. You have developed a very satisfying prototype. What was particularly surprising was the high level of technical capabilities of the developers.There was almost no technical indication from our company, and it was impressive that the design and implementation were faithful to the basics and easy to understand.',
+        content: `As this time we just wanted to develop an experimental project, requirements from our side was still really ambiguous. Although we did not require a expertised architecture plan, Relipa provided us a surprizingly suitable development team, as well as develop a prototype with high satisfaction level. Another point I have to mention is that I was very amazed about the quality of the human resource from the company.
+        I also impressed that Relipa designed and developed the product that exactly met our requirements and  accessible without any technical indication from our company. That was really amazing. `,
       },
       RyoheiKamiya: {
         name: 'Ryohei Kamiya / CTO LEEWAYS Co., Ltd.',
-        content:
-          "We are cooperating in the development of front-end web applications. We share the GitHub repository and decide the division of work each time while communicating between our engineers and RELIPA's engineers. If you use GitHub issues and Slack to notify the requirements in Japanese, they will finish the requirements at an explosive speed.In addition, if the requirements you have given are ambiguous, you can respond by asking appropriate questions so that there is no discrepancy. I have been working with them for over a year, but their response speed  is very fast, and I feel that the development speed has improved overwhelmingly compared to before I started working with them.",
+        content: `Our two company became partners in the project of front-end Web and Application. We developed by sharing GitHub repository, deciding the responsibilities of each side through communication between our engineers and Relipa's.
+        If GitHub and Slack are used to inform requirements in Japanese, all those requirements would be handled at a amazingly high speed. Moreover, if the requirements given are ambiguous, the company will check carefully by appropriate questions to ensure that there will be no conflict or disagreement exist. 
+        Although 1 year of cooperation was somehow short, I was really impressed by the high responding speed, as well as the company had been trying their best to improve speed and quality day after day compared to the first day we joined partnership.`,
       },
       KensaguTakasi: {
         name: 'Kensaku Takagi / CEO Areteco Holdings Co., Ltd.',
-        content:
-          "We are a web media planning and management company. Relipa's management team, Duc and Tuyen, has been with us for over four years. We trust not only our technical capabilities but also our people. It's not just a contractor that only directs you, it's a good company that works towards the common goal of business success. In the past, we have launched media with more than 100 million monthly PVs from scratch. At that time, he was in charge of everything from infrastructure to UI. I've seen multiple offshore developers, but few can be trusted.",
+        content: `Our company is a Media Website Design and Management business. We had been cooperating with Relipa's managers, Mr Duc and Mr Tuyen for many years since its establishment. Not only the knowledge or experience, human resource was also reliable. Relipa is not just an IT outsoursing enterprise which satisfy the requirements from customers, they become a reliable partner who commit all to the final goal and your success.
+        We have launched media and together raised its monthly PV from 0 to over 100 million. Relipa was responsibility of everything from infrastructure development to UI design. We have seen multitude of offshore developers in Vietnam and Japan, but few can be reliable.`,
       },
     },
     seemore: 'See more',
