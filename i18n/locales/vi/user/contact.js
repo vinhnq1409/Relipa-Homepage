@@ -41,6 +41,6 @@ export default {
   agress: 'I agree to the privacy policy',
   pleasefill: 'Please fill in the required fields',
   clickhere: 'Click here for our privacy policy',
-  sendwidth: 'SEND WITH THIS CONTENT',
+  sendwidth: 'Contact us',
   error: 'hihihi',
 }

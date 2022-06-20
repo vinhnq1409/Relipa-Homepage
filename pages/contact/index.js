@@ -17,12 +17,12 @@ const Contact = () => {
       ? setSnackbar({
         ...snackbar,
         open: true,
-        message: 'Send is successful',
+        message: 'Thank you for contacting us.',
       })
       : setSnackbar({
         open: true,
         severity: 'error',
-        message: 'Send is failed',
+        message: 'Sending failed.',
       })
   }
 

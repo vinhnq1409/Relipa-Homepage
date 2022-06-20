@@ -1,6 +1,6 @@
 export default {
-  contentone: 'For inquiries / consultations from customers, please use the form below. ',
-  contenttwo: 'Depending on the content of your inquiry, it may take several days to reply.',
+  contentone: 'Please feel free to contact us via the form below.',
+  contenttwo: 'It may take some days to reply depend on your requirements.',
   name: 'Name',
   conpanyname: 'Company Name',
   email: 'Email address',
@@ -9,14 +9,10 @@ export default {
   inquirytype: {
     title: 'Inquiry type',
     select: {
-      one: 'Consultation on system development',
-      two: 'Consultation on blockchain development',
-      three: 'NFT development consultation',
-      four: 'Consultation on smartphone application development',
-      five: 'Consultation on business collaboration',
-      six: 'Request for company introduction materials',
-      seven: 'Inquiries about human resources and recruitment',
-      eigth: 'others',
+      one: 'Information request',
+      two: 'Consultant',
+      three: 'Partnership Proposal',
+      four: 'Others',
     },
   },
   howdid: {
@@ -37,10 +33,10 @@ export default {
       thirthteen: 'others',
     },
   },
-  contentsOfInquiry: 'Contents of inquiry',
+  contentsOfInquiry: 'Detailed requirements',
   agress: 'I agree to the privacy policy',
   pleasefill: 'Please fill in the required fields',
   clickhere: 'Click here for our privacy policy',
-  sendwidth: 'SEND WITH THIS CONTENT',
+  sendwidth: 'Contact us',
   error: 'Please fill in the required fields',
 }
