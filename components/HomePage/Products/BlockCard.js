@@ -23,7 +23,9 @@ function BlockCard({ data, itemCard }) {
                   </a>
                 </h3>
                 <div className="card-text">{item?.desc}... </div>
-                <span className="badge bg-primary-opacity in-category">{item?.tags}</span>
+                {item?.tags.map((tag, index) => (
+                  <span key={index} className="badge bg-primary-opacity in-category mr12">{tag}</span> 
+                ))}
               </div>
             </div>
           </div>

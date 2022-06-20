@@ -11,17 +11,19 @@ import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import noData from '../../assets/img/no-data-found.png'
 import { Dialogs } from '../Progress/Dialog'
+import { Button, Checkbox } from '@material-ui/core'
 
 const TableList = (props) => {
-  const {
-    namePage,
-    tableHead,
-    data,
-    onUpdate,
-    onDelete,
-    params,
-    setParams,
-    count,
+  const { 
+    namePage, 
+    tableHead, 
+    data, 
+    onUpdate, 
+    onDelete, 
+    params, 
+    setParams, 
+    count, 
+    handleCheckbox 
   } = props
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
@@ -64,9 +66,18 @@ const TableList = (props) => {
                 <TableCell>{row.lang}</TableCell>
                 <TableCell className={styles.minWidth72}>{row.created_at?.slice(0, 10)}</TableCell>
                 <TableCell>{row.status ? 'Public' : 'Private'}</TableCell>
+                <TableCell>
+                  <Checkbox
+                    color="primary"
+                    defaultChecked={!!row.top}
+                    onChange={() => {
+                      handleCheckbox(row)
+                    }}
+                  />
+                </TableCell>
                 <TableCell>{row.total_view}</TableCell>
                 <TableCell className={styles.flex2}>
-                  <a target='_blank' href={`${namePage}/${row.friendly_url}`} rel='noreferrer'>
+                  <a target="_blank" href={`${namePage}/${row.friendly_url}`} rel="noreferrer">
                     <VisibilityIcon className={`${styles.tableLink} ${styles.hoverIcon}`} />
                   </a>
                   <EditIcon className={`${styles.tableLink} ${styles.hoverIcon}`} onClick={() => onUpdate(row.id)} />
@@ -79,13 +90,13 @@ const TableList = (props) => {
             ))}
           </TableBody>
         </Table>
-        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt='No Data ...' />}
+        {data?.length === 0 && <img style={{ backgroundImage: 'none' }} src={noData} alt="No Data ..." />}
       </div>
       <Dialogs
         open={openConfirmDelete}
         handleCancel={handleClose}
-        title='Delete'
-        content='Do you really want to delete this?'
+        title="Delete"
+        content="Do you really want to delete this?"
         onClick={handleDelete}
       />
       {count > 1 && (
