@@ -13,15 +13,15 @@ import noData from '../../assets/img/no-data-found.png'
 import { Dialogs } from '../Progress/Dialog'
 
 const TableList = (props) => {
-  const { 
-    namePage, 
-    tableHead, 
-    data, 
-    onUpdate, 
-    onDelete, 
-    params, 
-    setParams, 
-    count, 
+  const {
+    namePage,
+    tableHead,
+    data,
+    onUpdate,
+    onDelete,
+    params,
+    setParams,
+    count,
   } = props
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)

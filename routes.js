@@ -66,8 +66,8 @@ const dashboardRoutes = [
     role: ['Super Admin', 'Admin'],
   },
   {
-    path: '/customercomment',
-    name: 'Customer Comment',
+    path: '/client-voice',
+    name: 'Client Voice',
     icon: MessageIcon,
     layout: '/admin',
     role: ['Super Admin', 'Admin', 'Editor'],

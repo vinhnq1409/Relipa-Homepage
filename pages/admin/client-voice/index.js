@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { get, del } from '../../../api/BaseRequest'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import TableList from '../../../components/CustomerComment/Table'
+import TableList from '../../../components/ClientVoice/Table'
 
 const tableHead = ['ID', 'Title', 'Company', 'Description', 'Action']
 
@@ -29,12 +29,12 @@ export default function News() {
     type: '',
   })
 
-  const getDataNewList = async () => {
+  const getDataNewList = async() => {
     const response = await get('voice', { ...filters, ...params })
     return response
   }
 
-  const deleteNewItem = async (id) => {
+  const deleteNewItem = async(id) => {
     const response = await del(`voice/${id}`)
     return response.data
   }
@@ -86,7 +86,7 @@ export default function News() {
 
   const handleUpdate = (id) => {
     router.push({
-      pathname: '/admin/customercomment/add',
+      pathname: '/admin/client-voice/add',
       query: {
         slug: 'about',
         mode: 'edit',
@@ -100,13 +100,13 @@ export default function News() {
   }
 
   const onCreate = () => {
-    router.push('/admin/customercomment/add')
+    router.push('/admin/client-voice/add')
   }
 
   return (
     <>
       <NewFilters
-        header={'CUSTOMER COMMENT'}
+        header={'CLIENT VOICE'}
         handleSearch={handleSearch}
         handleResetForm={handleResetForm}
         filters={filters}
@@ -114,7 +114,7 @@ export default function News() {
         setFilters={setFilters}
       />
       <TableList
-        namePage="/customercomment"
+        namePage="/client-voice"
         tableHead={tableHead}
         data={dataNewList?.data || []}
         onUpdate={handleUpdate}

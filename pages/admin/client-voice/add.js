@@ -54,15 +54,15 @@ export default function Works() {
     status: true,
   }
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`voice/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('voice', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await post(`voice/${id}`, data)
   }
 
@@ -76,7 +76,7 @@ export default function Works() {
     onSuccess: () => {
       setSnackbar({ message: 'Create success !!', open: true, severity: 'success' })
       setTimeout(() => {
-        router.push('/admin/customercomment/')
+        router.push('/admin/client-voice/')
       }, 2000)
     },
     onError: (error) => {
@@ -91,7 +91,7 @@ export default function Works() {
     onSuccess: () => {
       setSnackbar({ message: 'Edit success !!', open: true, severity: 'success' })
       setTimeout(() => {
-        router.push('/admin/customercomment/')
+        router.push('/admin/client-voice/')
       }, 2000)
     },
     onError: (error) => {
@@ -109,7 +109,7 @@ export default function Works() {
   }, [])
 
   useEffect(() => {
-    if(dataVoice){
+    if (dataVoice) {
       setValue('title', dataVoice?.title)
       setValue('desc', dataVoice?.desc)
       setValue('company', dataVoice?.company)
@@ -141,7 +141,7 @@ export default function Works() {
     reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const onCreate = async (data) => {
+  const onCreate = async(data) => {
     if (images) {
       setIsErrImgs(false)
       const formData = new FormData()
@@ -191,7 +191,7 @@ export default function Works() {
   }
 
   const onCancel = () => {
-    router.push('/admin/customercomment')
+    router.push('/admin/client-voice')
   }
 
   return (
@@ -261,7 +261,7 @@ export default function Works() {
             <Controller
               name="status"
               control={control}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
+              render={({ field: { onChange, onBlur, value, ref }}) => (
                 <FormControlLabel
                   control={
                     <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />
