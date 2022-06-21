@@ -128,7 +128,7 @@ export default function Works() {
   }, [dataWork])
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
+    title: Yup.string().required('Title is required').min(3, 'The title must be at least 3 characters'),
     desc: Yup.string().required('Description is required'),
 
     content: Yup.string().required('Content i required'),
@@ -143,7 +143,7 @@ export default function Works() {
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onCreate = async (data) => {
-    if (images?.length >= 3) {
+    if (images?.length >= 1) {
       setIsErrImgs(false)
       const formData = new FormData()
       const lengthListImg = images.length
@@ -175,14 +175,16 @@ export default function Works() {
       formData.append('type', newData?.type)
       postNewsAPI(formData)
     } else {
-      if (!(images?.length >= 3)) {
+      if (!(images?.length >= 1)) {
         setIsErrImgs(true)
       }
     }
   }
 
   const onUpdate = (data) => {
-    if (images?.length >= 3) {
+
+    console.log(data)
+    if (images?.length >= 1) {
       setIsErrImgs(false)
 
       const formData = new FormData()
@@ -199,6 +201,7 @@ export default function Works() {
         responsible_content: responContent,
         tags: tags,
         lang: data.lang,
+        type: type
       }
 
       if (type === 5) {
@@ -218,7 +221,7 @@ export default function Works() {
       formData.append('_method', 'PUT')
       putNewsAPI(formData)
     } else {
-      if (!(images?.length >= 3)) {
+      if (!(images?.length >= 1)) {
         setIsErrImgs(true)
       }
     }
@@ -332,12 +335,7 @@ export default function Works() {
                 ))
               }
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="outlined"
-                  label="Responsible Content"
-                  placeholder="Add responsible content"
-                />
+                <TextField {...params} variant="outlined" label="Obligation" placeholder="Add Obligation" />
               )}
               value={responContent}
               onChange={(event, value) => {
@@ -465,7 +463,7 @@ export default function Works() {
                 </>
               )}
             </ImageUploading>
-            {isErrImg && <Typography className={styles.error}>The images must have at least 3 items.</Typography>}
+            {isErrImg && <Typography className={styles.error}>The images must have at least 1 item</Typography>}
           </Grid>
           <Grid item xs={12}>
             <Autocomplete
@@ -494,9 +492,7 @@ export default function Works() {
                 labelId="demo-simple-select-label"
                 id="grouped-native-select"
                 value={type}
-                onChange={(e) => {
-                  setType(e.target.value)
-                }}
+                onChange={(e) => setType(e.target.value)}
                 className={styles.full}
               >
                 <MenuItem className={styles.full} value={5}>

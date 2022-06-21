@@ -15,7 +15,7 @@ export default function Index({ dataCaseStudy }) {
   const [data, setData] = useState(dataCaseStudy)
   const [params, setParams] = useState({
     page: 1,
-    per_page: 10,
+    per_page: 12,
     type: null,
   })
   const [card, setCard] = useState({})
@@ -43,7 +43,7 @@ export default function Index({ dataCaseStudy }) {
     })
   }
 
-  const countPagination = Math.ceil(data?.total / 10)
+  const countPagination = Math.ceil(data?.total / 12)
 
   return (
     <>
@@ -109,7 +109,7 @@ export default function Index({ dataCaseStudy }) {
 }
 
 export async function getServerSideProps({ locale }) {
-  const dataCaseStudy = await get(`user/${locale}/works`)
+  const dataCaseStudy = await get(`user/${locale}/works`, {per_page: 12})
 
   return { props: { dataCaseStudy }}
 }

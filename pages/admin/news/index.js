@@ -3,12 +3,13 @@ import Admin from 'layouts/Admin.js'
 import moment from 'moment'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-import { get, del } from '../../../api/BaseRequest'
+import { get, del, post } from '../../../api/BaseRequest'
 import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 import TableList from '../../../components/AdminNewBlog/Table'
 
-const tableHead = ['ID', 'Subject', 'API', 'Date', 'Status', 'Views', 'Action']
+const tableHead = ['Id', 'Subject', 'API', 'Date', 'Status', 'Top', 'Views', 'Action']
+
 
 export default function News() {
   const queryClient = useQueryClient()
@@ -39,6 +40,10 @@ export default function News() {
     return response.data
   }
 
+  const putNews = async (data) => {
+    return await post(`news/${data.id}`, data)
+  }
+
   const { data: dataNewList } = useQuery(['getDataNewList', params, isSearch], getDataNewList)
   const {
     mutate: mutateDeleteNew,
@@ -57,6 +62,24 @@ export default function News() {
       setSnackbar({
         open: true,
         message: 'Delete Success!',
+        type: 'success'
+      })
+    }
+  })
+
+  const { mutate: putNewsAPI, isLoading: isPutingNewsAPI } = useMutation(putNews, {
+    onError: () => {
+      setSnackbar({
+        open: true,
+        message: 'Update Failed!',
+        type: 'error'
+      })
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries('getDataNewList')
+      setSnackbar({
+        open: true,
+        message: 'Update Success!',
         type: 'success'
       })
     }
@@ -103,6 +126,14 @@ export default function News() {
     router.push('/admin/news/add')
   }
 
+  const handleCheckbox = (data) => {
+    const newData = {
+      ...data,
+      top: +(!data.top),
+      _method: 'PUT',
+    }
+    putNewsAPI(newData)
+}
   return (
     <>
       <NewFilters
@@ -122,6 +153,7 @@ export default function News() {
         params={params}
         setParams={setParams}
         count={dataNewList?.total / params.per_page}
+        handleCheckbox={handleCheckbox}
       />
       {isSuccess && (
         <CustomizedSnackbars

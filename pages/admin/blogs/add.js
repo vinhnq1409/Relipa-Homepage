@@ -155,7 +155,7 @@ export default function Add() {
   }, [dataTags, dataBlog])
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
+    title: Yup.string().required('Title is required').min(3, 'The title must be at least 3 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
     friendly_url: Yup.string()
@@ -216,8 +216,9 @@ export default function Add() {
       setIsErrorTag(true)
     }
   }
-
+  console.log(valueTag)
   const onPictureUpload = async (e) => {
+    console.log(e.target.files)
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -226,7 +227,7 @@ export default function Add() {
 
   const onResetURL = () => {
     const valueTitle = getValues('title')
-    const resetFriendlyUrl = valueTitle?.trim().replace(/ /g, '-').toLowerCase()
+    const resetFriendlyUrl = valueTitle?.trim().replace(/\//g, '').replace(/ /g, '-').replace(/\?/g, '').toLowerCase()
     setValue('friendly_url', resetFriendlyUrl)
   }
 

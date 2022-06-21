@@ -9,8 +9,8 @@ const BlockBanner = () => {
         <div className="main-banner-item main-banner-item-sm">
           <div className="main-banner-item-bg">
             <picture>
-              <source media="(min-width:768px)" srcSet="/user-page/img/products/banner.png" />
-              <img src="/user-page/img/products/banner-sp.png" width="345" height="188" alt="Banner Case Studies" />
+              <source media="(min-width:768px)" srcSet="/user-page/img/case-studies/banner.png" />
+              <img src="/user-page/img/case-studies/banner-sp.png" width="345" height="188" alt="Banner Case Studies" />
             </picture>
           </div>
           <div className="container">

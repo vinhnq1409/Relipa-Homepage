@@ -24,17 +24,18 @@ export default function StaticPage() {
     severity: 'success'
   })
 
+  
   const tableHead = ['No', 'Title', 'Author', 'Date', 'Status', 'Views', 'Action']
-
+  
   const getStaticPage = async() => {
     const response = await get('static-page', params)
     return response
   }
-
+  
   const delStaticPage = async(id) => await del(`static-page/${id}`)
-
+  
   const { data, refetch } = useQuery([`getStaticPage`, params.per_page, params.page], getStaticPage)
-
+  
   const { mutate } = useMutation(delStaticPage, {
     onError: (error) => {
       const { data } = error.response

@@ -5,10 +5,10 @@ import NewFilters from '../../../components/AdminNewBlog/NewBlogFilters'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { del, get } from '../../../api/BaseRequest'
+import { del, get, post } from '../../../api/BaseRequest'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-const tableHead = ['Id', 'Subject', 'API', 'Date', 'Status', 'Views', 'Action']
+const tableHead = ['Id', 'Subject', 'API', 'Date', 'Status', 'Top', 'Views', 'Action']
 
 export default function Blogs() {
   const router = useRouter()
@@ -19,17 +19,21 @@ export default function Blogs() {
     start: null,
     end: moment().format('YYYY-MM-DD'),
     per_page: 10,
-    page: 1
+    page: 1,
   })
 
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
-    type: ''
+    type: '',
   })
 
   const getBlogs = () => {
     return get('blogs', params)
+  }
+
+  const putBlog = async (data) => {
+    return await post(`blogs/${data.id}`, data)
   }
 
   const deleteBlog = (blogId) => {
@@ -37,12 +41,13 @@ export default function Blogs() {
   }
 
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
+
   const { mutate } = useMutation(deleteBlog, {
     onError: () => {
       setSnackbar({
         open: true,
         message: 'Delete failed!',
-        type: 'error'
+        type: 'error',
       })
     },
     onSuccess: () => {
@@ -50,9 +55,27 @@ export default function Blogs() {
       setSnackbar({
         open: true,
         message: 'Delete success!',
-        type: 'success'
+        type: 'success',
       })
-    }
+    },
+  })
+
+  const { mutate: putBlogAPI, isLoading: isPutingBlogAPI } = useMutation(putBlog, {
+    onError: () => {
+      setSnackbar({
+        open: true,
+        message: 'Update failed!',
+        type: 'error',
+      })
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries('admin/blogs')
+      setSnackbar({
+        open: true,
+        message: 'Update success!',
+        type: 'success',
+      })
+    },
   })
 
   const handleClose = () => {
@@ -70,7 +93,7 @@ export default function Blogs() {
       start: null,
       end: moment().format('YYYY-MM-DD'),
       per_page: 10,
-      page: 1
+      page: 1,
     })
   }
 
@@ -81,12 +104,22 @@ export default function Blogs() {
   const handleUpdate = (id) => {
     router.push({
       pathname: '/admin/blogs/add',
-      query: { slug: 'about', mode: 'edit', id: id }
+      query: { slug: 'about', mode: 'edit', id: id },
     })
   }
 
   const handleDelete = (id) => {
     mutate(id)
+  }
+
+  const handleCheckbox = (data) => {
+      const newData = {
+        ...data,
+        top: +(!data.top),
+        _method: 'PUT',
+        tags: data.tags.map(item => item.name)
+      }
+      putBlogAPI(newData)
   }
 
   return (
@@ -100,7 +133,7 @@ export default function Blogs() {
         onCreate={handleCreate}
       />
       <TableList
-        namePage='/blogs'
+        namePage="/blogs"
         tableHead={tableHead}
         data={data?.data}
         onUpdate={handleUpdate}
@@ -108,6 +141,7 @@ export default function Blogs() {
         params={params}
         setParams={setParams}
         count={data?.total / params.per_page}
+        handleCheckbox={handleCheckbox}
       />
       <CustomizedSnackbars
         open={snackbar.open}

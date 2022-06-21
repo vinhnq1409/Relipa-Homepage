@@ -16215,3 +16215,6 @@ a.avatar:hover:after {
   color: #fff;
   background-color: #fff;
 }
+.mr12 {
+  margin-right: 12px;
+}

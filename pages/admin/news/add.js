@@ -116,7 +116,7 @@ export default function AddNews() {
   }, [dataNews])
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required').min(10, 'The title must be at least 10 characters'),
+    title: Yup.string().required('Title is required').min(3, 'The title must be at least 3 characters'),
     desc: Yup.string().required('Description is required'),
     meta: Yup.string().required('Meta is required'),
     friendly_url: Yup.string()
