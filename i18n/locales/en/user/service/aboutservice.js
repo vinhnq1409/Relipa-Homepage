@@ -76,7 +76,7 @@ export default {
       Thorough: 'We listen',
       Thoroughcontent:
         'In order to turn your ideas into products, it is important to accurately understand your needs. Please, tell us what you want to do. ',
-      Suggestions: 'We suggest/ propose',
+      Suggestions: 'Consultant / propose',
       Suggestionscontent:
         'Once you understand the site configuration, functional requirements, page content, etc., we will present the development, man-hours, estimates, schedule, future expansion, etc.',
       Contract: 'Contract / Order',
