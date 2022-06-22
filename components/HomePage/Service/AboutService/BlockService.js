@@ -179,7 +179,7 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          {/* <div className="col-sm-6 col-md-4 col-lg-3">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/aws-migration">
@@ -211,7 +211,7 @@ const BlockService = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
