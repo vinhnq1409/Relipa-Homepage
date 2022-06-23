@@ -190,7 +190,7 @@ const BlockService = () => {
                   </div>
                 </div>
               </div>
-              <div className="swiper-slide">
+              {/* <div className="swiper-slide">
                 <div className="card card-overlay">
                   <div className="card-thumb lazyload">
                     <Link href="/aws-migration">
@@ -222,7 +222,7 @@ const BlockService = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="swiper-pagination"></div>
           </div>
