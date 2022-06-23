@@ -16,10 +16,7 @@ const BlockBanner = ({ banner }) => {
                   <div key={index} className="swiper-slide">
                     <div className="main-banner-item">
                       <div className="main-banner-item-bg">
-                        <picture>
-                          <source media="(min-width:768px)" srcSet={`http://${item.banner}`} />
-                          <img src={`http://${item.banner}`} alt="Banner Home" />
-                        </picture>
+                        <img src={`http://${item.banner}`} alt="Banner Home" />
                       </div>
                       <div className="container">
                         <div className="row align-items-center">
