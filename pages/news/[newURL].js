@@ -111,10 +111,10 @@ const NewDetail = ({ dataNew }) => {
 export default NewDetail
 
 export const getServerSideProps = async({ locale, params }) => {
-  const dataBlog = await get(`user/${locale}/blogs/${params.blogURL}`)
+  const dataNew = await get(`user/${locale}/news/${params.newURL}`)
   return {
     props: {
-      dataBlog,
+      dataNew,
     },
   }
 }
