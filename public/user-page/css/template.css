@@ -16029,6 +16029,7 @@ a.avatar:hover:after {
   .card-img-voice {
     max-width: 306px !important;
     min-height: 510px !important;
+    height: auto;
   }
   .card-item-about-service{
     height: 54px;

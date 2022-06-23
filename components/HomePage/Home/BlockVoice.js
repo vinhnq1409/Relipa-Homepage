@@ -39,13 +39,7 @@ const BlockVoice = ({ voice }) => {
                         <div className="card card-horizontal border-0 card-padding card-shadow-bottom">
                           <div className="card-thumb lazyload">
                             <a className="card-thumb-overlay" href="#" onClick={onPreventDefault}>
-                              <img
-                                className="card-img-top card-img-voice"
-                                src={`http://${item.voice}`}
-                                width="306"
-                                height="306"
-                                alt={`${item.title}`}
-                              />
+                              <div style={{backgroundImage: `url(http://${item.voice})`, backgroundPosition:"center", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="card-img-top card-img-voice card-img-voice-center"></div>
                             </a>
                           </div>
                           <div className="card-body">
