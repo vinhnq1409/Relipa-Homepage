@@ -15,9 +15,15 @@ const BlockBanner = ({ banner }) => {
                 {banner.map((item, index) => (
                   <div key={index} className="swiper-slide">
                     <div className="main-banner-item">
-                      <div className="main-banner-item-bg">
-                        <img src={`http://${item.banner}`} alt="Banner Home" />
-                      </div>
+                      <div
+                        style={{
+                          backgroundImage: `url(http://${item.banner})`,
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: 'cover',
+                        }}
+                        className="main-banner-item-bg"
+                      ></div>
                       <div className="container">
                         <div className="row align-items-center">
                           <div className="col-md-6">
