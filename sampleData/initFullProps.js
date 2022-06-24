@@ -14,13 +14,15 @@ export const initFullProps = {
     'advlist autolink lists link image charmap print preview anchor',
     'searchreplace visualblocks code fullscreen',
     'insertdatetime media table paste code help wordcount',
+    'toc',
   ],
   menubar: 'file edit view insert format tools table help',
   toolbar:
     'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | ' +
     'alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | ' +
-    'pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    'pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl |' + 'toc',
   branding: false,
+  toc_depth: 3,
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
   image_dimensions: false,
   image_class_list: [{ title: 'responsive', value: 'responsiveImage' }]
