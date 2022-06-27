@@ -17,7 +17,7 @@ const BlockMain = ({ dataNews, count, params, setParams }) => {
                 <div className="row">
                   <div className="col-md-5 col-thumb-wrap">
                     <div className="card-thumb mb-3 mb-md-0">
-                      <Link href={`/blogs/${dataNew.friendly_url}`}>
+                      <Link href={`/news/${dataNew.friendly_url}`}>
                         <a>
                           <img
                             src={dataNew.url_image_meta}
