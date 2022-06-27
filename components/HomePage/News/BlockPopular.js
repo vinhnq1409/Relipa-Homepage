@@ -9,26 +9,26 @@ const BlockPopular = ({ popularNews }) => {
       </div>
       <ul className="news-list-hoz list-unstyled">
         {top5PopularNews.map((popularNew) => (
-          <li key={popularNew.id}>
-            <div className="card card-horizontal-news border-0">
-              <div className="card-thumb mb-0">
-                <img
-                  className="card-img-top img-item-popular"
-                  src={popularNew.url_image_meta}
-                  width="105"
-                  height="58"
-                  alt={popularNew.title}
-                />
-              </div>
-              <div className="card-body">
-                <h4 className="card-title">
-                  <Link href={`/news/${popularNew.friendly_url}`}>
+          <Link href={`/news/${popularNew.friendly_url}`}>
+            <li key={popularNew.id} className='pointer'>
+              <div className="card card-horizontal-news border-0">
+                <div className="card-thumb mb-0">
+                  <img
+                    className="card-img-top img-item-popular"
+                    src={popularNew.url_image_meta}
+                    width="105"
+                    height="58"
+                    alt={popularNew.title}
+                  />
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title">
                     <a className="text-hiden-3">{popularNew.title}</a>
-                  </Link>
-                </h4>
+                  </h4>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

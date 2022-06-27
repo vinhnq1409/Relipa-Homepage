@@ -11,26 +11,26 @@ const BlockNew = ({ blogs }) => {
       </div>
       <ul className="news-list-hoz list-unstyled">
         {top5NewBlogs.map((newBlog) => (
-          <li key={newBlog.id}>
-            <div className="card card-horizontal-news border-0">
-              <div className="card-thumb mb-0">
-                <img
-                  className="card-img-top img-item-popular"
-                  src={newBlog.url_image_meta}
-                  width="105"
-                  height="58"
-                  alt={newBlog.title}
-                />
-              </div>
-              <div className="card-body">
-                <h4 className="card-title">
-                  <Link href={`/blogs/${newBlog.friendly_url}`}>
+          <Link href={`/blogs/${newBlog.friendly_url}`}>
+            <li key={newBlog.id} className='pointer'>
+              <div className="card card-horizontal-news border-0">
+                <div className="card-thumb mb-0">
+                  <img
+                    className="card-img-top img-item-popular"
+                    src={newBlog.url_image_meta}
+                    width="105"
+                    height="58"
+                    alt={newBlog.title}
+                  />
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title">
                     <a className="text-hiden-3">{newBlog.title}</a>
-                  </Link>
-                </h4>
+                  </h4>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
