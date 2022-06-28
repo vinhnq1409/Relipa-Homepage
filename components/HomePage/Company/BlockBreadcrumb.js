@@ -15,7 +15,7 @@ const BlockBreadcrumb = () => {
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              {language.company}
+              {language.lap_type}
             </li>
           </ol>
         </nav>

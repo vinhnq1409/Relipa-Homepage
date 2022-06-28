@@ -14389,8 +14389,8 @@ a.avatar:hover:after {
 }
 @media (min-width: 768px) {
   .main-banner-item.main-banner-item-sm .main-banner-item-bg::after {
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
   }
 }
 .main-banner-item.main-banner-item-sm .section-heading.section-heading-shadow {
