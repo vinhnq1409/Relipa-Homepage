@@ -4,7 +4,6 @@ import BlockBanner from '../../components/HomePage/Service/SmartphoneApplication
 import BlockBreadcrumb from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockBreadcrumb'
 import BlockDesire from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockDesire'
 import BlockWebSystem from '../../components/HomePage/Service/SmartphoneApplicationDevelopment/BlockWebSystem'
-import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
 import BlockDialog from '../../components/HomePage/Products/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'

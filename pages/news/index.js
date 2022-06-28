@@ -21,12 +21,8 @@ const News = ({ news }) => {
     page: 1,
   })
 
-  const getNews = () => {
-    return get(`user/${locale}/new`, params)
-  }
-  const getPopularNews = () => {
-    return get(`user/${locale}/new-popular`)
-  }
+  const getNews = () => get(`user/${locale}/new`, params)
+  const getPopularNews = () => get(`user/${locale}/new-popular`)
 
   const { data: dataByParams } = useQuery(['news', params.per_page, params.page], getNews)
   const { data: popular } = useQuery('popularNews', getPopularNews)
@@ -40,6 +36,7 @@ const News = ({ news }) => {
       setPopularNews(popular.data)
     }
   }, [popular])
+
   return (
     <>
       <NextSeo

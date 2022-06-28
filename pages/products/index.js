@@ -11,7 +11,7 @@ import BlockFilter from '../../components/HomePage/Products/BlockFilter'
 import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
 
-export default function Index({ dataCaseStudy }) {
+const Product = ({ dataCaseStudy }) => {
   const [data, setData] = useState(dataCaseStudy)
   const [params, setParams] = useState({
     page: 1,
@@ -108,8 +108,10 @@ export default function Index({ dataCaseStudy }) {
   )
 }
 
+export default Product
+
 export async function getServerSideProps({ locale }) {
-  const dataCaseStudy = await get(`user/${locale}/works`, {per_page: 12})
+  const dataCaseStudy = await get(`user/${locale}/works`, { per_page: 12 })
 
   return { props: { dataCaseStudy }}
 }

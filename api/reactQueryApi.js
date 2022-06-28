@@ -5,10 +5,10 @@ import { post, get } from './BaseRequest'
 export const signInApi = () => {
   return useMutation((dataForm) => post('login', dataForm))
 }
-// logout api
+// Logout api
 export const logoutApi = () => get(`logout`)
 
-//change password
+// Change password
 export const changePasswordApi = () => {
   return useMutation((dataForm) => post('change-password', dataForm))
 }

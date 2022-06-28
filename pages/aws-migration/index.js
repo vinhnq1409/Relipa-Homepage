@@ -11,6 +11,7 @@ import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 
 const AwsMigration = () => {
   const [card, setCard] = useState({})
+
   const itemCard = (value) => {
     setCard(value)
   }

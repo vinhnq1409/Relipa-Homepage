@@ -11,6 +11,7 @@ import HomePage from '../../layouts/Home'
 
 const LabtypeDevelopment = () => {
   const [card, setCard] = useState({})
+
   const itemCard = (value) => {
     setCard(value)
   }

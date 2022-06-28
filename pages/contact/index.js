@@ -12,6 +12,7 @@ const Contact = () => {
     open: false,
     severity: 'success',
   })
+
   const onNotification = (isNotification) => {
     isNotification
       ? setSnackbar({

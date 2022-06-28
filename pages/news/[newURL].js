@@ -14,15 +14,12 @@ const NewDetail = ({ dataNew }) => {
   const router = useRouter()
   const { locale } = router
   const { id, title, created_at, content, url_image_meta } = dataNew
+
   const [dataNews, setDataNews] = useState([])
   const [popularNews, setPopularNews] = useState([])
 
-  const getNews = () => {
-    return get(`user/${locale}/new`)
-  }
-  const getPopularNews = () => {
-    return get(`user/${locale}/new-popular`)
-  }
+  const getNews = () => get(`user/${locale}/new`)
+  const getPopularNews = () => get(`user/${locale}/new-popular`)
 
   const { data: news } = useQuery('news', getNews)
   const { data: popular } = useQuery('popularNews', getPopularNews)

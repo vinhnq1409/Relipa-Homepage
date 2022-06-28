@@ -20,17 +20,10 @@ export default function BlogDetail({ dataBlog }) {
   const [popularBlogs, setPopularBlogs] = useState([])
   const [tagsTrend, setTagsTrend] = useState([])
 
-  const getBlogs = () => {
-    return get(`user/${locale}/blog`)
-  }
+  const getBlogs = () => get(`user/${locale}/blog`)
+  const getPopularBlogs = () => get(`user/${locale}/blog-popular`)
+  const getTags = () => get(`user/${locale}/tags`)
 
-  const getPopularBlogs = () => {
-    return get(`user/${locale}/blog-popular`)
-  }
-
-  const getTags = () => {
-    return get(`user/${locale}/tags`)
-  }
   const { data: blogs } = useQuery('blogs', getBlogs)
   const { data: popular } = useQuery('popularNews', getPopularBlogs)
   const { data: tags } = useQuery('tags', getTags)
@@ -54,7 +47,7 @@ export default function BlogDetail({ dataBlog }) {
   }, [popular])
 
   useEffect(() => {
-    const countView = setTimeout(async () => {
+    const countView = setTimeout(async() => {
       await post('statistic', {
         name_page: 'blogs',
         id_item: id,

@@ -8,11 +8,11 @@ const instance = axios.create({
   baseURL: publicRuntimeConfig.apiUrl
 })
 
-export function setAuthHeader(token) {
+export const setAuthHeader = (token) => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-const get = async (url, params = {}) => {
+export const get = async(url, params = {}) => {
   try {
     const config = { params: params }
     const response = await instance.get(getUrlPrefix() + url, config)
@@ -22,7 +22,7 @@ const get = async (url, params = {}) => {
   }
 }
 
-const put = async (url, data = {}) => {
+export const put = async(url, data = {}) => {
   try {
     let response = {}
     if (data.toLocaleString() === '[object FormData]') {
@@ -41,7 +41,7 @@ const put = async (url, data = {}) => {
   }
 }
 
-const post = async (url, data = {}) => {
+export const post = async(url, data = {}) => {
   try {
     const response = await instance.post(getUrlPrefix() + url, data)
     return _responseHandler(response)
@@ -50,7 +50,7 @@ const post = async (url, data = {}) => {
   }
 }
 
-const del = async (url, data = {}) => {
+export const del = async(url, data = {}) => {
   try {
     const response = await instance.delete(getUrlPrefix() + url, { data })
     return _responseHandler(response)
@@ -72,7 +72,7 @@ const _errorHandler = (err) => {
   throw err
 }
 
-const patch = async (url, data = {}) => {
+export const patch = async(url, data = {}) => {
   try {
     let response = {}
     if (data.toLocaleString() === '[object FormData]') {
@@ -90,4 +90,3 @@ const patch = async (url, data = {}) => {
     _errorHandler(error)
   }
 }
-export { get, post, del, put, patch }
