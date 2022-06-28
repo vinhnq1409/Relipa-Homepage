@@ -9,8 +9,8 @@ const BlockPopular = ({ popularBlogs }) => {
       </div>
       <ul className="news-list-hoz list-unstyled">
         {top5PopularBlogs.map((popularBlog) => (
-          <Link href={`/blogs/${popularBlog.friendly_url}`}>
-            <li key={popularBlog.id} className='pointer'>
+          <Link href={`/blogs/${popularBlog.friendly_url}`} key={popularBlog.id}>
+            <li className='pointer'>
               <div className="card card-horizontal-news border-0">
                 <div className="card-thumb mb-0">
                   <img
