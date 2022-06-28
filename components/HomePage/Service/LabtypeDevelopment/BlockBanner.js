@@ -3,6 +3,7 @@ import useTrans from '../../../../i18n/useTrans'
 const BlockFontBanner = () => {
   const trans = useTrans()
   const language = trans.labtypeDevelopment.labTypeDevelopment
+
   return (
     <>
       <div className="container">
