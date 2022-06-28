@@ -123,7 +123,7 @@ export default function Header(props) {
               </li>
               <li className="nav-item">
                 <Link href="/blogs">
-                  <a className={`nav-link ${isCheckCurrentLink('/blog') ? 'active' : ''}`}>
+                  <a className={`nav-link ${isCheckCurrentLink('/blogs') ? 'active' : ''}`}>
                     {trans.headerFooter.header.blog}
                   </a>
                 </Link>

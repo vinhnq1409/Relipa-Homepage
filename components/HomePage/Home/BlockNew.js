@@ -100,7 +100,7 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                           </Link>
                         </div>
                         <div className="card-body">
-                          <div className="card-meta">{item.created_at}</div>
+                          <div className="card-meta">{item.created_at.slice(0, 10)}</div>
                           <div className="card-text">
                             <Link href={`/${currentAPI}/${item.friendly_url}`}>
                               <a className="text-hiden">{item.title}</a>
@@ -140,7 +140,7 @@ const BlockNew = ({ dataNews, dataBlogs }) => {
                           </Link>
                         </div>
                         <div className="card-body">
-                          <div className="card-meta">{item.created_at}</div>
+                          <div className="card-meta">{item.created_at.slice(0, 10)}</div>
                           <div className="card-text">
                             <Link href={`/${currentAPI}/${item.friendly_url}`}>
                               <a className="text-hiden">{item.title}</a>
