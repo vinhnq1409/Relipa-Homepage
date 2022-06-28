@@ -11,8 +11,8 @@ const BlockNew = ({ dataNews }) => {
       </div>
       <ul className="news-list-hoz list-unstyled">
         {top5News.map((newItem) => (
-          <Link href={`/news/${newItem.friendly_url}`}>
-            <li key={newItem.id} className='pointer'>
+          <Link href={`/news/${newItem.friendly_url}`} key={newItem.id}>
+            <li className="pointer">
               <div className="card card-horizontal-news border-0">
                 <div className="card-thumb mb-0">
                   <img
