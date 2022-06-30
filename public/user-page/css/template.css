@@ -16031,10 +16031,10 @@ a.avatar:hover:after {
     min-height: 510px !important;
     height: auto;
   }
-  .card-item-about-service{
+  .card-item-about-service {
     height: 54px;
   }
-  .card-item-home-service{
+  .card-item-home-service {
     height: 54px;
   }
 }
@@ -16053,10 +16053,10 @@ a.avatar:hover:after {
     max-width: 306px !important;
     min-height: 510px !important;
   }
-  .card-item-about-service{
+  .card-item-about-service {
     height: 82px;
   }
-  .card-item-home-service{
+  .card-item-home-service {
     height: 54px;
   }
 }
@@ -16075,10 +16075,10 @@ a.avatar:hover:after {
     max-width: 306px !important;
     min-height: 510px !important;
   }
-  .card-item-about-service{
+  .card-item-about-service {
     height: 82px;
   }
-  .card-item-home-service{
+  .card-item-home-service {
     height: 54px;
   }
 }
@@ -16097,25 +16097,25 @@ a.avatar:hover:after {
     max-width: 428px !important;
     min-height: 720px !important;
   }
-  .card-item-about-service{
+  .card-item-about-service {
     height: 54px;
   }
   .swiper-service-why .swiper-controls .swiper-button-prev {
     left: 0px !important;
   }
-  
+
   .swiper-service-why .swiper-controls .swiper-button-next {
     right: 0px !important;
   }
 }
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .card-img-voice {
     min-height: 360px !important;
   }
   .swiper-service-why .swiper-controls .swiper-button-prev {
     left: 0px !important;
   }
-  
+
   .swiper-service-why .swiper-controls .swiper-button-next {
     right: 0px !important;
   }
@@ -16129,9 +16129,9 @@ a.avatar:hover:after {
   cursor: pointer;
 }
 
-.phone-main{
+.phone-main {
   position: fixed;
-  right: 56px;  
+  right: 56px;
   bottom: 130px;
   z-index: 2;
   display: flex;
@@ -16139,13 +16139,13 @@ a.avatar:hover:after {
   align-items: center;
 }
 @media (max-width: 400px) {
-  .phone-main{
-    left: 54px;  
+  .phone-main {
+    left: 54px;
     bottom: 54px;
     right: unset;
   }
 }
-.phone{
+.phone {
   background-color: #0045c5;
   animation: phone 1s cubic-bezier(0.12, 0.7, 0.74, 0.71) infinite alternate-reverse;
   display: flex;
@@ -16153,7 +16153,7 @@ a.avatar:hover:after {
   align-items: center;
   z-index: 999;
 }
-.phone span{
+.phone span {
   border: 0.5px white solid;
   height: 24px;
   width: 24px;
@@ -16162,11 +16162,13 @@ a.avatar:hover:after {
   justify-content: center;
   align-items: center;
 }
-.icon-phone{
+.icon-phone {
   font-size: 14px;
   color: white;
 }
-.phone, .circle1, .circle2{
+.phone,
+.circle1,
+.circle2 {
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -16200,11 +16202,11 @@ a.avatar:hover:after {
   }
 }
 
-.padding-right-language{
+.padding-right-language {
   padding-right: 10px;
 }
 
-.enable-hover:hover{
+.enable-hover:hover {
   background-color: white;
 }
 
@@ -16212,7 +16214,8 @@ a.avatar:hover:after {
   color: #1a1311;
 }
 
-.logo-enable-hover:hover , .logo-enable-hover:focus {
+.logo-enable-hover:hover,
+.logo-enable-hover:focus {
   color: #fff;
   background-color: #fff;
 }
@@ -16233,4 +16236,12 @@ a.avatar:hover:after {
   font-size: 16px;
   text-align: center;
   padding: 20px 0 8px 0;
+}
+.side-bar-wrap {
+  position: relative;
+}
+.side-bar {
+  /* display: none; */
+  position: sticky;
+  top: 60px;
 }

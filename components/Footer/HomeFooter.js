@@ -119,22 +119,22 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/company">
+                        <Link href="/company#company">
                           <a>{trans.headerFooter.footer.company_profile}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="#">
+                        <Link href="/company#message">
                           <a>{trans.headerFooter.footer.representative_message}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="#">
+                        <Link href="/company#core-member">
                           <a>{trans.headerFooter.footer.introducing_core}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="#">
+                        <Link href="/company#mission">
                           <a>{trans.headerFooter.footer.mission}</a>
                         </Link>
                       </li>
