@@ -27,9 +27,14 @@ const BlockBanner = ({ banner }) => {
                       <div className="container">
                         <div className="row align-items-center">
                           <div className="col-md-6">
-                            <h1 className="banner-title">{item.title}</h1>
+                            {item.title.split('/').map((item, index) => {
+                              if (index === 0) {
+                                return <h1 className="banner-title name-conpany" >{item}</h1>
+                              }
+                              return <h2 className='name-conpany-title'>{item}</h2>
+                            })}
                             <div className="main-banner-content">
-                              <div className="banner-summary">{item.desc}</div>
+                              <div className="banner-summary name-conpany-content">{item.desc}</div>
                               {item.link && (
                                 <Link href={`${item.link}`}>
                                   <a className="btn btn-outline-light btn-lg">{language.seemore}</a>

@@ -1,5 +1,5 @@
 export default {
-  title: `Relipa's Web System development can solve it!`,
+  title: `Web System development`,
   webSystemService: 'Web System Development Service',
   websystemcontent: `We have confidence in web system development and pride to be trusted by many customers.<br />
     We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.<br />
@@ -13,8 +13,7 @@ export default {
   thesolution: "Relipa's Web system development has the solution!",
   ECSite: {
     title: 'EC Sites',
-    content:
-      'As online shopping becomes more widespread, e-commerce enterprises will be significantly affected. Since we have the specialized knowledge, skills, and expertise to create a high-quality EC site using EC CUBE as the most popular open-source e-commerce solution in Japan, we can provide you an ideal EC site by having close hearings in advance and developing.',
+    content: <div className="card-text justify-align">As online shopping becomes more widespread, e&#8209;commerce enterprises will be significantly affected. Since we have the specialized knowledge, skills, and expertise to create a high&#8209;quality EC site using EC CUBE as the most popular open&#8209;source e&#8209;commerce solution in Japan, we can provide you an ideal EC site by having close hearings in advance and developing.</div>
   },
   CMSsystem: {
     title: 'CMS System',

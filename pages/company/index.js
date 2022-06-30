@@ -10,6 +10,7 @@ import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
 
+
 const Company = () => {
   const [infoCoreMember, setInfoCoreMember] = useState({
     name: '',

@@ -19,7 +19,7 @@ const BlockCEOMessage = () => {
         />
         <div className='article-detail'>
           {language.contents.map((content, index) => (
-            <p key={index}>{content}</p>
+            <p key={index} className="justify-align">{content}</p>
           ))}
         </div>
         <div className='article-footer text-end'>

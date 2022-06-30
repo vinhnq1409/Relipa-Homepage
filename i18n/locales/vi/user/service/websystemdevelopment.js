@@ -18,8 +18,7 @@ export default {
   },
   CMSsystem: {
     title: 'CMS system',
-    content:
-      "With the increasing importance of websites for companies, the introduction of CMS (content management system) on corporate sites is now indispensable for business efficiency and web marketing activities. Relipa's CMS construction service is a one-stop service that provides the entire process of a CMS introduction project, from selection of the optimum CMS that fits your requirements to sizing examination, implementation, and operation and maintenance after installation.",
+    content: <div className="card-text justify-align">As online shopping becomes more widespread, e&#8209;commerce enterprises will be significantly affected. Since we have the specialized knowledge, skills, and expertise to create a high&#8209;quality EC site using EC CUBE as the most popular open&#8209;source e&#8209;commerce solution in Japan, we can provide you an ideal EC site by having close hearings in advance and developing.</div>
   },
   JobInformation: {
     title: 'Job Information Site',

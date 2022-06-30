@@ -22,7 +22,7 @@ const Product = ({ dataCaseStudy }) => {
   const router = useRouter()
   const { locale } = router
 
-  const getCaseStudy = async() => {
+  const getCaseStudy = async () => {
     return await get(`user/${locale}/works`, params)
   }
 
@@ -31,6 +31,47 @@ const Product = ({ dataCaseStudy }) => {
   useEffect(() => {
     setData(dataCaseStudies)
   }, [dataCaseStudies])
+
+  useEffect(() => {
+    if (router.pathname === '/products') {
+      switch (router.query.slug) {
+        case 'webSystem': {
+          setParams({
+            ...params,
+            type: 1,
+          })
+        }
+        break
+        case 'businessSystem': {
+          setParams({
+            ...params,
+            type: 2,
+          })
+        }
+        break
+        case 'blockchain': {
+          setParams({
+            ...params,
+            type: 3,
+          })
+        }
+        break
+        case 'application': {
+          setParams({
+            ...params,
+            type: 4,
+          })
+        }
+        break
+        default : {
+          const data = {...params};
+          delete data.type;
+          setParams(data)
+        }
+        break
+      }
+    }
+  }, [])
 
   const itemCard = (value) => {
     setCard(value)
@@ -113,5 +154,5 @@ export default Product
 export async function getServerSideProps({ locale }) {
   const dataCaseStudy = await get(`user/${locale}/works`, { per_page: 12 })
 
-  return { props: { dataCaseStudy }}
+  return { props: { dataCaseStudy } }
 }

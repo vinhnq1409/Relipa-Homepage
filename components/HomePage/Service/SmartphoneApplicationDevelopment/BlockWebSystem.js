@@ -24,7 +24,7 @@ function BlockWebSystem() {
                         {language.matching.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.matching.content}</div>
+                    <div className="card-text justify-align">{language.matching.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -59,7 +59,7 @@ function BlockWebSystem() {
                         {language.livestream.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.livestream.content}</div>
+                    <div className="card-text justify-align">{language.livestream.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">

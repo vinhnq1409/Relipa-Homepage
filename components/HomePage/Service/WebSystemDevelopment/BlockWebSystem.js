@@ -24,7 +24,7 @@ function BlockWebSystem() {
                         {language.ECSite.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.ECSite.content}</div>
+                    {language.ECSite.content}
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -60,7 +60,7 @@ function BlockWebSystem() {
                         {language.CMSsystem.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.CMSsystem.content}</div>
+                    <div className="card-text justify-align" >{language.CMSsystem.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -100,7 +100,7 @@ function BlockWebSystem() {
                         {language.JobInformation.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.JobInformation.content}</div>
+                    <div className="card-text justify-align" >{language.JobInformation.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -135,7 +135,7 @@ function BlockWebSystem() {
                         {language.MatchingSite.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.MatchingSite.content}</div>
+                    <div className="card-text justify-align" >{language.MatchingSite.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">
