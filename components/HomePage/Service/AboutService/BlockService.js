@@ -83,39 +83,6 @@ const BlockService = () => {
           <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
-                <Link href="/business-system-development">
-                  <a className="card-thumb-overlay">
-                    <img
-                      className="card-img-top"
-                      src="/user-page/img/service/service-img-3.png"
-                      width="270"
-                      height="469"
-                      alt="Business System Development"
-                    />
-                  </a>
-                </Link>
-              </div>
-              <div className="card-body">
-                <div className="card-index">03.</div>
-                <h3 className="card-title card-item-about-service">
-                  <Link href="/business-system-development">
-                    <a>{language.service.Business}</a>
-                  </Link>
-                </h3>
-                <div className="card-text text-hiden-3 justify-align">{language.service.BusinesContent}</div>
-                <div className="card-bottom">
-                  <div className="d-grid">
-                    <Link href="/business-system-development">
-                      <a className="btn btn-primary btn-block btn-lg rounded-0">{language.seemore}</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-md-4 col-lg-4">
-            <div className="card card-overlay">
-              <div className="card-thumb lazyload">
                 <Link href="/blockchain-development">
                   <a className="card-thumb-overlay">
                     <img
@@ -129,7 +96,7 @@ const BlockService = () => {
                 </Link>
               </div>
               <div className="card-body">
-                <div className="card-index">04.</div>
+                <div className="card-index">03.</div>
                 <h3 className="card-title card-item-about-service">
                   <Link href="/blockchain-development">
                     <a>{language.service.Blockchain}</a>
@@ -146,72 +113,6 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-4">
-            <div className="card card-overlay">
-              <div className="card-thumb lazyload">
-                <Link href="/smartphone-application-development">
-                  <a className="card-thumb-overlay">
-                    <img
-                      className="card-img-top"
-                      src="/user-page/img/service/service-img-5.png"
-                      width="270"
-                      height="469"
-                      alt="Smartphone Application Development"
-                    />
-                  </a>
-                </Link>
-              </div>
-              <div className="card-body">
-                <div className="card-index">05.</div>
-                <h3 className="card-title card-item-about-service">
-                  <Link href="/smartphone-application-development">
-                    <a>{language.service.Smartphone}</a>
-                  </Link>
-                </h3>
-                <div className="card-text text-hiden-3 justify-align">{language.service.SmartphoneContent}</div>
-                <div className="card-bottom">
-                  <div className="d-grid">
-                    <Link href="/smartphone-application-development">
-                      <a className="btn btn-primary btn-block btn-lg rounded-0">{language.seemore}</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <div className="col-sm-6 col-md-4 col-lg-3">
-            <div className="card card-overlay">
-              <div className="card-thumb lazyload">
-                <Link href="/aws-migration">
-                  <a className="card-thumb-overlay">
-                    <img
-                      className="card-img-top"
-                      src="/user-page/img/service/service-img-6.png"
-                      width="270"
-                      height="469"
-                      alt="Aws Migration"
-                    />
-                  </a>
-                </Link>
-              </div>
-              <div className="card-body">
-                <div className="card-index">06.</div>
-                <h3 className="card-title card-item-about-service">
-                  <Link href="/aws-migration">
-                    <a>{language.service.AWS}</a>
-                  </Link>
-                </h3>
-                <div className="card-text text-hiden-3 justify-align">{language.service.AWSContent}</div>
-                <div className="card-bottom">
-                  <div className="d-grid">
-                    <Link href="/aws-migration">
-                      <a className="btn btn-primary btn-block btn-lg rounded-0">{language.seemore}</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>

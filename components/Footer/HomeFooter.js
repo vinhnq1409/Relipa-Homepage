@@ -22,9 +22,8 @@ export default function HomeFooter(props) {
                   <a className="footer-logo mb-2" href="#">
                     <img
                       className="fluid"
-                      src={require('/public/user-page/img/logo.png')}
+                      src={require('/public/user-page/img/logo-white.png')}
                       width="118"
-                      height="54"
                       alt="Relipa supports your success"
                     />
                   </a>
@@ -161,21 +160,21 @@ export default function HomeFooter(props) {
                           <a>{trans.headerFooter.footer.web_system}</a>
                         </Link>
                       </li>
-                      <li className="">
+                      {/* <li className="">
                         <Link href="/business-system-development">
                           <a>{trans.headerFooter.footer.business_system}</a>
                         </Link>
-                      </li>
+                      </li> */}
                       <li className="">
                         <Link href="/blockchain-development">
                           <a>{trans.headerFooter.footer.blockchain}</a>
                         </Link>
                       </li>
-                      <li className="">
+                      {/* <li className="">
                         <Link href="/smartphone-application-development">
                           <a>{trans.headerFooter.footer.smartphone_application}</a>
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -184,7 +183,7 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/products?slug=businessSystem">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.resources}</a>
                         </Link>
                       </li>

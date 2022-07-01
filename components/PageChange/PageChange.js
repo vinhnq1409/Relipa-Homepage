@@ -31,12 +31,12 @@ export default function PageChange() {
   const useStyles = makeStyles(styles)
   const classes = useStyles()
   return (
-    <div>
-      <div className={classes.wrapperDiv}>
+    <>
+      {/* <div className={classes.wrapperDiv}>
         <div className={classes.iconWrapper}>
           <CircularProgress className={classes.progress} />
         </div>
-      </div>
-    </div>
+      </div> */}
+    </>
   )
 }

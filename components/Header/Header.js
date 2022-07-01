@@ -39,7 +39,6 @@ export default function Header(props) {
                   className="fluid"
                   src="/user-page/img/logo.png"
                   width="118"
-                  height="54"
                   alt="Relipa supports your success"
                 />
               </span>
@@ -88,21 +87,21 @@ export default function Header(props) {
                       <a className="dropdown-item">{trans.headerFooter.header.web_system}</a>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href="/business-system-development">
                       <a className="dropdown-item">{trans.headerFooter.header.business_system}</a>
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link href="/blockchain-development">
                       <a className="dropdown-item">{trans.headerFooter.header.blockchain}</a>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href="/smartphone-application-development">
                       <a className="dropdown-item">{trans.headerFooter.header.smartphone_application}</a>
                     </Link>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <Link href="/aws-migration">
                       <a className="dropdown-item" href="aws-migration.html">

@@ -1,7 +1,7 @@
 export default {
   all: 'All',
-  websystem: 'Web System',
+  websystem: 'Web',
   businessSystem: 'Business System',
-  blockchain: 'Blockchain',
-  application: 'Application',
+  blockchain: 'Mobile Application',
+  application: 'Blockchain',
 }
