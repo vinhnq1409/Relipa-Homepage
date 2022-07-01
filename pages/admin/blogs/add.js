@@ -57,15 +57,15 @@ export default function Add() {
     status: true,
   }
 
-  const getBlog = async () => {
+  const getBlog = async() => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async (data) => {
+  const postBlog = async(data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async (data) => {
+  const putBlog = async(data) => {
     return await post(`blogs/${id}`, data)
   }
 
@@ -216,12 +216,12 @@ export default function Add() {
       setIsErrorTag(true)
     }
   }
-  
-  const onPictureUpload = async (e) => {
+
+  const onPictureUpload = async(e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
-    setValue('url_image_meta', `http://${location}`)
+    setValue('url_image_meta', location)
   }
 
   const onResetURL = () => {
@@ -383,7 +383,7 @@ export default function Add() {
             <Controller
               name="status"
               control={control}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
+              render={({ field: { onChange, onBlur, value, ref }}) => (
                 <FormControlLabel
                   control={
                     <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />

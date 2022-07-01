@@ -49,15 +49,15 @@ export default function Works() {
     lang: 'en',
   }
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`works/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('works', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await post(`works/${id}`, data)
   }
 
@@ -117,7 +117,7 @@ export default function Works() {
       if (dataWork?.works) {
         setImages(
           dataWork?.works.map((item, index) => ({
-            data_url: `http://${item}`,
+            data_url: item,
             file: dataWork?.media[index],
           }))
         )
@@ -142,7 +142,7 @@ export default function Works() {
     reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const onCreate = async (data) => {
+  const onCreate = async(data) => {
     if (images?.length >= 1) {
       setIsErrImgs(false)
       const formData = new FormData()

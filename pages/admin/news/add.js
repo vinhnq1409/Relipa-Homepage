@@ -24,7 +24,6 @@ import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
 
-
 export default function AddNews() {
   const editorRef = useRef(null)
   const router = useRouter()
@@ -47,15 +46,15 @@ export default function AddNews() {
     status: true,
   }
 
-  const getNews = async () => {
+  const getNews = async() => {
     return await get(`news/${id}`)
   }
 
-  const postNews = async (data) => {
+  const postNews = async(data) => {
     return await post('news', data)
   }
 
-  const putNews = async (data) => {
+  const putNews = async(data) => {
     return await post(`news/${id}`, data)
   }
 
@@ -102,7 +101,7 @@ export default function AddNews() {
   }, [])
 
   useEffect(() => {
-    if(dataNews){
+    if (dataNews) {
       setValue('title', dataNews?.data.title)
       setValue('desc', dataNews?.data.desc)
       setValue('meta', dataNews?.data.meta)
@@ -176,11 +175,11 @@ export default function AddNews() {
     setValue('friendly_url', resetFriendlyUrl)
   }
 
-  const onFileUpload = async (e) => {
+  const onFileUpload = async(e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
-    setValue('url_image_meta', `http://${location}`)
+    setValue('url_image_meta', location)
   }
 
   const onReset = () => {
@@ -314,7 +313,7 @@ export default function AddNews() {
             <Controller
               name="status"
               control={control}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
+              render={({ field: { onChange, onBlur, value, ref }}) => (
                 <FormControlLabel
                   control={
                     <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />

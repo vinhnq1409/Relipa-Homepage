@@ -26,8 +26,6 @@ export default function Banner() {
   const router = useRouter()
   const { id } = router.query
 
-
-
   const [images, setImages] = useState([])
   const [isErrImg, setIsErrImgs] = useState(false)
   const [updateImg, setUpdateImg] = useState(false)
@@ -47,15 +45,15 @@ export default function Banner() {
     lang: 'en'
   }
 
-  const getBanner = async () => {
+  const getBanner = async() => {
     return await get(`banner/${id}`)
   }
 
-  const postBanner = async (data) => {
+  const postBanner = async(data) => {
     return await post('banner', data)
   }
 
-  const putBanner = async (data) => {
+  const putBanner = async(data) => {
     return await post(`banner/${id}`, data)
   }
 
@@ -102,16 +100,16 @@ export default function Banner() {
   }, [])
 
   useEffect(() => {
-    if(dataBanner){
+    if (dataBanner) {
       setValue('title', dataBanner?.data.title)
       setValue('desc', dataBanner?.data.desc)
       setValue('link', dataBanner?.data.link)
       setValue('lang', dataBanner?.data.lang)
       setValue('status', dataBanner?.data.status)
       setImages([{
-          data_url: `http://${dataBanner.data.banner[0]}`,
-          file: dataBanner.data.media[0],
-        }])
+        data_url: dataBanner.data.banner[0],
+        file: dataBanner.data.media[0],
+      }])
     }
     return () => onReset()
   }, [dataBanner])
@@ -130,7 +128,7 @@ export default function Banner() {
     reset,
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
-  const onCreate = async (data) => {
+  const onCreate = async(data) => {
     if (images) {
       setIsErrImgs(false)
       const formData = new FormData()
@@ -249,7 +247,7 @@ export default function Banner() {
             <Controller
               name="status"
               control={control}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
+              render={({ field: { onChange, onBlur, value, ref }}) => (
                 <FormControlLabel
                   control={
                     <Checkbox

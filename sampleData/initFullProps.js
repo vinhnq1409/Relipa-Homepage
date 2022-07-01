@@ -1,5 +1,6 @@
 import { post } from '../api/BaseRequest'
 export const apiKey = 'p7vmiv8da1soybd9u3z1dyss7gpn8biz21uurpkbxbwsilr4'
+
 export const initFullProps = {
   height: 680,
   images_upload_handler: (blobInfo, success, failure) => {
@@ -7,7 +8,7 @@ export const initFullProps = {
       const formData = new FormData()
       formData.append('file', blobInfo.blob(), blobInfo.filename())
       const { location } = await post('media', formData)
-      success(`http://${location}`)
+      success(location)
     }, 2000)
   },
   plugins: [

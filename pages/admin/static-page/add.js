@@ -154,7 +154,7 @@ export default function Add() {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
-    setValue('url_image_meta', `http://${location}`)
+    setValue('url_image_meta', location)
   }
 
   const onResetURL = () => {

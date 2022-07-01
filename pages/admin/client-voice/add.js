@@ -118,7 +118,7 @@ export default function Works() {
       if (dataVoice?.voice) {
         setImages(
           dataVoice?.voice.map((item, index) => ({
-            data_url: `http://${item}`,
+            data_url: item,
             file: dataVoice?.media[index],
           }))
         )
