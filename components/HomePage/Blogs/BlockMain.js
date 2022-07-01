@@ -55,7 +55,7 @@ const BlockMain = ({ dataBlogs, count, params, setParams }) => {
                   <div className="col-md-7 col-content-wrap">
                     <div className="card-body p-0">
                       <div className="card-meta mb-1">
-                        {dataBlog.created_at.slice(0, 10)}{' '}
+                        <p style={{marginRight: 8, display: 'inline-block'}}>{dataBlog.created_at.slice(0, 10)}</p>
                         {dataBlog.tags.length > 2
                           ? dataBlog.tags.slice(0, 2).map((tag, index) => (
                               <span
