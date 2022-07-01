@@ -216,9 +216,8 @@ export default function Add() {
       setIsErrorTag(true)
     }
   }
-  console.log(valueTag)
+  
   const onPictureUpload = async (e) => {
-    console.log(e.target.files)
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)

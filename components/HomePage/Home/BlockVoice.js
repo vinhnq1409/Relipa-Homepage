@@ -1,7 +1,6 @@
 import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
 
 const BlockVoice = ({ voice }) => {
-  console.log(voice)
   return (
     <>
       <section className="section section-aos py-0 section-voice" data-aos="fade-up">
