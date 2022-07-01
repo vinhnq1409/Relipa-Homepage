@@ -19,7 +19,7 @@ const BlockDesire = () => {
               <div className="section-content-header line-bottom text-primary mb-3">
                 <h2 className="section-content-title">{language.slogan}</h2>
               </div>
-              <div className="section-text text-grey-1">
+              <div className="section-text text-grey-1 justify-align">
                 {language.bussiness.one}
                 <br />
                 {language.bussiness.two}

@@ -26,4 +26,4 @@ const BlockBreadcrumb = () => {
   )
 }
 
-export default BlockBanner
+export default BlockBreadcrumb

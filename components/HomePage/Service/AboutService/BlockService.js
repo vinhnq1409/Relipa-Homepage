@@ -14,7 +14,7 @@ const BlockService = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/lab-type-development">
@@ -36,7 +36,7 @@ const BlockService = () => {
                     <a>{language.service.LabType}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3"> {language.service.LabTypeContent}</div>
+                <div className="card-text text-hiden-3 justify-align"> {language.service.LabTypeContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/lab-type-development">
@@ -47,7 +47,7 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/web-system-development">
@@ -69,7 +69,7 @@ const BlockService = () => {
                     <a>{language.service.websystem}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3"> {language.service.websystemContent}</div>
+                <div className="card-text text-hiden-3 justify-align"> {language.service.websystemContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/web-system-development">
@@ -80,7 +80,7 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/business-system-development">
@@ -102,7 +102,7 @@ const BlockService = () => {
                     <a>{language.service.Business}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3">{language.service.BusinesContent}</div>
+                <div className="card-text text-hiden-3 justify-align">{language.service.BusinesContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/business-system-development">
@@ -113,7 +113,7 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/blockchain-development">
@@ -135,7 +135,7 @@ const BlockService = () => {
                     <a>{language.service.Blockchain}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3">{language.service.BlockchainContent}</div>
+                <div className="card-text text-hiden-3 justify-align">{language.service.BlockchainContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/blockchain-development">
@@ -146,7 +146,7 @@ const BlockService = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-md-4 col-lg-3">
+          <div className="col-sm-6 col-md-4 col-lg-4">
             <div className="card card-overlay">
               <div className="card-thumb lazyload">
                 <Link href="/smartphone-application-development">
@@ -168,7 +168,7 @@ const BlockService = () => {
                     <a>{language.service.Smartphone}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3">{language.service.SmartphoneContent}</div>
+                <div className="card-text text-hiden-3 justify-align">{language.service.SmartphoneContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/smartphone-application-development">
@@ -201,7 +201,7 @@ const BlockService = () => {
                     <a>{language.service.AWS}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3">{language.service.AWSContent}</div>
+                <div className="card-text text-hiden-3 justify-align">{language.service.AWSContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/aws-migration">

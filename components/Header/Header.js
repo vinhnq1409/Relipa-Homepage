@@ -3,7 +3,6 @@ import React from 'react'
 import useTrans from '../../i18n/useTrans'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import styles from '../../styles/user/Header.module.css'
 
 export default function Header(props) {
   const trans = useTrans()
@@ -16,6 +15,12 @@ export default function Header(props) {
 
   const setCookie = (locale) => {
     document.cookie = `NEXT_LOCALE=${locale};`
+  }
+
+  const routerPushContact =()=>{
+    router.push({
+      pathname:"/contact"
+    })
   }
 
   const changeLang = (lang) => {
@@ -128,12 +133,14 @@ export default function Header(props) {
                   </a>
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <Link href="/contact">
-                  <a className={`nav-link ${isCheckCurrentLink('/contact') ? 'active' : ''}`}>
+              <li className='contact-form' >
+       
+                  <div onClick={routerPushContact} className='cursor-pointer contact-body ' >
+                    <span className='text-contact cursor-pointer'>
                     {trans.headerFooter.header.contact}
-                  </a>
-                </Link>
+                    </span>
+            
+                </div>
               </li>
             </ul>
           </div>

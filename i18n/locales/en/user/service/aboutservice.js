@@ -53,7 +53,7 @@ export default {
       },
     },
     compare: 'Compare',
-    item: 'Item',
+    item: 'Criteria',
     CertainA: 'A certain company A',
     CertainB: 'Certain company B',
     CertainC: 'Certain company C',
@@ -76,7 +76,7 @@ export default {
       Thorough: 'We listen',
       Thoroughcontent:
         'In order to turn your ideas into products, it is important to accurately understand your needs. Please, tell us what you want to do. ',
-      Suggestions: 'Consultant / propose',
+      Suggestions: 'Consultant / Propose',
       Suggestionscontent:
         'Once you understand the site configuration, functional requirements, page content, etc., we will present the development, man-hours, estimates, schedule, future expansion, etc.',
       Contract: 'Contract / Order',

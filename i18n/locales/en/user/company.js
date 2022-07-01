@@ -7,7 +7,7 @@ export default {
     profile: {
       Company: 'Company',
       Company_Profile: 'Company Profile',
-      Japanese_corporation: 'Japanese corporation',
+      Japanese_corporation: 'Japanese Corporation',
       Company_Relipa: 'Company - Relipa Co., Ltd.',
       Established: 'Established',
       jp2018: '2018',
@@ -48,7 +48,8 @@ export default {
       mission2: 'Provide reliable services to customers.',
       mission3: 'Create an challenging, knowledge-sharing and positive environment for employees.',
       VISION: 'Vision',
-      vision1: 'Relipa aims at trustworthy and long-term partnerships in the era of technology implementation.',
+      vision1: 'Relipa aims at trustworthy and long-term partnerships ',
+      vision2: 'in the era of technology implementation.',
       CORE_VALUES: 'Core Values',
       core_values1: 'Proactive',
       core_values2: 'Creative',
@@ -60,7 +61,8 @@ export default {
     CoreMember: {
       Core_Members: 'Core Members',
       PresidentCEO: 'President and CEO',
-      DevelopmentDepartment: 'Director and General Manager of 2nd Development Department',
+      DevelopmentDepartment: 'Director ',
+      DevelopmentDepartmentTitle: "2nd Development Manager",
       Representative: 'Representative Director and Vice President',
       DevelopmentManager: '1st Development Manager'
     },

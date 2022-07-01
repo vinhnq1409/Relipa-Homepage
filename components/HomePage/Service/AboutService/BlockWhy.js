@@ -41,7 +41,7 @@ const BlockWhy = () => {
                           </a>
                         </h5>
                       </div>
-                      <div className="card-text text-equal">
+                      <div className="card-text text-equal ">
                         {language.First.contentFirst} <br />
                         {language.First.contentSecond}
                       </div>

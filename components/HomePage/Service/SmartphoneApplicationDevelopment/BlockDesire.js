@@ -16,9 +16,9 @@ const BlockDesire = () => {
                 <li>{language.desire.three}</li>
               </ul>
               <div className="section-content-header line-bottom text-primary mb-3">
-                <h2 className="section-content-title">{language.relipaApp}</h2>
+                <h2 className="section-content-title ">{language.relipaApp}</h2>
               </div>
-              <div className="section-text text-grey-1">
+              <div className="section-text text-grey-1 justify-align">
                 {language.service.one}
                 <br />
                 {language.service.two}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NextSeo } from 'next-seo'
 import BlockDialog from '../../components/HomePage/Products/BlockDialog'
-import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
+import BlockBreadcrumb from '../../components/HomePage/Service/LabtypeDevelopment/BlockBreadcrumb'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
 import BlockWhyChoose from '../../components/HomePage/Service/BlockWhyChoose'
 import BlockBanner from '../../components/HomePage/Service/LabtypeDevelopment/BlockBanner'
