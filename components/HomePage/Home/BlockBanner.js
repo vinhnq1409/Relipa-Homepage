@@ -17,7 +17,7 @@ const BlockBanner = ({ banner }) => {
                     <div className="main-banner-item">
                       <div
                         style={{
-                          backgroundImage: `url(http://${item.banner})`,
+                          backgroundImage: `url(${item.banner})`,
                           backgroundPosition: 'center',
                           backgroundRepeat: 'no-repeat',
                           backgroundSize: 'cover',

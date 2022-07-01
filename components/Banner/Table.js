@@ -16,16 +16,16 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 
 const TableList = (props) => {
-  const { 
-    namePage, 
-    tableHead, 
-    data, 
-    onUpdate, 
-    onDelete, 
-    params, 
-    setParams, 
-    count, 
-    handleNumericalOrder, 
+  const {
+    namePage,
+    tableHead,
+    data,
+    onUpdate,
+    onDelete,
+    params,
+    setParams,
+    count,
+    handleNumericalOrder,
   } = props
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false)
   const [deleteId, setDeleteId] = useState(null)
@@ -65,7 +65,7 @@ const TableList = (props) => {
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell className={styles.max68}>
-                  <div style={{ backgroundImage: `url(http://${row.banner[0]})` }} className={styles.width68}></div>
+                  <div style={{ backgroundImage: `url(${row.banner[0]})` }} className={styles.width68}></div>
                 </TableCell>
                 <TableCell>{row.lang}</TableCell>
                 <TableCell className={styles.minWidth72}>{row.created_at?.slice(0, 10)}</TableCell>
@@ -79,7 +79,7 @@ const TableList = (props) => {
                       labelId="demo-simple-select-outlined-label"
                       id="demo-simple-select-outlined"
                       onChange={(e) =>
-                        handleNumericalOrder({ id: row.id, numerical_order: e.target.value !== 0 ? e.target.value : '' , lang: row.lang })
+                        handleNumericalOrder({ id: row.id, numerical_order: e.target.value !== 0 ? e.target.value : '', lang: row.lang })
                       }
                       label="Lang"
                       style={{ minWidth: 168 }}
