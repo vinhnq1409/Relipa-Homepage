@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
-const BlockMainDetail = ({ title, created_at, url_image_meta, content }) => {
+const BlockMainDetail = ({ title, created_at, url_image_meta, content, tagsDetail, handleChooseTag }) => {
   const refContent = useRef()
 
   useEffect(() => {
     refContent.current.innerHTML = content
   }, [])
-
+  
   return (
     <div className="col-md-8 col-lg-9">
       <div className="primary-box mb-5 mb-md-0">
@@ -13,6 +13,20 @@ const BlockMainDetail = ({ title, created_at, url_image_meta, content }) => {
           <div className="post-header">
             <div className="post-ago card-meta mb-2">{created_at.slice(0, 10)}</div>
             <h3 className="post-title mb-0">{title}</h3>
+            <div className="card-meta mb-1">
+              {tagsDetail.map((tag, index) => (
+                <span
+                  key={index}
+                  className="badge bg-primary text-uppercase"
+                  onClick={() => {
+                    handleChooseTag(tag)
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {tag.name}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="post-body">
             <figure>

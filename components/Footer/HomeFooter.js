@@ -253,7 +253,7 @@ export default function HomeFooter(props) {
         </div>
       </div>
       {typeof window != undefined && (
-        <MessengerCustomerChat pageId={process.env.FANPAGE_ID} appId={process.env.APPFB_ID} />
+        <MessengerCustomerChat pageId='104700155627164' appId='3531534160455181 />
       )}
       <a href="tel:+842432004725">
         <div className="phone-main">

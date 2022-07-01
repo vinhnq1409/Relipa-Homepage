@@ -3,6 +3,8 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import { get, post } from '../../api/BaseRequest'
+import { useDispatch } from 'react-redux'
+import { addTag } from '../../redux/slices/tagSlice'
 import HomePage from '../../layouts/Home'
 import BlockBanner from '../../components/HomePage/Blogs/BlockBanner'
 import BlockBreadcrumbDetail from '../../components/HomePage/Blogs/BlockBreadcrumbDetail'
@@ -15,7 +17,7 @@ import BlockRelated from '../../components/HomePage/Blogs/BlockRelated'
 export default function BlogDetail({ dataBlog }) {
   const router = useRouter()
   const { locale } = router
-  const { id, title, created_at, content, url_image_meta } = dataBlog
+  const { id, title, created_at, content, url_image_meta, tags: tagsDetail } = dataBlog
   const [dataBlogs, setDataBlogs] = useState([])
   const [popularBlogs, setPopularBlogs] = useState([])
   const [tagsTrend, setTagsTrend] = useState([])
@@ -55,6 +57,13 @@ export default function BlogDetail({ dataBlog }) {
     }, 10000)
     return () => clearTimeout(countView)
   }, [])
+
+  const dispatch = useDispatch()
+
+  const handleChooseTag = (tag) => {
+    dispatch(addTag(tag))
+    router.push('/blogs')
+  }
 
   return (
     <>
@@ -99,6 +108,8 @@ export default function BlogDetail({ dataBlog }) {
                   created_at={created_at}
                   url_image_meta={url_image_meta}
                   content={content}
+                  tagsDetail={tagsDetail}
+                  handleChooseTag={handleChooseTag}
                 />
                 <div className="col-md-4 col-lg-3">
                   <aside className="aside-right">
