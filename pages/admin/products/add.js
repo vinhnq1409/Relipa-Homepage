@@ -182,8 +182,6 @@ export default function Works() {
   }
 
   const onUpdate = (data) => {
-
-    console.log(data)
     if (images?.length >= 1) {
       setIsErrImgs(false)
 
