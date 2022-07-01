@@ -22,7 +22,7 @@ const Product = ({ dataCaseStudy }) => {
   const router = useRouter()
   const { locale } = router
 
-  const getCaseStudy = async () => {
+  const getCaseStudy = async() => {
     return await get(`user/${locale}/works`, params)
   }
 
@@ -41,34 +41,34 @@ const Product = ({ dataCaseStudy }) => {
             type: 1,
           })
         }
-        break
+          break
         case 'businessSystem': {
           setParams({
             ...params,
             type: 2,
           })
         }
-        break
+          break
         case 'blockchain': {
           setParams({
             ...params,
             type: 3,
           })
         }
-        break
+          break
         case 'application': {
           setParams({
             ...params,
             type: 4,
           })
         }
-        break
+          break
         default : {
-          const data = {...params};
-          delete data.type;
+          const data = { ...params }
+          delete data.type
           setParams(data)
         }
-        break
+          break
       }
     }
   }, [])
@@ -93,7 +93,6 @@ const Product = ({ dataCaseStudy }) => {
         description="This example uses more of the available config options."
         canonical="https://www.canonical.ie/"
         openGraph={{
-          url: 'https://www.url.ie/a',
           title: 'Open Graph Title',
           description: 'Open Graph Description',
           images: [
@@ -154,5 +153,5 @@ export default Product
 export async function getServerSideProps({ locale }) {
   const dataCaseStudy = await get(`user/${locale}/works`, { per_page: 12 })
 
-  return { props: { dataCaseStudy } }
+  return { props: { dataCaseStudy }}
 }

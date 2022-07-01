@@ -10,7 +10,6 @@ import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
 import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
 
-
 const Company = () => {
   const [infoCoreMember, setInfoCoreMember] = useState({
     name: '',
@@ -26,7 +25,6 @@ const Company = () => {
         description='This example uses more of the available config options.'
         canonical='https://www.canonical.ie/'
         openGraph={{
-          url: 'https://www.url.ie/a',
           title: 'Open Graph Title',
           description: 'Open Graph Description',
           images: [

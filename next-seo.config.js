@@ -4,8 +4,15 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en',
-    url: 'https://www.url.ie/',
-    site_name: 'SiteName',
+    url: 'https://relipa.global/',
+    images: [
+      {
+        url: '/user-page/img/relipa-behind-your-success.png',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     handle: '@handle',

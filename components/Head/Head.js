@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+
 const HeadHome = ({ title, contentImg, contentDescription, contentOgUrl, contentKeywords, contentTitle }) => {
   return (
     <>
