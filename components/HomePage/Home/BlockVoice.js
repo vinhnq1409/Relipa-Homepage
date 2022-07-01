@@ -41,7 +41,7 @@ const BlockVoice = ({ voice }) => {
                             <a className="card-thumb-overlay" href="#" onClick={onPreventDefault}>
                               <div
                                 style={{
-                                  backgroundImage: `url("https://${item.voice[0]}")`,
+                                  backgroundImage: `url(${item.voice[0]})`,
                                   backgroundPosition: 'center',
                                   backgroundRepeat: 'no-repeat',
                                   backgroundSize: 'cover',
