@@ -14847,7 +14847,7 @@ a.avatar:hover:after {
 .navbar-brand .logo {
   height: 46px;
   width: 99px;
-  background: url('../img/logo-color.png') no-repeat 50% 50%;
+  background: url('../img/logo.png') no-repeat 50% 50%;
   background-size: 100% auto;
   display: -webkit-box;
   display: -ms-flexbox;
