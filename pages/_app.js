@@ -12,20 +12,20 @@ import SEO from '../next-seo.config'
 
 const queryClient = new QueryClient()
 
-Router.events.on('routeChangeStart', (url) => {
-  document.body.classList.add('body-page-transition')
-  ReactDOM.render(<PageChange />, document.getElementById('page-transition'))
-})
+// Router.events.on('routeChangeStart', (url) => {
+//   document.body.classList.add('body-page-transition')
+//   ReactDOM.render(<PageChange />, document.getElementById('page-transition'))
+// })
 
-Router.events.on('routeChangeComplete', () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
-  document.body.classList.remove('body-page-transition')
-})
+// Router.events.on('routeChangeComplete', () => {
+//   ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
+//   document.body.classList.remove('body-page-transition')
+// })
 
-Router.events.on('routeChangeError', () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
-  document.body.classList.remove('body-page-transition')
-})
+// Router.events.on('routeChangeError', () => {
+//   ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'))
+//   document.body.classList.remove('body-page-transition')
+// })
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {

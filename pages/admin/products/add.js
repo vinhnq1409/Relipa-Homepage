@@ -499,9 +499,9 @@ export default function Works() {
                 <MenuItem className={styles.full} value={1}>
                   Web System
                 </MenuItem>
-                <MenuItem className={styles.full} value={2}>
+                {/* <MenuItem className={styles.full} value={2}>
                   Bussiness System
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem className={styles.full} value={3}>
                   Block Chain
                 </MenuItem>

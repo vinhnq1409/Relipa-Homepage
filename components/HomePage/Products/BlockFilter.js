@@ -8,41 +8,21 @@ const BlockFilter = ({ params, setParams }) => {
   const onFilter = (value) => {
     switch (value) {
       case 1:
-        {
-          router.push('/products?slug=webSystem', undefined, { shallow: true })
-        }
+        router.push('/products?slug=webSystem', undefined, { shallow: true })
         break
-      case 2:
-        {
-          router.push('/products?slug=businessSystem', undefined, { shallow: true })
-        }
-        break
+      // case 2:
+      //   router.push('/products?slug=businessSystem', undefined, { shallow: true })
+      //   break
       case 3:
-        {
-          router.push('/products?slug=blockchain', undefined, { shallow: true })
-        }
+        router.push('/products?slug=blockchain', undefined, { shallow: true })
         break
       case 4:
-        {
-          router.push('/products?slug=application', undefined, { shallow: true })
-        }
+        router.push('/products?slug=application', undefined, { shallow: true })
         break
       default:
-        {
-          router.push('/products', undefined, { shallow: true })
-        }
+        router.push('/products', undefined, { shallow: true })
         break
     }
-    // if (value === 0) {
-    //   const filterAll = { ...params }
-    //   delete filterAll.type
-    //   return setParams(filterAll)
-    // }
-    // setParams({
-    //   ...params,
-    //   page: 1,
-    //   type: value,
-    // })
   }
 
   const valueFilter = [1, 2, 3, 4]
@@ -65,26 +45,26 @@ const BlockFilter = ({ params, setParams }) => {
           {language.websystem}
         </div>
       </div>
-      <div className="filter-button">
+      {/* <div className="filter-button" >
         <div
           className={`cursor-pointer masonry-filter-item ${params.type === 2 && 'active-filter'}`}
           onClick={() => onFilter(2)}
         >
           {language.businessSystem}
         </div>
-      </div>
+      </div> */}
       <div className="filter-button">
         <div
-          className={`cursor-pointer masonry-filter-item ${params.type === 3 && 'active-filter'}`}
-          onClick={() => onFilter(3)}
+          className={`cursor-pointer masonry-filter-item ${params.type === 4 && 'active-filter'}`}
+          onClick={() => onFilter(4)}
         >
           {language.blockchain}
         </div>
       </div>
       <div className="filter-button">
         <div
-          className={`cursor-pointer masonry-filter-item ${params.type === 4 && 'active-filter'}`}
-          onClick={() => onFilter(4)}
+          className={`cursor-pointer masonry-filter-item ${params.type === 3 && 'active-filter'}`}
+          onClick={() => onFilter(3)}
         >
           {language.application}
         </div>

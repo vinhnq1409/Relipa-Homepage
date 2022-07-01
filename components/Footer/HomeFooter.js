@@ -161,21 +161,21 @@ export default function HomeFooter(props) {
                           <a>{trans.headerFooter.footer.web_system}</a>
                         </Link>
                       </li>
-                      <li className="">
+                      {/* <li className="">
                         <Link href="/business-system-development">
                           <a>{trans.headerFooter.footer.business_system}</a>
                         </Link>
-                      </li>
+                      </li> */}
                       <li className="">
                         <Link href="/blockchain-development">
                           <a>{trans.headerFooter.footer.blockchain}</a>
                         </Link>
                       </li>
-                      <li className="">
+                      {/* <li className="">
                         <Link href="/smartphone-application-development">
                           <a>{trans.headerFooter.footer.smartphone_application}</a>
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/products?slug=businessSystem">
+                        <Link href="/products">
                           <a>{trans.headerFooter.footer.resources}</a>
                         </Link>
                       </li>

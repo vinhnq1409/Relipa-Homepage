@@ -41,14 +41,14 @@ const Product = ({ dataCaseStudy }) => {
             type: 1,
           })
         }
-          break
-        case 'businessSystem': {
-          setParams({
-            ...params,
-            type: 2,
-          })
-        }
-          break
+        break
+        // case 'businessSystem': {
+        //   setParams({
+        //     ...params,
+        //     type: 2,
+        //   })
+        // }
+        // break
         case 'blockchain': {
           setParams({
             ...params,
