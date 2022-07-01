@@ -6,7 +6,7 @@ export default {
       title: 'Service',
       LabType: 'Lab-type Development',
       LabTypeContent: `We build a development team dedicating to each project and commit to the project’s goal.`,
-      websystem: 'Web System Development',
+      websystem: 'Web/App Development',
       websystemContent: `We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.`,
       Business: 'Business System Development',
       BusinesContent: `We have many achievements in developing management systems for large-scale businesses as we have the rich experiences and know-how in the field of business system development.

@@ -39,7 +39,6 @@ export default function Header(props) {
                   className="fluid"
                   src="/user-page/img/logo.png"
                   width="118"
-                  height="54"
                   alt="Relipa supports your success"
                 />
               </span>

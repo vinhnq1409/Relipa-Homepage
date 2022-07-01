@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
+
 function BlockDialog({ item }) {
+
   return (
     <>
       <div className="modal fade" id="studyModal" tabIndex="-1" aria-labelledby="studyModalLabel" aria-hidden="true">
@@ -12,7 +14,7 @@ function BlockDialog({ item }) {
             <div className="modal-header align-items-start">
               <div className="modal-header-label">
                 <h4 className="modal-title">{item?.title}</h4>
-                <span className="badge bg-light-opacity">#{item?.tags}</span>
+                <span className="badge bg-light-opacity">{item?.tags&&item?.tags[0]!=="" ? `#${item.tags}` : ""}</span>
               </div>
               <button type="button" className="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
                 <i className="las la-times"></i>
@@ -24,11 +26,13 @@ function BlockDialog({ item }) {
                   <Swiper
                     slidesPerView={1}
                     spaceBetween={30}
-                    loop={true}
+                    loop={false}
                     pagination={{
                       clickable: true,
                     }}
                     navigation={true}
+                    observeParents={true}
+                    observer={true}
                     modules={[Pagination, Navigation]}
                   >
                     {item?.works?.map((value, id) => (
@@ -67,7 +71,7 @@ function BlockDialog({ item }) {
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Team structure</h4>
-                    <div className="boxed-text">~{item?.team_structure}</div>
+                    <div className="boxed-text">{item?.team_structure&&item?.team_structure!=="null" ? `~${item.team_structure}` : ""}</div>
                   </div>
                 </div>
               </div>

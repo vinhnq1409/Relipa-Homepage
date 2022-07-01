@@ -22,9 +22,8 @@ export default function HomeFooter(props) {
                   <a className="footer-logo mb-2" href="#">
                     <img
                       className="fluid"
-                      src={require('/public/user-page/img/logo.png')}
+                      src={require('/public/user-page/img/logo-white.png')}
                       width="118"
-                      height="54"
                       alt="Relipa supports your success"
                     />
                   </a>
