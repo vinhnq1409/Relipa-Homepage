@@ -42,14 +42,6 @@ const BlockForm = ({ onNotification }) => {
     name: Yup.string().required(language.error),
     company_name: Yup.string().required(language.error),
     email: Yup.string().required(language.error).email('The email address you entered is invalid'),
-    phone: Yup.string()
-      .required(language.error)
-      .test('Phone', 'The phone number is invalid', (value) => {
-        if (value) {
-          const result = value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g)
-          return result
-        }
-      }),
     content: Yup.string().required(language.error),
     is_agree: Yup.boolean().oneOf([true], 'You must agree to the privacy policy'),
   })
@@ -106,9 +98,8 @@ const BlockForm = ({ onNotification }) => {
                 {errors.email && <p className={styled.error}>{errors.email.message}</p>}
               </div>
               <div className="form-group">
-                <label className="form-label required">{language.phone}</label>
+                <label className="form-label">{language.phone}</label>
                 <input className="form-control" type="text" placeholder={language.phone} {...register('phone')} />
-                {errors.phone && <p className={styled.error}>{errors.phone.message}</p>}
               </div>
               <div className="form-group">
                 <label className="form-label">{language.inquirytype.title}</label>

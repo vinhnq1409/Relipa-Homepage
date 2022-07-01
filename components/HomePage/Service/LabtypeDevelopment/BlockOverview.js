@@ -32,8 +32,8 @@ const BlockOverview = () => {
                       </h3>
                       <div className="card-text">
                         <ul>
-                          <li>{language.about.contentFirst}</li>
-                          <li>{language.about.contentSecond}</li>
+                          <li className='justify-align'>{language.about.contentFirst}</li>
+                          <li className='justify-align'>{language.about.contentSecond}</li>
                         </ul>
                       </div>
                     </div>
@@ -77,10 +77,10 @@ const BlockOverview = () => {
                       </h3>
                       <div className="card-text">
                         <ul>
-                          <li>{language.working.contentFirst}</li>
-                          <li>{language.working.contentSecond}</li>
-                          <li>{language.working.contentThird}</li>
-                          <li>{language.working.contentFourth}</li>
+                          <li className='justify-align'>{language.working.contentFirst}</li>
+                          <li className='justify-align' >{language.working.contentSecond}</li>
+                          <li className='justify-align'>{language.working.contentThird}</li>
+                          <li className='justify-align'>{language.working.contentFourth}</li>
                         </ul>
                       </div>
                     </div>
@@ -119,9 +119,9 @@ const BlockOverview = () => {
                       </h3>
                       <div className="card-text">
                         <ul>
-                          <li>{language.contract.contentFirst}</li>
-                          <li>{language.contract.contentSecond}</li>
-                          <li>{language.contract.contentThird}</li>
+                          <li className='justify-align'>{language.contract.contentFirst}</li>
+                          <li className='justify-align'>{language.contract.contentSecond}</li>
+                          <li className='justify-align'>{language.contract.contentThird}</li>
                         </ul>
                       </div>
                     </div>

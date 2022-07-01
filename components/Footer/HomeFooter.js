@@ -5,10 +5,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BsTelephoneFill } from 'react-icons/bs'
 import MessengerCustomerChat from 'react-messenger-customer-chat'
+import moment from 'moment'
 
 export default function HomeFooter(props) {
   const trans = useTrans()
-  const { locales } = useRouter()
+  const router = useRouter()
 
   return (
     <footer id="footer">
@@ -113,7 +114,7 @@ export default function HomeFooter(props) {
           </div>
           <div className="col-lg-5 offset-lg-1">
             <div className="row">
-              <div className={locales[0] === 'en' ? 'col-8' : 'col-6'}>
+              <div className={router.locales[0] === 'en' ? 'col-8' : 'col-6'}>
                 <div className="widget">
                   <h3 className="widget-title"> {trans.headerFooter.footer.corporate_information}</h3>
                   <div className="widget-content">
@@ -146,7 +147,7 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/service">
+                        <Link href="/about-service">
                           <a>{trans.headerFooter.footer.about_service}</a>
                         </Link>
                       </li>
@@ -183,22 +184,22 @@ export default function HomeFooter(props) {
                   <div className="widget-content">
                     <ul className="list-unstyled sidebar-list">
                       <li className="">
-                        <Link href="/products">
+                        <Link href="/products?slug=businessSystem">
                           <a>{trans.headerFooter.footer.resources}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/products">
+                        <Link href="/products?slug=webSystem">
                           <a>{trans.headerFooter.footer.webSystem}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/products">
+                        <Link href="/products?slug=blockchain">
                           <a>{trans.headerFooter.footer.blockchain}</a>
                         </Link>
                       </li>
                       <li className="">
-                        <Link href="/products">
+                        <Link href="/products?slug=application">
                           <a>{trans.headerFooter.footer.smartphone_application}</a>
                         </Link>
                       </li>
@@ -206,7 +207,7 @@ export default function HomeFooter(props) {
                   </div>
                 </div>
               </div>
-              <div className={locales[0] === 'en' ? 'col-4' : 'col-6'}>
+              <div className={router.locales[0] === 'en' ? 'col-4' : 'col-6'}>
                 <div className="widget">
                   <h3 className="widget-title"> {trans.headerFooter.footer.resources}</h3>
                   <div className="widget-content">
@@ -248,10 +249,12 @@ export default function HomeFooter(props) {
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <div>Copyright © 2021 RELIPA CO., LTD. All Rights Reserved.</div>
+          <div>Copyright © {moment(new Date()).format('YYYY')} RELIPA CO., LTD. All Rights Reserved.</div>
         </div>
       </div>
-      {(typeof window != undefined) && <MessengerCustomerChat pageId={process.env.FANPAGE_ID} appId={process.env.APPFB_ID} />}
+      {typeof window != undefined && (
+        <MessengerCustomerChat pageId={process.env.FANPAGE_ID} appId={process.env.APPFB_ID} />
+      )}
       <a href="tel:+842432004725">
         <div className="phone-main">
           <div className="phone">

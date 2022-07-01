@@ -30,7 +30,7 @@ function BlockWebSystem() {
                       </a>
                     </h3>
                     <div
-                      className="card-text"
+                      className="card-text justify-align"
                       dangerouslySetInnerHTML={{
                         __html: language.warehouse.content
                       }}
@@ -70,7 +70,7 @@ function BlockWebSystem() {
                       </a>
                     </h3>
                     <div
-                      className="card-text"
+                      className="card-text justify-align"
                       dangerouslySetInnerHTML={{
                         __html: language.sale.content
                       }}
@@ -114,7 +114,7 @@ function BlockWebSystem() {
                         {language.reservation.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.reservation.content}</div>
+                    <div className="card-text justify-align">{language.reservation.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">
@@ -154,7 +154,7 @@ function BlockWebSystem() {
                         {language.vehicle.title}
                       </a>
                     </h3>
-                    <div className="card-text">{language.vehicle.content}</div>
+                    <div className="card-text justify-align">{language.vehicle.content}</div>
                   </div>
                 </div>
                 <div className="card-thumb">

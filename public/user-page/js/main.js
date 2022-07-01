@@ -286,13 +286,13 @@ export const MainJS = () => {
     nodesContent[i].style.height = `${tallestContent.clientHeight}px`
   }
 
-  var header = document?.getElementById('btn-filter')
-  var btns = header?.getElementsByClassName('masonry-filter-item')
-  for (var i = 0; i < btns?.length; i++) {
-    btns[i].addEventListener('click', function () {
-      var current = document?.getElementsByClassName('active-filter')
-      current[0].className = current[0].className.replace('active-filter', '')
-      this.className += ' active-filter'
-    })
-  }
+  // var header = document?.getElementById('btn-filter')
+  // var btns = header?.getElementsByClassName('masonry-filter-item')
+  // for (var i = 0; i < btns?.length; i++) {
+  //   btns[i].addEventListener('click', function () {
+  //     var current = document?.getElementsByClassName('active-filter')
+  //     current[0].className = current[0].className.replace('active-filter', '')
+  //     this.className += ' active-filter'
+  //   })
+  // }
 }

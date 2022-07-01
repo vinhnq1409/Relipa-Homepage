@@ -14009,7 +14009,7 @@ a.avatar:hover:after {
 .card.card-iwt .card-title {
   font-size: 14px;
   line-height: 20px;
-  height: 40px;
+  height: 60px;
   overflow: hidden;
   margin-bottom: 10px;
   color: #3b3b3b;
@@ -14847,7 +14847,7 @@ a.avatar:hover:after {
 .navbar-brand .logo {
   height: 46px;
   width: 99px;
-  background: url('../img/logo-color.png') no-repeat 50% 50%;
+  background: url('../img/logo.png') no-repeat 50% 50%;
   background-size: 100% auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16244,4 +16244,72 @@ a.avatar:hover:after {
   /* display: none; */
   position: sticky;
   top: 60px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.justify-align {
+  text-align: justify;
+  text-justify: auto;
+}
+
+.name-conpany {
+  font-size: 70px;
+}
+
+.name-conpany-title {
+  font-size: 50px;
+  white-space: nowrap;
+}
+
+.name-conpany-content {
+  font-size: 24px;
+}
+
+.contact-form{
+  position: relative;
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-contact{
+  color: #fff;
+}
+
+.contact-body {
+  position: absolute ;
+  background-color: #0045c5; 
+  left: 0;
+  padding-bottom: 5px ;
+  padding-top: 5px ;
+  padding-left: 10px ;
+  padding-right: 10px ;
+  border-radius: 50px ;
+  border: 1px solid #0045c5;;
+}
+
+.contact-body:hover{
+  background-color: #fff;
+  animation-name: animationBackGround;
+  animation-duration: 0.3s;
+}
+
+@keyframes animationBackGround {
+  from {background-color: #0045c5;}
+  to {background-color: #fff;}
+}
+
+.contact-body:hover > .text-contact{
+  color: #0045c5;
+  animation-name: animationBackGround;
+  animation-duration: 0.3s;
+}
+
+@keyframes animationColorText {
+  from {color: #fff;}
+  to {color: #0045c5;}
 }

@@ -1,6 +1,7 @@
 import { onPreventDefault } from '../../PreventDefault/onPreventDefault'
 
 const BlockVoice = ({ voice }) => {
+  console.log(voice)
   return (
     <>
       <section className="section section-aos py-0 section-voice" data-aos="fade-up">
@@ -39,7 +40,15 @@ const BlockVoice = ({ voice }) => {
                         <div className="card card-horizontal border-0 card-padding card-shadow-bottom">
                           <div className="card-thumb lazyload">
                             <a className="card-thumb-overlay" href="#" onClick={onPreventDefault}>
-                              <div style={{backgroundImage: `url(http://${item.voice})`, backgroundPosition:"center", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="card-img-top card-img-voice card-img-voice-center"></div>
+                              <div
+                                style={{
+                                  backgroundImage: `url("https://${item.voice[0]}")`,
+                                  backgroundPosition: 'center',
+                                  backgroundRepeat: 'no-repeat',
+                                  backgroundSize: 'cover',
+                                }}
+                                className="card-img-top card-img-voice card-img-voice-center"
+                              ></div>
                             </a>
                           </div>
                           <div className="card-body">
@@ -49,7 +58,7 @@ const BlockVoice = ({ voice }) => {
                               </a>
                             </h3>
                             <div className="card-meta mb-4 pb-1">{item.company}</div>
-                            <div className="card-text bg-quote">{item.desc}</div>
+                            <div className="card-text bg-quote justify-align">{item.desc}</div>
                           </div>
                         </div>
                       </div>
