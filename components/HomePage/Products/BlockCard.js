@@ -1,6 +1,4 @@
-import styles from '../../../styles/user/CaseStudy.module.css'
-
-function BlockCard({ data, itemCard }) {
+const BlockCard = ({ data, itemCard }) => {
   return (
     <div className="row masonry-grid" id="masonry-grid">
       {data?.data?.map((item, id) => (
@@ -10,7 +8,7 @@ function BlockCard({ data, itemCard }) {
               <div className="card-thumb ">
                 <a href="#" onClick={() => itemCard(item)} data-bs-toggle="modal" data-bs-target="#studyModal">
                   <img
-                    src={`http://${item?.works[0]}`}
+                    src={item?.works[0]}
                     className="card-img-top img-item-related-medium"
                     alt={`${item.title}`}
                   />
@@ -24,7 +22,7 @@ function BlockCard({ data, itemCard }) {
                 </h3>
                 <div className="card-text">{item?.desc}... </div>
                 {item?.tags.map((tag, index) => (
-                  <span key={index} className="badge bg-primary-opacity in-category mr12">{tag}</span> 
+                  <span key={index} className="badge bg-primary-opacity in-category mr12">{tag}</span>
                 ))}
               </div>
             </div>

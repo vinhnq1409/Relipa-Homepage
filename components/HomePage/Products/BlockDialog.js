@@ -34,7 +34,7 @@ function BlockDialog({ item }) {
                     {item?.works?.map((value, id) => (
                       <div className="swiper-slide" key={id}>
                         <SwiperSlide>
-                          <img src={`http://${value}`} className={`${styles.imgDialog} `} alt={`${item?.title}`} />
+                          <img src={value} className={`${styles.imgDialog}`} alt={`${item?.title}`} />
                         </SwiperSlide>
                       </div>
                     ))}
