@@ -6,7 +6,7 @@ const BlockSideBar = () => {
   return (
     <div className="col-lg-2 d-none d-lg-block side-bar-wrap">
       <section className="section section-aos side-bar" data-aos="fade-up">
-        <div className="navigator-section">
+        <div className="navigator-section menu-company">
           <a className="active" href="#company">
             {language.Company_Profile}
           </a>

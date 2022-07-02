@@ -26,7 +26,7 @@ const BlockBanner = ({ banner }) => {
                       ></div>
                       <div className="container">
                         <div className="row align-items-center">
-                          <div className="col-md-6">
+                          <div className="col-md-8">
                             {item.title.split('/').map((item, indexTitle) => {
                               if (indexTitle === 0) {
                                 return <h1 key={indexTitle} className="banner-title name-conpany">{item}</h1>

@@ -14871,7 +14871,7 @@ a.avatar:hover:after {
   max-width: 100%;
   -o-object-fit: contain;
   object-fit: contain;
-  opacity: 0;
+  /* opacity: 0; */
 }
 .navbar-brand-site {
   font-family: 'Roboto', serif;
@@ -15026,16 +15026,7 @@ a.avatar:hover:after {
   font-weight: 500;
   font-size: 0.875rem;
 }
-@media (min-width: 992px) {
-  .navbar .navbar-nav {
-    margin-right: 20px;
-  }
-}
-@media (min-width: 1366px) {
-  .navbar .navbar-nav {
-    margin-right: 80px;
-  }
-}
+
 .navbar .navbar-nav a {
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
@@ -16261,19 +16252,24 @@ a.avatar:hover:after {
 
 .name-conpany-title {
   font-size: 50px;
-  white-space: nowrap;
 }
 
 .name-conpany-content {
   font-size: 24px;
 }
 
-.contact-form{
-  position: relative;
-  margin-left: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media (max-width: 992px){
+  .name-conpany {
+    font-size: 50px;
+  }
+  
+  .name-conpany-title {
+    font-size: 34px;
+  }
+  
+  .name-conpany-content {
+    font-size: 16px;
+  }
 }
 
 .text-contact{
@@ -16281,15 +16277,12 @@ a.avatar:hover:after {
 }
 
 .contact-body {
-  position: absolute ;
   background-color: #0045c5; 
-  left: 0;
-  padding-bottom: 5px ;
-  padding-top: 5px ;
-  padding-left: 10px ;
-  padding-right: 10px ;
+  padding: 8px 15px 8px 15px;
   border-radius: 50px ;
-  border: 1px solid #0045c5;;
+  margin-left: 15px;
+  margin-top: 3px;
+  border: 1px solid #0045c5;
 }
 
 .contact-body:hover{
@@ -16313,3 +16306,30 @@ a.avatar:hover:after {
   from {color: #fff;}
   to {color: #0045c5;}
 }
+
+@media (max-width: 991.999px){
+  .contact-body{
+    position: absolute ;
+    background-color: #0045c5; 
+    padding-bottom: 5px ;
+    padding-top: 5px ;
+    border-radius: 50px ;
+    border: 1px solid #0045c5;
+    margin-top: 24px ;
+    padding-left: 24px ;
+    padding-right: 24px ;
+  }
+}
+
+/* header without language option  */
+
+/* @media (min-width: 992px) {
+  .navbar .navbar-nav {
+    margin-right: 20px;
+  }
+}
+@media (min-width: 1366px) {
+  .navbar .navbar-nav {
+    margin-right: 80px;
+  }
+} */
