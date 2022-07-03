@@ -254,7 +254,7 @@ export default function HomeFooter(props) {
       {typeof window != undefined && (
         <MessengerCustomerChat pageId='104700155627164' appId='3531534160455181' />
       )}
-      <a href="tel:+842432004725">
+      {/* <a href="tel:+842432004725">
         <div className="phone-main">
           <div className="phone">
             <span>
@@ -264,7 +264,7 @@ export default function HomeFooter(props) {
           <div className="circle1"></div>
           <div className="circle2"></div>
         </div>
-      </a>
+      </a> */}
     </footer>
   )
 }
