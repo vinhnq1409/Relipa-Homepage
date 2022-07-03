@@ -141,7 +141,7 @@ const Product = ({ dataCaseStudy }) => {
               </nav>
             </div>
           </section>
-          <BlockDialog item={card} />
+          <BlockDialog item={card}  />
         </div>
       </HomePage>
     </>

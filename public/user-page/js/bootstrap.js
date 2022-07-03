@@ -2727,6 +2727,7 @@
   const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY$6}`
   const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`
   const CLASS_NAME_OPEN = 'modal-open'
+  const CLASS_NAME_SHOW_MODAL = 'show-modal-products'
   const CLASS_NAME_FADE$3 = 'fade'
   const CLASS_NAME_SHOW$4 = 'show'
   const CLASS_NAME_STATIC = 'modal-static'
@@ -2787,6 +2788,7 @@
       this._scrollBar.hide()
 
       document.body.classList.add(CLASS_NAME_OPEN)
+      document.body.classList.add(CLASS_NAME_SHOW_MODAL)
 
       this._adjustDialog()
 
@@ -2955,6 +2957,7 @@
 
       this._backdrop.hide(() => {
         document.body.classList.remove(CLASS_NAME_OPEN)
+        document.body.classList.remove(CLASS_NAME_SHOW_MODAL)
 
         this._resetAdjustments()
 

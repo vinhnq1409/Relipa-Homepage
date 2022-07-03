@@ -11,20 +11,20 @@ const BlockCompanyProfile = () => {
       <div className="section-content-header line-bottom text-primary">
         <h2 className="section-content-title">{language.Company_Profile}</h2>
       </div>
-      <div className="navigator-section d-lg-none">
-        <a className="active" href="#company" >
+      {/* <div className="navigator-section d-lg-none ">
+        <a className="active menu-company-siderbar  " href="#company" >
          Company Profile
         </a>
-        <a href="#message" >
+        <a className="active menu-company-siderbar " href="#message" >
           CEO Message
         </a>
-        <a href="#mission" >
+        <a className="active menu-company-siderbar " href="#mission" >
           Mission & Values
         </a>
-        <a href="#core-member" >
+        <a className="active menu-company-siderbar " href="#core-member" >
           Core Members
         </a>
-      </div>
+      </div> */}
       <div className="row">
         <div className="col-md-6">
           <div className="row-item">

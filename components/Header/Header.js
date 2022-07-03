@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import useTrans from '../../i18n/useTrans'
 import Link from 'next/link'
@@ -17,12 +16,6 @@ export default function Header(props) {
     document.cookie = `NEXT_LOCALE=${locale};`
   }
 
-  const routerPushContact =()=>{
-    router.push({
-      pathname:"/contact"
-    })
-  }
-
   const changeLang = (lang) => {
     setCookie(lang)
     router.push(`${router.asPath}`, `${router.asPath}`, { locale: lang })
@@ -34,14 +27,9 @@ export default function Header(props) {
         <div className="container">
           <Link href="/">
             <a className="navbar-brand">
-              <span className="logo logo-main">
-                <img
-                  className="fluid"
-                  src="/user-page/img/logo.png"
-                  width="118"
-                  alt="Relipa supports your success"
-                />
-              </span>
+              {/* <span className="logo logo-main"> */}
+              <img className="fluid" src="/user-page/img/logo.png" width="118" alt="Relipa supports your success" />
+              {/* </span> */}
             </a>
           </Link>
           <div className="collapse navbar-collapse" id="main-nav">
@@ -53,13 +41,6 @@ export default function Header(props) {
                   </a>
                 </Link>
               </li>
-              {/* <li className='nav-item'>
-                <Link href='/business'>
-                  <a className={`nav-link ${isCheckCurrentLink('/business') ? 'active' : ''}`}>
-                    {trans.headerFooter.header.business}
-                  </a>
-                </Link>
-              </li> */}
               <li className="nav-item dropdown">
                 <Link href="/service">
                   <a
@@ -87,28 +68,11 @@ export default function Header(props) {
                       <a className="dropdown-item">{trans.headerFooter.header.web_system}</a>
                     </Link>
                   </li>
-                  {/* <li>
-                    <Link href="/business-system-development">
-                      <a className="dropdown-item">{trans.headerFooter.header.business_system}</a>
-                    </Link>
-                  </li> */}
                   <li>
                     <Link href="/blockchain-development">
                       <a className="dropdown-item">{trans.headerFooter.header.blockchain}</a>
                     </Link>
                   </li>
-                  {/* <li>
-                    <Link href="/smartphone-application-development">
-                      <a className="dropdown-item">{trans.headerFooter.header.smartphone_application}</a>
-                    </Link>
-                  </li> */}
-                  {/* <li>
-                    <Link href="/aws-migration">
-                      <a className="dropdown-item" href="aws-migration.html">
-                        {trans.headerFooter.header.AWSMigration}
-                      </a>
-                    </Link>
-                  </li> */}
                 </ul>
               </li>
               <li className="nav-item dropdown">
@@ -132,14 +96,12 @@ export default function Header(props) {
                   </a>
                 </Link>
               </li>
-              <li className='contact-form' >
-       
-                  <div onClick={routerPushContact} className='cursor-pointer contact-body ' >
-                    <span className='text-contact cursor-pointer'>
-                    {trans.headerFooter.header.contact}
-                    </span>
-            
-                </div>
+              <li className="nav-item">
+                <Link href="/contact">
+                  <div className="contact-body cursor-pointer">
+                    <span className="text-contact">{trans.headerFooter.header.contact}</span>
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>

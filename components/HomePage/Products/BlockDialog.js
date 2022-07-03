@@ -1,10 +1,28 @@
 import styles from '../../../styles/user/CaseStudy.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper'
+import { Pagination, Navigation, Virtual } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import React, { useCallback, useEffect, useRef } from 'react'
 
 function BlockDialog({ item }) {
+  const sliderRef = useRef(null);
+  
+  const handlePrev = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slidePrev();
+  }, []);
+
+  const valuePrev = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+  useEffect(() => {
+    const desc_object = document.getElementsByClassName("show-modal-products");
+    if (desc_object) {
+      valuePrev.map(()=>{
+        handlePrev()
+      })
+    }
+  },[item])
 
   return (
     <>
@@ -14,7 +32,9 @@ function BlockDialog({ item }) {
             <div className="modal-header align-items-start">
               <div className="modal-header-label">
                 <h4 className="modal-title">{item?.title}</h4>
-                <span className="badge bg-light-opacity">{item?.tags&&item?.tags[0]!=="" ? `#${item.tags}` : ""}</span>
+                <span className="badge bg-light-opacity">
+                  {item?.tags && item?.tags[0] !== '' ? `#${item.tags}` : ''}
+                </span>
               </div>
               <button type="button" className="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
                 <i className="las la-times"></i>
@@ -24,6 +44,7 @@ function BlockDialog({ item }) {
               <div className="row">
                 <div className="col-lg-6">
                   <Swiper
+                  ref={sliderRef}
                     slidesPerView={1}
                     spaceBetween={30}
                     loop={false}
@@ -31,9 +52,8 @@ function BlockDialog({ item }) {
                       clickable: true,
                     }}
                     navigation={true}
-                    observeParents={true}
-                    observer={true}
-                    modules={[Pagination, Navigation]}
+                    virtual
+                    modules={[Pagination, Navigation, Virtual]}
                   >
                     {item?.works?.map((value, id) => (
                       <div className="swiper-slide" key={id}>
@@ -71,7 +91,9 @@ function BlockDialog({ item }) {
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Team structure</h4>
-                    <div className="boxed-text">{item?.team_structure&&item?.team_structure!=="null" ? `~${item.team_structure}` : ""}</div>
+                    <div className="boxed-text">
+                      {item?.team_structure && item?.team_structure !== 'null' ? `~${item.team_structure}` : ''}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -79,6 +101,7 @@ function BlockDialog({ item }) {
           </div>
         </div>
       </div>
+    
     </>
   )
 }
