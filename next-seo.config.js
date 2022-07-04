@@ -1,6 +1,6 @@
 export default {
-  title: 'Blockchain and Software Development | Relipa',
-  description: 'Relipa provides excellent IT outsourcing services in Blockchain Development Services - Web Mobile Application - White Label Blockchain Solutions',
+  title: 'Blockchain and Software Development | RELIPA GLOBAL',
+  description: 'With the expertise in Blockchain and Information technology in general, along with the experienced human resources, we are proud to be the Reliable Partner that are always here for your success. ',
   openGraph: {
     type: 'website',
     locale: 'en',

@@ -21,32 +21,8 @@ const Company = () => {
   return (
     <>
       <NextSeo
-        title='Relipa | Blockchain and Software Development'
-        description='This example uses more of the available config options.'
-        canonical='https://www.canonical.ie/'
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title='RELIPA GLOBAL | About us'
+        description='Relipa Co., Ltd. is a IT and Blockchain development company, founded in 2016 and headquartered in Vietnam. Contact us: sales@relipasoft.com, 22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam.'
       />
       <HomePage>
         <BlockBanner />

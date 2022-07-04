@@ -12,32 +12,8 @@ const AboutService = () => {
   return (
     <>
       <NextSeo
-        title="About Service | Relipa"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title="RELIPA GLOBAL | Our service"
+        description="Leading the way in cutting-edge technology, with over 6 year experience in consulting and development projects, we provide the most optimal services with your business through fair price, great quality and highly secured."
       />
       <HomePage>
         <BlockBanner />

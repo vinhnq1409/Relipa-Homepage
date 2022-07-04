@@ -40,32 +40,8 @@ const News = ({ news }) => {
   return (
     <>
       <NextSeo
-        title="Company News & Announcement | Relipa"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title="Blockchain and Software Development | RELIPA News"
+        description="Find latest news and up-to-date information and announcement from Relipa and our partner on Tech insights, software product launching."
       />
       <HomePage>
         <BlockBanner />

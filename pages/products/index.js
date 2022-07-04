@@ -41,7 +41,7 @@ const Product = ({ dataCaseStudy }) => {
             type: 1,
           })
         }
-        break
+          break
         // case 'businessSystem': {
         //   setParams({
         //     ...params,
@@ -89,32 +89,8 @@ const Product = ({ dataCaseStudy }) => {
   return (
     <>
       <NextSeo
-        title="Products | Relipa"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title="RELIPA GLOBAL | Our works"
+        description="A quick reference of the detailed information of our works including project name, description, contract types, technology used and actual pictures."
       />
       <HomePage>
         <BlockBanner />
@@ -141,7 +117,7 @@ const Product = ({ dataCaseStudy }) => {
               </nav>
             </div>
           </section>
-          <BlockDialog item={card}  />
+          <BlockDialog item={card} />
         </div>
       </HomePage>
     </>

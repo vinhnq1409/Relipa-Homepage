@@ -4,6 +4,7 @@ import { onPreventDefault } from '../../../PreventDefault/onPreventDefault'
 const BlockOverview = () => {
   const trans = useTrans()
   const language = trans.labtypeDevelopment.labTypeDevelopment
+
   return (
     <>
       <section className="section section-aos" data-aos="fade-up">

@@ -19,32 +19,8 @@ const LabtypeDevelopment = () => {
   return (
     <>
       <NextSeo
-        title="Labtype Development | Relipa"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title="RELIPA GLOBAL | Lab-type Development"
+        description="Optimal Cost - High Quality - By a dedicated development team, your requirements will be satisfied fast and exceptionally with flexible contract types, your resources will be under long-term high security, so let the project be developed by us!"
       />
       <HomePage>
         <BlockBanner />

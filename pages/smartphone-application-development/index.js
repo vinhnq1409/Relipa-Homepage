@@ -17,32 +17,8 @@ const SmartphoneApplicationDevelopment = () => {
   return (
     <>
       <NextSeo
-        title="Smartphone Application Development | Relipa"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-              url: 'https://www.example.ie/og-image-01.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            },
-            {
-              url: 'https://www.example.ie/og-image-02.jpg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
-            },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
-          ],
-          site_name: 'SiteName',
-        }}
+        title="RELIPA GLOBAL | Website and Application Development"
+        description="Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers."
       />
       <HomePage>
         <BlockBanner />
