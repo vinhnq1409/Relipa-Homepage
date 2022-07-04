@@ -57,14 +57,14 @@ export default class MyApp extends App {
         </React.Fragment>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-DWKNRMVFC9`}
         />
         <Script strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', ${process.env.GOOGLE_ANALYTICS_ID});`}
+          gtag('config', 'G-DWKNRMVFC9');`}
         </Script>
       </>
     )
