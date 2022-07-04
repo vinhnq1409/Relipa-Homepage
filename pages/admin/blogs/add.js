@@ -21,7 +21,7 @@ import {
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import Admin from 'layouts/Admin.js'
 import styles from '../../../styles/AdminBlogs.module.css'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import { apiKey, initFullProps } from '../../../helper/initFullProps'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'

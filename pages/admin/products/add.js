@@ -15,7 +15,7 @@ import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-import { tagsRelipa } from '../../../sampleData/tagsRelipa'
+import { tagsRelipa } from '../../../helper/tagsRelipa'
 
 export default function Works() {
   const btnRemoveImg = useRef(null)

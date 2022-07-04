@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://10.1.4.246/api/v1
+Host: https://relipa.global
 
 # Sitemaps
-Sitemap: http://10.1.4.246/api/v1/sitemap.xml
+Sitemap: https://relipa.global/sitemap.xml

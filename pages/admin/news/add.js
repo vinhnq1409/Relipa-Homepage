@@ -18,7 +18,7 @@ import {
   Checkbox,
 } from '@material-ui/core'
 import Admin from 'layouts/Admin.js'
-import { apiKey, initFullProps } from '../../../sampleData/initFullProps'
+import { apiKey, initFullProps } from '../../../helper/initFullProps'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
