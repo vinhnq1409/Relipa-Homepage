@@ -28,7 +28,7 @@ import { get } from '../../api/BaseRequest'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 
-import { bugs, website, server } from 'sampleData/general.js'
+import { bugs, website, server } from 'helper/general.js'
 
 import styles from 'assets/jss/nextjs-material-dashboard/views/dashboardStyle.js'
 
