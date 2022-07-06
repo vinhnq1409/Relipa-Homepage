@@ -2,7 +2,6 @@ const BlockCard = ({ data, itemCard }) => {
   return (
     <div className="row masonry-grid" id="masonry-grid">
       {data?.data?.map((item, id) => (
-        <>
           <div className="col-sm-6 col-lg-4 masonry-grid-item categories-01" data-category="categories-01" key={id}>
             <div className="card card-news card-padding-sm bg-lighter">
               <div className="card-thumb ">
@@ -27,7 +26,6 @@ const BlockCard = ({ data, itemCard }) => {
               </div>
             </div>
           </div>
-        </>
       ))}
     </div>
   )

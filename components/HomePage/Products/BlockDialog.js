@@ -6,23 +6,23 @@ import 'swiper/css/pagination'
 import React, { useCallback, useEffect, useRef } from 'react'
 
 function BlockDialog({ item }) {
-  const sliderRef = useRef(null);
-  
-  const handlePrev = useCallback(() => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev();
-  }, []);
+  const sliderRef = useRef(null)
 
-  const valuePrev = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  const handlePrev = useCallback(() => {
+    if (!sliderRef.current) return
+    sliderRef.current.swiper.slidePrev()
+  }, [])
+
+  const valuePrev = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
   useEffect(() => {
-    const desc_object = document.getElementsByClassName("show-modal-products");
+    const desc_object = document.getElementsByClassName('show-modal-products')
     if (desc_object) {
-      valuePrev.map(()=>{
+      valuePrev.map(() => {
         handlePrev()
       })
     }
-  },[item])
+  }, [item])
 
   return (
     <>
@@ -44,7 +44,7 @@ function BlockDialog({ item }) {
               <div className="row">
                 <div className="col-lg-6">
                   <Swiper
-                  ref={sliderRef}
+                    ref={sliderRef}
                     slidesPerView={1}
                     spaceBetween={30}
                     loop={false}
@@ -67,7 +67,20 @@ function BlockDialog({ item }) {
                 <div className="col-lg-6">
                   <div className="boxed">
                     <h4 className="boxed-title">Overview</h4>
-                    <div className="boxed-text">{item?.content}</div>
+                    <div className="boxed-text">
+                      {item?.content?.split(`\r\n`)
+                        ? item?.content?.split(`\r\n`).map((item, index) => {
+                            if (item === '') {
+                              return <div key={index} style={{ display: 'none' }}></div>
+                            }
+                            return (
+                              <div>
+                                <div key={index}>{item}</div>
+                              </div>
+                            )
+                          })
+                        : item?.content}
+                    </div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Type of contract</h4>
@@ -75,7 +88,15 @@ function BlockDialog({ item }) {
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Technology</h4>
-                    <div className="boxed-text">{item?.technology}</div>
+                    <div className="boxed-text">
+                      <div className="badges">
+                        {item?.technology?.split(',').map((value) => (
+                          <>
+                            <span className="badge bg-primary-opacity">{value}</span>
+                          </>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Responsible content</h4>
@@ -101,7 +122,6 @@ function BlockDialog({ item }) {
           </div>
         </div>
       </div>
-    
     </>
   )
 }
