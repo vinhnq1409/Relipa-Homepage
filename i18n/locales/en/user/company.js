@@ -46,7 +46,7 @@ export default {
       MISSION: 'Mission',
       mission1: 'Improve and develop IT technology in Vietnam.',
       mission2: 'Provide reliable services to customers.',
-      mission3: 'Create an challenging, knowledge-sharing and positive environment for employees.',
+      mission3: 'Create a challenging, knowledge-sharing and positive environment for employees.',
       VISION: 'Vision',
       vision1: 'Relipa aims at trustworthy and long-term partnerships ',
       vision2: 'in the era of technology implementation.',
