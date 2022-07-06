@@ -27,19 +27,20 @@ export async function getServerSideProps(context) {
   const cookies = req.headers.cookie?.slice(-2) || 'en'
   const closestLocale = cookies === 'vi' ? 'vi' : 'en'
 
-  const resDataBlogs = await get(`user/${closestLocale}/voice`)
-  const voice = await resDataBlogs.data
+  const resDataVoice = await get(`user/${closestLocale}/voice`)
+  const voice = (await resDataVoice?.data) || []
 
   const resDataBanner = await get(`user/${closestLocale}/banner`)
-  const banner = await resDataBanner.map((item) => ({
-    title: item.title,
-    desc: item.desc,
-    link: item.link,
-    banner: item.banner[0],
-  }))
+  const banner =
+    (await resDataBanner.map((item) => ({
+      title: item.title,
+      desc: item.desc,
+      link: item.link,
+      banner: item.banner[0],
+    }))) || []
 
-  const dataBlogs = await get(`user/${closestLocale}/blog`)
-  const dataNews = await get(`user/${closestLocale}/new`)
+  const dataBlogs = (await get(`user/${closestLocale}/blog`)) || {}
+  const dataNews = (await get(`user/${closestLocale}/new`)) || {}
 
   if ((originalLocale !== defaultLocale || closestLocale !== defaultLocale) && originalLocale !== closestLocale) {
     return {

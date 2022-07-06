@@ -15,7 +15,7 @@ export default {
       Chang_Suan_Duc: 'Tran Xuan Duc',
       AddressJP: 'Address',
       AddressVN: 'Address',
-      Address_Tokyo: 'Japapan, Tokyo, 1-14-14 Tomigaya, Shibuya-ku, Tokyo Stanford Annex Building 3F',
+      Address_Tokyo: 'Japan, Tokyo, 1-14-14 Tomigaya, Shibuya-ku, Tokyo Stanford Annex Building 3F',
       Business_content: 'Business description',
       Email: 'Email',
       Email_Relipasoft: 'sales@relipasoft.com',
