@@ -5,19 +5,17 @@ export default {
     service: {
       title: 'Service',
       LabType: 'Lab-type Development',
-      LabTypeContent: `We build a development team dedicating to each project and commit to the project’s goal.`,
+      LabTypeContent: `Optimal Cost - High Quality - By a dedicated development team, your requirements will be satisfied fast and exceptionally with flexible contract types, your resources will be under long-term high security, so let the project be developed by us!`,
       websystem: 'Web/App Development',
-      websystemContent: `We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.`,
+      websystemContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers.`,
       Business: 'Business System Development',
       BusinesContent: `We have many achievements in developing management systems for large-scale businesses as we have the rich experiences and know-how in the field of business system development.
         Besides the profound skills in various development languages, our engineers are good at using cloud services such as AWS and Azure.
         Furthermore, we support several activities from building an internet environment to manufacturing, testing, maintenance and more than meeting customers' requirements, we listen to understand the situation and propose the best optimum design.`,
       Blockchain: 'Blockchain Development',
-      BlockchainContent: `Relipa has highly skilled blockchain developers and experts. We provide services for customers who want to implement blockchain but have limited resources, want to convert assets to NFT, and have limited human resources to sucessfully build a blockchain system. We provide a wide range of services such as smart contract development, ICO, IEO, IDO development, and games NFT conversion.`,
+      BlockchainContent: 'ICO service, NFT games conversion, crypto wallet, POC - We meet your all needs. As the awareness of the immeasurable potential of Blockchain, Relipa has been focusing on training excellent engineers to stay ahead of the times.',
       Smartphone: 'Application Development',
-      SmartphoneContent: `We are confident in developing apps that connect with business and web systems.
-        When you request a business management system or web system development, we can also provide an application that can be operated by linking with the in-house system from the outside on a device such as a tablet or smartphone. Through this service, we hope to distribute our best and support to the success of customers' business. 
-        We have a track record of developing apps for a wide range of purposes, from logistics app to SNS apps, educational apps, and chat apps as we have the know-how, experiences, and expertise.`,
+      SmartphoneContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers.`,
       AWS: 'Cloud Migration',
       AWSContent: `Cloud migration assistant is a service that helps customers reduce costs for technology, increase productivity and business agility, and improve operational resilience.
         Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.`,

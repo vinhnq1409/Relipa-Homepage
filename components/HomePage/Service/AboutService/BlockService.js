@@ -36,7 +36,7 @@ const BlockService = () => {
                     <a>{language.service.LabType}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3 justify-align"> {language.service.LabTypeContent}</div>
+                <div className="card-text text-hiden-3 "> {language.service.LabTypeContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/lab-type-development">
@@ -69,7 +69,7 @@ const BlockService = () => {
                     <a>{language.service.websystem}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3 justify-align"> {language.service.websystemContent}</div>
+                <div className="card-text text-hiden-3 "> {language.service.websystemContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/web-system-development">
@@ -102,7 +102,7 @@ const BlockService = () => {
                     <a>{language.service.Blockchain}</a>
                   </Link>
                 </h3>
-                <div className="card-text text-hiden-3 justify-align">{language.service.BlockchainContent}</div>
+                <div className="card-text text-hiden-3 ">{language.service.BlockchainContent}</div>
                 <div className="card-bottom">
                   <div className="d-grid">
                     <Link href="/blockchain-development">
