@@ -75,7 +75,15 @@ function BlockDialog({ item }) {
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Technology</h4>
-                    <div className="boxed-text">{item?.technology}</div>
+                    <div className="boxed-text">
+                    <div className="badges">
+                        {item?.technology?.split(',').map((value) => (
+                          <>
+                            <span className="badge bg-primary-opacity">{value}</span>
+                          </>
+                        ))}
+                      </div>
+                      </div>
                   </div>
                   <div className="boxed">
                     <h4 className="boxed-title">Responsible content</h4>
