@@ -5,7 +5,7 @@ import Home from '../layouts/Home'
 
 const useStyles = makeStyles({
   root: {
-    height: '100vh',
+    height: '68vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
