@@ -24,7 +24,7 @@ export default {
       Vietnam_Headquarters: 'ベトナム本社',
       Company_RELIPA: 'Company - RELIPA CO., LTD',
       vn2016: '2016年',
-      Address_HaNoi: '22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam',
+      Address_HaNoi: '22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam',
       Business_description: '日本企業向けオフショア開発',
       Phone_number_84: '(+84) 24 3200 4725',
     },

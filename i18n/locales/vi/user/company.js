@@ -24,7 +24,7 @@ export default {
       Vietnam_Headquarters: 'Vietnam Headquarters',
       Company_RELIPA: 'Company - RELIPA CO., LTD',
       vn2016: '2016',
-      Address_HaNoi: '22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam',
+      Address_HaNoi: '22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam',
       Business_description: 'Offshore development for Japanese companies',
       Phone_number_84: '(+84) 24 3200 4725'
     },
@@ -67,7 +67,7 @@ export default {
       Core_Members: 'Core Members',
       PresidentCEO: 'President and CEO',
       DevelopmentDepartment: 'Director ',
-      DevelopmentDepartmentTitle: "2nd Development Manager",
+      DevelopmentDepartmentTitle: '2nd Development Manager',
       Representative: 'Representative Director and Vice President',
       DevelopmentManager: '1st Development Manager'
     },

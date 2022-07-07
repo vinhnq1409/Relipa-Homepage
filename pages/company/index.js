@@ -22,7 +22,7 @@ const Company = () => {
     <>
       <NextSeo
         title='RELIPA GLOBAL | About us'
-        description='Relipa Co., Ltd. is a IT and Blockchain development company, founded in 2016 and headquartered in Vietnam. Contact us: sales@relipasoft.com, 22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam.'
+        description='Relipa Co., Ltd. is a IT and Blockchain development company, founded in 2016 and headquartered in Vietnam. Contact us: sales@relipasoft.com, 22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam.'
       />
       <HomePage>
         <BlockBanner />

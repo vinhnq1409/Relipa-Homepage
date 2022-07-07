@@ -88,7 +88,7 @@ export default function HomeFooter(props) {
                     <img src="/user-page/img/icons/location.svg" width="24" height="24" alt="" />
                   </span>
                   <span className="text-icon__content">
-                    22nd Floor, B Tower, HH4 Building, Pham Hung Street, Nam Tu Liem District, Ha Noi, Vietnam
+                    22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam
                   </span>
                 </div>
                 <div className="text-icon">
