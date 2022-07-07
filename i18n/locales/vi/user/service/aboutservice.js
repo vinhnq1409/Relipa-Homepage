@@ -23,7 +23,7 @@ export default {
         'Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.',
     },
     why: {
-      title: 'Why Relipa ?',
+      title: 'Why Relipa?',
       First: {
         title: 'Leading the way in cutting-edge technology',
         contentFirst: 'Leading the way in cutting-edge technologies such as Blockchain, VR / AR, and AI.',

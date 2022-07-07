@@ -152,9 +152,7 @@ const BlockForm = ({ onNotification }) => {
                     {errors.is_agree && <p className={styled.error}>{errors.is_agree.message}</p>}
                   </div>
                 </div>
-                <Link href="/privacy">
-                  <a className="text-secondary">{language.clickhere}</a>
-                </Link>
+                <a href="/privacy/" target="_blank" className="text-secondary">{language.clickhere}</a>
               </div>
               <div className="d-grid d-md-block text-center pt-3">
                 <button

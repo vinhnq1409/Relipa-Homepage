@@ -62,7 +62,7 @@ export default {
       Core_Members: 'Core Members',
       PresidentCEO: 'President and CEO',
       DevelopmentDepartment: 'Director ',
-      DevelopmentDepartmentTitle: "2nd Development Manager",
+      DevelopmentDepartmentTitle: '2nd Development Manager',
       Representative: 'Representative Director and Vice President',
       DevelopmentManager: '1st Development Manager'
     },
@@ -75,12 +75,12 @@ export default {
       vicePresident: {
         name: 'Nguyen Quang Tuyen',
         title: 'Representative Director and Vice President',
-        desc: `I graduated from Hanoi University of Technology and Ritsumeikan University and was certified as Scrum PSM web developer. I had been working for Viettel, a Vietnamese leading telecommunication company then continued to develop many products with multitude of customers and showed my sales skills.`,
+        desc: `I graduated from Hanoi University of Science and Technology and Ritsumeikan University and was certified as Scrum PSM web developer. I had been working for Viettel, a Vietnamese leading telecommunication company then continued to develop many products with multitude of customers and showed my sales skills.`,
       },
       div1: {
         name: 'Phung Quang Huy',
         title: '1st Development Manager',
-        desc: `Graduated from Japan Post Telegraph Crafts Academy, I have 10 years of experiences in webite and app development, as well as expertised in code languages of C #, PHP, and COBOL. Besides more than 3 years of working experiences in Japan, I have been working in a major Japanese company as PM / BrSE development manager.`,
+        desc: `Graduated from Posts and Telecommunications Institute of Technology, I have 10 years of experiences in webite and app development, as well as expertised in code languages of C #, PHP, and COBOL. Besides more than 3 years of working experiences in Japan, I have been working in a major Japanese company as PM / BrSE development manager.`,
       },
       div2: {
         name: 'Nguyen Kim Giang',

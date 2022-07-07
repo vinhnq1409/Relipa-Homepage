@@ -36,7 +36,7 @@ export default {
       contentThird: 'Closing at the end of the month, payment will be at the end of the following month.',
     },
     why: {
-      title: 'Why Choose Our Lab-Type Development',
+      title: 'Why Choose Our Lab-Type Development?',
       contentFirst: 'Lab-type development with a customer retention rate of 90%',
       contentSecond:
         'Provides a complete lab-type development that is flexible and can accumulate know-how as well as cost.',
