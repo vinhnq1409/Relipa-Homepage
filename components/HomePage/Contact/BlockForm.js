@@ -42,7 +42,6 @@ const BlockForm = ({ onNotification }) => {
     name: Yup.string().required(language.error),
     company_name: Yup.string().required(language.error),
     email: Yup.string().required(language.error).email('The email address you entered is invalid'),
-    content: Yup.string().required(language.error),
     is_agree: Yup.boolean().oneOf([true], 'You must agree to the privacy policy'),
   })
 
