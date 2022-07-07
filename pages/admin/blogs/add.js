@@ -192,6 +192,7 @@ export default function Add() {
         lang: data.lang,
         status: +data.status,
         tags: valueTag,
+        friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
       }
       postBlogAPI(newData)
@@ -208,6 +209,7 @@ export default function Add() {
         lang: data.lang,
         status: +data.status,
         tags: valueTag,
+        friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
         _method: 'PUT',
       }
