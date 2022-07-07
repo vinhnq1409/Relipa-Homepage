@@ -150,6 +150,7 @@ export default function AddNews() {
         ...data,
         lang: data.lang,
         status: +data.status,
+        friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
       }
       postNewsAPI(newData)
@@ -162,6 +163,7 @@ export default function AddNews() {
         ...data,
         lang: data.lang,
         status: +data.status,
+        friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
         _method: 'PUT',
       }
