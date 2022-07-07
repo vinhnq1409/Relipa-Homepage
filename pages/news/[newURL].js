@@ -50,6 +50,19 @@ const NewDetail = ({ dataNew }) => {
     <>
       <NextSeo
         title={`${title} | RELIPA News`}
+        openGraph={{
+          type: 'website',
+          locale: 'en',
+          url: 'https://relipa.global/',
+          images: [
+            {
+              url: url_image_meta,
+              width: 1200,
+              height: 630,
+              type: 'image/png',
+            },
+          ],
+        }}
       />
       <HomePage>
         <BlockBanner />
