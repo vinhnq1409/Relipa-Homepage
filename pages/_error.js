@@ -10,11 +10,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 })
 
-const PageNotFound = () => {
+const PageNotFound404 = () => {
   const classes = useStyles()
 
   return (
@@ -32,5 +32,5 @@ const PageNotFound = () => {
   )
 }
 
-export default PageNotFound
-PageNotFound.layout = Home
+export default PageNotFound404
+PageNotFound404.layout = Home
