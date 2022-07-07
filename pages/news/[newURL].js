@@ -13,7 +13,7 @@ import HomePage from '../../layouts/Home'
 const NewDetail = ({ dataNew }) => {
   const router = useRouter()
   const { locale } = router
-  const { id, title, created_at, content, url_image_meta } = dataNew
+  const { id, title, created_at, content, url_image_meta, friendly_url } = dataNew
 
   const [dataNews, setDataNews] = useState([])
   const [popularNews, setPopularNews] = useState([])
@@ -37,7 +37,7 @@ const NewDetail = ({ dataNew }) => {
   }, [popular])
 
   useEffect(() => {
-    const countView = setTimeout(async() => {
+    const countView = setTimeout(async () => {
       await post('statistic', {
         name_page: 'news',
         id_item: id,
@@ -53,13 +53,13 @@ const NewDetail = ({ dataNew }) => {
         openGraph={{
           type: 'website',
           locale: 'en',
-          url: 'https://relipa.global/',
+          url: `https://relipa.global/news/${friendly_url}`,
           images: [
             {
-              url: url_image_meta,
+              url: url_image_meta || 'https://relipa.global/user-page/img/relipa-behind-your-success.png',
               width: 1200,
               height: 630,
-              type: 'image/png',
+              type: url_image_meta ? 'image/jpg' : 'image/png',
             },
           ],
         }}
@@ -94,7 +94,7 @@ const NewDetail = ({ dataNew }) => {
 
 export default NewDetail
 
-export const getServerSideProps = async({ locale, params }) => {
+export const getServerSideProps = async ({ locale, params }) => {
   const dataNew = await get(`user/${locale}/news/${params.newURL}`)
   return {
     props: {

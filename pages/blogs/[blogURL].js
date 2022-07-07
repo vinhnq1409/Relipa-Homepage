@@ -17,7 +17,7 @@ import BlockRelated from '../../components/HomePage/Blogs/BlockRelated'
 export default function BlogDetail({ dataBlog }) {
   const router = useRouter()
   const { locale } = router
-  const { id, title, created_at, content, url_image_meta, tags: tagsDetail } = dataBlog
+  const { id, title, created_at, content, url_image_meta, tags: tagsDetail, friendly_url } = dataBlog
   const [dataBlogs, setDataBlogs] = useState([])
   const [popularBlogs, setPopularBlogs] = useState([])
   const [tagsTrend, setTagsTrend] = useState([])
@@ -49,7 +49,7 @@ export default function BlogDetail({ dataBlog }) {
   }, [popular])
 
   useEffect(() => {
-    const countView = setTimeout(async() => {
+    const countView = setTimeout(async () => {
       await post('statistic', {
         name_page: 'blogs',
         id_item: id,
@@ -64,7 +64,7 @@ export default function BlogDetail({ dataBlog }) {
     dispatch(addTag(tag))
     router.push('/blogs')
   }
-
+  
   return (
     <>
       <NextSeo
@@ -72,13 +72,13 @@ export default function BlogDetail({ dataBlog }) {
         openGraph={{
           type: 'website',
           locale: 'en',
-          url: 'https://relipa.global/',
+          url: `https://relipa.global/blogs/${friendly_url}`,
           images: [
             {
-              url: url_image_meta,
+              url: url_image_meta || 'https://relipa.global/user-page/img/relipa-behind-your-success.png',
               width: 1200,
               height: 630,
-              type: 'image/png',
+              type: url_image_meta ? 'image/jpg' : 'image/png',
             },
           ],
         }}
