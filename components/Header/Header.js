@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useTrans from '../../i18n/useTrans'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -7,6 +7,7 @@ export default function Header(props) {
   const trans = useTrans()
   const router = useRouter()
   const { locale } = useRouter()
+  const [logo, setLogo] = useState(true)
 
   const isCheckCurrentLink = (url) => {
     return router.pathname === url
@@ -21,6 +22,19 @@ export default function Header(props) {
     router.push(`${router.asPath}`, `${router.asPath}`, { locale: lang })
   }
 
+  if (typeof window !== 'undefined') {
+    window.onscroll = () => {
+      myFunction()
+    }
+    const myFunction = () => {
+      if (document.documentElement.scrollTop > 0) {
+        setLogo(false)
+      } else {
+        setLogo(true)
+      }
+    }
+  }
+
   return (
     <header id="header">
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -28,7 +42,16 @@ export default function Header(props) {
           <Link href="/">
             <a className="navbar-brand">
               {/* <span className="logo logo-main"> */}
-              <img className="fluid" src="/user-page/img/logo.png" width="118" alt="Relipa supports your success" />
+              {logo ? (
+                <img
+                  className="fluid"
+                  src="/user-page/img/logo-white.png"
+                  width="118"
+                  alt="Relipa supports your success"
+                />
+              ) : (
+                <img className="fluid" src="/user-page/img/logo.png" width="118" alt="Relipa supports your success" />
+              )}
               {/* </span> */}
             </a>
           </Link>
