@@ -6,7 +6,7 @@ const BlockBanner = ({ banner }) => {
   const language = trans.home.home
 
   return (
-    <div id="main-banner">
+    <div id="main-banner" className='homepage-relipa-global'>
       <section className="section section-aos section-banner py-0" data-aos="fade-down">
         <div className="swiper-carousel banner-swiper-carousel">
           <div className="swiper-container">
@@ -27,7 +27,7 @@ const BlockBanner = ({ banner }) => {
                       <div className="container">
                         <div className="row align-items-center">
                           <div className="col-md-8">
-                            {item.title.split('/').map((item, indexTitle) => {
+                            {item?.title?.split(`\r\n`).map((item, indexTitle) => {
                               if (indexTitle === 0) {
                                 return <h1 key={indexTitle} className="banner-title name-conpany">{item}</h1>
                               }

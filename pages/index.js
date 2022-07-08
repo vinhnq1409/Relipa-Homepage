@@ -11,7 +11,7 @@ export default function Index({ voice, banner, dataBlogs, dataNews }) {
   return (
     <HomePage>
       <BlockBanner banner={banner} />
-      <div id="main">
+      <div id="main" >
         <BlockService />
         <BlockOutClient />
         <BlockVoice voice={voice} />
