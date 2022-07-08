@@ -11,7 +11,7 @@ import useTrans from '../../../i18n/useTrans'
 const BlockForm = ({ onNotification }) => {
   const trans = useTrans()
   const language = trans.contact
-  const postContact = async(data) => {
+  const postContact = async (data) => {
     return await post('contact', data)
   }
 
@@ -53,10 +53,11 @@ const BlockForm = ({ onNotification }) => {
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) })
 
   const onSend = (data) => {
-    const newInquiryType = data.inquiry_type !== '0' ? data.inquiry_type : '8'
-    const newYourSource = data.your_source !== '0' ? data.your_source : '13'
+    const newInquiryType = data.inquiry_type !== '0' ? data.inquiry_type : '4'
+    const newYourSource = data.your_source !== '0' ? data.your_source : '5'
+    const newContent = data.content !== '' ? data.content : 'Empty content'
     const { is_agree, ...newData } = data
-    postInfoContactAPI({ ...newData, inquiry_type: newInquiryType, your_source: newYourSource })
+    postInfoContactAPI({ ...newData, inquiry_type: newInquiryType, your_source: newYourSource, content: newContent })
   }
 
   return (
@@ -151,7 +152,9 @@ const BlockForm = ({ onNotification }) => {
                     {errors.is_agree && <p className={styled.error}>{errors.is_agree.message}</p>}
                   </div>
                 </div>
-                <a href="/privacy/" target="_blank" className="text-secondary">{language.clickhere}</a>
+                <a href="/privacy/" target="_blank" className="text-secondary">
+                  {language.clickhere}
+                </a>
               </div>
               <div className="d-grid d-md-block text-center pt-3">
                 <button
