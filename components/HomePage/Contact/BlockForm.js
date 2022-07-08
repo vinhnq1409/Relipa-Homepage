@@ -56,8 +56,15 @@ const BlockForm = ({ onNotification }) => {
     const newInquiryType = data.inquiry_type !== '0' ? data.inquiry_type : '4'
     const newYourSource = data.your_source !== '0' ? data.your_source : '5'
     const newContent = data.content !== '' ? data.content : 'Empty content'
+    const newPhone = data.phone !== '' ? data.phone : 'Empty Phone'
     const { is_agree, ...newData } = data
-    postInfoContactAPI({ ...newData, inquiry_type: newInquiryType, your_source: newYourSource, content: newContent })
+    postInfoContactAPI({
+      ...newData,
+      inquiry_type: newInquiryType,
+      your_source: newYourSource,
+      content: newContent,
+      phone: newPhone,
+    })
   }
 
   return (
