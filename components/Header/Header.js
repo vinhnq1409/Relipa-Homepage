@@ -7,7 +7,7 @@ export default function Header(props) {
   const trans = useTrans()
   const router = useRouter()
   const { locale } = useRouter()
-  const [logo, setLogo] = useState(true)
+  const [logo, setLogo] = useState(false)
 
   const isCheckCurrentLink = (url) => {
     return router.pathname === url
@@ -27,13 +27,28 @@ export default function Header(props) {
       myFunction()
     }
     const myFunction = () => {
+      let desc_object = document.getElementsByClassName('homepage-relipa-global')
       if (document.documentElement.scrollTop > 0) {
-        setLogo(false)
+        if (desc_object?.length) {
+          setLogo(true)
+        }
       } else {
-        setLogo(true)
+        if (desc_object?.length) {
+          setLogo(false)
+        }else{
+          setLogo(true)
+        }
       }
     }
   }
+
+  useEffect(() => {
+    if (router.pathname === '/') {
+      setLogo(false)
+    }else{
+      setLogo(true)
+    }
+  }, [])
 
   return (
     <header id="header">
@@ -43,14 +58,14 @@ export default function Header(props) {
             <a className="navbar-brand">
               {/* <span className="logo logo-main"> */}
               {logo ? (
+                <img className="fluid" src="/user-page/img/logo.png" width="118" alt="Relipa supports your success" />
+                ) : (
                 <img
                   className="fluid"
                   src="/user-page/img/logo-white.png"
                   width="118"
                   alt="Relipa supports your success"
                 />
-              ) : (
-                <img className="fluid" src="/user-page/img/logo.png" width="118" alt="Relipa supports your success" />
               )}
               {/* </span> */}
             </a>
