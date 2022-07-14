@@ -16323,13 +16323,14 @@ a.avatar:hover:after {
 
 /* header without language option  */
 
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
   .navbar .navbar-nav {
     margin-right: 20px;
   }
 }
 @media (min-width: 1366px) {
   .navbar .navbar-nav {
-    margin-right: 80px;
+    margin-right: 40px;
   }
-} */
+}
+

@@ -144,6 +144,20 @@ export default function Header(props) {
             </ul>
           </div>
           <div className="top-right">
+            <div className="language-block padding-right-language">
+              <a
+                className="cursor-pointer"
+                href="https://relipasoft.com/"
+                target="_blank"
+              >
+                 <img
+                  className="fluid"
+                  src="/user-page/img/japan.png"
+                  width="40"
+                  alt="Relipa supports your success"
+                />
+              </a>
+            </div>
             {/* <div className="language-block">
               <a href="#">JP</a>
               <span className="px-2">/ </span>
