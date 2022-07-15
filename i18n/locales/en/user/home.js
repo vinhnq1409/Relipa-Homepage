@@ -11,7 +11,7 @@ export default {
       LabType: 'Lab-type Development',
       LabTypeContent: `A dedicated development team by our company is built for the customers' project, and we commit to the final goals as a member of the project.`,
       websystem: 'Web/App Development',
-      websystemContent: `We have confidence in web system development and pride to be trusted by many customers.`,
+      websystemContent: `We have confidence in Web & App Development and pride to be trusted by many customers.`,
       Business: 'Business System Development',
       BusinesContent: `We have many achievements in developing large-scale enterprise systems by ordering from listed companies and major companies in Japan.`,
       Blockchain: 'Blockchain Development',

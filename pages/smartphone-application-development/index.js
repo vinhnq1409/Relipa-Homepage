@@ -18,7 +18,7 @@ const SmartphoneApplicationDevelopment = () => {
     <>
       <NextSeo
         title="RELIPA GLOBAL | Website and Application Development"
-        description="Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers."
+        description="Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in Web & App Development and pride to be trusted by many customers."
       />
       <HomePage>
         <BlockBanner />

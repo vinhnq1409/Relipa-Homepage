@@ -32,7 +32,7 @@ function BlockDesire() {
               src="/user-page/img/web/img-1.png"
               width="560"
               height="304"
-              alt="Web System Development"
+              alt="Web & App Development"
             />
           </div>
         </div>

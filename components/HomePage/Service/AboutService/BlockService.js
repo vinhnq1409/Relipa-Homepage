@@ -57,7 +57,7 @@ const BlockService = () => {
                       src="/user-page/img/service/service-img-2.png"
                       width="270"
                       height="469"
-                      alt="Web System Development"
+                      alt="Web & App Development"
                     />
                   </a>
                 </Link>

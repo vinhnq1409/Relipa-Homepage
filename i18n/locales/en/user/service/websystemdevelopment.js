@@ -1,16 +1,16 @@
 export default {
   title: `Web/App Development`,
   webSystemService: 'Web/App Development Service',
-  websystemcontent: `We have confidence in web system development and pride to be trusted by many customers.<br />
+  websystemcontent: `We have confidence in Web & App Development and pride to be trusted by many customers.<br />
     We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.<br />
     We always try our best to satisfy on your requirements by the best products.`,
   desire: {
     one: 'I want to develop the existing Web system as the quality is too low to handle.',
     two: 'I want to develop the optimum Web system for each device.',
     three: 'I want to improve business efficiency by using a Web system.',
-    fource: 'I would like to request a company with abundant experience in Web system development to build it.',
+    fource: 'I would like to request a company with abundant experience in Web & App Development to build it.',
   },
-  thesolution: "Relipa's Web system development has the solution!",
+  thesolution: "Relipa's Web & App Development has the solution!",
   ECSite: {
     title: 'EC Sites',
     content: <div className="card-text justify-align">As online shopping becomes more widespread, e&#8209;commerce enterprises will be significantly affected. Since we have the specialized knowledge, skills, and expertise to create a high&#8209;quality EC site using EC CUBE as the most popular open&#8209;source e&#8209;commerce solution in Japan, we can provide you an ideal EC site by having close hearings in advance and developing.</div>

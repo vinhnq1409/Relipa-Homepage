@@ -1,16 +1,16 @@
 export default {
-  title: 'Web System Development',
-  webSystemService: 'Web System Development Service',
+  title: 'Web & App Development',
+  webSystemService: 'Web & App Development Service',
   websystemcontent:
-    'Relipa is confident in the field of web system development and is proud to have been entrusted by many customers. In this field, we specialize in providing services such as EC sites, CMS systems, job information sites, and reservation matching platforms, with a focus on Java / PHP development. We always strive to create the most complete products based on your needs.',
+    'Relipa is confident in the field of Web & App Development and is proud to have been entrusted by many customers. In this field, we specialize in providing services such as EC sites, CMS systems, job information sites, and reservation matching platforms, with a focus on Java / PHP development. We always strive to create the most complete products based on your needs.',
   desire: {
     one: 'I want to develop a Web system with the launch of a Web service. ',
     two: "The quality of the existing vendor's Web system is too low to handle.",
     three: 'I want to develop the optimum Web system for each device.',
     fource: 'I want to improve business efficiency by using a Web system.',
-    five: 'I would like to request a company with abundant experience in Web system development to build it.',
+    five: 'I would like to request a company with abundant experience in Web & App Development to build it.',
   },
-  thesolution: "Relipa's Web system development has the solution!",
+  thesolution: "Relipa's Web & App Development has the solution!",
   ECSite: {
     title: 'EC Site',
     content:

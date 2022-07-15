@@ -7,7 +7,7 @@ export default {
       LabType: 'Lab-type Development',
       LabTypeContent: `Optimal Cost - High Quality - By a dedicated development team, your requirements will be satisfied fast and exceptionally with flexible contract types, your resources will be under long-term high security, so let the project be developed by us!`,
       websystem: 'Web/App Development',
-      websystemContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers.`,
+      websystemContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in Web & App Development and pride to be trusted by many customers.`,
       Business: 'Business System Development',
       BusinesContent: `We have many achievements in developing management systems for large-scale businesses as we have the rich experiences and know-how in the field of business system development.
         Besides the profound skills in various development languages, our engineers are good at using cloud services such as AWS and Azure.
@@ -15,7 +15,7 @@ export default {
       Blockchain: 'Blockchain Development',
       BlockchainContent: 'ICO service, NFT games conversion, crypto wallet, POC - We meet your all needs. As the awareness of the immeasurable potential of Blockchain, Relipa has been focusing on training excellent engineers to stay ahead of the times.',
       Smartphone: 'Application Development',
-      SmartphoneContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in web system development and pride to be trusted by many customers.`,
+      SmartphoneContent: `Specializing in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development, we have confidence in Web & App Development and pride to be trusted by many customers.`,
       AWS: 'Cloud Migration',
       AWSContent: `Cloud migration assistant is a service that helps customers reduce costs for technology, increase productivity and business agility, and improve operational resilience.
         Relipa provides cloud integration services such as AWS, Azure, and Google Cloud, from consulting to design, architecture construction, installation, and deployment.`,

@@ -8,6 +8,7 @@ import store from '../redux/store'
 import SEO from '../next-seo.config'
 
 const queryClient = new QueryClient()
+
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}

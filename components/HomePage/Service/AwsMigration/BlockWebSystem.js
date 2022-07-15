@@ -14,15 +14,15 @@ function BlockWebSystem() {
                 <div className="card-body p-0 mb-md-0">
                   <div className="card-content">
                     <div className="card-icon mb-2">
-                      <img src="/user-page/img/icons/simcard.svg" width="40" height="40" alt="Web system development" />
+                      <img src="/user-page/img/icons/simcard.svg" width="40" height="40" alt="Web & App Development" />
                     </div>
                     <h3 className="card-title">
                       <a href="#" onClick={onPreventDefault}>
-                        Web system development
+                        Web & App Development
                       </a>
                     </h3>
                     <div className="card-text">
-                      Relipa is confident in the field of web system development and is proud to be entrusted by many
+                      Relipa is confident in the field of Web & App Development and is proud to be entrusted by many
                       customers. In this field, we specialize in providing services such as EC sites, CMS systems, job
                       information sites, and reservation matching platforms, with a focus on Java / PHP development. We
                       always strive to create the most complete products based on your needs.
@@ -36,7 +36,7 @@ function BlockWebSystem() {
                       src="/user-page/img/common/frame-1.png"
                       width="411"
                       height="406"
-                      alt="Font-0 Web system development"
+                      alt="Font-0 Web & App Development"
                     />
                     <div className="card-img">
                       <img
@@ -44,7 +44,7 @@ function BlockWebSystem() {
                         src="/user-page/img/aws/img-2.png"
                         width="334"
                         height="236"
-                        alt="Font-1 Web system development"
+                        alt="Font-1 Web & App Development"
                       />
                     </div>
                   </div>
@@ -58,11 +58,11 @@ function BlockWebSystem() {
                     </div>
                     <h3 className="card-title">
                       <a href="#" onClick={onPreventDefault}>
-                        Web system development
+                        Web & App Development
                       </a>
                     </h3>
                     <div className="card-text">
-                      Relipa is confident in the field of web system development and is proud to be entrusted by many
+                      Relipa is confident in the field of Web & App Development and is proud to be entrusted by many
                       customers. In this field, we specialize in providing services such as EC sites, CMS systems, job
                       information sites, and reservation matching platforms, with a focus on Java / PHP development. We
                       always strive to create the most complete products based on your needs.

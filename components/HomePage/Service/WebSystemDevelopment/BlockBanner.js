@@ -14,7 +14,7 @@ const BlockBanner = () => {
                 src="/user-page/img/web/banner-sp.png"
                 width="345"
                 height="188"
-                alt="Banner Web System Development"
+                alt="Banner Web & App Development"
               />
             </picture>
           </div>

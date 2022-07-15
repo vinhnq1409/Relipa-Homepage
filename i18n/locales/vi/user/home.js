@@ -11,9 +11,9 @@ export default {
       LabType: 'Phát triển kiểu phòng thí nghiệm',
       LabTypeContent:
         "What is lab-type development? We build a dedicated development team for each project within our company, and as a member of the customer's team, we commit to the goals of the project.",
-      websystem: 'Web System Development',
+      websystem: 'Web & App Development',
       websystemContent:
-        'Relipa is confident in the field of web system development and is proud to be selected by many customers.',
+        'Relipa is confident in the field of Web & App Development and is proud to be selected by many customers.',
       Business: 'Business System Development',
       BusinesContent:
         'We have many achievements in developing large-scale business systems by ordering from listed companies and major companies.',
