@@ -1,6 +1,6 @@
 export default {
-  title: `Web System development`,
-  webSystemService: 'Web System Development Service',
+  title: `Web/App Development`,
+  webSystemService: 'Web/App Development Service',
   websystemcontent: `We have confidence in web system development and pride to be trusted by many customers.<br />
     We specialize in providing services such as EC sites, CMS systems, job search websites, and reservation systems, focusing on Javascript / PHP development.<br />
     We always try our best to satisfy on your requirements by the best products.`,
