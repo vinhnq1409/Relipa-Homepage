@@ -10,6 +10,7 @@ import BlockDialog from '../../components/HomePage/Products/BlockDialog'
 import BlockFilter from '../../components/HomePage/Products/BlockFilter'
 import { get } from '../../api/BaseRequest'
 import HomePage from '../../layouts/Home'
+import LinkContact from '../../components/LinkContact'
 
 const Product = ({ dataCaseStudy }) => {
   const [data, setData] = useState(dataCaseStudy)
@@ -119,6 +120,7 @@ const Product = ({ dataCaseStudy }) => {
           </section>
           <BlockDialog item={card} />
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

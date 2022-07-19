@@ -7,6 +7,7 @@ import BlockWebSystem from '../../components/HomePage/Service/WebSystemDevelopme
 import BlockDialog from '../../components/HomePage/Products/BlockDialog'
 import HomePage from '../../layouts/Home'
 import CaseStudy from '../../components/HomePage/Service/BlockCaseStudy'
+import LinkContact from '../../components/LinkContact'
 
 const WebSystemDevelopment = () => {
   const [card, setCard] = useState({})
@@ -53,6 +54,7 @@ const WebSystemDevelopment = () => {
           <CaseStudy itemCard={itemCard} />
           <BlockDialog item={card} />
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

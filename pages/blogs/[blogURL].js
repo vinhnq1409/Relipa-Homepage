@@ -13,6 +13,7 @@ import BlockNew from '../../components/HomePage/Blogs/BlockNew'
 import BlockPopular from '../../components/HomePage/Blogs/BlockPopular'
 import BlockTrend from '../../components/HomePage/Blogs/BlockTrend'
 import BlockRelated from '../../components/HomePage/Blogs/BlockRelated'
+import LinkContact from '../../components/LinkContact'
 
 export default function BlogDetail({ dataBlog }) {
   const router = useRouter()
@@ -110,6 +111,7 @@ export default function BlogDetail({ dataBlog }) {
           </section>
           <BlockRelated dataBlog={dataBlog} />
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

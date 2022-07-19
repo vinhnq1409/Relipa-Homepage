@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NextSeo } from 'next-seo'
+import Link from 'next/link'
 import BlockBanner from '../../components/HomePage/Company/BlockBanner'
 import BlockBreadcrumb from '../../components/HomePage/Company/BlockBreadcrumb'
 import BlockCompanyProfile from '../../components/HomePage/Company/BlockCompanyProfile'
@@ -7,8 +8,10 @@ import BlockCEOMessage from '../../components/HomePage/Company/BlockCEOMessage'
 import BlockMissionValues from '../../components/HomePage/Company/BlockMissionValues'
 import BlockCoreMembers from '../../components/HomePage/Company/BlockCoreMembers'
 import BlockSideBar from '../../components/HomePage/Company/BlockSideBar'
-import HomePage from '../../layouts/Home'
 import BlockPopup from '../../components/HomePage/Company/BlockPopup'
+import HomePage from '../../layouts/Home'
+import useTrans from '../../i18n/useTrans'
+import LinkContact from '../../components/LinkContact'
 
 const Company = () => {
   const [infoCoreMember, setInfoCoreMember] = useState({
@@ -18,19 +21,21 @@ const Company = () => {
     img: '',
   })
 
+  const trans = useTrans()
+
   return (
     <>
       <NextSeo
-        title='RELIPA GLOBAL | About us'
-        description='Relipa Co., Ltd. is a IT and Blockchain development company, founded in 2016 and headquartered in Vietnam. Contact us: sales@relipasoft.com, 22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam.'
+        title="RELIPA GLOBAL | About us"
+        description="Relipa Co., Ltd. is a IT and Blockchain development company, founded in 2016 and headquartered in Vietnam. Contact us: sales@relipasoft.com, 22F, B Tower, Song Da Building, Pham Hung Street, My Dinh 1, Nam Tu Liem, Ha Noi, Viet Nam."
       />
       <HomePage>
         <BlockBanner />
-        <div id='main'>
+        <div id="main">
           <BlockBreadcrumb />
-          <div className='container'>
-            <div className='row'>
-              <div className='col-lg-10'>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-10">
                 <BlockCompanyProfile />
                 <BlockCEOMessage />
                 <BlockMissionValues />
@@ -41,6 +46,7 @@ const Company = () => {
           </div>
         </div>
         <BlockPopup infoCoreMember={infoCoreMember} />
+        <LinkContact/>
       </HomePage>
     </>
   )
