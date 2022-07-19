@@ -9,6 +9,7 @@ import BlockMainDetail from '../../components/HomePage/News/BlockMainDetail'
 import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
+import LinkContact from '../../components/LinkContact'
 
 const NewDetail = ({ dataNew }) => {
   const router = useRouter()
@@ -87,6 +88,7 @@ const NewDetail = ({ dataNew }) => {
             </div>
           </section>
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

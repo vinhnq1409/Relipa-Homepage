@@ -16258,66 +16258,74 @@ a.avatar:hover:after {
   font-size: 24px;
 }
 
-@media (max-width: 992px){
+@media (max-width: 992px) {
   .name-conpany {
     font-size: 50px;
   }
-  
+
   .name-conpany-title {
     font-size: 34px;
   }
-  
+
   .name-conpany-content {
     font-size: 16px;
   }
 }
 
-.text-contact{
+.text-contact {
   color: #fff;
 }
 
 .contact-body {
-  background-color: #0045c5; 
+  background-color: #0045c5;
   padding: 8px 15px 8px 15px;
-  border-radius: 50px ;
+  border-radius: 50px;
   margin-left: 15px;
   margin-top: 3px;
   border: 1px solid #0045c5;
 }
 
-.contact-body:hover{
+.contact-body:hover {
   background-color: #fff;
   animation-name: animationBackGround;
   animation-duration: 0.3s;
 }
 
 @keyframes animationBackGround {
-  from {background-color: #0045c5;}
-  to {background-color: #fff;}
+  from {
+    background-color: #0045c5;
+  }
+  to {
+    background-color: #fff;
+  }
 }
 
-.contact-body:hover > .text-contact{
+.contact-body:hover > .text-contact {
   color: #0045c5;
   animation-name: animationBackGround;
   animation-duration: 0.3s;
 }
 
 @keyframes animationColorText {
-  from {color: #fff;}
-  to {color: #0045c5;}
+  from {
+    color: #fff;
+  }
+  to {
+    color: #0045c5;
+  }
 }
 
-@media (max-width: 991.999px){
-  .contact-body{
-    position: absolute ;
-    background-color: #0045c5; 
-    padding-bottom: 5px ;
-    padding-top: 5px ;
-    border-radius: 50px ;
+@media (max-width: 991.999px) {
+  .contact-body {
+    position: absolute;
+    background-color: #0045c5;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 50px;
     border: 1px solid #0045c5;
-    margin-top: 24px ;
-    padding-left: 24px ;
-    padding-right: 24px ;
+    margin-top: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
@@ -16334,3 +16342,68 @@ a.avatar:hover:after {
   }
 }
 
+/* contact  */
+
+.section-contact .section-contact-shadow .title-contact-name {
+  position: relative;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+.section-contact .section-contact-shadow .title-contact-name::before {
+  position: absolute;
+  content: attr(title);
+  font-size: 32px;
+  opacity: 0.1;
+  text-transform: uppercase;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media (min-width: 1366px){
+
+  .section-contact .section-contact-shadow .title-contact-name {
+    position: relative;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .section-contact .section-contact-shadow .title-contact-name::before {
+    position: absolute;
+    content: attr(title);
+    font-size: 90px;
+    opacity: 0.1;
+    text-transform: uppercase;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+.img-banner-contact .background-img-contact{
+  overflow: hidden;
+}
+
+.img-banner-contact .background-img-contact > picture {
+  position: absolute;
+  object-fit: cover;
+	width: 100%;
+	height: 100%;
+  transition: all 2s ease-in-out;
+}
+.img-banner-contact:hover .background-img-contact > picture {
+  transform: scale(1.1);
+}
+
+.contact-home-form{
+  display: flex !important;
+}
+
+.split-screen{
+  width: 50%;
+}

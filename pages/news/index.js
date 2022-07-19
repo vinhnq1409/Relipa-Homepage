@@ -9,6 +9,7 @@ import BlockMain from '../../components/HomePage/News/BlockMain'
 import BlockNew from '../../components/HomePage/News/BlockNew'
 import BlockPopular from '../../components/HomePage/News/BlockPopular'
 import HomePage from '../../layouts/Home'
+import LinkContact from '../../components/LinkContact'
 
 const News = ({ news }) => {
   const [dataNews, setDataNews] = useState(news)
@@ -66,6 +67,7 @@ const News = ({ news }) => {
             </div>
           </section>
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

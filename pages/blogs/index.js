@@ -12,6 +12,7 @@ import BlockNew from '../../components/HomePage/Blogs/BlockNew'
 import BlockPopular from '../../components/HomePage/Blogs/BlockPopular'
 import BlockTrend from '../../components/HomePage/Blogs/BlockTrend'
 import HomePage from '../../layouts/Home'
+import LinkContact from '../../components/LinkContact'
 
 export default function Blogs({ blogs }) {
   const [dataBlogs, setDataBlogs] = useState(blogs)
@@ -97,6 +98,7 @@ export default function Blogs({ blogs }) {
             </div>
           </section>
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )

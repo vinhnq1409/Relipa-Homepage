@@ -8,6 +8,7 @@ import BlockBanner from '../../components/HomePage/Service/LabtypeDevelopment/Bl
 import BlockContent from '../../components/HomePage/Service/LabtypeDevelopment/BlockContent'
 import BlockOverview from '../../components/HomePage/Service/LabtypeDevelopment/BlockOverview'
 import HomePage from '../../layouts/Home'
+import LinkContact from '../../components/LinkContact'
 
 const LabtypeDevelopment = () => {
   const [card, setCard] = useState({})
@@ -32,6 +33,7 @@ const LabtypeDevelopment = () => {
           <CaseStudy itemCard={itemCard} />
           <BlockDialog item={card} />
         </div>
+        <LinkContact/>
       </HomePage>
     </>
   )
