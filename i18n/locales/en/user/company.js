@@ -44,11 +44,11 @@ export default {
     MissionValues: {
       MissionValues: 'Mission & Values',
       MISSION: 'Mission',
-      mission1: 'Improve and develop IT technology in Vietnam',
+      mission1: 'Relipa exists to enhance growth mindset for modern young generation, create a positive, knowledge-sharing environment and people-first attitude for all members. By doing so, we provide professional and reliable services to our customers.',
       mission2: 'Provide reliable services to customers',
       mission3: 'Create a challenging, knowledge-sharing and positive environment for employees',
       VISION: 'Vision',
-      vision1: 'Relipa aims at trustworthy and long-term partnerships ',
+      vision1: `To be the top human-centric software service in Vietnam, a partner to inspire, accompany and turn clients' every idea reality.`,
       vision2: 'in the era of technology implementation',
       CORE_VALUES: 'Core Values',
       core_values1: 'Proactive',
