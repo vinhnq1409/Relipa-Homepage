@@ -121,7 +121,7 @@ const BlockCompanyProfile = () => {
               <div className="col-4">
                 <strong>{language.Company}</strong>
               </div>
-              <div className="col-8">{language.Company_Relipa}</div>
+              <div className="col-8">{language.Company_RELIPA}</div>
             </div>
           </div>
           <div className="row-item">
