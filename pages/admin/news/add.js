@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { useRouter } from 'next/router'
 import { useQuery, useMutation } from 'react-query'
@@ -17,6 +17,9 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@material-ui/core'
+import moment from 'moment'
+import MomentUtils from '@date-io/moment'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 import Admin from 'layouts/Admin.js'
 import { apiKey, initFullProps } from '../../../helper/initFullProps'
 import styles from '../../../styles/AdminBlogs.module.css'
@@ -44,6 +47,7 @@ export default function AddNews() {
     friendly_url: '',
     lang: 'en',
     status: true,
+    created_at: new Date()
   }
 
   const getNews = async() => {
@@ -109,6 +113,7 @@ export default function AddNews() {
       setValue('friendly_url', dataNews?.data.friendly_url)
       setValue('lang', dataNews?.data.lang)
       setValue('status', dataNews?.data.status)
+      setValue('created_at', dataNews?.data.created_at)
       setValueEditor(dataNews?.data.content)
     }
     return () => onReset()
@@ -152,6 +157,7 @@ export default function AddNews() {
         status: +data.status,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
+        created_at: data.created_at,
       }
       postNewsAPI(newData)
     }
@@ -165,6 +171,7 @@ export default function AddNews() {
         status: +data.status,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
+        created_at: data.created_at,
         _method: 'PUT',
       }
       putNewsAPI(newData)
@@ -225,6 +232,32 @@ export default function AddNews() {
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="created_at"
+              control={control}
+              defaultValue={new Date()}
+              rules={{ required: true }}
+              render={({ field: { ref, ...rest } }) => (
+                <Fragment>
+                  <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
+                    <KeyboardDatePicker
+                     margin="normal"
+                     id="date-picker-dialog"
+                     format="DD/MM/YYYY"
+                     label="Create date"
+                     initialFocusedDate={Date.now()}
+                     KeyboardButtonProps={{
+                        "aria-label": "change end date",
+                     }}
+                     invalidDateMessage={"date is not in correct format"}
+                     {...rest}
+                    />
+                  </MuiPickersUtilsProvider>
+                </Fragment>
+              )}
+            />
           </Grid>
           <Grid item xs={12}>
             <Controller
