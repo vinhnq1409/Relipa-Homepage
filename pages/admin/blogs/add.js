@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, Fragment } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useQuery, useMutation } from 'react-query'
@@ -19,13 +19,15 @@ import {
   Checkbox,
 } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete'
+import moment from 'moment'
+import MomentUtils from '@date-io/moment'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 import Admin from 'layouts/Admin.js'
 import styles from '../../../styles/AdminBlogs.module.css'
 import { apiKey, initFullProps } from '../../../helper/initFullProps'
 import { get, post, put } from '../../../api/BaseRequest'
 import BtnLoading from '../../../components/button/BtnLoading'
 import CustomizedSnackbars from '../../../components/CustomSnackbar'
-
 export default function Add() {
   const editorRef = useRef(null)
   const router = useRouter()
@@ -55,17 +57,18 @@ export default function Add() {
     friendly_url: '',
     lang: 'en',
     status: true,
+    created_at: new Date()
   }
 
-  const getBlog = async() => {
+  const getBlog = async () => {
     return await get(`blogs/${id}`)
   }
 
-  const postBlog = async(data) => {
+  const postBlog = async (data) => {
     return await post('blogs', data)
   }
 
-  const putBlog = async(data) => {
+  const putBlog = async (data) => {
     return await post(`blogs/${id}`, data)
   }
 
@@ -141,6 +144,7 @@ export default function Add() {
       setValue('friendly_url', dataBlog?.data.friendly_url)
       setValue('lang', dataBlog?.data.lang)
       setValue('status', dataBlog?.data.status)
+      setValue('created_at', dataBlog?.data.created_at)
       setValueEditor(dataBlog?.data.content)
       setParamsTags({ ...paramsTags, lang: dataBlog.data.lang })
     }
@@ -194,6 +198,7 @@ export default function Add() {
         tags: valueTag,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
+        created_at: data.created_at,
       }
       postBlogAPI(newData)
     } else {
@@ -211,6 +216,7 @@ export default function Add() {
         tags: valueTag,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
+        created_at: data.created_at,
         _method: 'PUT',
       }
       putBlogAPI(newData)
@@ -219,7 +225,7 @@ export default function Add() {
     }
   }
 
-  const onPictureUpload = async(e) => {
+  const onPictureUpload = async (e) => {
     const formData = new FormData()
     formData.append('file', e.target.files[0], e.target.files[0].name)
     const { location } = await post('media', formData)
@@ -274,6 +280,32 @@ export default function Add() {
               )}
             />
             {errors.desc && <Typography className={styles.error}>{errors.desc.message}</Typography>}
+          </Grid>
+          <Grid item xs={12}>
+            <Controller
+              name="created_at"
+              control={control}
+              defaultValue={new Date()}
+              rules={{ required: true }}
+              render={({ field: { ref, ...rest } }) => (
+                <Fragment>
+                  <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
+                    <KeyboardDatePicker
+                     margin="normal"
+                     id="date-picker-dialog"
+                     format="DD/MM/YYYY"
+                     label="Create date"
+                     initialFocusedDate={Date.now()}
+                     KeyboardButtonProps={{
+                        "aria-label": "change end date",
+                     }}
+                     invalidDateMessage={"date is not in correct format"}
+                     {...rest}
+                    />
+                  </MuiPickersUtilsProvider>
+                </Fragment>
+              )}
+            />
           </Grid>
           <Grid item xs={12}>
             <Controller
@@ -385,7 +417,7 @@ export default function Add() {
             <Controller
               name="status"
               control={control}
-              render={({ field: { onChange, onBlur, value, ref }}) => (
+              render={({ field: { onChange, onBlur, value, ref } }) => (
                 <FormControlLabel
                   control={
                     <Checkbox name="checked" color="primary" onChange={onChange} onBlur={onBlur} checked={value} />

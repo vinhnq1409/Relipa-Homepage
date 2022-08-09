@@ -41,7 +41,7 @@ export default function Blogs() {
   }
 
   const { data, refetch } = useQuery(['admin/blogs', params.per_page, params.page], getBlogs)
-
+  
   const { mutate } = useMutation(deleteBlog, {
     onError: () => {
       setSnackbar({
