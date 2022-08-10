@@ -198,7 +198,7 @@ export default function Add() {
         tags: valueTag,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
-        created_at: data.created_at,
+        created_at: moment(data.created_at).format("DD-MM-YYYY")
       }
       postBlogAPI(newData)
     } else {
@@ -216,7 +216,7 @@ export default function Add() {
         tags: valueTag,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
-        created_at: data.created_at,
+        created_at: moment(data.created_at).format("DD-MM-YYYY"),
         _method: 'PUT',
       }
       putBlogAPI(newData)
