@@ -157,7 +157,7 @@ export default function AddNews() {
         status: +data.status,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
-        created_at: data.created_at,
+        created_at: moment(data.created_at).format("DD-MM-YYYY")
       }
       postNewsAPI(newData)
     }
@@ -171,7 +171,7 @@ export default function AddNews() {
         status: +data.status,
         friendly_url: data.friendly_url.toLowerCase(),
         content: editorRef.current.getContent(),
-        created_at: data.created_at,
+        created_at: moment(data.created_at).format("DD-MM-YYYY"),
         _method: 'PUT',
       }
       putNewsAPI(newData)
