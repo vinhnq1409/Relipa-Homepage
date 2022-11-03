@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import useTrans from '../../i18n/useTrans'
+import React from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import useTrans from '../../i18n/useTrans'
 
-export default function LinkContact() {
+const LinkContact = () => {
   const trans = useTrans()
 
   return (
@@ -14,9 +13,9 @@ export default function LinkContact() {
             <div className="main-banner-item main-banner-item-sm img-banner-contact">
               <div className="main-banner-item-bg background-img-contact ">
                 <picture>
-                  <source media="(min-width:768px)" srcSet="user-page/img/contact.png" />
-                  <source media="(min-width:768px)" srcSet="user-page/img/contact.png" />
-                  <img src="user-page/img/contact.png" width="345" height="188" alt="banner company" />
+                  <source media="(min-width:768px)" srcSet="user-page/img/contact.jpeg" />
+                  <source media="(min-width:768px)" srcSet="user-page/img/contact.jpeg" />
+                  <img src="user-page/img/contact.jpeg" width="345" height="188" alt="banner company" />
                 </picture>
               </div>
               <div className="container ">
@@ -33,3 +32,5 @@ export default function LinkContact() {
     </Link>
   )
 }
+
+export default LinkContact
